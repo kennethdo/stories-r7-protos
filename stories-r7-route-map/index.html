@@ -90,7 +90,7 @@ const EX=()=>'<span class="ex">'+T('示例','Demo')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
 const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
-const PK=p=>p==='y'?T('會','Yes'):T('唔會','No');
+const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a>';
 const HEAT_BASE=247;
 function fmtN(n){return n.toLocaleString('en-US')}
@@ -99,14 +99,14 @@ function heat(){const n=HEAT_BASE+S.claps;const on=S.claps>0?' on':'';const pop=
 function artStrip(){const open=S.artOpen?' open':'';return '<div class="art-strip'+open+'"><button class="hd" onclick="E.toggleArt()" aria-expanded="'+(S.artOpen?'true':'false')+'"><span class="t">'+T('今日報道','Today\'s story')+'</span><span class="meta">BTC · 21 Oct</span><span class="chev" aria-hidden="true">▾</span></button><div class="bd"><div class="meta" style="margin-bottom:10px">'+T('想睇先打開','Open when you’re ready')+'</div>'+FL()+'</div></div>'}
 function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('↑ 返去 Story 繼續睇','↑ Back to the Story')+'</button></div></div>';
  if(S.later)return '<div class="reg"><div class="meta">'+T('未保存 · 你個 call 只喺呢部機','Not saved · call lives on this device only')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
- return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
+ return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 淨係 Tokens。冇現金獎品。','Opens a Forbes Predict record, not a Forbes.com account · Tokens only. No cash prizes.')+'</div>'+
  (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
-const YN=()=>'<div class="yn"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Will')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','Won\'t')+' '+(100-c)+'%</span></div></div>'};
+const YN=()=>'<div class="yn"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Will')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','Won\'t')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
 const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
 const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
-const FOOT=()=>'<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
+const FOOT=()=>'<div class="foot">'+T('淨係 Tokens。冇現金獎品。','Tokens only. No cash prizes.')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',claps:0,clapPop:false,artOpen:false}}reset();
@@ -134,7 +134,7 @@ function route(){const P=PAST(),n=P.length+2,W=350,cx=i=>W/2+OFF[i];let pts=[],h
  h+='<button class="nd tod'+(S.rev?' rv':'')+(S.pick?'':' pulse')+'" id="today" style="left:'+tx+'px;top:'+ty+'px" onclick="E.goq()"><span>'+todLabel+'</span><small>'+todSmall+'</small></button>';
  /* LEFT of today circle = prediction affordance / state */
  if(S.pick)h+=predLeft(t,cx,'<span class="chip called">'+T('你揀咗 ','You said ')+PK(S.pick)+'</span><span class="hint">'+(S.rev?T('已揭曉','Revealed'):T('已出 call','Called'))+'</span>');
- else h+=predLeft(t,cx,'<button class="chip go" onclick="E.goq()">'+T('出 call','Make a call')+'</button><span class="hint">'+T('未預測 · 撳去答','No prediction yet')+'</span>');
+ else h+=predLeft(t,cx,'<button class="chip go" onclick="E.goq()">'+T('出 call','Make your call')+'</button><span class="hint">'+T('未預測 · 撳去答','No prediction yet')+'</span>');
  h+=rightLab(t,cx,S.rev?'<b>'+T('今日結果：'+PK(S.res)+'','Today\'s result: '+PK(S.res)+'')+'</b><span class="past-meta">'+T('你揀咗 '+PK(S.pick),'You said '+PK(S.pick))+'</span>':'<b>'+T('今日一題','Today\'s one question')+'</b><span class="past-meta">'+(S.pick?T('已出 call · 見下面','Called · see below'):T('見下面答','Answer below'))+'</span>');
  const u=t+1,ux=cx(u)-32,uy=u*RH+40-32;
  h+='<div class="nd lock" style="left:'+ux+'px;top:'+uy+'px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><small>22 Oct</small></div>'+rightLab(u,cx,'<b>'+T('聽日一題','Tomorrow\'s question')+'</b><span class="past-meta">'+T('聽日先開 · 漏咗唔使補','Opens tomorrow · missing a day just counts 0')+'</span>');

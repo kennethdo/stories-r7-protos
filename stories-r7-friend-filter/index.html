@@ -83,7 +83,7 @@ const HL={zh:'示例：聯儲局按兵不動，市場開始押注年底減息',e
 const DEK={zh:'議息聲明措辭轉軟，債息回落。',en:'Softer statement wording, yields slip.'};
 const QN={zh:'聯儲局 12 月會唔會減息？',en:'Will the Fed cut rates in December?'};
 const ART=fb('money/');
-function SHEET(){return '<div class="sheet" onclick="if(event.target===this){S.sheet=0;R()}"><div class="in"><div class="ttl h2">'+T('建立 Forbes Predict 紀錄','Create a Forbes Predict record')+'</div><p class="para">'+T('呢個會開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶。玩嘅係模擬幣，冇獎品。','This opens a Forbes Predict record, not a Forbes.com account. Play money · no prizes.')+'</p><div style="margin-top:16px"><button class="btn-s" style="width:100%" onclick="S.sheet=0;S.reg=1;R()">'+T('知道，關閉','Got it, close')+'</button></div></div></div>';}
+function SHEET(){return '<div class="sheet" onclick="if(event.target===this){S.sheet=0;R()}"><div class="in"><div class="ttl h2">'+T('建立 Forbes Predict 紀錄','Create a Forbes Predict record')+'</div><p class="para">'+T('呢個會開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶。淨係 Tokens。冇現金獎品。','This opens a Forbes Predict record, not a Forbes.com account. Tokens only. No cash prizes.')+'</p><div style="margin-top:16px"><button class="btn-s" style="width:100%" onclick="S.sheet=0;S.reg=1;R()">'+T('知道，關閉','Got it, close')+'</button></div></div></div>';}
 
 const S={s:['home','article','board'].includes(P.get('s'))?P.get('s'):'board',f:P.get('f')==='friends'?'friends':'all',pick:null,rev:0,sheet:0,reg:0};
 const PPL=[
@@ -104,13 +104,13 @@ board:()=>{const rs=rows(),me=rs.find(r=>r.me);return topbar('<div class="t">'+i
  '<div class="card"><div class="meta">'+T('你最近 7 日（分數 = 啱嘅 call）','Your last 7 days (score = correct calls)')+'</div><div class="days">'+MYDAYS.concat([S.pick&&S.rev?(S.pick==='y'?1:0):null]).map((d,i)=>'<div class="d'+(d===null?' un':'')+'">'+T('第','D')+(i+1)+(L==='en'?'':'日')+'<b>'+(d===null?0:d)+'</b></div>').join('')+'</div>'+
  '<p class="note">'+ic('circle-dashed','sm')+T('虛線 = 未出 call 或未揭曉，一律計 0。','Dashed = not called or unrevealed, counts as 0.')+'</p>'+
  (S.pick&&!S.rev?'<p class="note">'+ic('clock','sm')+T('今日已出 call，揭曉後先計分。','Today\'s call is in; it scores once revealed.')+'</p><button class="lnk" onclick="S.rev=1;R()">'+T('跳到揭曉','Skip to reveal')+'</button>':'')+
- '</div><p class="note" style="margin-top:18px">'+ic('info','sm')+T('Play money，冇獎品','Play money · no prizes')+'</p>';},
+ '</div><p class="note" style="margin-top:18px">'+ic('info','sm')+T('淨係 Tokens。冇現金獎品。','Tokens only. No cash prizes.')+'</p>';},
 article:()=>topbar(nav('board','back',ic('arrow-left'))+'<div class="t">'+T('今日報道','Today\'s story')+' '+EX()+'</div>')+
  '<h1 class="ttl h1" style="font-size:26px">'+HL[L]+'</h1><p class="dek">'+DEK[L]+'</p>'+
  '<div class="card"><div class="meta">'+T('今日一條問題','Today\'s question')+'</div><div class="qq">'+QN[L]+'</div>'+
- (S.pick?'<div class="picked">'+(S.pick==='y'?T('你揀咗：會','You picked: Yes'):T('你揀咗：唔會','You picked: No'))+'</div><p class="note">'+ic('clock','sm')+T('揭曉前計 0 分','0 until revealed')+'</p>'+nav('board','lnk',T('返去睇位置','Back to standing')+ic('chevron-right','sm'))+
-   (S.reg?'':'<div class="reg"><div class="t">'+T('想記低你嘅位置？','Keep your place?')+'</div><div class="s">'+T('開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 模擬幣 · 冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money · no prizes')+'</div><div class="row"><button class="btn-s" style="min-height:44px;font-size:15px" onclick="S.sheet=1;R()">'+ic('user','sm')+T('建立紀錄','Create record')+'</button><button class="lnk" onclick="S.reg=2;R()">'+T('遲啲','Later')+'</button></div></div>')
- :'<div class="yn"><button class="btn-s" onclick="S.pick=\'y\';R()">'+ic('check')+T('會','Yes')+'</button><button class="btn-s" onclick="S.pick=\'n\';R()">'+ic('x')+T('唔會','No')+'</button></div>')+'</div>'
+ (S.pick?'<div class="picked">'+(S.pick==='y'?T('你揀咗：會','You picked: Will'):T('你揀咗：唔會','You picked: Won\'t'))+'</div><p class="note">'+ic('clock','sm')+T('揭曉前計 0 分','0 until revealed')+'</p>'+nav('board','lnk',T('返去睇位置','Back to standing')+ic('chevron-right','sm'))+
+   (S.reg?'':'<div class="reg"><div class="t">'+T('想記低你嘅位置？','Keep your place?')+'</div><div class="s">'+T('開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 淨係 Tokens。冇現金獎品。','Opens a Forbes Predict record, not a Forbes.com account · Tokens only. No cash prizes.')+'</div><div class="row"><button class="btn-s" style="min-height:44px;font-size:15px" onclick="S.sheet=1;R()">'+ic('user','sm')+T('建立紀錄','Create record')+'</button><button class="lnk" onclick="S.reg=2;R()">'+T('遲啲','Later')+'</button></div></div>')
+ :'<div class="yn"><button class="btn-s" onclick="S.pick=\'y\';R()">'+ic('check')+T('會','Will')+'</button><button class="btn-s" onclick="S.pick=\'n\';R()">'+ic('x')+T('唔會','Won\'t')+'</button></div>')+'</div>'
 };
 const D={
 board:()=>'<div class="in">'+nav('article','btn-p',ic('newspaper')+(S.pick?T('再讀今日報道','Re-read today\'s story'):T('讀報道 · 出 call','Read story · make call')))+'</div>',

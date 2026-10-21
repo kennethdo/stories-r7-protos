@@ -100,7 +100,7 @@ let S;try{S=Object.assign(def(),JSON.parse(localStorage.getItem(SK)||'{}'))}catc
 if(!PM&&S.step==='intro')S.step='story';
 if(PM&&Q.get('step')==null&&!S.pick)S.step='intro';
 const st=()=>ST[S.sid];
-const PK=p=>p==='y'?T('會','Yes'):T('唔會','No');
+const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const fURL=id=>{const u=new URL('https://www.forbes.com/');[['utm_source','forbespredict'],['utm_medium','stories'],['utm_campaign','r7-synth'],['utm_content',id]].forEach(([k,v])=>u.searchParams.set(k,v));return u.href};
 const FL=(id,label)=>'<a class="fl" href="'+fURL(id)+'" target="_blank" rel="noopener">'+(label||T('喺 Forbes 讀','Read on Forbes'))+' ↗</a>';
@@ -130,11 +130,11 @@ V.timeline=()=>{const s=st();return hdr()+rail()+why('timeline')+'<div class="ki
  dock('timeline',T('今日一題','Today’s question'),P(S.pick?T('睇大家點揀','See the crowd'):T('出今日嘅 call','Make today’s call'),S.pick?"E.go('crowd')":"E.go('call')"),'timeline')};
 V.call=()=>{const s=st();return hdr()+rail()+why('call')+'<div class="kick">'+T('今日 · 21 Oct','Today · 21 Oct')+'</div><div class="qq">'+tx(s.q)+'</div>'+
  '<div class="meta" style="margin-top:10px">'+T('出咗 call 先見到大家點揀。','The crowd shows after you call.')+'</div>'+
- '<div style="margin-top:22px">'+spoon('call')+'</div><div class="yn" style="margin-top:0"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div>'+
+ '<div style="margin-top:22px">'+spoon('call')+'</div><div class="yn" style="margin-top:0"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Will')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','Won\'t')+'</button></div>'+
  '<div style="margin-top:18px">'+FL('call')+'</div>'+pfoot()};
 V.crowd=()=>{const s=st(),mine=S.pick==='y'?s.y:100-s.y;return hdr()+rail()+why('crowd')+'<div class="kick">'+tx(s.q)+'</div>'+
  '<div class="big">'+mine+'%<small>'+T('同你一樣','agree with you')+'</small></div>'+
- '<div class="split"><i style="width:'+s.y+'%"></i></div><div class="srow"><span>'+T('會','Yes')+' '+s.y+'%</span><span>'+T('唔會','No')+' '+(100-s.y)+'%</span></div>'+
+ '<div class="split"><i style="width:'+s.y+'%"></i></div><div class="srow"><span>'+T('會','Will')+' '+s.y+'%</span><span>'+T('唔會','Won\'t')+' '+(100-s.y)+'%</span></div>'+
  '<div class="you">'+T('你揀咗 ','You said ')+'<b>'+PK(S.pick)+'</b> · '+S.at+' HKT · '+s.n2+T(' 人出咗 call',' calls')+'</div>'+pfoot()+
  dock('crowd',T('揭曉日之前都改唔到','Locked until the result'),P(T('睇 Forbes 點講','See what Forbes reports'),"E.go('hints')"),'crowd')};
 V.hints=()=>{const s=st();return hdr()+rail()+why('hints')+'<div class="kick">'+T('Forbes 報道','From Forbes')+'</div><div class="h1">'+T('出 call 之前，記者睇到啲咩','What the reporters are seeing')+'</div>'+

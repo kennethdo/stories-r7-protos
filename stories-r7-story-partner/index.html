@@ -87,38 +87,38 @@ const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='li
 const syncURL=()=>{const u=new URL(location.href);u.searchParams.set('lang',L==='zh'?'zh':'en');u.searchParams.set('theme',TH==='dark'?'dark':'light');history.replaceState(null,'',u.pathname+u.search+u.hash)};
 const T=(z,e)=>L==='zh'?z:e;
 const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
-const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';
+const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
 const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
-const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a>';
-function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div></div>';
+const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
+function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已存入你嘅 Forbes Predict 紀錄','Saved to your Forbes Predict record')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div></div>';
  if(S.later)return '';
- return '<div class="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 淨係 Tokens。冇現金獎品。','Opens a Forbes Predict record, not a Forbes.com account · Tokens only. No cash prizes.')+'</div>'+
- (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
-const CE={lang(l){L=l;syncURL();R()},theme(t){TH=t;applyTheme();syncURL();R()},regOpen(){S.regOpen=true;R()},later(){S.later=true;R()},regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at,'Saved · call time kept '+S.at);R()}};
+ return '<div class="reg"><div class="t">'+title+'</div><div class="meta">'+T('會開一個 Forbes Predict 紀錄，同你嘅 Forbes.com 帳戶分開。出 call 用 Tokens，冇現金獎品。','This creates a Forbes Predict record, separate from your Forbes.com account. Calls use Tokens, and there are no cash prizes.')+'</div>'+
+ (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('用電郵保存','Save with your email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Not now')+'</button></div>')+'</div>'}
+const CE={lang(l){L=l;syncURL();R()},theme(t){TH=t;applyTheme();syncURL();R()},regOpen(){S.regOpen=true;R()},later(){S.later=true;R()},regDo(){S.guest=false;S.toast=T('已保存，call 時間照舊係 '+S.at+'。','Saved. Your call time stays '+S.at+'.');R()}};
 function R(){applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';document.getElementById('app').innerHTML=V()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');if(S.toast){S.toast='';clearTimeout(window._tt);window._tt=setTimeout(()=>{const el=document.querySelector('.toast');el&&el.remove()},1800)}}
-function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('↑ 返去 Story 繼續睇','↑ Back to the Story')+'</button></div></div>';
- if(S.later)return '<div class="reg"><div class="meta">'+T('未保存 · 你個 call 只喺呢部機','Not saved · call lives on this device only')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
- return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 淨係 Tokens。冇現金獎品。','Opens a Forbes Predict record, not a Forbes.com account · Tokens only. No cash prizes.')+'</div>'+
- (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
+function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已存入你嘅 Forbes Predict 紀錄','Saved to your Forbes Predict record')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('返去 Story','Back to the Story')+'</button></div></div>';
+ if(S.later)return '<div class="reg"><div class="meta">'+T('未保存，你個 call 只會留喺呢部機。','Not saved. Your call stays on this device.')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
+ return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('會開一個 Forbes Predict 紀錄，同你嘅 Forbes.com 帳戶分開。出 call 用 Tokens，冇現金獎品。','This creates a Forbes Predict record, separate from your Forbes.com account. Calls use Tokens, and there are no cash prizes.')+'</div>'+
+ (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('用電郵保存','Save with your email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Not now')+'</button></div>')+'</div>'}
 const CE2={top(){window.scrollTo({top:0,behavior:'smooth'})},unlater(){S.later=false;S.regOpen=true;R()},
- regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at+' · 返去 Story','Saved · call time kept '+S.at+' · back to Story');R();window.scrollTo({top:0,behavior:'smooth'})}};
+ regDo(){S.guest=false;S.toast=T('已保存，call 時間照舊係 '+S.at+'。','Saved. Your call time stays '+S.at+'.');R();window.scrollTo({top:0,behavior:'smooth'})}};
 const SCORE=(v,note)=>{
- if(!S.rev)return '<div class="score"><div><b style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</b><span>'+T('分數揭曉後先出','Score shows after reveal')+'</span></div>'+(note?'<div><span style="font-size:14px">'+note+'</span></div>':'')+'</div>';
+ if(!S.rev)return '<div class="score"><div><b style="font-size:18px">'+T('等緊揭曉','Waiting for the reveal')+'</b><span>'+T('揭曉之後先有分數','Your score appears after the reveal')+'</span></div>'+(note?'<div><span style="font-size:14px">'+note+'</span></div>':'')+'</div>';
  let num=v;
- if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
- return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
+ if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 points'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','points')))}
+ return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數','Your score')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
 };
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Will')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','Won\'t')+' '+(100-c)+'%</span></div><div class="energy" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>'};
-const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Will')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','Won\'t')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
-const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
-const DOCK=(cap,right,label)=>'<div class="dock"><div class="in"><div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
-const FOOT=()=>'<div class="foot">'+T('淨係 Tokens。冇現金獎品。','Tokens only. No cash prizes.')+'</div>';
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Will')+' '+c+'%</span><span>'+T('同你一樣 '+mine+'%，共 '+n+' 位讀者','Same as you: '+mine+'% of '+n+' readers')+'</span><span>'+T('唔會','Won\'t')+' '+(100-c)+'%</span></div><div class="energy" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>'};
+const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Will')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','Won\'t')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下就出 call，之後就見到其他讀者點揀。','One tap makes your call. Then you see how other readers called it.')+'</div>';
+const YOU=()=>'<div class="you"><span class="meta">'+T('你嘅 call','Your call')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':T('，等緊揭曉',', waiting for the reveal'))+'</span></div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('睇吓揭曉之後點樣','See how the reveal looks')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('預覽揭曉','Preview the reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果係'+PK(S.res)+'。你嘅 call：'+PK(S.pick),'Resolved '+PK(S.res)+'. Your call: '+PK(S.pick))+'</div>';
+const DOCK=(cap,right,label)=>'<div class="dock"><div class="in"><div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes 讀','Read on Forbes'))+'</div></div>';
+const FOOT=()=>'<div class="foot">'+T('出 call 用 Tokens，冇現金獎品。','Calls use Tokens. There are no cash prizes.')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={partner:null,pick:null,at:null,rev:false,res:'n',guest:true,regOpen:false,later:false,toast:'',read:false}}reset();
@@ -135,7 +135,7 @@ const DAYS=[
 function partnerPick(){
  if(S.partner)return '';
  let h='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('揀一位朋友做今季故事拍檔','Pick one friend as this season’s story partner')+'</b></span>'+'</div>';
- h+='<p class="meta" style="margin-top:6px">'+T('共用進度＝一齊揭曉過嘅 call · 唔計高低','Shared progress = calls revealed together · not a contest')+'</p><div class="plist">';
+ h+='<p class="meta" style="margin-top:6px">'+T('共同進度計你哋一齊揭曉過嘅 call，唔係比賽。','Shared progress counts the calls you see revealed together. It isn’t a contest.')+'</p><div class="plist">';
  h+=PALS.map(p=>'<button onclick="E.partner(\''+p.id+'\')"><span class="av">'+p.av+'</span><div class="who"><b>'+(L==='zh'?p.z:p.e)+'</b><span>'+T('已一齊揭曉 '+p.shared+' 次',p.shared+' reveals together')+'</span></div></button>').join('');
  return h+'</div></div>';
 }
@@ -149,9 +149,9 @@ function progress(){
  const pct=Math.round((done/Math.max(1,DAYS.length-1))*100);
  let h='<div class="prog" id="prog"><div class="meta">'+T('你同 ','You + ')+name+' · '+T('故事拍檔','story partners')+'</div>';
  if(S.rev)h+='<div class="big">'+n+' <span style="font-size:14px;color:var(--mute);font-family:var(--detail);font-weight:400">'+T('次一齊揭曉','reveals together')+'</span></div>';
- else if(S.pick)h+='<div class="big" style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</div>';
+ else if(S.pick)h+='<div class="big" style="font-size:18px">'+T('等緊揭曉','Waiting for the reveal')+'</div>';
  else h+='<div class="big" style="font-size:18px">'+T('準備一齊出 call','Ready to call together')+'</div>';
- h+='<div class="climb"><div class="cap"><span class="pair"><span class="av bob">'+T('你','Y')[0]+'</span><span class="av fr">'+p.av+'</span></span><span>'+T('你同 '+name+' · 一齊行呢條路','You + '+name+' · on this path together')+'</span></div>';
+ h+='<div class="climb"><div class="cap"><span class="pair"><span class="av bob">'+T('你','Y')[0]+'</span><span class="av fr">'+p.av+'</span></span><span>'+T('你同 '+name+' 一齊追緊呢個 Story','You and '+name+' are following this Story together')+'</span></div>';
  h+='<div class="rail"><div class="line"><div class="fill" style="width:'+pct+'%"></div></div><div class="stops">';
  h+=DAYS.map((x,i)=>{
   const on=x.ok===true||(i===4&&S.rev);
@@ -159,35 +159,35 @@ function progress(){
   const wait=i===4&&!S.pick;
   return '<span class="st'+(on?' on':'')+(now?' now':'')+(wait?' wait':'')+'">'+(i+1)+'</span>';
  }).join('');
- h+='</div></div><div class="labrow"><span>'+T('一齊出 call','Call together')+'</span><span>'+(S.rev?T('揭曉啦','Revealed'):(S.pick?T('已出 call · 等揭曉','Called · awaiting reveal'):T('今日停','Today')))+'</span></div></div>';
- h+='<p class="meta" style="margin-top:10px">'+T('漏咗或未揭曉＝0 · 拍檔唔另外加分','Missed or unrevealed = 0 · partnering adds no points')+'</p></div>';
+ h+='</div></div><div class="labrow"><span>'+T('一齊出 call','Call together')+'</span><span>'+(S.rev?T('已揭曉','Revealed'):(S.pick?T('等緊揭曉','Waiting for the reveal'):T('今日停','Today')))+'</span></div></div>';
+ h+='<p class="meta" style="margin-top:10px">'+T('漏咗或者未揭曉計零分。做拍檔唔影響分數。','A missed or unrevealed day counts as zero. Partnering doesn’t change your score.')+'</p></div>';
  return h;
 }
 function artFirst(){
  if(!S.partner)return '';
  if(S.read)return '';
- return '<div class="art-first"><div class="meta">'+T('先讀文章','Article first')+'</div><div class="t">'+T('比特幣現貨 ETF：資金流會唔會連續第三週淨流入？','Bitcoin spot ETFs: a third straight week of net inflows?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+FL()+'</div><button class="btn-s sm" style="margin-top:12px;width:100%" onclick="E.read()">'+T('我睇完今日報道','I read today’s story')+'</button></div>';
+ return '<div class="art-first"><div class="meta">'+T('先讀報道','Read the story first')+'</div><div class="t">'+T('比特幣現貨 ETF：資金流會唔會連續第三週淨流入？','Bitcoin spot ETFs: a third straight week of net inflows?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+FL()+'</div><button class="btn-s sm" style="margin-top:12px;width:100%" onclick="E.read()">'+T('我睇完今日報道','I read today’s story')+'</button></div>';
 }
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · Bitcoin · '+T('資金流','Flows')+'</div><div class="h1">'+T('現貨 ETF 連續兩週淨流入之後','After two straight weeks of spot-ETF net inflows')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
+ h+='<div class="kick">'+T('比特幣：資金流','Bitcoin: fund flows')+'</div><div class="h1">'+T('現貨 ETF 連續兩週淨流入之後','After two straight weeks of spot-ETF net inflows')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
  h+=partnerPick()+progress()+artFirst();
  if(S.partner&&S.read){
-  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today’s one question')+'</span>'+'</div><div class="qq">'+T('本週現貨 ETF 會唔會再錄得淨流入？','Will spot ETFs post another week of net inflows?')+'</div>';
+  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today’s question')+'</span>'+'</div><div class="qq">'+T('本週現貨 ETF 會唔會再錄得淨流入？','Will spot ETFs post another week of net inflows?')+'</div>';
   if(!S.pick)h+=YN();
   else{h+=YOU()+CROWDV(CROWD,N,S.pick);
    if(!S.rev)h+=DEMO()+SCORE('0');
-   else h+=RES()+SCORE(pts(),T('拍檔進度唔入分','Partner progress adds no points'));
+   else h+=RES()+SCORE(pts(),T('拍檔進度唔影響分數','Partner progress doesn\'t change your score'));
    h+=reg(T('保存你同拍檔嘅進度','Save progress with your partner'));
   }
   h+='</div>';
  }
  h+=FOOT();
- h+=S.rev?DOCK(T('跟進報道','Follow-up story'),'Bitcoin · 25 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道','Today’s story'),'Bitcoin · 21 Oct');
+ h+=S.rev?DOCK(T('跟進報道','The follow-up'),'Forbes, 25 Oct',T('喺 Forbes 讀跟進報道','Read the follow-up on Forbes')):DOCK(T('今日 Forbes 報道','Today’s Forbes story'),'Forbes, 21 Oct');
  return h}
 const E=Object.assign({},CE,CE2,{
- partner(id){if(S.partner)return;S.partner=id;S.toast=T('已揀拍檔 · 先讀今日文章','Partner picked · read today’s article first');R()},
- read(){S.read=true;S.toast=T('可以出 call','You can make the call');R();window.scrollTo({top:200,behavior:'smooth'})},
- call(p){if(!S.partner||!S.read||S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.toast=T('已出 call · '+S.at,'Call made · '+S.at);R()},
+ partner(id){if(S.partner)return;S.partner=id;S.toast=T('揀好拍檔，先讀今日報道。','Partner picked. Read today’s story first.');R()},
+ read(){S.read=true;S.toast=T('而家可以出 call','Now make your call');R();window.scrollTo({top:200,behavior:'smooth'})},
+ call(p){if(!S.partner||!S.read||S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.toast=T('已出 call，'+S.at,'Call made at '+S.at);R()},
  reveal(){if(!S.pick||S.rev)return;S.rev=true;S.toast=T('一齊揭曉 +1','Shared reveal +1');R();const el=document.getElementById('prog');el&&el.scrollIntoView({block:'center'})}
 });
 window.E=E;

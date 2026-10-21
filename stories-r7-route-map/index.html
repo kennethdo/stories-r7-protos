@@ -79,34 +79,34 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{colo
 .nr b{display:block;color:var(--ink);font-size:14px;font-weight:600;line-height:1.3}
 .nr .past-meta{display:block;font-size:12px;color:var(--dim);margin-top:2px}
 small{font-size:13px!important}
-</style></head><body><div class="app" id="app"></div><script>
+.sp{display:inline-block;width:14px}</style></head><body><div class="app" id="app"></div><script>
 const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=/theme=dark/.test(Q)?'dark':'light';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
 const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='dark'?u.searchParams.set('theme','dark'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
 const T=(z,e)=>L==='zh'?z:e;
 const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
-const EX=()=>'<span class="ex">'+T('示例','Demo')+'</span>';
+const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
 const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
-const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a>';
+const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
 const HEAT_BASE=247;
 function fmtN(n){return n.toLocaleString('en-US')}
 function clapIcon(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 14.5l-2.2-2.2a1.6 1.6 0 0 1 0-2.3l.4-.4"/><path d="M14.2 11.3l2.1-2.1a1.6 1.6 0 0 0 0-2.3l-.5-.5a1.6 1.6 0 0 0-2.3 0L8.3 11.6"/><path d="M8.8 16.1l-1.8-1.8a1.6 1.6 0 0 1 0-2.3l.3-.3"/><path d="M9.5 18.5l6.2-6.2a1.6 1.6 0 0 1 2.3 0l.4.4a1.6 1.6 0 0 1 0 2.3L13.4 19"/><path d="M7.2 12.2L5.5 10.5a1.5 1.5 0 0 1 0-2.1l.4-.4"/><path d="M12.5 7.5l1.2-1.2a1.4 1.4 0 0 1 2 0l.3.3"/></svg><i class="burst"></i>'}
-function heat(){const n=HEAT_BASE+S.claps;const on=S.claps>0?' on':'';const pop=S.clapPop?' pop':'';return '<div class="heat"><button class="clap'+on+pop+'" onclick="E.clap()" aria-label="'+T('拍手（唔計分）','Clap (does not score)')+'">'+clapIcon()+'</button><div class="clap-n">'+fmtN(n)+'</div><div class="info"><div class="t1">'+T('文章好熱鬧','Article feels lively')+'</div><div class="t2">'+T('主持同大家喺度講緊 · 拍手淨好玩，唔入分','Mods + crowd are live · claps are play, not scored')+'</div></div></div>'}
-function artStrip(){const open=S.artOpen?' open':'';return '<div class="art-strip'+open+'"><button class="hd" onclick="E.toggleArt()" aria-expanded="'+(S.artOpen?'true':'false')+'"><span class="t">'+T('今日報道','Today\'s story')+'</span><span class="meta">BTC · 21 Oct</span><span class="chev" aria-hidden="true">▾</span></button><div class="bd"><div class="meta" style="margin-bottom:10px">'+T('想睇先打開','Open when you’re ready')+'</div>'+FL()+'</div></div>'}
-function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('↑ 返去 Story 繼續睇','↑ Back to the Story')+'</button></div></div>';
- if(S.later)return '<div class="reg"><div class="meta">'+T('未保存 · 你個 call 只喺呢部機','Not saved · call lives on this device only')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
- return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 淨係 Tokens。冇現金獎品。','Opens a Forbes Predict record, not a Forbes.com account · Tokens only. No cash prizes.')+'</div>'+
- (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Will')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','Won\'t')+' '+(100-c)+'%</span></div></div>'};
-const YN=()=>'<div class="yn"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Will')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','Won\'t')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
-const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
-const FOOT=()=>'<div class="foot">'+T('淨係 Tokens。冇現金獎品。','Tokens only. No cash prizes.')+'</div>';
+function heat(){const n=HEAT_BASE+S.claps;const on=S.claps>0?' on':'';const pop=S.clapPop?' pop':'';return '<div class="heat"><button class="clap'+on+pop+'" onclick="E.clap()" aria-label="'+T('拍手','Clap')+'">'+clapIcon()+'</button><div class="clap-n">'+fmtN(n)+'</div><div class="info"><div class="t1">'+T('位讀者拍咗手','readers clapped')+'</div><div class="t2">'+T('讀者而家討論緊。拍手唔影響分數。','Readers are discussing this now. Claps don\'t change your score.')+'</div></div></div>'}
+function artStrip(){const open=S.artOpen?' open':'';return '<div class="art-strip'+open+'"><button class="hd" onclick="E.toggleArt()" aria-expanded="'+(S.artOpen?'true':'false')+'"><span class="t">'+T('今日 Forbes 報道','Today’s Forbes story')+'</span><span class="meta">Forbes, 21 Oct</span><span class="chev" aria-hidden="true">▾</span></button><div class="bd"><div class="meta" style="margin-bottom:10px">'+T('想睇先打開','Open when you’re ready')+'</div>'+FL()+'</div></div>'}
+function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已存入你嘅 Forbes Predict 紀錄','Saved to your Forbes Predict record')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('返去 Story','Back to the Story')+'</button></div></div>';
+ if(S.later)return '<div class="reg"><div class="meta">'+T('未保存，你個 call 只會留喺呢部機。','Not saved. Your call stays on this device.')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
+ return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('會開一個 Forbes Predict 紀錄，同你嘅 Forbes.com 帳戶分開。出 call 用 Tokens，冇現金獎品。','This creates a Forbes Predict record, separate from your Forbes.com account. Calls use Tokens, and there are no cash prizes.')+'</div>'+
+ (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('用電郵保存','Save with your email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Not now')+'</button></div>')+'</div>'}
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Will')+' '+c+'%</span><span>'+T('同你一樣 '+mine+'%，共 '+n+' 位讀者','Same as you: '+mine+'% of '+n+' readers')+'</span><span>'+T('唔會','Won\'t')+' '+(100-c)+'%</span></div></div>'};
+const YN=()=>'<div class="yn"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Will')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','Won\'t')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下就出 call，之後就見到其他讀者點揀。','One tap makes your call. Then you see how other readers called it.')+'</div>';
+const YOU=()=>'<div class="you"><span class="meta">'+T('你嘅 call','Your call')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':T('，等緊揭曉',', waiting for the reveal'))+'</span></div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('睇吓揭曉之後點樣','See how the reveal looks')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('預覽揭曉','Preview the reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果係'+PK(S.res)+'。你嘅 call：'+PK(S.pick),'Resolved '+PK(S.res)+'. Your call: '+PK(S.pick))+'</div>';
+const FOOT=()=>'<div class="foot">'+T('出 call 用 Tokens，冇現金獎品。','Calls use Tokens. There are no cash prizes.')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',claps:0,clapPop:false,artOpen:false}}reset();
@@ -125,37 +125,37 @@ function route(){const P=PAST(),n=P.length+2,W=350,cx=i=>W/2+OFF[i];let pts=[],h
   const cls=p[4]?'done':'miss';
   h+='<div class="nd '+cls+'" style="left:'+x+'px;top:'+y+'px" aria-label="'+p[0]+'"><span>'+PK(p[3])+'</span><span class="sc">'+sc+'</span></div>';
   /* LEFT of circle = prediction state */
-  if(p[4])h+=predLeft(i,cx,'<span class="chip called">'+T('你揀咗 ','You said ')+PK(p[4])+'</span><span class="hint">'+p[0]+'</span>');
-  else h+=predLeft(i,cx,'<span class="chip vacant">'+T('未出 call','No call yet')+'</span><span class="hint">'+T('嗰日冇出 = 0','Missed day = 0')+'</span>');
+  if(p[4])h+=predLeft(i,cx,'<span class="chip called">'+T('你嘅 call：','Your call: ')+PK(p[4])+'</span><span class="hint">'+p[0]+'</span>');
+  else h+=predLeft(i,cx,'<span class="chip vacant">'+T('未出 call','No call yet')+'</span><span class="hint">'+T('嗰日冇出 call，計零分','No call that day, so zero')+'</span>');
   h+=rightLab(i,cx,'<b>'+T(p[1],p[2])+'</b><span class="past-meta">'+T('結果：'+PK(p[3]),'Result: '+PK(p[3]))+'</span>')});
  const t=P.length,tx=cx(t)-40,ty=t*RH+40-40;
  const todLabel=S.rev?PK(S.res):(S.pick?PK(S.pick):T('今日','Today'));
- const todSmall=S.rev?(S.pick===S.res?'+1':'0'):(S.pick?T('等揭曉','pending'):'21 Oct');
+ const todSmall=S.rev?(S.pick===S.res?'+1':'0'):(S.pick?T('等揭曉','waiting'):'21 Oct');
  h+='<button class="nd tod'+(S.rev?' rv':'')+(S.pick?'':' pulse')+'" id="today" style="left:'+tx+'px;top:'+ty+'px" onclick="E.goq()"><span>'+todLabel+'</span><small>'+todSmall+'</small></button>';
  /* LEFT of today circle = prediction affordance / state */
- if(S.pick)h+=predLeft(t,cx,'<span class="chip called">'+T('你揀咗 ','You said ')+PK(S.pick)+'</span><span class="hint">'+(S.rev?T('已揭曉','Revealed'):T('已出 call','Called'))+'</span>');
- else h+=predLeft(t,cx,'<button class="chip go" onclick="E.goq()">'+T('出 call','Make your call')+'</button><span class="hint">'+T('未預測 · 撳去答','No prediction yet')+'</span>');
- h+=rightLab(t,cx,S.rev?'<b>'+T('今日結果：'+PK(S.res)+'','Today\'s result: '+PK(S.res)+'')+'</b><span class="past-meta">'+T('你揀咗 '+PK(S.pick),'You said '+PK(S.pick))+'</span>':'<b>'+T('今日一題','Today\'s one question')+'</b><span class="past-meta">'+(S.pick?T('已出 call · 見下面','Called · see below'):T('見下面答','Answer below'))+'</span>');
+ if(S.pick)h+=predLeft(t,cx,'<span class="chip called">'+T('你嘅 call：','Your call: ')+PK(S.pick)+'</span><span class="hint">'+(S.rev?T('已揭曉','Revealed'):T('已出 call','Called'))+'</span>');
+ else h+=predLeft(t,cx,'<button class="chip go" onclick="E.goq()">'+T('出 call','Make your call')+'</button><span class="hint">'+T('未出 call','No call yet')+'</span>');
+ h+=rightLab(t,cx,S.rev?'<b>'+T('今日結果：'+PK(S.res)+'','Today\'s result: '+PK(S.res)+'')+'</b><span class="past-meta">'+T('你揀咗 '+PK(S.pick),'You said '+PK(S.pick))+'</span>':'<b>'+T('今日一問','Today\'s question')+'</b><span class="past-meta">'+(S.pick?T('已出 call，見下面。','Called. See below.'):T('喺下面出 call','Make your call below'))+'</span>');
  const u=t+1,ux=cx(u)-32,uy=u*RH+40-32;
- h+='<div class="nd lock" style="left:'+ux+'px;top:'+uy+'px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><small>22 Oct</small></div>'+rightLab(u,cx,'<b>'+T('聽日一題','Tomorrow\'s question')+'</b><span class="past-meta">'+T('聽日先開 · 漏咗唔使補','Opens tomorrow · missing a day just counts 0')+'</span>');
+ h+='<div class="nd lock" style="left:'+ux+'px;top:'+uy+'px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><small>22 Oct</small></div>'+rightLab(u,cx,'<b>'+T('聽日一題','Tomorrow\'s question')+'</b><span class="past-meta">'+T('聽日開。漏咗一日計零分。','Opens tomorrow. A missed day counts as zero.')+'</span>');
  return h+'</div>'}
 function pastPosts(){const P=PAST();let h='<div class="past-posts"><div class="lab">'+T('之前日子嘅報道','Earlier days')+'</div>';
- P.forEach(p=>{h+='<div class="pp"><div class="d">'+p[0]+'</div><div class="b"><b>'+T(p[1],p[2])+'</b><div class="meta">'+T('結果：'+PK(p[3])+(p[4]?' · 你揀咗 '+PK(p[4]):' · 未出 call'),'Result: '+PK(p[3])+(p[4]?' · you said '+PK(p[4]):' · no call'))+' · <a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('嗰日文章','That day’s article')+' ↗</a></div></div></div>'});
+ P.forEach(p=>{h+='<div class="pp"><div class="d">'+p[0]+'</div><div class="b"><b>'+T(p[1],p[2])+'</b><div class="meta">'+T('結果係'+PK(p[3])+(p[4]?'。你嘅 call：'+PK(p[4]):'。冇出 call'),'Resolved '+PK(p[3])+(p[4]?'. Your call: '+PK(p[4]):'. No call'))+'<span class="sp"></span><a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('讀嗰日嘅報道','Read that day’s story')+' ↗</a></div></div></div>'});
  return h+'</div>'}
 const pastPts=()=>PAST().reduce((a,p)=>a+(p[4]&&p[4]===p[3]?1:0),0);
 const total=()=>pastPts()+pts();
-function dockToday(){let h='<div class="dock" id="qp"><div class="in"><div class="cap"><span><b style="color:var(--ink)">'+T('今日一題','Today\'s one question')+'</b> · 21 Oct</span>'+'</div>';
+function dockToday(){let h='<div class="dock" id="qp"><div class="in"><div class="cap"><span><b style="color:var(--ink)">'+T('今日一問','Today\'s question')+'</b></span>'+'</div>';
  h+='<div class="qq">'+T('比特幣今個禮拜會唔會升穿 $70k？','Will Bitcoin break $70k this week?')+'</div>';
  if(!S.pick)h+=YN();
  else{h+=YOU()+CROWDV(CROWD,N,S.pick);
   if(!S.rev)h+=DEMO();
-  else{h+=RES();const t=total();h+='<div class="score"><div><b>'+(t===0?T('0 分','0 pts'):t+' '+T('分','pts'))+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div><div><span>'+T('拍手唔入呢度','Claps stay out of this')+'</span></div></div>'}
-  if(!S.rev)h+='<div class="meta" style="margin-top:8px">'+T('已出 call · 等揭曉 · 分數揭曉後先出','Called · awaiting reveal · score after reveal')+'</div>';
+  else{h+=RES();const t=total();h+='<div class="score"><div><b>'+(t===0?T('0 分','0 points'):t+' '+T('分','points'))+'</b><span>'+T('你嘅分數','Your score')+'</span></div><div><span>'+T('拍手唔計分','Claps don\'t count here')+'</span></div></div>'}
+  if(!S.rev)h+='<div class="meta" style="margin-top:8px">'+T('等緊揭曉，之後先有分數。','Waiting for the reveal. Your score appears after it.')+'</div>';
   h+=reg(T('保存你嘅路線同今日個 call','Save your route and today\'s call'));
   h+='<div class="sub">'+FL()+'</div>'}
  return h+'</div></div>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · '+T('比特幣十月路線','Bitcoin in October')+'</div><div class="h1">'+T('比特幣 ETF 資金回流，$70k 係咪下一站？','ETF money flows back into Bitcoin — is $70k next?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+'</div>';
+ h+='<div class="kick">'+T('比特幣十月路線','Bitcoin in October')+'</div><div class="h1">'+T('比特幣 ETF 資金回流，$70k 係咪下一站？','ETF money flows back into Bitcoin — is $70k next?')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'</div>';
  h+=heat();
  h+=artStrip();
  h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('故事路線圖','Story route')+'</b> · '+T('之前 '+PAST().length+' 日','Previous '+PAST().length+' days')+'</span>'+'</div>'+route()+'</div>';
@@ -167,12 +167,12 @@ function R(){applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';do
 const E={
  lang(l){L=l;syncURL();R()},theme(t){TH=t;applyTheme();syncURL();R()},
  regOpen(){S.regOpen=true;R()},later(){S.later=true;R()},unlater(){S.later=false;S.regOpen=true;R()},
- regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at+' · 返去 Story','Saved · call time kept '+S.at+' · back to Story');R();window.scrollTo({top:0,behavior:'smooth'})},
+ regDo(){S.guest=false;S.toast=T('已保存，call 時間照舊係 '+S.at+'。','Saved. Your call time stays '+S.at+'.');R();window.scrollTo({top:0,behavior:'smooth'})},
  top(){window.scrollTo({top:0,behavior:'smooth'})},
  toggleArt(){S.artOpen=!S.artOpen;R()},
- clap(){if(S.claps>=50){S.toast=T('拍手夠晒 · 仍然唔入分','Clap cap · still doesn’t score');R();return}S.claps+=1;S.clapPop=true;R()},
+ clap(){if(S.claps>=50){S.toast=T('拍手已經到上限','That’s the clap limit');R();return}S.claps+=1;S.clapPop=true;R()},
  goq(){const q=document.getElementById('qp');q&&q.scrollIntoView({behavior:'smooth',block:'end'});if(!S.pick){/* nudge */}},
- call(p){if(S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.toast=T('已出 call · '+S.at,'Call made · '+S.at);R()},
+ call(p){if(S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.toast=T('已出 call，'+S.at,'Call made at '+S.at);R()},
  reveal(){if(!S.pick||S.rev)return;S.rev=true;R();const t=document.getElementById('today');t&&t.scrollIntoView({behavior:'smooth',block:'center'})}
 };
 window.E=E;

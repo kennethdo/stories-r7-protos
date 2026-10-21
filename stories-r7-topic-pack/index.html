@@ -120,7 +120,7 @@ h2{font-size:12px;color:var(--mute);font-weight:500;letter-spacing:.06em;margin-
 <body>
 <div class="app" id="app">
   <div class="top">
-    <div class="brand"><b>Forbes</b> Predict · Stories</div>
+    <div class="brand"><b>Forbes</b> Predict</div>
     <div style="display:flex;align-items:center;gap:4px"><div class="lang"><button data-l="en">EN</button><span>|</span><button data-l="zh">粵</button></div><div class="theme"><button data-th="dark">深</button><span>|</span><button data-th="light">淺</button></div></div>
   </div>
 
@@ -205,32 +205,32 @@ const wireProtoLinks=()=>document.querySelectorAll('a[href*="stories-r"]').forEa
 
 applyTheme();
 const T={
-zh:{kick:'專題包 · 未完',sample:'示例數據',title:'法國示威',dek:'燃油稅引發嘅示威仲未完。每日一問，跟住 Forbes 報道一路追。',
-qh:'今日一問',readToday:'讀今日報道',yes:'會',no:'唔會',gh:'大家都估',hh:'實時熱詞 · 只連去 Forbes',ah:'Forbes 報道 · 按時間',vh:'片段',
-vt:'專訪片段位',vs:'彈出播放 · 示例，未有片',vph:'影片位',close:'關閉',back:'← 返去專題包',forbesArt:'Forbes 文章',
-veil:'出咗今日 call 先見大家點估',regPh:'你嘅電郵',regBtn:'保存我個 call',now:'今日',
+zh:{kick:'追蹤報道',sample:'示例',title:'法國示威',dek:'燃油稅引發嘅示威仲未完。每日一問，跟住 Forbes 報道一路追。',
+qh:'今日一問',readToday:'讀今日報道',yes:'會',no:'唔會',gh:'其他讀者點睇',hh:'而家熱門，全部連去 Forbes',ah:'Forbes 報道，按時間排',vh:'片段',
+vt:'專訪片段位',vs:'影片快將推出',vph:'影片位',close:'關閉',back:'← 返去 Story',forbesArt:'Forbes 文章',
+veil:'出 call 之後，睇其他讀者點睇',regPh:'你嘅電郵',regBtn:'保存你個 call',now:'今日',
 sRel:'相關 Forbes 文章',sMore:'再追',
-foot:'所有標題、數字、片段都係示例。只有一個榜：估中率。未揭曉嘅 call = 0 分。冇連續紀錄，漏咗一日唔會斷。',
+foot:'所有標題、數字、片段都係示例。排名只計估中率。未揭曉嘅 call 計零分。漏咗一日唔會斷。',
 basis:a=>'呢個 call 綁住：<u>'+a+'</u>',
-chap:n=>'已讀 <b>'+n+' 章</b> · 漏咗唔會斷',
-st0:'訪客都出得 call，唔使先註冊。',st1:c=>'你估：'+c+'。讀咗新報道先改得。',st2:c=>'你估：'+c+'。讀咗新報道，可以改。',
-change:'改判',reg:'保存你個 call，聽日揭曉前話你知。',regDone:'已保存。揭曉時通知你，帶你去跟進報道。',regN:'開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 淨係 Tokens。冇現金獎品。',
-gy:p=>'會 '+p+'%',gn:p=>'唔會 '+p+'%',gc:n=>n+' 人估咗 · 冇排名',
-hl:'最多讀者劃線',rdone:'讀完。返去可以改判。',
-resT:'揭曉 · 昨日一問',resR:'結果：會· 你估：會 ✓ 估中',resL:'讀跟進報道 →'},
-en:{kick:'Topic pack · Unfinished',sample:'Example data',title:'France protests',dek:'The fuel-tax protests are not over. One question a day, followed through Forbes reporting.',
-qh:'Today\'s question',readToday:'Read today\'s story',yes:'Will',no:'Won\'t',gh:'What everyone thinks',hh:'Trending now · Forbes only',ah:'Forbes stories · by time',vh:'Clip',
-vt:'Interview clip slot',vs:'Pop-up player · example, no video yet',vph:'Video slot · example',close:'Close',back:'← Back to topic pack',forbesArt:'Forbes article',
-veil:'Make today\'s call to see what everyone thinks',regPh:'Your email',regBtn:'Save my call',now:'Today',
+chap:n=>'已讀 <b>'+n+' 章</b>。漏咗一日唔會斷。',
+st0:'訪客都出得 call，唔使先註冊。',st1:c=>'你嘅 call：'+c+'。已轉 call，揭曉前唔可以再轉。',st2:c=>'你嘅 call：'+c+'。揭曉前可以轉一次。',
+change:'轉 call',reg:'保存你個 call，聽日揭曉前話你知。',regDone:'已保存。揭曉時通知你，帶你去跟進報道。',regN:'會開一個 Forbes Predict 紀錄，同你嘅 Forbes.com 帳戶分開。出 call 用 Tokens，冇現金獎品。',
+gy:p=>'會 '+p+'%',gn:p=>'唔會 '+p+'%',gc:n=>n+' 位讀者出咗 call',
+hl:'最多讀者劃線',rdone:'讀完，返去條問題。',
+resT:'昨日一問：已揭曉',resR:'結果係會。你嘅 call：會。你估中。',resL:'讀跟進報道'},
+en:{kick:'Ongoing story',sample:'Example',title:'France protests',dek:'The fuel-tax protests are not over. One question a day, followed through Forbes reporting.',
+qh:'Today\'s question',readToday:'Read today\'s story',yes:'Will',no:'Won\'t',gh:'What other readers think',hh:'Trending now, all on Forbes',ah:'Forbes stories, by time',vh:'Clip',
+vt:'Interview clip',vs:'Video coming soon',vph:'Video',close:'Close',back:'← Back to the Story',forbesArt:'Forbes article',
+veil:'Make your call to see what other readers think',regPh:'Your email',regBtn:'Save your call',now:'Today',
 sRel:'Related Forbes stories',sMore:'Keep following',
-foot:'All headlines, numbers and clips are examples. One leaderboard only: accuracy. Unresolved calls score 0. No streaks; missing a day breaks nothing.',
+foot:'All headlines, numbers and clips are examples. The ranking counts accuracy only. A call that is not yet resolved scores zero. Missing a day breaks nothing.',
 basis:a=>'This call is tied to: <u>'+a+'</u>',
-chap:n=>'<b>'+n+' chapters</b> read · missing a day breaks nothing',
-st0:'Guests can call. No sign-up first.',st1:c=>'Your call: '+c+'. Read new reporting to change it.',st2:c=>'Your call: '+c+'. You read new reporting, so you can change it.',
-change:'Change call',reg:'Save your call. We\'ll tell you before tomorrow\'s reveal.',regDone:'Saved. We\'ll notify you at the reveal and take you to the follow-up.',regN:'Opens a Forbes Predict record, not a Forbes.com account · Tokens only. No cash prizes.',
-gy:p=>'Will '+p+'%',gn:p=>'Won\'t '+p+'%',gc:n=>n+' readers called · no ranks',
-hl:'Most highlighted by readers · example',rdone:'Done reading. Go back to change your call.',
-resT:'Revealed · Yesterday\'s question',resR:'Result: Will · Your call: Will ✓ correct',resL:'Read the follow-up →'}};
+chap:n=>'<b>'+n+' chapters</b> read. Missing a day breaks nothing.',
+st0:'Guests can call. No sign-up first.',st1:c=>'Your call: '+c+'. Flipped. No more flips before the reveal.',st2:c=>'Your call: '+c+'. You can flip it once before the reveal.',
+change:'Flip your call',reg:'Save your call. We\'ll tell you before tomorrow\'s reveal.',regDone:'Saved. We\'ll notify you at the reveal and take you to the follow-up.',regN:'This creates a Forbes Predict record, separate from your Forbes.com account. Calls use Tokens, and there are no cash prizes.',
+gy:p=>'Will '+p+'%',gn:p=>'Won\'t '+p+'%',gc:n=>n+' readers have called',
+hl:'Most highlighted by readers',rdone:'Done reading. Back to the question.',
+resT:'Yesterday\'s question, revealed',resR:'Resolved Will. Your call: Will. You were right.',resL:'Read the follow-up'}};
 
 const A={
 a1:{t:'19 Oct 08:00',zh:'燃油稅加價觸發全國遊行，物流業最驚乜',en:'Fuel-tax protests spread: what logistics firms fear',k:['fuel','logistics','unions']},
@@ -268,7 +268,7 @@ function render(){
  $('q').textContent=Q[L];
  $('basis').innerHTML=tt('basis')(A[todayA][L]);
  $('yes').textContent=tt('yes');$('no').textContent=tt('no');
- const locked=S.call&&!S.readAfter;
+ const locked=S.call&&S.flipped;
  ['yes','no'].forEach(c=>{const b=$(c);b.classList.toggle('sel',S.call===c);b.disabled=!!S.call;});
  const cl=S.call?tt(S.call):'';
  $('status').textContent=!S.call?tt('st0'):(locked?tt('st1')(cl):tt('st2')(cl));
@@ -304,9 +304,9 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-l],[data-t
  if(t.dataset.open){openReader(t.dataset.open);render();return}
  if(t.dataset.like){const id=t.dataset.like;S.likes[id]=!S.likes[id];render();if(S.likes[id]){const p=document.querySelector('[data-like="'+id+'"] .pop');p.classList.add('go');}return}
  switch(t.id){
-  case'yes':case'no':S.call=t.id;S.readAfter=false;render();break;
+  case'yes':case'no':if(S.call)break;S.call=t.id;S.flipped=false;render();break;
   case'read':openReader(todayA);render();break;
-  case'change':if(S.readAfter){S.call=null;render();}break;
+  case'change':if(S.call&&!S.flipped){S.call=S.call==='yes'?'no':'yes';S.flipped=true;render();}break;
   case'regBtn':S.reg=true;render();break;
   case'vid':$('modal').classList.add('open');break;
   case'vclose':$('modal').classList.remove('open');break;

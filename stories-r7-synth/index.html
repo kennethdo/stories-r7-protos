@@ -66,7 +66,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{colo
 .pr .row span{color:var(--mute);font-size:12px;padding-top:2px}
 .pfoot{margin-top:26px;font-size:12px;color:var(--dim);display:flex;gap:14px;flex-wrap:wrap}
 .pfoot button{color:var(--mute);font-size:12px;min-height:32px}
-</style></head><body>
+.flipl{display:inline-block;margin-top:12px;background:none;border:0;padding:0;font:inherit;font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}</style></head><body>
 <div class="app" id="app"></div>
 <script>
 /* Mobbin refs: WHOOP timeline 5d45809f…, Phantom call 6cd71dff…, Ahead poll cc333448…, Insight Timer poll 46a5b782… */
@@ -95,7 +95,7 @@ const ST={
 /* present-mode notes, <=6 words each */
 const WHY={story:['Chris · Story + crowd 先','Chris · story and crowd first'],timeline:['Jeff · timeline #1','Jeff · timeline #1'],call:['Chris · 一個領頭 market','Chris · one leading market'],crowd:['Chris · 先見 crowd','Chris · crowd before article'],hints:['Harvey · TP → Forbes','Harvey · talking points to Forbes'],saved:['Tony · 聽日返嚟','Tony · come back tomorrow'],board:['Jeff · top callers #2','Jeff · top callers #2']};
 const SPOON={story:['下一步：時間線','Next: the timeline'],timeline:['撳呢度出今日 call','Tap to make today’s call'],call:['揀會或唔會','Pick Will or Won\'t'],crowd:['跟住睇 Forbes 報道','Next: the Forbes reporting'],hints:['保存，聽日返嚟','Save and return tomorrow'],saved:['睇呢個 Story 嘅榜','See this Story’s board']};
-const def=()=>({sid:'mid',step:PM?'intro':'story',pick:null,at:null,saved:false,notes:true});
+const def=()=>({sid:'mid',step:PM?'intro':'story',pick:null,at:null,flipped:false,saved:false,notes:true});
 let S;try{S=Object.assign(def(),JSON.parse(localStorage.getItem(SK)||'{}'))}catch(e){S=def()}
 if(!PM&&S.step==='intro')S.step='story';
 if(PM&&Q.get('step')==null&&!S.pick)S.step='intro';
@@ -135,8 +135,8 @@ V.call=()=>{const s=st();return hdr()+rail()+why('call')+'<div class="kick">'+T(
 V.crowd=()=>{const s=st(),mine=S.pick==='y'?s.y:100-s.y;return hdr()+rail()+why('crowd')+'<div class="kick">'+tx(s.q)+'</div>'+
  '<div class="big">'+mine+'%<small>'+T('同你一樣','agree with you')+'</small></div>'+
  '<div class="split"><i style="width:'+s.y+'%"></i></div><div class="srow"><span>'+T('會','Will')+' '+s.y+'%</span><span>'+T('唔會','Won\'t')+' '+(100-s.y)+'%</span></div>'+
- '<div class="you">'+T('你嘅 call：','Your call: ')+'<b>'+PK(S.pick)+'</b>'+T('，'+S.at+' HKT。'+s.n2+' 位讀者出咗 call。',', '+S.at+' HKT. '+s.n2+' readers have called.')+'</div>'+pfoot()+
- dock('crowd',T('你個 call 會保留到揭曉','Your call holds until the reveal'),P(T('睇 Forbes 點講','See what Forbes reports'),"E.go('hints')"),'crowd')};
+ '<div class="you">'+T('你嘅 call：','Your call: ')+'<b>'+PK(S.pick)+'</b>'+T('，'+S.at+' HKT。'+s.n2+' 位讀者出咗 call。',', '+S.at+' HKT. '+s.n2+' readers have called.')+'</div>'+(S.flipped?'':'<button class="flipl" onclick="E.flip()">'+T('轉做「'+PK(S.pick==='y'?'n':'y')+'」','Flip to '+PK(S.pick==='y'?'n':'y'))+'</button>')+pfoot()+
+ dock('crowd',S.flipped?T('已轉 call，揭曉前唔可以再轉','Flipped. No more flips before the reveal.'):T('揭曉前可以轉 call 一次','You can flip this call once before the reveal'),P(T('睇 Forbes 點講','See what Forbes reports'),"E.go('hints')"),'crowd')};
 V.hints=()=>{const s=st();return hdr()+rail()+why('hints')+'<div class="kick">'+T('Forbes 報道','From Forbes')+'</div><div class="h1">'+T('出 call 之前，記者睇到啲咩','What the reporters are seeing')+'</div>'+
  '<div class="hints">'+s.hints.map(h=>'<a class="hint" href="'+fURL(h[0])+'" target="_blank" rel="noopener"><div class="k">'+tx(h[1])+'</div><div class="q">'+tx(h[2])+'</div><span class="go">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</span></a>').join('')+'</div>'+pfoot()+
  dock('hints',T('22 Oct 有新一題','New question on 22 Oct'),P(T('保存你個 call','Save your call'),'E.save()'),'hints')};
@@ -159,8 +159,9 @@ function R(){
  scrollTo(0,0)}
 window.E={
  lang(l){L=l;R()},theme(t){TH=t;R()},go(s){S.step=s;R()},
- story(k){if(S.sid!==k){S.sid=k;S.pick=null;S.at=null;S.saved=false}S.step='story';R()},
- call(p){S.pick=p;S.at=hhmm();S.toast=T('已出 call','Call made');S.step='crowd';R()},
+ story(k){if(S.sid!==k){S.sid=k;S.pick=null;S.at=null;S.flipped=false;S.saved=false}S.step='story';R()},
+ call(p){S.pick=p;S.at=hhmm();S.flipped=false;S.toast=T('已出 call','Call made');S.step='crowd';R()},
+ flip(){if(S.flipped||!S.pick)return;S.pick=S.pick==='y'?'n':'y';S.at=hhmm();S.flipped=true;S.toast=T('已轉 call','Call flipped');R()},
  save(){S.saved=true;S.step='saved';R()},
  notes(){S.notes=!S.notes;R()},reset(){S=def();R()}};
 const sq=Q.get('step');if(sq&&(STEPS.includes(sq)||sq==='intro'))S.step=sq;

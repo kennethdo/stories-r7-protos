@@ -97,7 +97,7 @@ function rows(){const me={n:'你',e:'You',s:myScore(),fr:1,me:1};let a=PPL.conca
 function setF(f){S.f=f;R();const u=new URLSearchParams(location.search);u.set('f',f);history.replaceState(null,'','?'+u);}
 const V={
 board:()=>{const rs=rows(),me=rs.find(r=>r.me);return topbar('<div class="t">'+ic('layers','sm')+'Forbes Predict · '+T('排名','Standing')+'</div>')+
- '<h1 class="ttl h1">'+T('你嘅位置','Where you stand')+'</h1><p class="dek">'+T('一個分數、一張榜。用「朋友」只係篩選同一張榜。','One score, one board. 「Friends」 just filters the same list.')+'</p>'+
+ '<h1 class="ttl h1">'+T('你嘅位置','Where you stand')+'</h1><p class="dek">'+T('一個分數、一張榜。用「朋友」只係篩選同一張榜。','One score, one board. “Friends” just filters the same list.')+'</p>'+
  '<div class="seg" role="tablist"><button role="tab" class="'+(S.f==='all'?'on':'')+'" onclick="setF(\'all\')">'+T('全部','All')+'</button><button role="tab" class="'+(S.f==='friends'?'on':'')+'" onclick="setF(\'friends\')">'+T('朋友','Friends')+'</button></div>'+
  '<p class="soft">'+T('你而家喺'+(S.f==='friends'?'朋友':'全部')+'入面嘅位置：<b>第 '+me.rk+'</b>。明日再出 call，位置會跟住更新。','In '+(S.f==='friends'?'friends':'everyone')+' you\'re at <b>#'+me.rk+'</b>. Call tomorrow and it updates.')+'</p>'+
  '<div class="lb">'+rs.map(r=>'<div class="r'+(r.me?' me':'')+'"><span class="n">'+r.rk+'</span><span class="nm">'+(L==='en'?r.e:r.n)+(r.fr&&!r.me?'<span class="tag">'+T('朋友','Friend')+'</span>':'')+'</span><span class="sc">'+r.s+'</span></div>').join('')+'</div>'+

@@ -186,7 +186,7 @@ ol{padding-left:18px;margin:6px 0 0}ol li{margin:4px 0}
   <span class="yue">來源：Slack + Granola（2026-09～10）· R1 notes 喺 r7/personas/。唔發明決定。</span>
   <span class="en">Sources: Slack + Granola (Sep–Oct 2026) · R1 notes in r7/personas/. No invented decisions.</span>
 </p>
-<p><a class="primary" data-proto href="https://kennethdo.github.io/stories-r7-protos/stories-r7-gather/">Gather · playables</a></p>
+<p><a class="primary" data-proto href="https://kennethdo.github.io/stories-r7-protos/stories-r7-gather/?lang=en&amp;theme=light">Gather · playables</a></p>
 
 <script>
 (function(){
@@ -211,7 +211,7 @@ function sync(){
   history.replaceState(null,'',u.pathname+(u.searchParams.toString()?'?'+u.searchParams:'')+u.hash);
   document.querySelectorAll('a[data-proto]').forEach(function(a){
     var x=new URL(a.getAttribute('href'),location.href);
-    if(lang==='zh')x.searchParams.set('lang','zh');else x.searchParams.delete('lang');
+    x.searchParams.set('lang',lang==='zh'?'zh':'en');
     x.searchParams.set('theme',theme);
     a.setAttribute('href',x.origin+x.pathname+(x.search||'')+(x.hash||''));
   });

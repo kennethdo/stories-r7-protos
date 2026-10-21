@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-HK"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R7 · Legacy 貼紙</title><style>:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#8f8f8f;--dim:#6a6a6a;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--surface-2:#1a1a1a;--btn:#ededed;--btn-ink:#000;--overlay:rgba(0,0,0,.7);--split-track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R7 · Legacy 貼紙</title><style>:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#8f8f8f;--dim:#6a6a6a;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--surface-2:#1a1a1a;--btn:#ededed;--btn-ink:#000;--overlay:rgba(0,0,0,.7);--split-track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
 [data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6f6f6f;--dim:#8a8a8a;--hair:#e6e6e6;--hs:#d4d4d4;--surface:#fafafa;--surface-2:#f0f0f0;--btn:#111;--btn-ink:#fff;--overlay:rgba(0,0,0,.35);--split-track:#e6e6e6}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font:15px/1.45 var(--detail);-webkit-font-smoothing:antialiased}
@@ -53,10 +53,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{colo
 .flash .bigstk .g{font-family:var(--title);font-size:22px}
 .flash .t1{font-size:15px;font-weight:600;line-height:1.3}.flash .t2{font-size:13px;color:var(--mute);margin-top:4px}
 small{font-size:13px}
-</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'zh';
+</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=/theme=light/.test(Q)?'light':'dark';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
-const syncURL=()=>{const u=new URL(location.href);L==='en'?u.searchParams.set('lang','en'):u.searchParams.delete('lang');TH==='light'?u.searchParams.set('theme','light'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
+const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='light'?u.searchParams.set('theme','light'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
 const T=(z,e)=>L==='zh'?z:e;
 const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
 const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';

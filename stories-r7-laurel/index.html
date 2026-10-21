@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-HK"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R7 · 熟客桂冠</title><style>:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#8f8f8f;--dim:#6a6a6a;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--surface-2:#1a1a1a;--btn:#ededed;--btn-ink:#000;--overlay:rgba(0,0,0,.7);--split-track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R7 · 熟客桂冠</title><style>:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#8f8f8f;--dim:#6a6a6a;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--surface-2:#1a1a1a;--btn:#ededed;--btn-ink:#000;--overlay:rgba(0,0,0,.7);--split-track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
 [data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6f6f6f;--dim:#8a8a8a;--hair:#e6e6e6;--hs:#d4d4d4;--surface:#fafafa;--surface-2:#f0f0f0;--btn:#111;--btn-ink:#fff;--overlay:rgba(0,0,0,.35);--split-track:#e6e6e6}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font:15px/1.45 var(--detail);-webkit-font-smoothing:antialiased}
@@ -58,10 +58,10 @@ small{font-size:13px!important}
 .spoon{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);z-index:8;max-width:280px;padding:8px 12px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:normal;text-align:center;cursor:pointer}
 .spoon:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink)}
 @media(min-width:520px){.spoon{display:none}}
-</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'zh';
+</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=/theme=light/.test(Q)?'light':'dark';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
-const syncURL=()=>{const u=new URL(location.href);L==='en'?u.searchParams.set('lang','en'):u.searchParams.delete('lang');TH==='light'?u.searchParams.set('theme','light'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
+const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='light'?u.searchParams.set('theme','light'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
 const T=(z,e)=>L==='zh'?z:e;
 const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
 const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';

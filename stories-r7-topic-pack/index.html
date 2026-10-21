@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><script>(function(){try{var t=(new URLSearchParams(location.search).get('theme')||'').toLowerCase();document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Forbes Predict · Stories · 法國示威</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--fg:#ededed;--mute:#5c5c5c;--line:#1f1f1f;--card:#0b0b0b;--pump:#e8772e;--dek:#bdbdbd;--soft:#a8a8a8;--chip-bd:#2e2e2e;--chip-fg:#cfcfcf;--bar:#151515;--bar-em:#2c2c2c;--veil:#bdbdbd;--input-bd:#2a2a2a;--grab:#333;--sheet:#0d0d0d;--reader-p:#cfcfcf;--thumb-a:#111;--thumb-b:#161616;--btn:#ededed;--btn-ink:#000}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang HK","Noto Sans TC",sans-serif}
+body{display:flex;justify-content:center}
+.app{width:100%;max-width:430px;min-height:100vh;padding:0 18px 48px;position:relative}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.top{display:flex;justify-content:space-between;align-items:center;height:52px;position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}
+.brand{font-size:13px;letter-spacing:.02em}.brand b{font-weight:600}
+.lang{display:flex;gap:6px;font-size:13px;color:var(--mute)}
+.lang button{color:var(--mute);padding:4px 2px}
+.lang button.on{color:var(--fg);text-decoration:underline;text-underline-offset:4px}
+.mute{color:var(--mute)}.sm{font-size:12px}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--mute);color:var(--mute);border-radius:3px;padding:0 5px;margin-left:6px;vertical-align:2px}
+header{padding:22px 0 8px}
+.kick{font-size:12px;color:var(--mute);letter-spacing:.04em}
+h1{font-family:"Noto Serif TC",Georgia,serif;font-weight:600;font-size:34px;line-height:1.15;margin:6px 0 8px}
+.dek{color:var(--dek);font-size:14px}
+.meta{margin-top:10px;font-size:12px;color:var(--mute)}
+.meta b{color:var(--fg);font-weight:500}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:18px 0 6px;position:relative}
+.tl:before{content:"";position:absolute;left:8px;right:8px;top:6px;height:1px;background:var(--mute)}
+.tl div{position:relative;padding-top:20px;padding-right:8px}
+.tl i{position:absolute;top:1px;left:2px;width:11px;height:11px;border-radius:50%;background:var(--mute)}
+.tl .now i{background:var(--fg);box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--fg)}
+.tl .next i{background:var(--bg);border:1px dashed var(--mute)}
+.tl b{display:block;font-size:12px;font-weight:600}
+.tl .now b{color:var(--fg)}.tl div:not(.now) b{color:var(--mute)}
+.tl span{font-size:12px;color:var(--soft);display:block;line-height:1.35;margin-top:2px}
+.tl .next span{color:var(--mute)}
+section{margin-top:26px}
+h2{font-size:12px;color:var(--mute);font-weight:500;letter-spacing:.06em;margin-bottom:10px}
+.card{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:16px}
+.q{font-family:"Noto Serif TC",Georgia,serif;font-size:21px;line-height:1.3;margin-bottom:6px}
+.basis{font-size:12px;color:var(--mute);margin-bottom:14px}
+.basis u{color:var(--soft);text-decoration:none;border-bottom:1px solid var(--mute)}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.yn button{height:48px;border:1px solid var(--fg);border-radius:8px;font-size:16px}
+.yn button.sel{box-shadow:inset 0 0 0 2px var(--fg)}
+.yn button.sel:after{content:" ✓"}
+.yn button:disabled{border-color:var(--mute);color:var(--mute)}
+.yn button.sel:disabled{border-color:var(--fg);color:var(--fg)}
+.primary{display:block;width:100%;height:50px;margin-top:12px;background:var(--btn);color:var(--btn-ink);border-radius:8px;font-weight:600;font-size:16px}
+.note{font-size:12px;color:var(--mute);margin-top:10px;min-height:18px}
+.link{color:var(--fg);border-bottom:1px solid var(--mute);font-size:13px}
+.link:disabled{color:var(--mute);border-color:var(--input-bd);cursor:default}
+.gauge .bar{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--bar);margin:12px 0 8px}
+.gauge .bar i{display:block;background:var(--fg);transition:width .3s ease-out}
+.gauge .bar em{display:block;flex:1;background:var(--bar-em)}
+.gauge .row{display:flex;justify-content:space-between;font-size:14px}
+.locked{position:relative}
+.locked .inner{filter:blur(6px);opacity:.35;pointer-events:none;user-select:none}
+.locked .veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--veil);text-align:center;padding:0 20px}
+.reg input{width:100%;height:44px;background:var(--bg);border:1px solid var(--input-bd);border-radius:8px;color:var(--fg);padding:0 12px;font:inherit;margin:10px 0 8px}
+.ghost{height:42px;width:100%;border:1px solid var(--fg);border-radius:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--chip-bd);border-radius:999px;padding:3px 10px;font-size:13px;color:var(--chip-fg)}
+.chip .up{color:var(--mute);margin-left:4px;font-size:11px}
+.hot .chip{border-color:var(--chip-bd)}
+.art{border-top:1px solid var(--line);padding:14px 0}
+.art:first-child{border-top:0;padding-top:4px}
+.art .t{font-size:12px;color:var(--mute);display:flex;justify-content:space-between;align-items:center}
+.art h3{font-family:"Noto Serif TC",Georgia,serif;font-weight:600;font-size:17px;line-height:1.35;margin:4px 0 10px;cursor:pointer}
+.art.today h3:before{content:attr(data-now);font-family:inherit;font-size:11px;border:1px solid var(--fg);border-radius:3px;padding:0 5px;margin-right:6px;vertical-align:2px;font-weight:400}
+.like{position:relative;display:inline-flex;align-items:center;gap:4px;color:var(--mute);font-size:12px;padding:4px}
+.like svg{width:18px;height:18px}
+.like.on{color:var(--pump)}
+.like .pop{position:absolute;left:2px;top:-4px;pointer-events:none;opacity:0}
+.like .pop.go{animation:pop .3s ease-out forwards}
+@keyframes pop{0%{opacity:0;transform:translateY(4px) scale(.6)}50%{opacity:1}100%{opacity:0;transform:translateY(-20px) scale(1.15)}}
+.video{display:flex;gap:12px;align-items:center;cursor:pointer}
+.thumb{width:96px;height:64px;border-radius:6px;background:repeating-linear-gradient(45deg,var(--thumb-a) 0 6px,var(--thumb-b) 6px 12px);display:flex;align-items:center;justify-content:center;flex:none}
+.thumb:after{content:"";border-left:14px solid var(--fg);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.resolved{border:1px solid var(--fg);border-radius:10px;padding:14px 16px;margin-top:18px}
+.resolved .r{font-size:15px;margin:4px 0 8px}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:20}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,100%);width:100%;max-width:430px;background:var(--sheet);border-top:1px solid var(--input-bd);border-radius:14px 14px 0 0;padding:16px 18px 28px;z-index:21;transition:transform .3s ease-out;max-height:82vh;overflow:auto}
+.sheet.open{transform:translate(-50%,0)}
+.scrim.open{display:block}
+.sheet .grab{width:36px;height:4px;border-radius:2px;background:var(--grab);margin:0 auto 12px}
+.sheet h4{font-size:20px;font-family:"Noto Serif TC",Georgia,serif;margin-bottom:2px}
+.sheet .item{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.sheet .item small{display:block;color:var(--mute);font-size:12px}
+.reader{position:fixed;inset:0;background:var(--bg);z-index:30;display:none;overflow:auto}
+.reader.open{display:block}
+.reader .wrap{max-width:430px;margin:0 auto;padding:0 18px 40px}
+.reader h5{font-family:"Noto Serif TC",Georgia,serif;font-size:26px;line-height:1.25;margin:18px 0 8px;font-weight:600}
+.reader p{color:var(--reader-p);margin:12px 0;font-size:16px;line-height:1.65}
+.reader mark{background:none;color:var(--fg);border-bottom:2px solid var(--fg)}
+.reader .hl{font-size:11px;color:var(--mute);display:block;margin-top:2px}
+.modal{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.8)}
+.modal.open{display:flex}
+.modal .box{width:88%;max-width:380px}
+.modal .scr{aspect-ratio:16/9;background:repeating-linear-gradient(45deg,var(--thumb-a) 0 8px,var(--thumb-b) 8px 16px);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:13px}
+.foot{margin-top:30px;font-size:12px;color:var(--mute);line-height:1.6}
+
+.theme{display:flex;gap:6px;font-size:13px;color:var(--mute);margin-left:10px}
+.theme button{color:var(--mute);padding:4px 2px}
+.theme button.on{color:var(--fg);text-decoration:underline;text-underline-offset:4px}
+[data-theme=light]{--bg:#fff;--fg:#111;--mute:#6f6f6f;--line:#e6e6e6;--card:#fafafa;--pump:#c45f1a;--dek:#4d4d4d;--soft:#4d4d4d;--chip-bd:#d4d4d4;--chip-fg:#4d4d4d;--bar:#ececec;--bar-em:#d4d4d4;--veil:#4d4d4d;--input-bd:#d4d4d4;--grab:#d4d4d4;--sheet:#fafafa;--reader-p:#4d4d4d;--thumb-a:#f0f0f0;--thumb-b:#e6e6e6;--btn:#111;--btn-ink:#fff}
+[data-theme=light] .tl .now i{box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--fg)}
+[data-theme=light] .tl .next i{background:var(--bg)}
+[data-theme=light] .primary{background:var(--btn);color:var(--btn-ink)}
+[data-theme=light] .yn button.sel{box-shadow:inset 0 0 0 2px var(--fg);font-weight:700}
+[data-theme=light] .yn button.sel::after{content:" ✓"}
+
+/* mobile 390 pass: invisible 44px hit areas only (no visual/layout change) */
+@media (max-width:480px){.lang button,.theme button,.chip,.link,.ghost,.top .link{position:relative}
+.lang button::before,.theme button::before,.chip::before,.link::before,.ghost::before{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="top">
+    <div class="brand"><b>Forbes</b> Predict · Stories</div>
+    <div style="display:flex;align-items:center;gap:4px"><div class="lang"><button data-l="en">EN</button><span>|</span><button data-l="zh">粵</button></div><div class="theme"><button data-th="dark">深</button><span>|</span><button data-th="light">淺</button></div></div>
+  </div>
+
+  <div id="resolved"></div>
+
+  <header>
+    <div class="kick"><span data-k="kick"></span><span class="tag" data-k="sample"></span></div>
+    <h1 data-k="title"></h1>
+    <p class="dek" data-k="dek"></p>
+    <p class="meta" id="chap"></p>
+    <div class="tl" id="tl"></div>
+  </header>
+
+  <section>
+    <h2 data-k="qh"></h2>
+    <div class="card">
+      <p class="q" id="q"></p>
+      <p class="basis" id="basis"></p>
+      <div class="yn"><button id="yes"></button><button id="no"></button></div>
+      <button class="primary" id="read" data-k="readToday"></button>
+      <p class="note"><span id="status"></span> <button class="link" id="change" style="display:none"></button></p>
+    </div>
+  </section>
+
+  <section id="regWrap" style="display:none">
+    <div class="card reg">
+      <p id="regT" style="font-size:15px"></p>
+      <p id="regN" class="meta" style="font-size:13px;margin-top:4px"></p>
+      <input type="email" id="email" data-ph="regPh">
+      <button class="ghost" id="regBtn" data-k="regBtn"></button>
+    </div>
+  </section>
+
+  <section class="gauge">
+    <h2 data-k="gh"></h2>
+    <div class="card locked" id="gcard">
+      <div class="inner">
+        <div class="row"><span id="gy"></span><span id="gn"></span></div>
+        <div class="bar"><i id="gbar" style="width:50%"></i><em></em></div>
+        <p class="sm mute" id="gcount"></p>
+      </div>
+      <div class="veil" id="veil" data-k="veil"></div>
+    </div>
+  </section>
+
+  <section class="hot">
+    <h2 data-k="hh"></h2>
+    <div class="chips" id="hot"></div>
+  </section>
+
+  <section>
+    <h2 data-k="ah"></h2>
+    <div id="arts"></div>
+  </section>
+
+  <section>
+    <h2 data-k="vh"></h2>
+    <div class="card video" id="vid"><div class="thumb"></div><div><p data-k="vt" style="font-size:15px"></p><p class="sm mute" data-k="vs"></p></div></div>
+  </section>
+
+  <p class="foot" data-k="foot"></p>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet"><div class="grab"></div><h4 id="sk"></h4><p class="sm mute" data-k="sRel"></p><div id="slist"></div><h2 style="margin-top:18px" data-k="sMore"></h2><div class="chips" id="smore"></div></div>
+
+<div class="reader" id="reader"><div class="top" style="padding:0 18px;max-width:430px;margin:0 auto"><button class="link" id="back" data-k="back"></button><span class="sm mute" data-k="forbesArt"></span></div><div class="wrap" id="rbody"></div></div>
+
+<div class="modal" id="modal"><div class="box"><div class="scr" data-k="vph"></div><p style="margin-top:12px" data-k="vt"></p><p class="sm mute" style="margin:4px 0 14px" data-k="vs"></p><button class="ghost" id="vclose" data-k="close"></button></div></div>
+
+<script>
+const P=new URLSearchParams(location.search), TMR=P.get('demo')==='tomorrow';
+let L=P.get('lang')==='zh'?'zh':'en';
+let TH=P.get('theme')==='dark'?'dark':'light';
+const applyTheme=()=>{document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');
+  const darkLab=L==='en'?'Dark':'深', lightLab=L==='en'?'Light':'淺';
+  document.querySelectorAll('.theme button').forEach(b=>{b.textContent=b.dataset.th==='dark'?darkLab:lightLab;b.classList.toggle('on',b.dataset.th===TH);});
+};
+const syncURL=()=>{const u=new URL(location.href);if(L==='zh')u.searchParams.set('lang','zh');else u.searchParams.delete('lang');if(TH==='dark')u.searchParams.set('theme','dark');else u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash);};
+const withTheme=href=>{try{const u=new URL(href,location.href);if(TH==='dark')u.searchParams.set('theme','dark');else u.searchParams.delete('theme');const abs=/^https?:/i.test(href)||/stories-r[67]/i.test(u.hostname);return abs?(u.origin+u.pathname+(u.search||'')+(u.hash||'')):(u.pathname+u.search+u.hash)}catch(e){return href}};
+const wireProtoLinks=()=>document.querySelectorAll('a[href*="stories-r"]').forEach(a=>{const h=a.getAttribute('href');if(h)a.setAttribute('href',withTheme(h))});
+
+applyTheme();
+const T={
+zh:{kick:'專題包 · 未完',sample:'示例數據',title:'法國示威',dek:'燃油稅引發嘅示威仲未完。每日一問，跟住 Forbes 報道一路追。',
+qh:'今日一問',readToday:'讀今日報道',yes:'會',no:'唔會',gh:'大家都估',hh:'實時熱詞 · 只連去 Forbes',ah:'Forbes 報道 · 按時間',vh:'片段',
+vt:'專訪片段位',vs:'彈出播放 · 示例，未有片',vph:'影片位 · 示例',close:'關閉',back:'← 返去專題包',forbesArt:'Forbes 文章',
+veil:'出咗今日 call 先見大家點估',regPh:'你嘅電郵',regBtn:'保存我個 call',now:'今日',
+sRel:'相關 Forbes 文章（示例）',sMore:'再追',
+foot:'所有標題、數字、片段都係示例。只有一個榜：估中率。未揭曉嘅 call = 0 分。冇連續紀錄，漏咗一日唔會斷。',
+basis:a=>'呢個 call 綁住：<u>'+a+'</u>',
+chap:n=>'已讀 <b>'+n+' 章</b> · 漏咗唔會斷',
+st0:'訪客都出得 call，唔使先註冊。',st1:c=>'你估：'+c+'。讀咗新報道先改得。',st2:c=>'你估：'+c+'。讀咗新報道，可以改。',
+change:'改判',reg:'保存你個 call，聽日揭曉前話你知。',regDone:'已保存。揭曉時通知你，帶你去跟進報道。',regN:'開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品',
+gy:p=>'會 '+p+'%',gn:p=>'唔會 '+p+'%',gc:n=>n+' 人估咗 · 冇排名',
+hl:'最多讀者劃線 · 示例',rdone:'讀完。返去可以改判。',
+resT:'揭曉 · 昨日一問',resR:'結果：會（示例）· 你估：會 ✓ 估中',resL:'讀跟進報道 →'},
+en:{kick:'Topic pack · Unfinished',sample:'Example data',title:'France protests',dek:'The fuel-tax protests are not over. One question a day, followed through Forbes reporting.',
+qh:'Today\'s question',readToday:'Read today\'s story',yes:'Will',no:'Won\'t',gh:'What everyone thinks',hh:'Trending now · Forbes only',ah:'Forbes stories · by time',vh:'Clip',
+vt:'Interview clip slot',vs:'Pop-up player · example, no video yet',vph:'Video slot · example',close:'Close',back:'← Back to topic pack',forbesArt:'Forbes article',
+veil:'Make today\'s call to see what everyone thinks',regPh:'Your email',regBtn:'Save my call',now:'Today',
+sRel:'Related Forbes stories (example)',sMore:'Keep following',
+foot:'All headlines, numbers and clips are examples. One leaderboard only: accuracy. Unresolved calls score 0. No streaks; missing a day breaks nothing.',
+basis:a=>'This call is tied to: <u>'+a+'</u>',
+chap:n=>'<b>'+n+' chapters</b> read · missing a day breaks nothing',
+st0:'Guests can call. No sign-up first.',st1:c=>'Your call: '+c+'. Read new reporting to change it.',st2:c=>'Your call: '+c+'. You read new reporting, so you can change it.',
+change:'Change call',reg:'Save your call. We\'ll tell you before tomorrow\'s reveal.',regDone:'Saved. We\'ll notify you at the reveal and take you to the follow-up.',regN:'Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes',
+gy:p=>'Will '+p+'%',gn:p=>'Won\'t '+p+'%',gc:n=>n+' readers called · no ranks',
+hl:'Most highlighted by readers · example',rdone:'Done reading. Go back to change your call.',
+resT:'Revealed · Yesterday\'s question',resR:'Result: Will (example) · Your call: Will ✓ correct',resL:'Read the follow-up →'}};
+
+const A={
+a1:{t:'19 Oct 08:00',zh:'燃油稅加價觸發全國遊行，物流業最驚乜',en:'Fuel-tax protests spread: what logistics firms fear',k:['fuel','logistics','unions']},
+a2:{t:'20 Oct 18:30',zh:'堵路第二日：超市貨架開始空',en:'Day two of blockades: supermarket shelves thin out',k:['blockade','supermarket','truckers']},
+a3:{t:'21 Oct 07:15',zh:'周末前政府會唔會讓步？三個訊號',en:'Will Paris give ground before the weekend? Three signals',k:['pm','weekend','unions']},
+a4:{t:'21 Oct 12:40',zh:'歐元區投資者點睇法國街頭',en:'How eurozone investors read the French streets',k:['euro','bonds','fuel']},
+a5:{t:'22 Oct 07:30',zh:'堵路擴到里昂：下一步係邊',en:'Blockades reach Lyon: where next',k:['lyon','blockade','truckers']},
+x1:{t:'18 Oct',zh:'油價點樣由油井去到油站',en:'How oil prices travel from well to pump',k:['fuel','euro','logistics']},
+x2:{t:'17 Oct',zh:'卡車司機短缺嘅三年',en:'Three years of truck-driver shortages',k:['truckers','logistics','supermarket']},
+x3:{t:'16 Oct',zh:'法國債息同政治風險',en:'French bond yields and political risk',k:['bonds','euro','pm']}};
+const K={fuel:['燃油稅','fuel tax',['a1','a4','x1']],logistics:['物流','logistics',['a1','x2','x1']],unions:['工會','unions',['a1','a3']],
+blockade:['堵路','blockades',['a2','a5']],supermarket:['超市','supermarkets',['a2','x2']],truckers:['卡車司機','truckers',['a2','x2','a5']],
+pm:['總理','prime minister',['a3','x3']],weekend:['周末','weekend',['a3','a2']],euro:['歐元','euro',['a4','x1','x3']],bonds:['債息','bond yields',['a4','x3']],lyon:['里昂','Lyon',['a5','a2']]};
+const HOT=TMR?['lyon','blockade','truckers','pm','bonds']:['blockade','fuel','pm','weekend','euro'];
+const order=TMR?['a5','a4','a3','a2','a1']:['a4','a3','a2','a1'];
+const todayA=TMR?'a5':'a3';
+const Q={zh:TMR?'聽日堵路會唔會擴到第三個城市？':'聽日會唔會再有人堵路？',en:TMR?'Will blockades reach a third city tomorrow?':'Will anyone block roads again tomorrow?'};
+const TL=TMR?[['已發生','Happened','20–21 Oct · 堵路兩日','Oct 20–21 · Two days of blockades'],['今日','Today','22 Oct · 擴到里昂','Oct 22 · Reaches Lyon'],['聽日','Tomorrow','23 Oct · ？','Oct 23 · ?']]
+:[['已發生','Happened','19–20 Oct · 遊行、堵路','Oct 19–20 · Marches, blockades'],['今日','Today','21 Oct · 政府表態？','Oct 21 · Government signal?'],['聽日','Tomorrow','22 Oct · ？','Oct 22 · ?']];
+const BODY={zh:['示例內文：今朝巴黎外環有幾條主要道路交通慢咗，物流公司話已經改線。','運輸業界代表話，如果周末前冇回應，佢哋會繼續行動。','分析指，政府而家有三個選擇：押後加稅、補貼運輸業、或者唔郁。'],
+en:['Example text: several main roads around Paris slowed this morning, and logistics firms say they have rerouted.','Transport industry representatives say they will keep going if there is no answer before the weekend.','Analysts see three options for the government: delay the tax, subsidise transport, or hold firm.']};
+let S={call:null,readAfter:false,reg:false,chap:TMR?3:2,likes:{},readIds:{}};
+const $=id=>document.getElementById(id);
+const tt=k=>T[L][k];
+const kw=k=>L==='zh'?K[k][0]:K[k][1];
+const pump='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 6c-1-2 0-3.5 1.5-4l.6 1c-1 .4-1.4 1.4-1.1 2.6 3.6.1 7 2.6 7 7.4 0 4.6-3.4 7-8 7s-8-2.4-8-7c0-4.9 3.4-7.3 8-7z"/></svg>';
+const pumpO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 6c-1-2 0-3.5 1.5-4M12 6c4.4 0 8 2.4 8 7s-3.4 7-8 7-8-2.4-8-7 3.6-7 8-7z"/></svg>';
+function render(){
+ document.documentElement.lang=L==='zh'?'zh-HK':'en';
+ document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===L));applyTheme();wireProtoLinks();
+ document.querySelectorAll('[data-k]').forEach(e=>{const v=T[L][e.dataset.k];if(typeof v==='string')e.textContent=v});
+ document.querySelectorAll('[data-ph]').forEach(e=>e.placeholder=tt(e.dataset.ph));
+ $('chap').innerHTML=tt('chap')(S.chap);
+ $('tl').innerHTML=TL.map((r,i)=>'<div class="'+['','now','next'][i]+'"><i></i><b>'+(L==='zh'?r[0]:r[1])+'</b><span>'+(L==='zh'?r[2]:r[3])+'</span></div>').join('');
+ $('q').textContent=Q[L];
+ $('basis').innerHTML=tt('basis')(A[todayA][L]);
+ $('yes').textContent=tt('yes');$('no').textContent=tt('no');
+ const locked=S.call&&!S.readAfter;
+ ['yes','no'].forEach(c=>{const b=$(c);b.classList.toggle('sel',S.call===c);b.disabled=!!S.call;});
+ const cl=S.call?tt(S.call):'';
+ $('status').textContent=!S.call?tt('st0'):(locked?tt('st1')(cl):tt('st2')(cl));
+ const ch=$('change');ch.style.display=S.call?'inline':'none';ch.textContent=tt('change');ch.disabled=locked;
+ $('regWrap').style.display=S.call?'block':'none';
+ $('regT').textContent=S.reg?tt('regDone'):tt('reg');$('regN').textContent=tt('regN');
+ $('email').style.display=$('regBtn').style.display=S.reg?'none':'block';
+ const y=S.call==='yes'?63:62;
+ if(S.call){$('gy').textContent=tt('gy')(y);$('gn').textContent=tt('gn')(100-y);$('gcount').textContent=tt('gc')(TMR?'1,512':'1,284');}
+ else{$('gy').textContent='';$('gn').textContent='';$('gcount').textContent='';}
+ $('gcard').classList.toggle('locked',!S.call);$('veil').style.display=S.call?'none':'flex';
+ requestAnimationFrame(()=>{$('gbar').style.width=(S.call?y:50)+'%'});
+ $('hot').innerHTML=HOT.map((k,i)=>'<button class="chip" data-kw="'+k+'">'+(i+1)+' '+kw(k)+'<span class="up">↑</span></button>').join('');
+ $('arts').innerHTML=order.map(id=>{const a=A[id];const n=(S.likes[id]?1:0)+({a1:212,a2:348,a3:96,a4:41,a5:77}[id]);
+  return '<div class="art'+(id===todayA?' today':'')+'"><div class="t"><span>'+a.t+'</span><button class="like'+(S.likes[id]?' on':'')+'" data-like="'+id+'" aria-label="like">'+(S.likes[id]?pump:pumpO)+'<span>'+n+'</span><span class="pop">'+pump+'</span></button></div><h3 data-open="'+id+'" data-now="'+tt('now')+'">'+a[L]+'</h3><div class="chips">'+a.k.map(k=>'<button class="chip" data-kw="'+k+'">#'+kw(k)+'</button>').join('')+'</div></div>'}).join('');
+ $('resolved').innerHTML=TMR?'<div class="resolved"><p class="sm mute">'+tt('resT')+'</p><p class="r">'+(L==='zh'?'聽日會唔會再有人堵路？':'Will anyone block roads again tomorrow?')+'<br>'+tt('resR')+'</p><button class="link" data-open="a5">'+tt('resL')+'</button></div>':'';
+}
+function openSheet(k){$('sk').textContent='#'+kw(k);
+ $('slist').innerHTML=K[k][2].map(id=>'<div class="item" data-open="'+id+'" style="cursor:pointer">'+A[id][L]+'<small>Forbes · '+A[id].t+'</small></div>').join('');
+ const more=[...new Set(K[k][2].flatMap(id=>A[id].k))].filter(x=>x!==k).slice(0,4);
+ $('smore').innerHTML=more.map(x=>'<button class="chip" data-kw="'+x+'">#'+kw(x)+'</button>').join('');
+ $('sheet').classList.add('open');$('scrim').classList.add('open');}
+function closeSheet(){$('sheet').classList.remove('open');$('scrim').classList.remove('open');}
+function openReader(id){closeSheet();const a=A[id];const b=BODY[L];
+ const showHl=!!S.call&&id===todayA;
+ $('rbody').innerHTML='<p class="sm mute" style="margin-top:16px">Forbes · '+a.t+' <span class="tag">'+tt('sample')+'</span></p><h5>'+a[L]+'</h5><p>'+b[0]+'</p><p>'+(showHl?'<mark>'+b[1]+'</mark><span class="hl">'+tt('hl')+'</span>':b[1])+'</p><p>'+b[2]+'</p><p class="sm mute" style="margin-top:24px">'+tt('rdone')+'</p>';
+ $('reader').classList.add('open');window.scrollTo(0,0);
+ if(!S.readIds[id]){S.readIds[id]=1;S.chap++;}
+ if(S.call)S.readAfter=true;}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-l],[data-th],[data-kw],[data-open],[data-like],#yes,#no,#read,#change,#regBtn,#vid,#vclose,#scrim,#back');if(!t)return;
+ if(t.dataset.l){L=t.dataset.l;syncURL();render();return}if(t.dataset.th){TH=t.dataset.th==='light'?'light':'dark';applyTheme();syncURL();return}
+ if(t.dataset.kw){openSheet(t.dataset.kw);return}
+ if(t.dataset.open){openReader(t.dataset.open);render();return}
+ if(t.dataset.like){const id=t.dataset.like;S.likes[id]=!S.likes[id];render();if(S.likes[id]){const p=document.querySelector('[data-like="'+id+'"] .pop');p.classList.add('go');}return}
+ switch(t.id){
+  case'yes':case'no':S.call=t.id;S.readAfter=false;render();break;
+  case'read':openReader(todayA);render();break;
+  case'change':if(S.readAfter){S.call=null;render();}break;
+  case'regBtn':S.reg=true;render();break;
+  case'vid':$('modal').classList.add('open');break;
+  case'vclose':$('modal').classList.remove('open');break;
+  case'scrim':closeSheet();break;
+  case'back':$('reader').classList.remove('open');render();break;}
+});
+if(P.get('state')==='called'){S.call='yes'}
+render();
+document.addEventListener('click',function(e){const a=e.target.closest&&e.target.closest('a[href*="stories-r"]');if(!a)return;const h=a.getAttribute('href');if(h)a.setAttribute('href',withTheme(h));},true);/*proto-link-capture*/
+</script>
+</body>
+</html>

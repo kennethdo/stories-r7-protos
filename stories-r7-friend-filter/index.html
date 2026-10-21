@@ -1,0 +1,120 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R7 · friend-filter</title><style>
+:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#888;--dim:#5c5c5c;--hair:#262626;--hair-strong:#3d3d3d;--btn:#ededed;--btn-ink:#000;--icon-ink:#ededed;--icon-body:#5c5c5c;--surface:#0a0a0a;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
+[data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#666;--dim:#808080;--hair:#e6e6e6;--hair-strong:#cfcfcf;--btn:#000;--btn-ink:#fff;--icon-ink:#111;--icon-body:#9a9a9a;--surface:#f6f6f6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--detail);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit}
+svg{width:20px;height:20px;flex:none}svg.sm{width:16px;height:16px}
+.i{stroke:var(--icon-ink)}.i[fill=currentColor]{fill:var(--icon-ink)}.b{stroke:var(--icon-body)}.b[fill=currentColor]{fill:var(--icon-body)}[stroke=none]{stroke:none}
+.app{max-width:390px;margin:0 auto;min-height:100vh;padding:0 20px 140px;overflow:hidden}
+.top{display:flex;align-items:center;gap:6px;min-height:56px}
+.top .t{flex:1;font-size:13px;color:var(--mute);display:flex;align-items:center;gap:6px;min-width:0}
+.top .back{min-width:44px;min-height:44px;display:flex;align-items:center;margin-left:-10px;padding-left:10px}
+.tg{display:flex;align-items:center;font-size:13px;color:var(--dim)}
+.tg button{min-width:30px;min-height:44px;color:var(--mute);font-size:13px;padding:0 3px}.tg button.on{color:var(--ink);font-weight:700}
+.sep{width:1px;height:16px;background:var(--hair-strong);margin:0 4px}
+.ex{display:inline-block;font-size:13px;color:var(--mute);border:1px dashed var(--hair-strong);border-radius:5px;padding:0 6px;line-height:20px}
+.kick{font-size:13px;letter-spacing:.04em;color:var(--mute);margin-top:18px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ttl{font-family:var(--title);font-weight:600;letter-spacing:-.035em;line-height:1.12}
+.h1{font-size:30px;margin-top:10px}.h2{font-size:22px}
+.dek{color:var(--body);font-size:16px;margin-top:10px}
+.meta{font-size:13px;color:var(--mute)}
+.card{border-top:1px solid var(--hair);margin-top:22px;padding-top:16px}
+.qq{font-size:19px;font-weight:600;line-height:1.35;margin-top:6px}
+.btn-p{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-weight:600;font-size:16px;text-decoration:none}
+.btn-p .i{stroke:var(--btn-ink)}
+.btn-s{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:9px;border:1px solid var(--hair-strong);font-size:16px;color:var(--ink);text-decoration:none;padding:0 14px}
+.btn-s.on{border:2px solid var(--ink);font-weight:700}
+.lnk{color:var(--body);font-size:14px;text-decoration:underline;text-underline-offset:3px;display:inline-flex;gap:6px;align-items:center;min-height:44px}
+.yn{display:flex;gap:10px;margin-top:14px}.yn>*{flex:1}
+.dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--hair);z-index:5}
+.dock .in{max-width:390px;margin:0 auto;padding:12px 20px 20px}
+.dock .sub{display:flex;justify-content:center;gap:18px;margin-top:4px;flex-wrap:wrap}
+.para{color:var(--body);font-size:16px;margin-top:14px}
+.lockrow{display:flex;gap:8px;margin-top:12px}
+.slot{flex:1;min-height:44px;border:1px dashed var(--hair-strong);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:13px}
+.words{display:flex;flex-direction:column;margin-top:8px}
+.word{display:flex;align-items:center;gap:12px;min-height:56px;border-bottom:1px solid var(--hair);text-decoration:none}
+.word .w{flex:1}.word .w b{display:block;font-size:17px;font-weight:600}.word .w span{font-size:13px;color:var(--mute)}
+.picked{font-family:var(--title);font-size:26px;font-weight:600;letter-spacing:-.03em;margin-top:4px}
+.reg{margin-top:22px;border:1px solid var(--hair);border-radius:10px;padding:14px}
+.reg .t{font-size:15px;font-weight:600}.reg .s{font-size:13px;color:var(--mute);margin-top:4px}
+.reg .row{display:flex;gap:16px;align-items:center;margin-top:10px}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9;display:flex;align-items:flex-end;justify-content:center}
+.sheet .in{background:var(--bg);border-top:1px solid var(--hair-strong);width:100%;max-width:390px;padding:20px 20px 28px;border-radius:14px 14px 0 0}
+.seg{display:flex;border:1px solid var(--hair-strong);border-radius:10px;padding:3px;margin-top:16px}
+.seg button{flex:1;min-height:44px;border-radius:7px;font-size:15px;color:var(--mute)}
+.seg button.on{color:var(--ink);font-weight:700;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.lb{margin-top:10px}
+.r{display:flex;align-items:center;gap:12px;min-height:56px;border-bottom:1px solid var(--hair)}
+.r .n{width:28px;font-size:15px;color:var(--mute);font-variant-numeric:tabular-nums}
+.r .nm{flex:1;min-width:0;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.r .tag{font-size:13px;color:var(--mute);border:1px solid var(--hair-strong);border-radius:5px;padding:0 6px;line-height:20px}
+.r .sc{font-family:var(--title);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;min-width:28px;text-align:right}
+.r.me{border-left:3px solid var(--ink);padding-left:10px;margin-left:-13px}
+.r.me .nm{font-weight:700}
+.days{display:flex;gap:6px;margin-top:10px}
+.d{flex:1;text-align:center;border:1px solid var(--hair);border-radius:7px;padding:6px 0;font-size:13px;color:var(--mute)}
+.d b{display:block;font-size:16px;color:var(--ink)}
+.d.un{border-style:dashed}
+.note{font-size:13px;color:var(--mute);margin-top:10px;display:flex;gap:6px;align-items:flex-start}
+.soft{margin-top:14px;font-size:15px;color:var(--body)}
+.soft b{color:var(--ink)}
+</style><script>(function(){var t=new URLSearchParams(location.search).get("theme");document.documentElement.dataset.theme=t==="dark"?"dark":"light";})();</script></head><body><div class="app" id="app"></div><div class="dock" id="dock"></div><div id="sheet"></div><script>
+const IC={"x": "<svg data-icon=\"keyline:sharp/duotone/x\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M6.7071 6.7071L17.2929 17.2929M17.2929 6.7071L6.7071 17.2929\"/></svg>", "check": "<svg data-icon=\"keyline:sharp/duotone/check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M4.7311 11.7118L9.6667 17L19.2689 6.7118\"/></svg>", "lock": "<svg data-icon=\"keyline:sharp/duotone/lock\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M7.5 10L7.5 6.5C7.5 4.0147 9.5147 2 12 2C14.4853 2 16.5 4.0147 16.5 6.5L16.5 10\"/><path class=\"b\" d=\"M13.5 16C13.5 16.8284 12.8284 17.5 12 17.5C11.1716 17.5 10.5 16.8284 10.5 16C10.5 15.1716 11.1716 14.5 12 14.5C12.8284 14.5 13.5 15.1716 13.5 16Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M3 10C3 9.4477 3.4477 9 4 9L20 9C20.5523 9 21 9.4477 21 10L21 22C21 22.5523 20.5523 23 20 23L4 23C3.4477 23 3 22.5523 3 22L3 10ZM12 14.5C11.1716 14.5 10.5 15.1716 10.5 16C10.5 16.8284 11.1716 17.5 12 17.5C12.8284 17.5 13.5 16.8284 13.5 16C13.5 15.1716 12.8284 14.5 12 14.5Z\" fill=\"currentColor\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" stroke=\"none\"/></svg>", "arrow-left": "<svg data-icon=\"keyline:sharp/duotone/arrow-left\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M20 12L5.2698 12M12.1711 4.7008L5 12L12.1711 19.2992\"/></svg>", "newspaper": "<svg data-icon=\"keyline:sharp/duotone/newspaper\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M8 2L21 2C21.5523 2 22 2.4477 22 3L22 21C22 21.5523 21.5523 22 21 22L3 22C2.4477 22 2 21.5523 2 21L2 9C2 8.4477 2.4477 8 3 8L7 8L7 3C7 2.4477 7.4477 2 8 2Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M2 9C2 8.4477 2.4477 8 3 8L7 8L7 22L3 22C2.4477 22 2 21.5523 2 21L2 9Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M11 8L18 8M11 12L18 12M11 16L16 16\" fill=\"none\"/></svg>", "user": "<svg data-icon=\"keyline:sharp/duotone/user\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M11 14L13 14C16.3137 14 19 16.6863 19 20L19 21L5 21L5 20C5 16.6863 7.6863 14 11 14ZM12 4C13.6569 4 15 5.3431 15 7C15 8.6569 13.6569 10 12 10C10.3431 10 9 8.6569 9 7C9 5.3431 10.3431 4 12 4Z\"/></svg>", "chevron-right": "<svg data-icon=\"keyline:sharp/duotone/chevron-right\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M8.7071 5.7071L15 12L8.7071 18.2929\"/></svg>", "circle-dashed": "<svg data-icon=\"keyline:sharp/duotone/circle-dashed\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M21.7205 9.448L21.8769 10.4357C22.041 11.4721 22.041 12.5279 21.8769 13.5643L21.7205 14.552M20.678 17.0688L20.0902 17.8778C19.4734 18.7268 18.7268 19.4734 17.8778 20.0902L17.0688 20.678M14.552 21.7205L13.5643 21.8769C12.5279 22.041 11.4721 22.041 10.4357 21.8769L9.448 21.7205M6.9312 20.678L6.1222 20.0902C5.2732 19.4734 4.5266 18.7268 3.9098 17.8778L3.3221 17.0688M2.2796 14.552L2.1231 13.5643C1.959 12.5279 1.959 11.4721 2.1231 10.4357L2.2796 9.448M3.322 6.9312L3.9098 6.1222C4.5266 5.2732 5.2732 4.5266 6.1222 3.9098L6.9312 3.322M9.448 2.2796L10.4357 2.1231C11.4721 1.959 12.5279 1.959 13.5643 2.1231L14.552 2.2796M17.0688 3.3221L17.8778 3.9098C18.7268 4.5266 19.4734 5.2732 20.0902 6.1222L20.678 6.9312\"/></svg>", "info": "<svg data-icon=\"keyline:sharp/duotone/info\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M12 1C17.937 1 23 6.0629 23 12C23 17.937 17.937 23 12 23C6.0629 23 1 17.937 1 12C1 6.0629 6.0629 1 12 1Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M12 11L12 17\"/><path class=\"i\" d=\"M13 8C13 8.5523 12.5523 9 12 9C11.4477 9 11 8.5523 11 8C11 7.4477 11.4477 7 12 7C12.5523 7 13 7.4477 13 8Z\" fill=\"currentColor\" stroke=\"none\"/></svg>", "clock": "<svg data-icon=\"keyline:sharp/duotone/clock\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M12 1C17.937 1 23 6.0629 23 12C23 17.937 17.937 23 12 23C6.0629 23 1 17.937 1 12C1 6.0629 6.0629 1 12 1Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M12 5L12 12L18 12\"/></svg>", "layers": "<svg data-icon=\"keyline:sharp/duotone/layers\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M12.4819 1.1238L22.4819 6.6238C22.8015 6.7995 23 7.1353 23 7.5C23 7.8647 22.8015 8.2005 22.4819 8.3762L12.4819 13.8762C12.3343 13.9574 12.1685 14 12 14C11.8315 14 11.6657 13.9574 11.5181 13.8762L1.5181 8.3762C1.1985 8.2005 1 7.8647 1 7.5C1 7.1353 1.1985 6.7995 1.5181 6.6238L11.5181 1.1238C11.6657 1.0426 11.8315 1 12 1C12.1685 1 12.3343 1.0426 12.4819 1.1238Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M1.4819 11.7151L12 17.5L22.5181 12.2849M1.4819 16.2151L12 22L22.5181 16.7849\"/></svg>"};
+const P=new URLSearchParams(location.search);
+let TH=P.get('theme')==='dark'?'dark':'light';
+let L=P.get('lang')==='zh'?'zh':'en';
+const UTM='utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
+const fb=p=>'https://www.forbes.com/'+p+(p.includes('?')?'&':'?')+UTM;
+const T=(zh,en)=>L==='en'?en:zh;
+const ic=(k,c)=>IC[k].replace('<svg','<svg'+(c?' class="'+c+'"':''));
+function q(s){const u=new URLSearchParams();if(TH==='dark')u.set('theme','dark');if(L==='zh')u.set('lang','zh');if(s)u.set('s',s);return '?'+u.toString();}
+function sync(){document.documentElement.dataset.theme=TH;document.documentElement.lang=L==='en'?'en':'zh-HK';history.replaceState(null,'',q(S.s==='home'?'':S.s));}
+function topbar(left){return '<div class="top">'+left+'<div class="tg" aria-label="language"><button class="'+(L==='en'?'on':'')+'" onclick="setL(\'en\')">EN</button>|<button class="'+(L==='zh'?'on':'')+'" onclick="setL(\'zh\')">粵</button></div><span class="sep"></span><div class="tg" aria-label="theme"><button class="'+(TH==='dark'?'on':'')+'" onclick="setT(\'dark\')">'+T('深','Dark')+'</button>|<button class="'+(TH==='light'?'on':'')+'" onclick="setT(\'light\')">'+T('淺','Light')+'</button></div></div>';}
+function setT(t){TH=t;R();}function setL(l){L=l;R();}
+function go(s,e){if(e)e.preventDefault();S.s=s;window.scrollTo(0,0);R();}
+function nav(s,cls,html){return '<a class="'+cls+'" href="'+q(s==='home'?'':s)+'" onclick="go(\''+s+'\',event)">'+html+'</a>';}
+function ext(url,cls,html){return '<a class="'+cls+'" href="'+url+'" target="_blank" rel="noopener">'+html+'</a>';}
+function R(){sync();document.getElementById('app').innerHTML=V[S.s]();const d=document.getElementById('dock');d.innerHTML=(D[S.s]||(()=>''))();d.style.display=d.innerHTML?'':'none';const sh=document.getElementById('sheet');sh.innerHTML=S.sheet?SHEET():'';}
+const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';
+const HL={zh:'示例：聯儲局按兵不動，市場開始押注年底減息',en:'Sample: Fed holds rates as markets start pricing a year-end cut'};
+const DEK={zh:'示例摘要：議息聲明措辭轉軟，債息回落。以下內容為原型示例，並非 Forbes 原文。',en:'Sample summary: softer statement wording, yields slip. Prototype copy only, not Forbes text.'};
+const QN={zh:'聯儲局 12 月會唔會減息？',en:'Will the Fed cut rates in December?'};
+const ART=fb('money/');
+function SHEET(){return '<div class="sheet" onclick="if(event.target===this){S.sheet=0;R()}"><div class="in"><div class="ttl h2">'+T('建立 Forbes Predict 紀錄','Create a Forbes Predict record')+'</div><p class="para">'+T('呢個會開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶。玩嘅係模擬幣，冇獎品。','This opens a Forbes Predict record, not a Forbes.com account. Play money · no prizes.')+'</p><p class="note">'+ic('info','sm')+T('原型示例：唔會真係建立任何紀錄。','Prototype sample: no record is actually created.')+'</p><div style="margin-top:16px"><button class="btn-s" style="width:100%" onclick="S.sheet=0;S.reg=1;R()">'+T('知道，關閉','Got it, close')+'</button></div></div></div>';}
+
+const S={s:['home','article','board'].includes(P.get('s'))?P.get('s'):'board',f:P.get('f')==='friends'?'friends':'all',pick:null,rev:0,sheet:0,reg:0};
+const PPL=[
+ {n:'示例 · 阿 Mo',e:'Sample · Mo',s:6,fr:1},{n:'示例 · 讀者 A',e:'Sample · Reader A',s:6,fr:0},{n:'示例 · 嘉欣',e:'Sample · Kayan',s:5,fr:1},
+ {n:'示例 · 讀者 B',e:'Sample · Reader B',s:4,fr:0},{n:'示例 · 志強',e:'Sample · Chi',s:3,fr:1},{n:'示例 · 讀者 C',e:'Sample · Reader C',s:3,fr:0},
+ {n:'示例 · 小芳',e:'Sample · Fong',s:2,fr:1},{n:'示例 · 讀者 D',e:'Sample · Reader D',s:1,fr:0}];
+const MYDAYS=[1,0,null,1,0,null];
+function myScore(){return MYDAYS.reduce((a,b)=>a+(b||0),0)+(S.pick&&S.rev&&S.pick==='y'?1:0);}
+function rows(){const me={n:'你',e:'You',s:myScore(),fr:1,me:1};let a=PPL.concat([me]).filter(p=>S.f==='all'||p.fr);a.sort((x,y)=>y.s-x.s||(x.me?-1:0));
+ let rk=0,prev=null;return a.map((p,i)=>{if(p.s!==prev){rk=i+1;prev=p.s;}return Object.assign({rk},p);});}
+function setF(f){S.f=f;R();const u=new URLSearchParams(location.search);u.set('f',f);history.replaceState(null,'','?'+u);}
+const V={
+board:()=>{const rs=rows(),me=rs.find(r=>r.me);return topbar('<div class="t">'+ic('layers','sm')+'Forbes Predict · '+T('排名','Standing')+'</div>')+
+ '<h1 class="ttl h1">'+T('你嘅位置','Where you stand')+'</h1><p class="dek">'+T('一個分數、一張榜。用「朋友」只係篩選同一張榜。','One score, one board. 「Friends」 just filters the same list.')+'</p>'+
+ '<div class="seg" role="tablist"><button role="tab" class="'+(S.f==='all'?'on':'')+'" onclick="setF(\'all\')">'+T('全部','All')+'</button><button role="tab" class="'+(S.f==='friends'?'on':'')+'" onclick="setF(\'friends\')">'+T('朋友','Friends')+'</button></div>'+
+ '<p class="soft">'+T('你而家喺'+(S.f==='friends'?'朋友':'全部')+'入面嘅位置：<b>第 '+me.rk+'</b>。明日再出 call，位置會跟住更新。','In '+(S.f==='friends'?'friends':'everyone')+' you\'re at <b>#'+me.rk+'</b>. Call tomorrow and it updates.')+'</p>'+
+ '<div class="lb">'+rs.map(r=>'<div class="r'+(r.me?' me':'')+'"><span class="n">'+r.rk+'</span><span class="nm">'+(L==='en'?r.e:r.n)+(r.fr&&!r.me?'<span class="tag">'+T('朋友','Friend')+'</span>':'')+'</span><span class="sc">'+r.s+'</span></div>').join('')+'</div>'+
+ '<div class="card"><div class="meta">'+T('你最近 7 日（分數 = 啱嘅 call）','Your last 7 days (score = correct calls)')+'</div><div class="days">'+MYDAYS.concat([S.pick&&S.rev?(S.pick==='y'?1:0):null]).map((d,i)=>'<div class="d'+(d===null?' un':'')+'">'+T('第','D')+(i+1)+(L==='en'?'':'日')+'<b>'+(d===null?0:d)+'</b></div>').join('')+'</div>'+
+ '<p class="note">'+ic('circle-dashed','sm')+T('虛線 = 未出 call 或未揭曉，一律計 0。','Dashed = not called or unrevealed, counts as 0.')+'</p>'+
+ (S.pick&&!S.rev?'<p class="note">'+ic('clock','sm')+T('今日已出 call，揭曉後先計分。','Today\'s call is in; it scores once revealed.')+'</p><button class="lnk" onclick="S.rev=1;R()">'+T('示例：揭曉','Sample: reveal')+'</button>':'')+
+ '</div><p class="note" style="margin-top:18px">'+ic('info','sm')+T('所有名同分數都係示例數據。模擬幣 · 冇獎品。','All names and scores are sample data. Play money · no prizes.')+'</p>';},
+article:()=>topbar(nav('board','back',ic('arrow-left'))+'<div class="t">'+T('今日報道','Today\'s story')+' '+EX()+'</div>')+
+ '<h1 class="ttl h1" style="font-size:26px">'+HL[L]+'</h1><p class="dek">'+DEK[L]+'</p>'+
+ '<div class="card"><div class="meta">'+T('今日一條問題','Today\'s question')+'</div><div class="qq">'+QN[L]+'</div>'+
+ (S.pick?'<div class="picked">'+(S.pick==='y'?T('你揀咗：會','You picked: Yes'):T('你揀咗：唔會','You picked: No'))+'</div><p class="note">'+ic('clock','sm')+T('揭曉前計 0 分','0 until revealed')+'</p>'+nav('board','lnk',T('返去睇位置','Back to standing')+ic('chevron-right','sm'))+
+   (S.reg?'':'<div class="reg"><div class="t">'+T('想記低你嘅位置？','Keep your place?')+'</div><div class="s">'+T('開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 模擬幣 · 冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money · no prizes')+'</div><div class="row"><button class="btn-s" style="min-height:44px;font-size:15px" onclick="S.sheet=1;R()">'+ic('user','sm')+T('建立紀錄','Create record')+'</button><button class="lnk" onclick="S.reg=2;R()">'+T('遲啲','Later')+'</button></div></div>')
+ :'<div class="yn"><button class="btn-s" onclick="S.pick=\'y\';R()">'+ic('check')+T('會','Yes')+'</button><button class="btn-s" onclick="S.pick=\'n\';R()">'+ic('x')+T('唔會','No')+'</button></div>')+'</div>'
+};
+const D={
+board:()=>'<div class="in">'+nav('article','btn-p',ic('newspaper')+(S.pick?T('再讀今日報道','Re-read today\'s story'):T('讀報道 · 出 call','Read story · make call')))+'</div>',
+article:()=>'<div class="in">'+ext(ART,'btn-p',T('讀 Forbes 原文','Read on Forbes')+ic('chevron-right','sm'))+'</div>'
+};
+R();
+</script></body></html>

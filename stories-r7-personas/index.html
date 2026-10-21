@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Stories R7 · Personas</title>
+<style>
+:root,[data-theme=dark]{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#888;--dim:#5c5c5c;--hair:#262626;--hs:#3d3d3d;--btn:#ededed;--btn-ink:#000;--surface:#0a0a0a}
+[data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6b6b6b;--dim:#9a9a9a;--hair:#e6e6e6;--hs:#cfcfcf;--btn:#111;--btn-ink:#fff;--surface:#f7f7f7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--body);font:14px/1.45 Inter,system-ui,-apple-system,"PingFang HK","Noto Sans HK",sans-serif;max-width:920px;margin:0 auto;padding:24px 20px 80px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--ink);font-family:Graphik,"Helvetica Neue",Arial,"PingFang HK",sans-serif;letter-spacing:-.02em;font-weight:600}
+h1{font-size:26px;line-height:1.15;margin:8px 0}
+h2{font-size:20px;margin:0 0 4px}
+h3{font-size:13px;margin:16px 0 6px;color:var(--mute);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.meta{font-size:12px;color:var(--mute)}
+.top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--hair)}
+.sw{display:flex;border:1px solid var(--hs);border-radius:6px;overflow:hidden}
+.sw button{background:none;border:0;color:var(--mute);font:inherit;padding:8px 12px;min-height:44px;cursor:pointer}
+.sw button.on{color:var(--ink);background:var(--hair)}
+.lead{color:var(--ink);margin:12px 0 16px;max-width:62ch}
+.chip{display:inline-block;border:1px solid var(--hs);border-radius:6px;padding:2px 8px;font-size:11px;color:var(--mute);margin:0 4px 4px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 10px}
+td,th{border-bottom:1px solid var(--hair);padding:8px 6px;text-align:left;vertical-align:top}
+th{color:var(--mute);font-weight:500;font-size:11px;text-transform:uppercase}
+.q{border-left:2px solid var(--hs);padding-left:10px;margin:6px 0;color:var(--body)}
+.src{font-size:11px;color:var(--dim)}
+.gap{border:1px solid var(--hs);border-radius:9px;padding:12px 14px;margin:12px 0 18px;background:var(--surface)}
+.gap strong{color:var(--ink)}
+.primary{display:inline-flex;align-items:center;background:var(--btn);color:var(--btn-ink);padding:12px 18px;border-radius:6px;text-decoration:none;font-weight:600;min-height:44px;margin-top:16px}
+.tabs{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;padding:4px 0 12px;margin:4px 0 8px;border-bottom:1px solid var(--hair);scroll-snap-type:x proximity}
+.tabs button{flex:none;scroll-snap-align:start;border:1px solid var(--hs);background:transparent;color:var(--mute);border-radius:999px;padding:10px 14px;min-height:44px;font:inherit;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected=true]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.panel{display:none}.panel.on{display:block}
+.role{color:var(--mute);font-size:12px;margin-bottom:8px}
+ol{padding-left:18px;margin:6px 0 0}ol li{margin:4px 0}
+[data-lang=en] .yue,[data-lang=zh] .en{display:none}
+@media(max-width:640px){body{padding:16px 14px 64px}h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="meta"><span class="yue">Stories R7 · persona 一頁紙 · 21 Oct 2026</span><span class="en">Stories R7 · persona one-pager · 21 Oct 2026</span></div>
+  <div style="display:flex;gap:8px">
+    <div class="sw" role="group" aria-label="Language"><button type="button" data-l="en" class="on">EN</button><button type="button" data-l="zh">粵</button></div>
+    <div class="sw" role="group" aria-label="Theme"><button type="button" data-t="light" class="on"><span class="yue">淺</span><span class="en">Light</span></button><button type="button" data-t="dark"><span class="yue">深</span><span class="en">Dark</span></button></div>
+  </div>
+</div>
+
+<h1><span class="yue">今日 brainstorm 用嘅人</span><span class="en">People for today’s brainstorm</span></h1>
+<p class="lead yue">橫向 tab 撳／掃：一人一頁。Harvey 係缺咗嘅一截（Stories engine／文章配對／digest）。意見唔係公司決定。Demo＝示例。</p>
+<p class="lead en">Horizontal tabs — one person per panel. Harvey is the missing slice (Stories engine / article match / digest). Opinions aren’t company decisions. Demo = sample.</p>
+
+<div class="gap">
+  <strong class="yue">大家一致嘅 P0（第一輪）</strong><strong class="en">Shared P0 from round 1</strong>
+  <table>
+    <tr><td><span class="yue">保存卡寫明 Forbes Predict 紀錄，唔係 Forbes.com · play money · 冇獎品</span><span class="en">Save card: Forbes Predict record, not Forbes.com · play money · no prizes</span></td><td>Jeff, Editorial, Kris, Parents, Young, Harvey</td></tr>
+    <tr><td><span class="yue">註冊後保留原本 call 時間</span><span class="en">Keep original call timestamp after signup</span></td><td>Kris, Jeff</td></tr>
+    <tr><td><span class="yue">一個 score；拎走 you beat N／獎盃語氣</span><span class="en">One score; drop “you beat N” / trophy tone</span></td><td>Kris, Chris, Parents, Editorial</td></tr>
+    <tr><td><span class="yue">Forbes link 加 UTM，只連去 Forbes</span><span class="en">Forbes links with approved UTM only</span></td><td>Editorial</td></tr>
+  </table>
+</div>
+
+<nav class="tabs" role="tablist" aria-label="Personas">
+  <button type="button" role="tab" aria-selected="true" aria-controls="p-harvey" id="t-harvey" data-tab="harvey">Harvey</button>
+  <button type="button" role="tab" aria-selected="false" aria-controls="p-jeff" id="t-jeff" data-tab="jeff">Jeff</button>
+  <button type="button" role="tab" aria-selected="false" aria-controls="p-chris" id="t-chris" data-tab="chris">Chris</button>
+  <button type="button" role="tab" aria-selected="false" aria-controls="p-kris" id="t-kris" data-tab="kris">Kris</button>
+  <button type="button" role="tab" aria-selected="false" aria-controls="p-editorial" id="t-editorial" data-tab="editorial">Editorial</button>
+  <button type="button" role="tab" aria-selected="false" aria-controls="p-parents" id="t-parents" data-tab="parents">Parents</button>
+  <button type="button" role="tab" aria-selected="false" aria-controls="p-young" id="t-young" data-tab="young">Young</button>
+</nav>
+
+<section class="panel on" role="tabpanel" id="p-harvey" aria-labelledby="t-harvey">
+  <h2>Harvey Wen</h2>
+  <p class="role"><span class="yue">Market Operations · harvey@axiomcasts.com · 同 Chris 睇市場 pipeline</span><span class="en">Market Operations · harvey@axiomcasts.com · market pipeline with Chris</span></p>
+  <span class="chip">Stories engine</span><span class="chip">Talking points</span><span class="chip">Editorial digest</span>
+  <h3><span class="yue">最在意</span><span class="en">Cares most</span></h3>
+  <table>
+    <tr><td>1</td><td><span class="yue">市場＝讀者／編輯信號，唔係真錢賭場</span><span class="en">Markets as reader/editorial signal, not real-money casino</span></td></tr>
+    <tr><td>2</td><td><span class="yue">Story＝一連串相關事件；engine 建議、人 approve</span><span class="en">Story = chain of events; engine suggests, humans approve</span></td></tr>
+    <tr><td>3</td><td><span class="yue">由文章 talking points 聚成 story，再開更好嘅 market</span><span class="en">Talking points → story clusters → better markets</span></td></tr>
+    <tr><td>4</td><td><span class="yue">編輯 one-pager（swing、section、CVR 文章）</span><span class="en">Editorial one-pager (swings, sections, converting articles)</span></td></tr>
+  </table>
+  <h3><span class="yue">以前／最近</span><span class="en">Past / recent</span></h3>
+  <div class="q">“Forbes readers want to know what others think, not necessarily to earn money.” <span class="src">Granola · 16 Sep</span></div>
+  <div class="q">“multiple talking points… cluster into stories… create better markets.” <span class="src">Market Ops · 20 Oct</span></div>
+  <div class="q">Digest = “just a one-pager” — top swings, best sections, best converting articles. <span class="src">Weekly editorial · 19 Oct</span></div>
+  <h3>R1</h3>
+  <p class="meta yue">產品「Story」要同 engine「Story」對齊；B2 hint 應用 talking points + HITL。傾向：hint＝talking points 就偏 B2。</p>
+  <p class="meta en">Align product “Story” with engine “Story”; B2 hints = talking points + HITL. Lean B2 if hints = talking points.</p>
+  <h3><span class="yue">今日可以問</span><span class="en">Ask today</span></h3>
+  <ol>
+    <li><span class="yue">「Story」一個字用兩邊，定改一邊名？</span><span class="en">One word “Story” for both, or rename one?</span></li>
+    <li><span class="yue">B2 hint 可唔可以直接食 talking points pipeline？</span><span class="en">Can B2 hints consume the talking-points pipeline?</span></li>
+  </ol>
+</section>
+
+<section class="panel" role="tabpanel" id="p-jeff" aria-labelledby="t-jeff" hidden>
+  <h2>Jeff Yam</h2>
+  <p class="role"><span class="yue">Commercial／systems · 註冊同留存</span><span class="en">Commercial / systems · registration and retention</span></p>
+  <span class="chip">Registration</span><span class="chip">Retention moat</span>
+  <h3><span class="yue">最在意</span><span class="en">Cares most</span></h3>
+  <table>
+    <tr><td>1</td><td><span class="yue">註冊係 metric，唔係 widget completion</span><span class="en">Registration is the metric, not widget completion</span></td></tr>
+    <tr><td>2</td><td><span class="yue">Stories 做留存／內容差異，唔好剝離文章</span><span class="en">Stories as retention moat, not peelable from articles</span></td></tr>
+    <tr><td>3</td><td><span class="yue">短／中／長 story catalog + 時間壓力</span><span class="en">Short/medium/long catalog + time urgency</span></td></tr>
+  </table>
+  <h3><span class="yue">以前／最近</span><span class="en">Past / recent</span></h3>
+  <div class="q">“within 10 clicks get people to the dashboard and sign up.” <span class="src">2 Jul</span></div>
+  <div class="q">“how good your product is is how many people stay on… sign up… play” <span class="src">2 Oct</span></div>
+  <h3>R1</h3>
+  <p class="meta yue">S1 做 registration spine；保存卡要寫 Predict≠Forbes.com。唔加 streak／XP／第二榜。傾向 S1 MVP。</p>
+  <p class="meta en">S1 as registration spine; save card must say Predict≠Forbes.com. No streak/XP/2nd board. Leans S1 MVP.</p>
+  <h3><span class="yue">今日可以問</span><span class="en">Ask today</span></h3>
+  <ol><li><span class="yue">Stories 留存 metric 用邊個：回訪文章、repeat call、定註冊後 7 日？</span><span class="en">Which retention metric: article return, repeat call, or D7 after signup?</span></li></ol>
+</section>
+
+<section class="panel" role="tabpanel" id="p-chris" aria-labelledby="t-chris" hidden>
+  <h2>Chris Schrader</h2>
+  <p class="role"><span class="yue">Editorial translator · 市場數據服務新聞</span><span class="en">Editorial translator · market data serving journalism</span></p>
+  <span class="chip">Sentiment not accuracy</span><span class="chip">Story ontology</span>
+  <h3><span class="yue">最在意</span><span class="en">Cares most</span></h3>
+  <table>
+    <tr><td>1</td><td><span class="yue">嚴謹 story ontology，唔係亂貼 topic</span><span class="en">Rigorous story ontology, not loose topics</span></td></tr>
+    <tr><td>2</td><td><span class="yue">文章係目的地；語氣唔好似街機</span><span class="en">Articles are the destination; not arcade tone</span></td></tr>
+    <tr><td>3</td><td><span class="yue">窄嘅編輯工具（top converting／sentiment）</span><span class="en">Narrow editorial tool (top converting / sentiment)</span></td></tr>
+  </table>
+  <div class="q">“a story is a consecutive series of events that converges to a conclusion.” <span class="src">17 Sep</span></div>
+  <div class="q">“readers of Forbes come to Forbes to read particular stories.” <span class="src">28 Sep</span></div>
+  <h3>R1</h3>
+  <p class="meta yue">保留「引一句做理由」；「Read on Forbes」做主掣；收細 points／you beat。傾向 B2（若證據路徑係真 Forbes）。</p>
+  <p class="meta en">Keep quote-as-reason; Read on Forbes primary; shrink points/you beat. Leans B2 if evidence is real Forbes.</p>
+</section>
+
+<section class="panel" role="tabpanel" id="p-kris" aria-labelledby="t-kris" hidden>
+  <h2>Kris Rulloda</h2>
+  <p class="role"><span class="yue">UX／activation PM · FTU 同 signup</span><span class="en">UX / activation PM · FTU and signup</span></p>
+  <span class="chip">Activation</span><span class="chip">One loop</span>
+  <h3><span class="yue">最在意</span><span class="en">Cares most</span></h3>
+  <table>
+    <tr><td>1</td><td><span class="yue">清楚嘅「保存你個 call」時刻</span><span class="en">Clear “save your call” moment</span></td></tr>
+    <tr><td>2</td><td><span class="yue">一個連貫 core loop，唔好 feature soup</span><span class="en">One cohesive core loop, no feature soup</span></td></tr>
+    <tr><td>3</td><td><span class="yue">低編輯成本；one-way door 要講明</span><span class="en">Low editorial cost; name one-way doors</span></td></tr>
+  </table>
+  <div class="q">“features feel additive but not yet deeply interconnected.” <span class="src">20 Oct</span></div>
+  <h3>R1</h3>
+  <p class="meta yue">MVP 用 S1：先 call 後 save。One-way：Predict≠Forbes.com、保留 call 時間、一個 score。B2 hints → MVP+1。拎走 you beat N。</p>
+  <p class="meta en">MVP = S1 call-then-save. One-way: Predict≠Forbes.com, keep call time, one score. B2 hints = MVP+1. Drop you beat N.</p>
+</section>
+
+<section class="panel" role="tabpanel" id="p-editorial" aria-labelledby="t-editorial" hidden>
+  <h2>Forbes Editorial <span class="meta">(Kerry + Jeffrey Marcus)</span></h2>
+  <p class="role"><span class="yue">品牌同新聞守護</span><span class="en">Brand and journalism guardians</span></p>
+  <span class="chip">Honest account</span><span class="chip">Stay on Forbes</span>
+  <h3><span class="yue">最在意</span><span class="en">Cares most</span></h3>
+  <table>
+    <tr><td>1</td><td><span class="yue">Signup 要講清楚係 Predict／Axiom，唔係 Forbes.com</span><span class="en">Signup = Predict/Axiom, not Forbes.com</span></td></tr>
+    <tr><td>2</td><td><span class="yue">唔好拉讀者離開 Forbes；UTM 要批核</span><span class="en">Don’t pull readers off Forbes; approved UTM</span></td></tr>
+    <tr><td>3</td><td><span class="yue">「Forbes 問 X」只可以喺真訪問過 X 時用</span><span class="en">“Forbes asked X” only if X was really interviewed</span></td></tr>
+  </table>
+  <h3>R1</h3>
+  <p class="meta yue">P0：帳戶框架 + UTM。傾向 B2（證據路徑似報道），但要軟化排名字。</p>
+  <p class="meta en">P0: account framing + UTM. Leans B2, with softer rank copy.</p>
+</section>
+
+<section class="panel" role="tabpanel" id="p-parents" aria-labelledby="t-parents" hidden>
+  <h2>Forbes Parents <span class="meta">(55+)</span></h2>
+  <p class="role"><span class="yue">長讀 Forbes 嘅父母讀者</span><span class="en">Long-time Forbes reader parents</span></p>
+  <span class="chip">Clear account</span><span class="chip">No sportsbook tone</span>
+  <h3>R1</h3>
+  <p class="meta yue">P0：註冊要講 Predict · play money · 冇獎品。排名＋獎盃似賭博／功課。B2 提示卡似多啲報道，較舒服。字要 ≥13px。傾向 B2（保存卡修好之後）。</p>
+  <p class="meta en">P0: signup must say Predict · play money · no prizes. Rank + trophy feels like betting/homework. B2 hints feel like more reporting. Type ≥13px. Lean B2 after save-card fix.</p>
+</section>
+
+<section class="panel" role="tabpanel" id="p-young" aria-labelledby="t-young" hidden>
+  <h2>Young reader <span class="meta">(18–34)</span></h2>
+  <p class="role"><span class="yue">手機為主嘅年輕 Forbes 讀者</span><span class="en">Phone-first younger Forbes reader</span></p>
+  <span class="chip">One-tap call</span><span class="chip">Share</span>
+  <h3>R1</h3>
+  <p class="meta yue">P0：先 call 後見群眾好；5 layers 要縮一行；加 share。拎走「DPA undecided」。傾向 S1；B2 未逐格撳。</p>
+  <p class="meta en">P0: call-then-crowd is good; shrink 5-layers to one line; add share. Drop “DPA undecided”. Lean S1; B2 not fully tapped.</p>
+</section>
+
+<p class="meta" style="margin-top:28px">
+  <span class="yue">來源：Slack + Granola（2026-09～10）· R1 notes 喺 r7/personas/。唔發明決定。</span>
+  <span class="en">Sources: Slack + Granola (Sep–Oct 2026) · R1 notes in r7/personas/. No invented decisions.</span>
+</p>
+<p><a class="primary" data-proto href="https://kennethdo.github.io/stories-r7-protos/stories-r7-gather/">Gather · playables</a></p>
+
+<script>
+(function(){
+function qs(){try{return new URLSearchParams(location.search)}catch(e){return new URLSearchParams()}}
+var theme=(qs().get('theme')||'light').toLowerCase()==='dark'?'dark':'light';
+var lang=(qs().get('lang')||'en').toLowerCase()==='zh'?'zh':'en';
+var tab=(qs().get('tab')||'harvey').toLowerCase();
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme',theme);
+  document.querySelectorAll('[data-t]').forEach(function(b){b.classList.toggle('on',b.dataset.t===theme)});
+}
+function applyLang(){
+  document.documentElement.setAttribute('data-lang',lang);
+  document.documentElement.lang=lang==='zh'?'zh-HK':'en';
+  document.querySelectorAll('[data-l]').forEach(function(b){b.classList.toggle('on',b.dataset.l===lang)});
+}
+function sync(){
+  var u=new URL(location.href);
+  if(lang==='zh')u.searchParams.set('lang','zh');else u.searchParams.delete('lang');
+  u.searchParams.set('theme',theme);
+  if(tab&&tab!=='harvey')u.searchParams.set('tab',tab);else u.searchParams.delete('tab');
+  history.replaceState(null,'',u.pathname+(u.searchParams.toString()?'?'+u.searchParams:'')+u.hash);
+  document.querySelectorAll('a[data-proto]').forEach(function(a){
+    var x=new URL(a.getAttribute('href'),location.href);
+    if(lang==='zh')x.searchParams.set('lang','zh');else x.searchParams.delete('lang');
+    x.searchParams.set('theme',theme);
+    a.setAttribute('href',x.origin+x.pathname+(x.search||'')+(x.hash||''));
+  });
+}
+function showTab(id){
+  tab=id;
+  document.querySelectorAll('.tabs [role=tab]').forEach(function(b){
+    var on=b.dataset.tab===id;b.setAttribute('aria-selected',on?'true':'false');
+  });
+  document.querySelectorAll('.panel').forEach(function(p){
+    var on=p.id==='p-'+id;p.classList.toggle('on',on);if(on)p.removeAttribute('hidden');else p.setAttribute('hidden','');
+  });
+  var btn=document.getElementById('t-'+id);if(btn)btn.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  sync();
+}
+document.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){theme=b.dataset.t;applyTheme();sync()}});
+document.querySelectorAll('[data-l]').forEach(function(b){b.onclick=function(){lang=b.dataset.l;applyLang();sync()}});
+document.querySelectorAll('.tabs [role=tab]').forEach(function(b){b.onclick=function(){showTab(b.dataset.tab)}});
+// swipe on panels
+var startX=0;
+document.querySelectorAll('.panel').forEach(function(p){
+  p.addEventListener('touchstart',function(e){startX=e.changedTouches[0].screenX},{passive:true});
+  p.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].screenX-startX;if(Math.abs(dx)<50)return;
+    var ids=['harvey','jeff','chris','kris','editorial','parents','young'];
+    var i=ids.indexOf(tab);if(i<0)return;
+    if(dx<0&&i<ids.length-1)showTab(ids[i+1]);
+    if(dx>0&&i>0)showTab(ids[i-1]);
+  },{passive:true});
+});
+applyTheme();applyLang();
+if(!document.getElementById('t-'+tab))tab='harvey';
+showTab(tab);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><script>(function(){try{if(!/[?&]theme=dark(&|$)/.test(location.search))document.documentElement.setAttribute('data-theme','light')}catch(e){}})()</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R6 · Fused</title><style>:root{--bg:#000;--btn-bg:#ededed;--btn-fg:#000;--btn-ib:#777;--surface:#0a0a0a;--fill:#1a1a1a;--overlay:rgba(0,0,0,.7);--stroke-num:#262626;--ink:#ededed;--body:#a1a1a1;--mute:#888;--dim:#5c5c5c;--hair:#262626;--hs:#3d3d3d;--icon-ink:#ededed;--icon-body:#5c5c5c;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font:14px/1.45 var(--detail);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+svg{width:24px;height:24px;flex:none}svg.sm{width:16px;height:16px}
+.i{stroke:var(--icon-ink)}.i[fill=currentColor]{fill:var(--icon-ink)}.b{stroke:var(--icon-body)}.b[fill=currentColor]{fill:var(--icon-body)}[stroke=none]{stroke:none}
+.app{max-width:390px;margin:0 auto;min-height:100vh;position:relative;padding:0 20px 150px;overflow:hidden}
+.top{display:flex;align-items:center;gap:10px;height:56px}
+.top .t{flex:1;font-size:12px;color:var(--mute)}
+.lang{font-size:12px;color:var(--mute);display:flex;gap:6px;align-items:center}.lang b{color:var(--ink);font-weight:600}
+.ex{font-size:11px;color:var(--dim);letter-spacing:.02em}
+.ttl{font-family:var(--title);font-weight:600;letter-spacing:-.04em;line-height:1.08}
+.h1{font-size:34px}.meta{font-size:12px;color:var(--mute)}.body{color:var(--body)}
+.btn-p{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border-radius:9px;background:var(--btn-bg);color:var(--btn-fg);font-weight:600;font-size:16px}
+.btn-p svg .i{stroke:var(--btn-fg)}.btn-p svg .b{stroke:var(--btn-ib)}.btn-p svg .i[fill=currentColor]{fill:var(--btn-fg)}.btn-p svg .b[fill=currentColor]{fill:var(--btn-ib)}
+.btn-s{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:9px;border:1px solid var(--hs);font-size:16px;color:var(--ink)}
+.lnk{color:var(--body);font-size:14px;text-decoration:underline;text-underline-offset:3px;display:inline-flex;gap:6px;align-items:center}
+.dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--hair);z-index:5}
+.dock .in{max-width:390px;margin:0 auto;padding:12px 20px 22px}.dock .sub{display:flex;justify-content:center;gap:20px;margin-top:10px}
+/* home path */
+.path{position:relative;margin:28px 0 0;padding-left:0}
+.path:before{content:"";position:absolute;left:19px;top:20px;bottom:20px;border-left:1px dashed var(--hs)}
+.beat{position:relative;display:flex;gap:16px;align-items:flex-start;padding:10px 0;width:100%;text-align:left}
+.node{width:40px;height:40px;border-radius:50%;border:1px solid var(--hs);background:var(--bg);display:flex;align-items:center;justify-content:center;flex:none;position:relative;z-index:1;font-size:12px;color:var(--mute)}
+.beat.done .node{border-color:var(--body);color:var(--ink)}
+.beat.cur .node{width:40px;height:40px;border:2px solid var(--ink);color:var(--ink);font-weight:700;font-size:15px}
+.beat.cur .node:after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid var(--hs)}
+.beat .tx{flex:1;padding-top:2px}.beat .hl{font-size:15px;color:var(--body);line-height:1.35}.beat.cur .hl{color:var(--ink);font-size:17px;font-weight:600}
+.beat .st{font-size:12px;color:var(--mute);margin-top:4px;display:flex;gap:10px;align-items:center}
+.beat .st b{color:var(--ink);font-weight:600}
+.beat.end .node{border-style:dashed}
+/* deck */
+.deck{position:fixed;inset:0;background:var(--bg);z-index:3;display:flex;justify-content:center;overflow-x:hidden;overflow-y:auto}
+.deck .frame{width:100%;max-width:390px;position:relative;padding:0 20px;display:flex;flex-direction:column;min-height:100%;overflow:hidden}
+.bars{display:flex;gap:4px;padding-top:12px}.bars i{flex:1;height:2px;background:var(--hs);border-radius:1px}.bars i.on{background:var(--ink)}
+.deck .top{height:48px}
+.slide{flex:1;display:flex;flex-direction:column;position:relative;touch-action:pan-y;user-select:none;transition:transform .25s}
+.slide .bign{position:absolute;right:-14px;top:-10px;font:700 190px/1 var(--title);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px var(--stroke-num);pointer-events:none}
+.kick{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:56px}
+.hl1{font-family:var(--title);font-weight:600;letter-spacing:-.035em;font-size:32px;line-height:1.1;margin-top:12px}
+.dek{font-size:16px;color:var(--body);margin-top:12px}
+.rd{margin-top:18px}
+.chip{display:inline-flex;gap:6px;align-items:center;font-size:12px;color:var(--ink);border:1px solid var(--hs);border-radius:6px;padding:5px 9px}
+.q{margin-top:28px;border-top:1px solid var(--hair);padding-top:16px}
+.q .qq{font-size:20px;font-weight:600;line-height:1.3}
+.q .hint{font-size:12px;color:var(--dim);margin-top:6px}
+.yn{display:flex;gap:10px;margin-top:14px}.yn>*{flex:1}
+.picked{font-family:var(--title);font-size:28px;font-weight:600;letter-spacing:-.03em;margin-top:8px}
+.prev{font-size:13px;color:var(--body);margin-top:6px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.prev b{color:var(--ink);font-size:15px}
+.reg{margin-top:14px;border-top:1px solid var(--hair);padding-top:12px}.reg .t{font-size:14px;color:var(--ink)}.reg .row{display:flex;gap:16px;align-items:center;margin-top:10px}.reg .btn-s{height:40px;padding:0 14px;font-size:14px}
+.stamp{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%) rotate(-8deg);font:700 56px/1 var(--title);border:2px solid var(--ink);border-radius:9px;padding:6px 18px;opacity:0;pointer-events:none}
+.tapz{position:absolute;top:56px;height:140px;width:28%;z-index:1}.tapz.l{left:-20px}.tapz.r{right:-20px}
+.wrap{margin:auto 0;padding-bottom:40px}.wrap .big{font-family:var(--title);font-size:40px;line-height:1.1;font-weight:600;letter-spacing:-.04em}.wrap .big b{font-size:56px}
+.ev .kick{color:var(--ink)}
+.ev .old{margin-top:14px;font-size:13px;color:var(--mute)}
+.deck .dk{padding:12px 0 18px}.deck .dk .sub{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:10px}
+.hook{display:flex;gap:8px;align-items:center;margin-top:12px;font-size:14px;color:var(--ink)}
+/* fake forbes */
+.fb{padding-top:4px}.fb .mast{font:700 26px/1 Georgia,serif;letter-spacing:-.02em;border-bottom:1px solid var(--hair);padding:14px 0}
+.fb .hl1{font-size:28px}.ln{height:10px;background:var(--fill);border-radius:3px;margin:10px 0}
+/* standing */
+.bigno{font-family:var(--title);font-weight:600;letter-spacing:-.05em;font-size:96px;line-height:1;margin-top:20px}
+.bigno span{font-size:40px;color:var(--dim)}
+.curve{margin-top:28px}.curve svg{width:100%;height:150px}
+.tw{margin-top:22px}.tw .row{display:grid;grid-template-columns:1fr 120px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--hair);font-size:13px;color:var(--body)}
+.tw .bar{height:6px;background:var(--hair);border-radius:3px;position:relative}.tw .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--body);border-radius:3px}
+.sec{font-size:18px;font-weight:600;margin-top:28px;display:flex;justify-content:space-between;align-items:baseline}
+.gate{margin-top:14px;font-size:14px;color:var(--body)}
+/* sheet */
+.sheet{position:fixed;inset:0;background:var(--overlay);z-index:9;display:flex;align-items:flex-end;justify-content:center}
+.sheet .in{width:100%;max-width:390px;background:var(--surface);border-top:1px solid var(--hs);border-radius:15px 15px 0 0;padding:24px 20px 28px}
+.field{height:48px;border:1px solid var(--hs);border-radius:9px;margin:16px 0 12px;display:flex;align-items:center;padding:0 14px;color:var(--dim)}
+.demo{border:1px dashed var(--hs);border-radius:9px;padding:10px;margin:6px 0 10px;font-size:12px}.demo .g{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.demo .g button{border:1px solid var(--hs);border-radius:6px;padding:4px 8px;font-size:12px}.demo .log{color:var(--mute);font-size:11px}
+.deck .demo{position:absolute;left:20px;right:20px;bottom:120px;background:var(--bg);z-index:4}
+.toast{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:var(--surface);max-width:calc(100vw - 32px);border:1px solid var(--hs);border-radius:9px;padding:8px 14px;font-size:13px;z-index:10}
+
+.tabs{display:flex;gap:22px;border-bottom:1px solid var(--hair);margin-top:18px}
+.tabs button{padding:10px 0;font-size:14px;color:var(--mute);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--ink);border-color:var(--ink);font-weight:600}
+.news{margin-top:6px}
+.nr{display:flex;gap:14px;width:100%;text-align:left;padding:14px 0;border-bottom:1px solid var(--hair);align-items:flex-start}
+.nr .d{font-size:11px;color:var(--dim);width:44px;flex:none;padding-top:3px}
+.nr .h{flex:1;font-size:15px;color:var(--mute);line-height:1.35}
+.nr .s{font-size:12px;color:var(--dim);flex:none;padding-top:3px}
+.nr.done .h{color:var(--body)}.nr.done .s{color:var(--body)}
+.nr.today{border-left:2px solid var(--ink);padding-left:12px;margin-left:-14px}
+.nr.today .h{color:var(--ink);font-size:18px;font-weight:600}.nr.today .s{color:var(--ink)}.nr.today .d{color:var(--ink)}
+.nr.fut .h{color:var(--dim)}
+.cardg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:22px}
+.cell{aspect-ratio:1;border:1px solid var(--hs);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:13px;color:var(--body);position:relative}
+.cell .n{position:absolute;top:4px;left:6px;font-size:10px;color:var(--dim)}
+.cell.pk{border-color:var(--body);color:var(--ink);font-weight:600}
+.cell.hit{background:var(--fill);border-color:var(--ink);color:var(--ink)}
+.cell.miss{border-style:solid;border-color:var(--hs);color:var(--mute)}
+.cell.fut{border-style:dashed;color:var(--dim)}
+.cell.tod{border:2px solid var(--ink)}
+.cnt{display:flex;gap:28px;margin-top:18px}.cnt b{display:block;font-family:var(--title);font-size:28px;letter-spacing:-.03em}.cnt span{font-size:12px;color:var(--mute)}
+.rc{margin-top:8px}.rc .row{padding:10px 0;border-bottom:1px solid var(--hair);font-size:14px;color:var(--body)}.rc .row b{color:var(--ink);font-weight:600}
+.rank{display:flex;align-items:flex-end;gap:16px;margin-top:20px}.rank .bigno{margin:0;font-size:72px}
+.rank .beat10{font-size:15px;color:var(--ink);padding-bottom:10px;line-height:1.3}.rank .beat10.q{color:var(--dim);font-size:13px}
+.evb{margin-top:16px;border-left:2px solid var(--ink);padding:4px 0 4px 12px}.evb .t{font-size:15px;color:var(--ink);font-weight:600}.evb .row{display:flex;gap:10px;margin-top:10px}.evb .btn-s{height:40px;padding:0 14px;font-size:14px}
+.late{font-size:12px;color:var(--body);margin-top:6px}
+.cut{margin-top:24px;border-top:1px solid var(--hair);padding-top:14px}
+.inl{display:flex;gap:8px;margin-top:10px}.inl .field{margin:0;flex:1;height:40px}
+
+/* theme toggle (same chip style as .lang) */
+.theme{font-size:12px;color:var(--mute);display:flex;gap:6px;align-items:center;margin-left:4px}.theme b{color:var(--ink);font-weight:600}
+/* light tokens */
+[data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6f6f6f;--dim:#a3a3a3;--hair:#e6e6e6;--hs:#d4d4d4;--icon-ink:#111;--icon-body:#a3a3a3;--btn-bg:#111;--btn-fg:#fff;--btn-ib:#a3a3a3;--surface:#fafafa;--fill:#f0f0f0;--overlay:rgba(0,0,0,.35);--stroke-num:#e6e6e6}
+/* light: non-colour cues (dark unchanged) */
+[data-theme=light] .cell.hit{background:var(--fill);border:2px solid var(--ink);font-weight:700}
+[data-theme=light] .cell.miss{border-style:dashed}
+[data-theme=light] .cell.hit::after{content:"✓";position:absolute;bottom:3px;right:4px;font-size:10px;font-weight:700;line-height:1}
+[data-theme=light] .cell.miss::after{content:"✗";position:absolute;bottom:3px;right:4px;font-size:10px;line-height:1;color:var(--mute)}
+[data-theme=light] .nr.hit .s{color:var(--ink);font-weight:700}[data-theme=light] .nr.hit .s::before{content:"✓ "}
+[data-theme=light] .nr.miss .s::before{content:"✗ "}
+[data-theme=light] .nr.done .s{font-weight:600}
+[data-theme=light] .rank{border-left:3px solid var(--ink);padding-left:14px}
+[data-theme=light] .rank .bigno::before{content:"● ";font-size:.28em;vertical-align:middle}
+[data-theme=light] .q .picked.rv{border:2px solid var(--ink);border-radius:9px;padding:4px 12px;display:inline-block;align-self:flex-start}
+[data-theme=light] .q .prev.hit{color:var(--ink);font-weight:700}[data-theme=light] .q .prev.hit::before{content:"✓"}
+[data-theme=light] .q .prev.miss::before{content:"✗"}
+[data-theme=light] .cut.in .picked::before{content:"● "}
+[data-theme=light] .cut{border-top:2px solid var(--ink)}
+[data-theme=light] .stamp{border-width:3px}
+/* mobile pass: tap targets >=44px without visual bloat */
+.lang button,.theme button{min-height:44px;min-width:28px;padding:0 2px}
+.top>button{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:flex-start;margin-left:-10px;padding-left:10px}
+.tabs button{min-height:44px}
+.lnk{min-height:44px}
+.top .chip,.demo .g button{min-height:44px;border:10px solid transparent;outline:1px solid var(--hs);outline-offset:-10px;border-left-width:0;border-right-width:0;padding-top:0;padding-bottom:0}
+.nr{min-height:44px}
+.nr .rl{display:inline-flex;align-items:center;min-height:44px;margin:-6px 0 -12px;font-size:13px;font-weight:500}
+.slide .rl{margin-top:4px;align-self:flex-start}
+@media (max-width:360px){.app{padding-left:16px;padding-right:16px}.deck .frame{padding:0 16px}.hl1{font-size:28px}.nr.today .h{font-size:17px}.rank .bigno{font-size:56px}.slide .bign{font-size:150px}.top{gap:6px}.top .t{min-width:0;overflow:hidden;text-overflow:ellipsis}}
+
+details.info{margin-top:24px}details.info summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--dim);font-size:13px;list-style:none}details.info summary::-webkit-details-marker{display:none}details.info .curve{margin-top:8px}
+.rank{flex-wrap:wrap;row-gap:4px}.rank>.meta,.rank>.beat10{flex-basis:100%;padding-bottom:0}
+</style></head><body><div class="app" id="app"></div><script>const IC={"x": "<svg data-icon=\"keyline:sharp/duotone/x\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M6.7071 6.7071L17.2929 17.2929M17.2929 6.7071L6.7071 17.2929\"/></svg>", "check": "<svg data-icon=\"keyline:sharp/duotone/check\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M4.7311 11.7118L9.6667 17L19.2689 6.7118\"/></svg>", "lock": "<svg data-icon=\"keyline:sharp/duotone/lock\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M7.5 10L7.5 6.5C7.5 4.0147 9.5147 2 12 2C14.4853 2 16.5 4.0147 16.5 6.5L16.5 10\"/><path class=\"b\" d=\"M13.5 16C13.5 16.8284 12.8284 17.5 12 17.5C11.1716 17.5 10.5 16.8284 10.5 16C10.5 15.1716 11.1716 14.5 12 14.5C12.8284 14.5 13.5 15.1716 13.5 16Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M3 10C3 9.4477 3.4477 9 4 9L20 9C20.5523 9 21 9.4477 21 10L21 22C21 22.5523 20.5523 23 20 23L4 23C3.4477 23 3 22.5523 3 22L3 10ZM12 14.5C11.1716 14.5 10.5 15.1716 10.5 16C10.5 16.8284 11.1716 17.5 12 17.5C12.8284 17.5 13.5 16.8284 13.5 16C13.5 15.1716 12.8284 14.5 12 14.5Z\" fill=\"currentColor\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" stroke=\"none\"/></svg>", "clock": "<svg data-icon=\"keyline:sharp/duotone/clock\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M12 1C17.937 1 23 6.0629 23 12C23 17.937 17.937 23 12 23C6.0629 23 1 17.937 1 12C1 6.0629 6.0629 1 12 1Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M12 5L12 12L18 12\"/></svg>", "arrow-left": "<svg data-icon=\"keyline:sharp/duotone/arrow-left\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M20 12L5.2698 12M12.1711 4.7008L5 12L12.1711 19.2992\"/></svg>", "newspaper": "<svg data-icon=\"keyline:sharp/duotone/newspaper\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M8 2L21 2C21.5523 2 22 2.4477 22 3L22 21C22 21.5523 21.5523 22 21 22L3 22C2.4477 22 2 21.5523 2 21L2 9C2 8.4477 2.4477 8 3 8L7 8L7 3C7 2.4477 7.4477 2 8 2Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M2 9C2 8.4477 2.4477 8 3 8L7 8L7 22L3 22C2.4477 22 2 21.5523 2 21L2 9Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M11 8L18 8M11 12L18 12M11 16L16 16\" fill=\"none\"/></svg>", "user": "<svg data-icon=\"keyline:sharp/duotone/user\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M11 14L13 14C16.3137 14 19 16.6863 19 20L19 21L5 21L5 20C5 16.6863 7.6863 14 11 14ZM12 4C13.6569 4 15 5.3431 15 7C15 8.6569 13.6569 10 12 10C10.3431 10 9 8.6569 9 7C9 5.3431 10.3431 4 12 4Z\"/></svg>", "refresh-ccw": "<svg data-icon=\"keyline:sharp/duotone/refresh-ccw\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M20.5727 14.9172L20.7883 13.9407C20.929 13.3034 21 12.6527 21 12C21 7.0294 16.9706 3 12 3C9.5169 3 7.1441 4.0259 5.4432 5.8349L4.9867 6.3204M4.1631 2.1414L4.7999 6.5999L9.2586 5.9631\"/><path class=\"i\" d=\"M3.4273 9.0828L3.2117 10.0593C3.071 10.6966 3 11.3473 3 12C3 16.9706 7.0294 21 12 21C14.4831 21 16.8559 19.9741 18.5568 18.1651L19.0133 17.6796M19.8369 21.8586L19.2001 17.4001L14.7414 18.0369\"/></svg>", "trophy": "<svg data-icon=\"keyline:sharp/duotone/trophy\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"b\" d=\"M6 5H2V11H6.3249M18 5H22V11H17.6751M12 15V19\"/><path class=\"i\" d=\"M18 1C18.5523 1 19 1.44772 19 2V9C19 12.866 15.866 16 12 16C8.13402 16 5 12.866 5 9V2C5 1.44772 5.44772 1 6 1H18Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"i\" d=\"M6 19H18V22H6V19Z\"/></svg>", "chevron-right": "<svg data-icon=\"keyline:sharp/duotone/chevron-right\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M8.7071 5.7071L15 12L8.7071 18.2929\"/></svg>", "circle-dashed": "<svg data-icon=\"keyline:sharp/duotone/circle-dashed\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M21.7205 9.448L21.8769 10.4357C22.041 11.4721 22.041 12.5279 21.8769 13.5643L21.7205 14.552M20.678 17.0688L20.0902 17.8778C19.4734 18.7268 18.7268 19.4734 17.8778 20.0902L17.0688 20.678M14.552 21.7205L13.5643 21.8769C12.5279 22.041 11.4721 22.041 10.4357 21.8769L9.448 21.7205M6.9312 20.678L6.1222 20.0902C5.2732 19.4734 4.5266 18.7268 3.9098 17.8778L3.3221 17.0688M2.2796 14.552L2.1231 13.5643C1.959 12.5279 1.959 11.4721 2.1231 10.4357L2.2796 9.448M3.322 6.9312L3.9098 6.1222C4.5266 5.2732 5.2732 4.5266 6.1222 3.9098L6.9312 3.322M9.448 2.2796L10.4357 2.1231C11.4721 1.959 12.5279 1.959 13.5643 2.1231L14.552 2.2796M17.0688 3.3221L17.8778 3.9098C18.7268 4.5266 19.4734 5.2732 20.0902 6.1222L20.678 6.9312\"/></svg>", "flag": "<svg data-icon=\"keyline:sharp/duotone/flag\" viewBox=\"0 0 24 24\" fill=\"none\" stroke-width=\"2\" stroke-linecap=\"butt\" stroke-linejoin=\"round\"><path class=\"i\" d=\"M3 14C3 14.3693 3.2035 14.7086 3.5294 14.8824C4.9053 15.6162 6.4407 16 8 16C9.5593 16 11.0947 15.6162 12.4706 14.8824C13.5568 14.303 14.7689 14 16 14C17.2311 14 18.4432 14.303 19.5294 14.8824C19.6742 14.9596 19.8359 15 20 15C20.5523 15 21 14.5523 21 14L21 3C21 2.6307 20.7965 2.2914 20.4706 2.1176C19.0947 1.3838 17.5593 1 16 1C14.4407 1 12.9053 1.3838 11.5294 2.1176C10.4432 2.697 9.2311 3 8 3C6.7689 3 5.5568 2.697 4.4706 2.1176C4.3258 2.0404 4.1641 2 4 2C3.4477 2 3 2.4477 3 3L3 14Z\" fill=\"currentColor\" stroke=\"none\"/><path class=\"b\" d=\"M4 2.398L4 3L4 23\"/></svg>"};
+const ic=(n,c)=>IC[n].replace('<svg','<svg'+(c?' class="'+c+'"':''));
+const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+let TH=(Q.match(/theme=(light|dark)/)||[])[1]||'light';
+const applyTheme=()=>{if(TH==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme')};applyTheme();
+const syncURL=()=>{const u=new URL(location.href);if(L==='zh')u.searchParams.set('lang','zh');else u.searchParams.delete('lang');if(TH==='dark')u.searchParams.set('theme','dark');else u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
+const withTheme=href=>{try{const u=new URL(href,location.href);u.searchParams.set('theme',TH);return /^https?:/i.test(href)?u.href:(u.pathname+u.search+u.hash)}catch(e){return href}};
+const T=(z,e)=>L==='zh'?z:e,tx=o=>L==='zh'?o[0]:o[1];
+const EX=()=>'<span class="ex" data-ex>'+T('示例數據','Sample data')+'</span>';
+/* d=date, rd=day index it is revealed (null = 3 Nov), res=result, rel=earlier cell this article is new evidence for */
+const B0=[
+['17 Oct',['加州州長選情：民調差距收窄','California governor race tightens'],['最新民調差距喺誤差範圍內','The latest poll gap is within the margin'],['加州州長辯論會唔會照原定日子舉行？','Will the governor debate go ahead as planned?'],1,'y',null,['全文：辯論前一晚嘅民調','Full story: the poll before the debate']],
+['18 Oct',['眾議院關鍵席位廣告開支新高','Record ad spend in key House seats'],['十個席位佔總開支一半','Ten seats take half the spend'],['民主黨會唔會攞返眾議院？','Will Democrats win the House?'],null,'y',null,['全文：啲錢落咗邊十個席位','Full story: where the money went']],
+['19 Oct',['參議院：三個州決定控制權','Senate: three states decide control'],['三州民調都喺誤差範圍內','All three polls are within the margin'],['共和黨會唔會保住參議院？','Will Republicans keep the Senate?'],null,'n',null,['全文：三個州嘅民調對比','Full story: the three state polls']],
+['20 Oct',['參議院：一個州民調反轉','Senate: one state poll flips'],['三個州之中有一個換咗領先','One of the three states changed leader'],['投票率會唔會高過 2022？','Will turnout beat 2022?'],null,'y',2,['全文：邊個州反轉，點解','Full story: which state flipped and why']],
+['21 Oct',['選舉夜：有州要數到第二日','Election night: some states count late'],['眾議院結果可能要等','The House result may take longer'],['選舉夜會唔會知道眾議院結果？','Will the House be called on election night?'],null,'n',1,['全文：邊幾個州最遲有結果','Full story: which states count last']]];
+const CLOSE=17,NPL=5120,GATE=3; /* day index of 3 Nov counted from 17 Oct */
+let S;
+function reset(){S={view:'story',tab:'news',today:2,i:2,guest:true,regLater:false,regForm:false,rev:false,demo:/demo=1/.test(Q),dpo:false,log:[],toast:'',arrive:null,chg:[],
+ b:B0.map(x=>({d:x[0],hl:x[1],dek:x[2],q:x[3],rd:x[4],res:x[5],rel:x[6],hook:x[7],pick:null,cd:null,read:false,changed:false}))}}
+reset();
+/* single source for every counter */
+const opened=()=>S.today+1;
+const revealed=i=>S.rev||(S.b[i].rd!=null&&S.today>=S.b[i].rd);
+const filled=()=>S.b.filter((x,i)=>i<=S.today&&x.pick).length;
+const revN=()=>S.b.filter((x,i)=>i<=S.today&&revealed(i)).length;
+const hits=()=>S.b.filter((x,i)=>x.pick&&revealed(i)&&x.pick===x.res).length;
+const callable=i=>i<=S.today&&!revealed(i)&&!S.b[i].pick;
+const nextCell=()=>callable(S.today)?S.today:S.b.findIndex((x,i)=>callable(i));
+const PK=p=>p==='y'?T('會','Yes'):T('唔會','No');
+const held=i=>CLOSE-S.b[i].cd, full=i=>CLOSE-i;
+function score(){return S.b.reduce((a,x,i)=>{if(!x.pick)return a;const w=held(i)/CLOSE;return a+(revealed(i)?(x.pick===x.res?w:0):0)},0)}
+const okR=()=>S.b.filter(x=>x.pick).length>=GATE&&S.b.some((x,i)=>x.pick&&revealed(i));
+function phi(z){const t=1/(1+.2316419*Math.abs(z)),d=.3989423*Math.exp(-z*z/2),p=d*t*(.3193815+t*(-.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return z>0?1-p:p}
+const rank=()=>1+Math.round((NPL-1)*(1-phi((score()-.9)/.5)));
+const beat10=()=>Math.max(0,Math.min(9,Math.round(10*(1-rank()/NPL))));
+const CUT=Math.round(NPL*.15);
+const fmt=n=>n.toLocaleString('en-US');
+function track(c,z,e){S.log.unshift(c+' '+T(z,e))}
+/* pieces */
+const P=(l,f,i)=>'<button class="btn-p" data-p onclick="'+f+'">'+(i?ic(i):'')+l+'</button>';
+const Sb=(l,f)=>'<button class="btn-s" onclick="'+f+'">'+l+'</button>';
+const Lk=(l,f,i)=>'<button class="lnk" onclick="'+f+'">'+(i?ic(i,'sm'):'')+l+'</button>';
+const themeChip=()=>'<div class="theme"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
+const lang=()=>'<div class="lang"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div>'+themeChip();
+const demoChip=()=>S.demo?'<button class="chip" onclick="E.dp()">Demo · FAKE</button>':'';
+function demoHTML(){if(!S.demo||!S.dpo)return'';return '<div class="demo"><div class="meta">Demo · FAKE · '+T('今日 = ','Today = ')+S.b[S.today].d+'</div><div class="g">'+[['tm',T('跳到聽日','Jump to tomorrow')],['f1',T('由第 1 篇入','Arrive from article 1')],['f2',T('由第 2 篇入','Arrive from article 2')],['rv',S.rev?T('收返揭曉日','Hide reveal day'):T('預覽揭曉日','Preview reveal day')],['in',T('已登入','Signed in')],['rs',T('重設','Reset')]].map(([k,l])=>'<button onclick="E.d(\''+k+'\')">'+l+'</button>').join('')+'</div><div class="log">'+(S.log.slice(0,6).join('<br>')||'...')+'</div></div>'}
+function regCard(){if(!S.guest||S.regLater||!filled())return'';if(!S._e5){track('E5a','註冊卡顯示','Register card shown');S._e5=1}
+ return '<div class="reg"><div class="t">'+T('保存你個 call，3 Nov 話你知估中未','Save your call. Hear on 3 Nov')+'</div><div class="meta" style="margin-top:4px">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+(S.regForm?'<div class="inl"><div class="field">'+T('電郵','Email')+'</div>'+Sb(T('保存','Save'),'E.regDo()').replace('class="btn-s"','class="btn-s" style="height:40px;padding:0 14px"')+'</div>':'<div class="row">'+Sb(ic('user','sm')+T('註冊保存','Sign up to save'),'E.regOpen()')+Lk(T('遲啲先','Later'),'E.regLater()')+'</div>')+'</div>'}
+function rankLine(){return filled()?'<div class="prev"><span>'+(okR()?T('同其他人比較（示例）：揭曉咗 '+revN()+' 個，中 <b>'+hits()+'</b> 個','Compared with others (example): revealed '+revN()+', right <b>'+hits()+'</b>'):T('已出 call · 等揭曉','Called · waiting for reveal'))+'</span>'+Lk(T('睇排名','See standing'),"E.tab('stand')")+'</div>':''}
+function stateLabel(i){const x=S.b[i];if(i>S.today)return i===S.today+1?T('聽日','Tomorrow'):x.d;
+ if(revealed(i))return x.pick?(x.pick===x.res?T('中咗','Right'):T('唔中','Wrong')):T('冇填','Missed');
+ if(x.pick)return T('已填','Called');if(i===S.today)return T('今日','Today');return T('冇填','Missed')}
+/* views */
+const V={};
+function storyTop(){return '<div class="top"><div class="t">Forbes Predict · Stories</div>'+demoChip()+lang()+'</div>'+demoHTML()+
+ '<div class="meta" style="margin-top:6px">'+T('美國中期選舉','US midterms')+' · '+EX()+'</div><div class="ttl h1" style="margin-top:6px;font-size:30px">'+T('每日一篇 Forbes，每篇一個 call','One Forbes article a day, one call each')+'</div><div class="meta" style="margin-top:8px;display:flex;gap:6px;align-items:center">'+ic('clock','sm')+T('3 Nov 揭曉','Results 3 Nov')+'</div>'+
+ '<div class="tabs">'+[['news',T('報道','Articles')],['card',T('我張卡','My card')],['stand',T('排名','Standing')]].map(([k,l])=>'<button class="'+(S.tab===k?'on':'')+'" onclick="E.tab(\''+k+'\')">'+l+'</button>').join('')+'</div>'}
+V.story=()=>storyTop()+({news:tabNews,card:tabCard,stand:tabStand}[S.tab])();
+function tabNews(){if(!S._e1){track('E1','Story 主頁','Story home');S._e1=1}
+ const rows=S.b.map((x,i)=>{const fut=i>S.today,cls=(i===S.today?'today':fut?'fut':x.pick?'done':'')+(x.pick&&revealed(i)?(x.pick===x.res?' hit':' miss'):'');
+  return '<div class="nr '+cls+'" '+(fut?'aria-disabled="true"':'role="button" tabindex="0" onclick="E.open('+i+')"')+'><span class="d">'+x.d+'</span><span class="h">'+tx(x.hl)+(i===S.today?'<br><button class="lnk rl" onclick="event.stopPropagation();E.read('+i+')">'+ic('newspaper','sm')+T('睇 Forbes 原文','Read the article on Forbes')+'</button> <a class="lnk fbx" href="https://www.forbes.com/?utm_source=axiom&amp;utm_medium=midterm-tracker&amp;utm_campaign=forbes-article" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+T('喺 Forbes.com 打開 ↗','Open on Forbes.com ↗')+'</a>':'')+'</span><span class="s">'+stateLabel(i)+'</span></div>'}).join('');
+ return '<div class="news">'+rows+'</div><div class="dock"><div class="in">'+P(T('讀今日報道',"Read today's article"),'E.open('+S.today+')','newspaper')+'</div></div>'}
+function tabCard(){const k=nextCell();
+ const cells=S.b.map((x,i)=>{let c='cell',t;if(i>S.today){c+=' fut';t=i===S.today+1?T('聽日','Tmrw'):x.d.split(' ')[0]}
+  else if(revealed(i)){if(x.pick){c+=x.pick===x.res?' hit':' miss';t=ic(x.pick===x.res?'check':'x','sm')+PK(x.pick)}else t=T('冇填','Missed')}
+  else if(x.pick){c+=' pk';t=PK(x.pick)}else t=i===S.today?T('今日','Today'):T('冇填','Missed');
+  if(i===S.today)c+=' tod';return '<button class="'+c+'" '+(i>S.today?'disabled':'onclick="E.open('+i+')"')+'><span class="n">'+(i+1)+'</span>'+t+'</button>'}).join('');
+ const rc=S.chg.length?S.chg.map(c=>'<div class="row">'+T('第 '+(c.by+1)+' 篇：','Article '+(c.by+1)+': ')+tx(S.b[c.by].hl)+'<br><b>'+T('第 '+(c.cell+1)+' 格由 '+PK(c.from)+' 改做 '+PK(c.to),'Cell '+(c.cell+1)+' changed from '+PK(c.from)+' to '+PK(c.to))+'</b></div>').join(''):'<div class="row" style="color:var(--dim)">'+T('未有改判','No changes yet')+'</div>';
+ return '<div class="cardg">'+cells+'</div><div class="cnt"><div><b>'+filled()+'/'+opened()+'</b><span>'+T('已填','Called')+'</span></div><div><b>'+hits()+'/'+revN()+'</b><span>'+T('揭曉咗中','Right so far')+'</span></div></div>'+
+ '<div class="sec" style="font-size:15px"><span>'+T('令你改判嘅文章','Articles that changed your call')+'</span></div><div class="rc">'+rc+'</div>'+regCard()+
+ '<div class="dock"><div class="in">'+(k>=0?P(T('填第 '+(k+1)+' 格','Call cell '+(k+1)),'E.open('+k+')'):P(T('讀今日報道',"Read today's article"),'E.open('+S.today+')','newspaper'))+'</div></div>'}
+function tabStand(){if(!S._e6){track('E6','睇排名','Standing viewed');S._e6=1}
+ const n=S.b.filter(x=>x.pick).length,r=rank();
+ const W=350,H=110,mu=.9,sd=.5,xmax=2.5;let pts=[];for(let k=0;k<=50;k++){const v=k/50*xmax;pts.push([k/50*W,H-8-Math.exp(-((v-mu)**2)/(2*sd*sd))*(H-24)])}
+ const sc=score(),xs=Math.min(sc/xmax,1)*W,yv=H-8-Math.exp(-((sc-mu)**2)/(2*sd*sd))*(H-24),cutx=Math.min((mu+1.04*sd)/xmax,1)*W;
+ const svg='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" style="width:100%;height:120px"><path d="M'+pts.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' L')+'" fill="none" style="stroke:var(--dim)" stroke-width="1.5"/><line x1="0" y1="'+(H-8)+'" x2="'+W+'" y2="'+(H-8)+'" style="stroke:var(--hair)"/>'+(S.rev?'<line x1="'+cutx+'" y1="4" x2="'+cutx+'" y2="'+(H-8)+'" style="stroke:var(--ink)" stroke-dasharray="4 3"/>':'')+(n?'<circle cx="'+xs+'" cy="'+yv+'" r="6" style="fill:var(--ink)"/>':'')+'</svg>';
+ const inCut=r<=CUT;
+ return '<div class="rank"><div class="bigno">'+(okR()?hits()+'/'+revN():'—')+'</div><div class="beat10'+(okR()?'':' q')+'">'+(okR()?T('同其他人比較（示例）<br><span class="meta">揭曉咗 '+revN()+' 個，中 '+hits()+' 個</span>','Compared with others (example)<br><span class="meta">Revealed '+revN()+', right '+hits()+'</span>'):(n&&!S.b.some((x,i)=>x.pick&&revealed(i))?T('已出 call · 等揭曉','Called · waiting for reveal'):T('填夠 3 格、有一格揭曉先見到','Make 3 calls and get 1 revealed to see this')))+'</div></div>'+
+ '<div class="body" style="margin-top:6px">'+T('時間加權估中率 · 早出 call 分多啲','Time-weighted accuracy · earlier calls score more')+'</div>'+
+ '<div class="meta" style="margin-top:4px">'+T('揭曉咗 '+revN()+' 個，中 '+hits()+' 個 · 其餘 3 Nov 揭曉','Revealed '+revN()+', right '+hits()+' · rest on 3 Nov')+'</div>'+
+ '<details class="info"><summary>ⓘ '+T('分數分佈（示例）','Score spread (example)')+'</summary><div class="curve">'+svg+'<div class="meta" style="display:flex;justify-content:space-between"><span>'+T('分低','Low')+'</span>'+(n?'<span style="color:var(--ink)">'+T('你','You')+'</span>':'')+'<span>'+T('分高','High')+'</span></div></div></details>'+
+ (S.rev?'<div class="cut'+(inCut?' in':'')+'"><div class="sec" style="margin-top:0"><span>'+T('入唔入季榜','Season board?')+'</span></div><div class="picked" style="font-size:22px">'+(inCut?T('入咗季榜','You made the season board'):T('未入季榜','Not on the season board'))+'</div><div class="meta" style="margin-top:4px">'+T('季榜線：第 '+fmt(CUT)+' 名','Cut line: #'+fmt(CUT))+'</div></div>':'')+
+ '<div class="meta" style="margin-top:18px">'+T('同分：早出 call 嘅排前','Ties: the earlier call ranks higher')+'</div>'+regCard()+
+ '<div class="dock"><div class="in">'+P(T('讀今日報道',"Read today's article"),'E.open('+S.today+')','newspaper')+'</div></div>'}
+function bars(){let h='';for(let j=0;j<opened();j++)h+='<i class="'+(j<=S.i?'on':'')+'"></i>';return '<div class="bars">'+h+'</div>'}
+V.deck=()=>{const s=S.i,x=S.b[s];if(!S._e2){track('E2','開文章頁','Article slide opened');S._e2=1}
+ const late=s<S.today&&!revealed(s)&&!x.pick;
+ let body='<div class="bign">0'+(s+1)+'</div><div class="kick">Forbes · '+x.d+(s===S.today?' · '+T('今日','Today'):'')+'</div><div class="hl1">'+tx(x.hl)+'</div><div class="dek">'+tx(x.dek)+'</div>'+
+  (x.read?'<div class="rd"><span class="chip">'+ic('check','sm')+T('讀咗','Read')+'</span></div>':'');
+ if(x.rel!=null){const t=S.b[x.rel];
+  if(t.pick&&!revealed(x.rel)){if(t.changed&&S.chg.some(c=>c.cell===x.rel&&c.by===s))body+='<div class="evb"><div class="t">'+ic('lock','sm')+' '+T('第 '+(x.rel+1)+' 格改咗做 '+PK(t.pick)+'，揭曉前鎖','Cell '+(x.rel+1)+' is now '+PK(t.pick)+'. Locked till reveal')+'</div></div>';
+   else if(t.changed)body+='<div class="evb"><div class="t">'+T('第 '+(x.rel+1)+' 格已經改過，鎖咗','Cell '+(x.rel+1)+' was changed. Locked')+'</div></div>';
+   else if(S.evDone&&S.evDone[s])body+='<div class="evb"><div class="t">'+T('你保持第 '+(x.rel+1)+' 格：'+PK(t.pick),'You kept cell '+(x.rel+1)+': '+PK(t.pick))+'</div></div>';
+   else if(x.read){const o=t.pick==='y'?'n':'y';body+='<div class="evb"><div class="t">'+T('新證據：第 '+(x.rel+1)+' 格你揀咗 '+PK(t.pick)+'。改唔改？','New evidence: cell '+(x.rel+1)+' is '+PK(t.pick)+'. Change it?')+'</div><div class="meta">'+T('改唔扣分，揭曉前鎖','No penalty. Locks before reveal')+'</div><div class="row">'+Sb(T('保持 ','Keep ')+PK(t.pick),"E.ev("+s+",'keep')")+Sb(T('改做 ','Change to ')+PK(o),"E.ev("+s+",'chg')")+'</div></div>'}
+   else body+='<div class="evb"><div class="meta" style="color:var(--body)">'+T('新證據：睇完全文先可以改第 '+(x.rel+1)+' 格','New evidence: read it to change cell '+(x.rel+1))+'</div></div>'}}
+ body+='<div class="q"><div class="qq">'+tx(x.q)+'</div>';
+ if(revealed(s))body+='<div class="picked rv">'+T('揭曉：','Result: ')+PK(x.res)+'</div><div class="prev'+(x.pick?(x.pick===x.res?' hit':' miss'):'')+'">'+(x.pick?(x.pick===x.res?T('你揀 '+PK(x.pick)+'，中咗','You said '+PK(x.pick)+'. Right'):T('你揀 '+PK(x.pick)+'，唔中','You said '+PK(x.pick)+'. Wrong')):T('你冇填呢格','You missed this one'))+'</div></div>';
+ else if(!x.pick)body+=(late?'<div class="late">'+T('遲咗出 call，分少啲','A late call scores less')+'</div>':'')+'<div class="yn">'+Sb(T('會','Yes'),"E.call("+s+",'y')")+Sb(T('唔會','No'),"E.call("+s+",'n')")+'</div></div>';
+ else body+='<div class="picked">'+T('你揀咗：','You said: ')+PK(x.pick)+'</div><div class="late">'+T('提早 '+held(s)+' 日出 call · 越早分越多（最多 '+full(s)+' 日）','Called '+held(s)+' days early · earlier scores more (max '+full(s)+')')+'</div>'+rankLine()+regCard()+'</div><div class="hook">'+ic('newspaper','sm')+'<span>'+tx(x.hook)+'</span></div>';
+ const nx=s<S.today?Lk(T('下一篇','Next article'),'E.next()','chevron-right'):Lk(T('返 Story','Back to Story'),"E.go('story')",'chevron-right');
+ return '<div class="deck"><div class="frame">'+bars()+'<div class="top"><button onclick="E.go(\'story\')" aria-label="close">'+ic('x')+'</button><div class="t">'+T('第 '+(s+1)+' / 5 篇','Article '+(s+1)+' of 5')+' · '+EX()+'</div>'+demoChip()+lang()+'</div><div class="slide" id="sl">'+body+'</div>'+demoHTML()+'<div class="dk">'+P(x.read?T('再睇全文','Read it again'):T('睇全文','Read full story'),'E.read('+s+')','newspaper')+'<div class="sub">'+nx+'</div></div></div></div>'};
+V.arrive=()=>{const s=S.arrive,x=S.b[s];
+ return '<div class="deck"><div class="frame"><div class="top"><button onclick="E.go(\'story\')" aria-label="close">'+ic('x')+'</button><div class="t">'+T('由第 '+(s+1)+' 篇入','From article '+(s+1))+' · '+EX()+'</div>'+demoChip()+lang()+'</div>'+demoHTML()+
+ '<div class="slide"><div class="kick">Forbes · '+x.d+'</div><div class="hl1">'+tx(x.hl)+'</div><div class="q"><div class="qq">'+tx(x.q)+'</div><div class="picked rv">'+T('已揭曉：','Revealed: ')+PK(x.res)+'</div><div class="prev">'+(x.pick?T('你揀咗 '+PK(x.pick),'You said '+PK(x.pick)):T('呢格已經揭曉，唔可以再填','This cell is revealed. It is closed'))+'</div></div></div>'+
+ '<div class="dk">'+P(T('讀今日報道',"Read today's article"),'E.open('+S.today+')','newspaper')+'</div></div></div>'};
+V.forbes=()=>{const x=S.b[S.fx];
+ return '<div class="top"><button onclick="E.back()" aria-label="back">'+ic('arrow-left')+'</button><div class="t">forbes.com · '+EX()+'</div>'+demoChip()+lang()+'</div>'+demoHTML()+
+ '<div class="fb"><div class="mast">Forbes</div><div class="kick" style="margin-top:20px">'+T('政治','Politics')+' · '+x.d+'</div><div class="hl1">'+tx(x.hl)+'</div><div class="dek">'+tx(x.dek)+'</div><div style="margin-top:14px"><a class="lnk fbx" href="https://www.forbes.com/?utm_source=axiom&amp;utm_medium=midterm-tracker&amp;utm_campaign=forbes-article" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開 ↗','Open on Forbes.com ↗')+'</a></div><div class="meta" style="margin-top:18px">'+T('示例預覽 · 真文章全文喺 Forbes.com 讀','Example preview · read the full story on Forbes.com')+'</div><div style="margin-top:12px">'+'<div class="ln"></div>'.repeat(3)+'<div class="ln" style="width:70%"></div><br>'+'<div class="ln"></div>'.repeat(4)+'<div class="ln" style="width:55%"></div></div></div>'+
+ '<div class="dock"><div class="in"><div class="meta" style="margin-bottom:10px;text-align:center">'+(revealed(S.fx)?T('呢格已揭曉','This cell is revealed'):x.pick?T('你揀咗：'+PK(x.pick)+'，返去睇','You said: '+PK(x.pick)+'. Go back to see'):T('呢篇有個 call，讀完返去出','This article has a call. Read, then call'))+'</div>'+P(x.pick||revealed(S.fx)?T('返去睇','Go back'):T('返去出 call','Back to make the call'),'E.back()','arrow-left')+'</div></div>'};
+function R(){document.getElementById('app').innerHTML=V[S.view]()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');document.querySelectorAll('#app a[href]').forEach(a=>{const h=a.getAttribute('href');if(h&&!/^(#|mailto:|javascript:)/.test(h)&&(/stories-r/i.test(h)||!/^https?:/i.test(h)))a.setAttribute('href',withTheme(h))});document.documentElement.lang=L==='zh'?'zh-HK':'en'}
+let tt;function toast(m){S.toast=m;clearTimeout(tt);tt=setTimeout(()=>{S.toast='';R()},1600)}
+const E={
+ go(v){S.view=v;R();scrollTo(0,0)},
+ tab(t){S.tab=t;S.view='story';R();scrollTo(0,0)},
+ open(i){if(i>S.today)return;S.i=i;S.view='deck';R();scrollTo(0,0)},
+ next(){if(S.i<S.today){S.i++;R()}else E.go('story')},
+ call(i,p){const x=S.b[i];if(x.pick||revealed(i)||i>S.today)return;x.pick=p;x.cd=S.today;track('E4','出 call '+(i+1)+'：'+PK(p),'Call '+(i+1)+': '+PK(p));R()},
+ ev(s,k){const t=S.b[S.b[s].rel];if(!S.b[s].read||t.changed||revealed(S.b[s].rel))return;
+  if(k==='chg'){const f=t.pick;t.pick=f==='y'?'n':'y';t.changed=true;S.chg.push({cell:S.b[s].rel,by:s,from:f,to:t.pick});track('U1','新證據：改第 '+(S.b[s].rel+1)+' 格','Evidence: changed cell '+(S.b[s].rel+1))}
+  else{S.evDone=S.evDone||{};S.evDone[s]=1;track('U0','新證據：保持','Evidence: kept')}R()},
+ read(i){S.fx=i;track('F1','撳睇全文 '+(i+1),'Tapped read full story '+(i+1));S.view='forbes';R();scrollTo(0,0)},
+ back(){const i=S.fx;S.b[i].read=true;S.i=i;track('E3','由文章返嚟 '+(i+1),'Back from article '+(i+1));S.view='deck';R()},
+ regOpen(){S.regForm=true;track('E5b','撳註冊保存','Tapped sign up');R()},
+ regDo(){S.guest=false;track('E6r','註冊完成','Signed up');toast(T('已保存','Saved'));R()},
+ regLater(){S.regLater=true;R()},
+ lang(l){L=l;syncURL();R()},
+ theme(t){TH=t==='light'?'light':'dark';applyTheme();syncURL();R()},
+ dp(){S.dpo=!S.dpo;R()},
+ arrive(n){const i=n-1;if(i<0||i>S.today)return;track('E0','由第 '+n+' 篇入','Arrived from article '+n);if(revealed(i)){S.arrive=i;S.view='arrive'}else{S.i=i;S.view='deck'}R()},
+ d(k){if(k==='rs'){const dm=S.demo;reset();S.demo=dm;S.dpo=true}
+  if(k==='tm'&&S.today<4){S.today++;S.i=S.today;track('D1','跳到聽日','Jumped a day')}
+  if(k==='f1')return E.arrive(1);if(k==='f2')return E.arrive(2);
+  if(k==='rv')S.rev=!S.rev;if(k==='in')S.guest=false;R()}};
+R();
+const fm=Q.match(/from=(\d)/);if(fm)E.arrive(+fm[1]);
+</script></body></html>

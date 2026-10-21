@@ -55,7 +55,7 @@ small{font-size:13px!important}
 .strip .c.spoon-pri{position:relative;border-color:var(--ink)}
 .call-row{display:grid;grid-template-columns:1fr;gap:12px;margin-top:8px}
 @media(min-width:360px){.call-row.with{grid-template-columns:1fr}}
-</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+.sp{display:inline-block;width:14px}</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=(Q.match(/theme=(light|dark)/)||[])[1]||'light';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'dark');applyTheme();
 const syncURL=()=>{const u=new URL(location.href);u.searchParams.set('lang',L==='zh'?'zh':'en');u.searchParams.set('theme',TH==='dark'?'dark':'light');history.replaceState(null,'',u.pathname+u.search+u.hash)};
@@ -64,7 +64,7 @@ const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracke
 const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
-const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
@@ -113,7 +113,7 @@ function strip(){
  return h+'</div><p class="meta" style="margin-top:8px">'+T('每句都會打開 Forbes 全文','Each line opens the full story on Forbes')+'</p></div>';
 }
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">'+T('聯儲局：減息','The Fed: rate cuts')+'</div><div class="h1">'+T('議息前夕：市場押注會唔會再減？','Ahead of the meeting: will markets get another cut?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
+ h+='<div class="kick">'+T('聯儲局：減息','The Fed: rate cuts')+'</div><div class="h1">'+T('議息前夕：市場押注會唔會再減？','Ahead of the meeting: will markets get another cut?')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>';
  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today’s question')+'</span>'+'</div><div class="qq">'+T('Fed 10 月 29 日會唔會減息？','Will the Fed cut on Oct 29?')+'</div>';
  h+=strip();
  if(!S.pick)h+=YN();

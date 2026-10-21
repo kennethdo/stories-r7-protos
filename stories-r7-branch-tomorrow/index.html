@@ -55,7 +55,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{colo
 .br .lnk{font-size:13px}
 .br.on .lnk{color:var(--ink)}
 .face .yn{margin-top:auto}
-</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+.sp{display:inline-block;width:14px}</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=/theme=light/.test(Q)?'light':'dark';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
 const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='light'?u.searchParams.set('theme','light'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
@@ -64,7 +64,7 @@ const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracke
 const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
-const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
@@ -81,9 +81,9 @@ const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 const BR=()=>({y:[T('如果係會，聽日問：','If Will, tomorrow asks: '),T('新城市會唔會喺亞洲？','Will the new city be in Asia?'),T('跟進：NFL 點揀下一個海外城市','Follow-up: how the NFL picks its next city')],
  n:[T('如果係唔會，聽日問：','If Won\'t, tomorrow asks: '),T('球員工會會唔會公開反對加海外場？','Will the players\' union publicly oppose more overseas games?'),T('跟進：球員工會同聯盟嘅海外賽角力','Follow-up: union vs league on overseas games')]});
 function line(k){const b=BR()[k],on=S.res===k;
- return '<div class="br '+(on?'on':'off')+'"><div class="if">'+b[0]+(on?'<span class="tag">'+T('聽日 22 Oct 嘅題','Tomorrow, 22 Oct')+'</span>':' · '+T('冇開','Not opened'))+'</div><div class="tq">'+b[1]+'</div><div class="fa"><span>'+b[2]+'</span>'+FL()+'</div></div>'}
+ return '<div class="br '+(on?'on':'off')+'"><div class="if">'+b[0]+(on?'<span class="tag">'+T('聽日 22 Oct 嘅題','Tomorrow, 22 Oct')+'</span>':T('（冇開）',' (not opened)'))+'</div><div class="tq">'+b[1]+'</div><div class="fa"><span>'+b[2]+'</span>'+FL()+'</div></div>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">'+T('NFL：海外賽','NFL: overseas games')+'</div><div class="h1">'+T('NFL 老闆今日開會，傳 2027 年再加海外主場','NFL owners meet today; another overseas home city floated for 2027')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
+ h+='<div class="kick">'+T('NFL：海外賽','NFL: overseas games')+'</div><div class="h1">'+T('NFL 老闆今日開會，傳 2027 年再加海外主場','NFL owners meet today; another overseas home city floated for 2027')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>';
  h+='<div class="fork"><span class="n">21</span><span>'+T('今日','Today')+'</span><span class="ln"></span><span>'+(S.rev?T('聽日開咗「'+(S.res==='y'?'亞洲':'工會')+'」線','Tomorrow: the '+(S.res==='y'?'Asia':'union')+' line'):T('聽日開邊條線？','Which line opens tomorrow?'))+'</span><span class="n f">22</span></div>';
  const front='<div class="face fr"><div class="cd"><span>'+T('今日一問','Today\'s question')+'</span>'+'</div><div class="qq">'+T('NFL 會唔會宣布 2027 年加一個新海外城市？','Will the NFL announce a new overseas city for 2027?')+'</div>'+
   (S.pick?'<div class="you"><span class="meta">'+T('你嘅 call','Your call')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':T('，等緊揭曉',', waiting for the reveal'))+'</span></div><div class="hint">'+T('聽日有兩條可能嘅問題，揭曉結果決定開邊條。','Two possible questions for tomorrow. The reveal decides which one opens.')+'</div>':
@@ -95,7 +95,7 @@ function V(){let h=hdr('Forbes Predict');
  h+='<div class="card3'+(S.rev&&!S.noFl?' fl':'')+'" id="card"><div class="inner">'+front+back+'</div></div>';
  if(!S.pick)h+='<div class="meta" style="margin-top:10px">'+T('撳一下就出 call，之後就見到其他讀者點揀。','One tap makes your call. Then you see how other readers called it.')+'</div>';
  else{const mine=S.pick==='y'?CROWD:100-CROWD;
-  h+='<div class="crowd"><div class="split"><i style="width:'+CROWD+'%"></i></div><div class="row"><span>'+T('會','Will')+' '+CROWD+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+N+T(' 人',' readers')+'</span><span>'+T('唔會','Won\'t')+' '+(100-CROWD)+'%</span></div></div>';
+  h+='<div class="crowd"><div class="split"><i style="width:'+CROWD+'%"></i></div><div class="row"><span>'+T('會','Will')+' '+CROWD+'%</span><span>'+T('同你一樣 '+mine+'%，共 '+N+' 位讀者','Same as you: '+mine+'% of '+N+' readers')+'</span><span>'+T('唔會','Won\'t')+' '+(100-CROWD)+'%</span></div></div>';
   if(!S.rev)h+='<div class="demo"><span class="meta">'+T('預覽揭曉','Preview the reveal')+'</span><button class="btn-s sm" id="btn-reveal" onclick="E.reveal()">'+T('預覽揭曉','Preview the reveal')+'</button></div>';
   else h+='<div class="demo"><span class="meta">'+T('睇另一條問題','See the other question')+'</span><button class="btn-s sm" onclick="E.swap()">'+T('睇另一個結果','Try the other result')+'</button></div>';
   if(!S.rev)h+='<div class="score"><div><b style="font-size:18px">'+T('等緊揭曉','Waiting for the reveal')+'</b><span>'+T('揭曉之後先有分數','Your score appears after the reveal')+'</span></div><div><span style="font-size:14px">'+T('一日一題，聽日嘅題目唔影響分數。','One question a day. Tomorrow’s question doesn’t change your score.')+'</span></div></div>';

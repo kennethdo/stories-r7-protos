@@ -89,7 +89,7 @@ const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracke
 const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
-const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
 const HEAT_BASE=247;
@@ -158,7 +158,7 @@ function V(){let h=hdr('Forbes Predict');
  h+='<div class="kick">'+T('比特幣十月路線','Bitcoin in October')+'</div><div class="h1">'+T('比特幣 ETF 資金回流，$70k 係咪下一站？','ETF money flows back into Bitcoin — is $70k next?')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'</div>';
  h+=heat();
  h+=artStrip();
- h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('故事路線圖','Story route')+'</b> · '+T('之前 '+PAST().length+' 日','Previous '+PAST().length+' days')+'</span>'+'</div>'+route()+'</div>';
+ h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('故事路線圖','Story route')+'</b><span class="sp"></span>'+T('之前 '+PAST().length+' 日','Previous '+PAST().length+' days')+'</span>'+'</div>'+route()+'</div>';
  h+=pastPosts();
  h+=FOOT();
  h+=dockToday();

@@ -64,7 +64,7 @@ small{font-size:13px!important}
 .spoon{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);z-index:8;max-width:280px;padding:8px 12px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:normal;text-align:center;cursor:pointer}
 .spoon:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink)}
 @media(min-width:520px){.spoon{display:none}}
-</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+.sp{display:inline-block;width:14px}</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=/theme=dark/.test(Q)?'dark':'light';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
 const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='dark'?u.searchParams.set('theme','dark'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
@@ -73,7 +73,7 @@ const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracke
 const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
-const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
@@ -118,11 +118,11 @@ function card(){if(!S.pick)return '<div class="table"><div class="ghost">'+T('�
  }
  const ok=S.pick===S.res;
  return '<div class="table"><div class="fc clip flipped" id="fc">'+
- '<a class="sd fr" href="'+FORBES+'" target="_blank" rel="noopener"><span class="tag">'+T('結果','Result')+'</span><div class="hl">'+FU()+'</div><div class="meta" style="color:inherit;opacity:.8;margin-top:6px">'+T('跟進報道','The follow-up')+'</div><div class="big">'+PK(S.res)+'</div><div class="bot"><span>'+T('結果係'+PK(S.res)+'。你嘅 call：'+PK(S.pick),'Resolved '+PK(S.res)+'. Your call: '+PK(S.pick))+(ok?' · +1':' · 0')+'</span><span class="u">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</span></div></a></div></div>'}
+ '<a class="sd fr" href="'+FORBES+'" target="_blank" rel="noopener"><span class="tag">'+T('結果','Result')+'</span><div class="hl">'+FU()+'</div><div class="meta" style="color:inherit;opacity:.8;margin-top:6px">'+T('跟進報道','The follow-up')+'</div><div class="big">'+PK(S.res)+'</div><div class="bot"><span>'+T('結果係'+PK(S.res)+'。你嘅 call：'+PK(S.pick),'Resolved '+PK(S.res)+'. Your call: '+PK(S.pick))+T(ok?'。得分：+1':'。得分：0',ok?'. Points: +1':'. Points: 0')+'</span><span class="u">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</span></div></a></div></div>'}
 function hand(){if(!S.rev)return '';const m=[[T('會','Will'),'-6deg',''],[T('唔會','Won\'t'),'4deg',''],['?','-3deg',' d']];
  return '<div class="hand">'+m.map((x,i)=>x[2]?'<span class="mini d" style="--r:'+x[1]+'">?<small>24 Oct</small></span>':'<a class="mini" style="--r:'+x[1]+'" href="'+FORBES+'" target="_blank" rel="noopener" aria-label="'+T('喺 Forbes 讀','Read on Forbes')+'">'+x[0]+'<small>'+(i?'16':'12')+' Oct</small></a>').join('')+'</div><div class="meta" style="text-align:center;margin-top:8px">'+T('你喺呢個 Story 嘅其他剪報','Your other clippings in this Story')+'</div>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">'+T('GTA VI：出街倒數','GTA VI: the countdown')+'</div><div class="h1">'+T('Take-Two 季績前夕：GTA VI 會唔會再延？','Ahead of Take-Two earnings: will GTA VI slip again?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
+ h+='<div class="kick">'+T('GTA VI：出街倒數','GTA VI: the countdown')+'</div><div class="h1">'+T('Take-Two 季績前夕：GTA VI 會唔會再延？','Ahead of Take-Two earnings: will GTA VI slip again?')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>';
  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s question')+'</span>'+'</div><div class="qq">'+T('GTA VI 會唔會照 11 月 19 日出？','Will GTA VI ship on Nov 19?')+'</div>';
  if(!S.pick)h+=YN()+card();
  else{h+=YOU()+CROWDV(CROWD,N,S.pick)+card();

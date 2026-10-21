@@ -254,7 +254,7 @@ function fan(i){const c=crowd(i),x=S.b[i],mine=x.pick==='y'?c:100-c;
 function after(i){const c=crowd(i),x=S.b[i],mine=x.pick==='y'?c:100-c;
  return '<div class="crowd" data-crowd><div class="sec2">'+T('其他讀者點揀','How readers called it')+'</div><div class="split"><i style="width:'+c+'%"></i></div><div class="meta" style="display:flex;justify-content:space-between;margin-top:6px"><span>'+T('會','Will')+' '+c+'%</span><span>'+T('唔會','Won\'t')+' '+(100-c)+'%</span></div><div class="pk">'+T('同你揀一樣：<b>'+mine+'%</b>','Same call as you: <b>'+mine+'%</b>')+'</div></div>'}
 V.art=()=>{const i=S.art,x=S.b[i],c=!!x.pick,late=!c&&i<todayI(),H=c?hot(i):[];
- const ss=x.ss.map((s,k)=>{const h=H.find(z=>z[0]===k),me=x.reason===k;return '<p class="s'+(S.qm&&c?' pickable':'')+(me?' mine':'')+(h?' hot':'')+'"'+(S.qm&&c?' onclick="E.reason('+k+')"':'')+(h?' data-hot':'')+'>'+tx(s)+(h||me?'<span class="qt">'+(me?ic('quote','sm')+T('你嘅理由','Your reason'):'')+(h?(me?' · ':'')+T(h[1]+' 人引用',h[1]+' quoted'):'')+'</span>':'')+'</p>'}).join('');
+ const ss=x.ss.map((s,k)=>{const h=H.find(z=>z[0]===k),me=x.reason===k;return '<p class="s'+(S.qm&&c?' pickable':'')+(me?' mine':'')+(h?' hot':'')+'"'+(S.qm&&c?' onclick="E.reason('+k+')"':'')+(h?' data-hot':'')+'>'+tx(s)+(h||me?'<span class="qt">'+(me?ic('quote','sm')+T('你嘅理由','Your reason'):'')+(h?(me?T('，',', '):'')+T(h[1]+' 人引用',h[1]+' quoted'):'')+'</span>':'')+'</p>'}).join('');
  const lines=k=>'<div class="ln"></div><div class="ln" style="width:'+k+'%"></div>';
  let dock;
  if(!c&&revealed(i))dock='<div class="meta">'+T('已揭曉，唔可以再出 call。','Revealed. Calls are closed.')+'</div>';

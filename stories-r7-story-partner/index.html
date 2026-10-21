@@ -81,7 +81,7 @@ small{font-size:13px!important}
 .climb .st.wait{border-style:dashed}
 .climb .labrow{display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--mute)}
 .prog .chip.on{animation:soft-pulse 1.6s ease infinite}
-</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+.sp{display:inline-block;width:14px}</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=(Q.match(/theme=(light|dark)/)||[])[1]||'light';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'dark');applyTheme();
 const syncURL=()=>{const u=new URL(location.href);u.searchParams.set('lang',L==='zh'?'zh':'en');u.searchParams.set('theme',TH==='dark'?'dark':'light');history.replaceState(null,'',u.pathname+u.search+u.hash)};
@@ -90,7 +90,7 @@ const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracke
 const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
-const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
@@ -147,7 +147,7 @@ function progress(){
  // light path of stops (route-map vibe); big count only after reveal
  const done=DAYS.reduce((a,x,i)=>a+((x.ok===true||(i===4&&S.rev))?1:0),0);
  const pct=Math.round((done/Math.max(1,DAYS.length-1))*100);
- let h='<div class="prog" id="prog"><div class="meta">'+T('你同 ','You + ')+name+' · '+T('故事拍檔','story partners')+'</div>';
+ let h='<div class="prog" id="prog"><div class="meta">'+T('你同 '+name+' 係故事拍檔','You and '+name+' are story partners')+'</div>';
  if(S.rev)h+='<div class="big">'+n+' <span style="font-size:14px;color:var(--mute);font-family:var(--detail);font-weight:400">'+T('次一齊揭曉','reveals together')+'</span></div>';
  else if(S.pick)h+='<div class="big" style="font-size:18px">'+T('等緊揭曉','Waiting for the reveal')+'</div>';
  else h+='<div class="big" style="font-size:18px">'+T('準備一齊出 call','Ready to call together')+'</div>';
@@ -166,10 +166,10 @@ function progress(){
 function artFirst(){
  if(!S.partner)return '';
  if(S.read)return '';
- return '<div class="art-first"><div class="meta">'+T('先讀報道','Read the story first')+'</div><div class="t">'+T('比特幣現貨 ETF：資金流會唔會連續第三週淨流入？','Bitcoin spot ETFs: a third straight week of net inflows?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+FL()+'</div><button class="btn-s sm" style="margin-top:12px;width:100%" onclick="E.read()">'+T('我睇完今日報道','I read today’s story')+'</button></div>';
+ return '<div class="art-first"><div class="meta">'+T('先讀報道','Read the story first')+'</div><div class="t">'+T('比特幣現貨 ETF：資金流會唔會連續第三週淨流入？','Bitcoin spot ETFs: a third straight week of net inflows?')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct<span class="sp"></span>'+FL()+'</div><button class="btn-s sm" style="margin-top:12px;width:100%" onclick="E.read()">'+T('我睇完今日報道','I read today’s story')+'</button></div>';
 }
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">'+T('比特幣：資金流','Bitcoin: fund flows')+'</div><div class="h1">'+T('現貨 ETF 連續兩週淨流入之後','After two straight weeks of spot-ETF net inflows')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
+ h+='<div class="kick">'+T('比特幣：資金流','Bitcoin: fund flows')+'</div><div class="h1">'+T('現貨 ETF 連續兩週淨流入之後','After two straight weeks of spot-ETF net inflows')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>';
  h+=partnerPick()+progress()+artFirst();
  if(S.partner&&S.read){
   h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today’s question')+'</span>'+'</div><div class="qq">'+T('本週現貨 ETF 會唔會再錄得淨流入？','Will spot ETFs post another week of net inflows?')+'</div>';

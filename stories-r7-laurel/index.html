@@ -67,7 +67,7 @@ const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracke
 const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
-const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Will'):T('唔會','Won\'t');
 const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</a>';
@@ -103,7 +103,7 @@ let S;
 const LSVG=(z)=>'<svg class="lsvg" viewBox="0 0 24 24" width="'+z+'" height="'+z+'" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 20c-3-2-5-5.5-5-9.5"/><path d="M16 20c3-2 5-5.5 5-9.5"/><path d="M4.2 14.5c1.6-.2 2.8.6 3.2 2" /><path d="M3.3 10.8c1.5.1 2.6 1.1 2.8 2.5"/><path d="M3.6 7c1.3.4 2.1 1.6 2 3"/><path d="M19.8 14.5c-1.6-.2-2.8.6-3.2 2"/><path d="M20.7 10.8c-1.5.1-2.6 1.1-2.8 2.5"/><path d="M20.4 7c-1.3.4-2.1 1.6-2 3"/><circle cx="12" cy="10" r="3.2" fill="currentColor" fill-opacity=".25"/><path d="M10.5 13l-1 6 2.5-1.4 2.5 1.4-1-6"/></svg>';
 function reset(){S={spoonOff:{},pick:null,at:null,rev:false,res:'n',guest:true,regOpen:false,later:false,toast:'',read:[false,false,false],won:false}}reset();
 const CROWD=71,N='3,046',NEED=3;
-const CH=()=>[[T('Chiefs 開季 7-0，Mahomes 數據點解反而跌','Chiefs start 7-0 — why Mahomes\' numbers dipped'),'Ch.1 · 3 Oct'],[T('Bills 防守升級：今季最大變數','Bills\' defense upgrade: the season\'s swing factor'),'Ch.2 · 10 Oct'],[T('Chiefs 對 Bills：五個數字睇今個禮拜','Chiefs vs Bills: five numbers for Sunday'),'Ch.3 · 21 Oct']];
+const CH=()=>[[T('Chiefs 開季 7-0，Mahomes 數據點解反而跌','Chiefs start 7-0 — why Mahomes\' numbers dipped'),'Chapter 1, 3 Oct'],[T('Bills 防守升級：今季最大變數','Bills\' defense upgrade: the season\'s swing factor'),'Chapter 2, 10 Oct'],[T('Chiefs 對 Bills：五個數字睇今個禮拜','Chiefs vs Bills: five numbers for Sunday'),'Chapter 3, 21 Oct']];
 const nread=()=>S.read.filter(Boolean).length;
 const LAU=(pop)=>'<span class="lau'+(pop?' pop':'')+'">'+LSVG(16)+' '+T('NFL 熟客','NFL regular')+'</span>';
 function ring(){const n=nread(),C=2*Math.PI*30;return '<div class="ring"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="var(--split-track)" stroke-width="6"/><circle cx="36" cy="36" r="30" fill="none" stroke="var(--ink)" stroke-width="6" stroke-linecap="round" stroke-dasharray="'+C+'" stroke-dashoffset="'+(C*(1-n/NEED))+'" style="transition:stroke-dashoffset .5s"/></svg><div class="c">'+(n>=NEED?LSVG(30):n+'/'+NEED)+'</div></div>'}
@@ -122,7 +122,7 @@ function V(){let h=hdr('Forbes Predict');
  h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('熟客桂冠','Regular\'s laurel')+'</b></span>'+'</div>';
  h+='<div class="meta" style="margin:8px 0 10px;font-size:15px;color:var(--ink);font-weight:600">'+T('讀晒三章就攞到','Read all three chapters to earn it')+'</div>';
  h+='<div class="lwrap">'+ring()+'<div class="body" style="font-size:14px">'+(S.won?T('你讀晒 '+NEED+' 章，桂冠已經掛喺你檔案同 Story 頂。<b style="color:var(--ink)">徽章唔影響分數</b>。','You read all '+NEED+' chapters. The laurel now shows on your Profile and at the top of the Story. <b style="color:var(--ink)">Badges don\'t change your score.</b>'):T('喺 Forbes.com 讀呢個 Story 嘅 '+NEED+' 章示例文章，就攞到熟客桂冠。<b style="color:var(--ink)">徽章唔計分。</b>','Read this Story\'s '+NEED+' chapters on Forbes.com to earn the laurel. <b style="color:var(--ink)">Badge adds no points.</b>'))+'</div></div>';
- h+='<div style="margin-top:6px">'+CH().map((c,i)=>'<a class="ch'+(S.read[i]?' rd':'')+'" href="'+FORBES+'" target="_blank" rel="noopener" onclick="E.rd('+i+')"><span class="n">'+(S.read[i]?'✓':i+1)+'</span><div class="m"><div class="t1">'+c[0]+'</div><div class="t2">'+c[1]+(S.read[i]?' · '+T('讀咗','read'):'')+'</div><div class="t2"><span class="go">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</span></div></div></a>').join('')+'</div></div>';
+ h+='<div style="margin-top:6px">'+CH().map((c,i)=>'<a class="ch'+(S.read[i]?' rd':'')+'" href="'+FORBES+'" target="_blank" rel="noopener" onclick="E.rd('+i+')"><span class="n">'+(S.read[i]?'✓':i+1)+'</span><div class="m"><div class="t1">'+c[0]+'</div><div class="t2">'+c[1]+(S.read[i]?T('，讀咗',', read'):'')+'</div><div class="t2"><span class="go">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</span></div></div></a>').join('')+'</div></div>';
  h+=FOOT();
  h+=S.rev?DOCK(T('跟進報道','The follow-up'),'Forbes, 27 Oct',T('喺 Forbes 讀跟進報道','Read the follow-up on Forbes'),['lau-fu',T('揭曉之後，喺 Forbes 讀跟進報道','After the reveal, read the follow-up on Forbes')]):DOCK(T('今日 Forbes 報道','Today’s Forbes story'),'Forbes, 21 Oct');
  S.justWon=false;return h}

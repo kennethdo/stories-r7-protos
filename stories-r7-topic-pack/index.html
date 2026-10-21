@@ -287,14 +287,14 @@ function render(){
  $('resolved').innerHTML=TMR?'<div class="resolved"><p class="sm mute">'+tt('resT')+'</p><p class="r">'+(L==='zh'?'聽日會唔會再有人堵路？':'Will anyone block roads again tomorrow?')+'<br>'+tt('resR')+'</p><button class="link" data-open="a5">'+tt('resL')+'</button></div>':'';
 }
 function openSheet(k){$('sk').textContent='#'+kw(k);
- $('slist').innerHTML=K[k][2].map(id=>'<div class="item" data-open="'+id+'" style="cursor:pointer">'+A[id][L]+'<small>Forbes · '+A[id].t+'</small></div>').join('');
+ $('slist').innerHTML=K[k][2].map(id=>'<div class="item" data-open="'+id+'" style="cursor:pointer">'+A[id][L]+'<small>Forbes, '+A[id].t+'</small></div>').join('');
  const more=[...new Set(K[k][2].flatMap(id=>A[id].k))].filter(x=>x!==k).slice(0,4);
  $('smore').innerHTML=more.map(x=>'<button class="chip" data-kw="'+x+'">#'+kw(x)+'</button>').join('');
  $('sheet').classList.add('open');$('scrim').classList.add('open');}
 function closeSheet(){$('sheet').classList.remove('open');$('scrim').classList.remove('open');}
 function openReader(id){closeSheet();const a=A[id];const b=BODY[L];
  const showHl=!!S.call&&id===todayA;
- $('rbody').innerHTML='<p class="sm mute" style="margin-top:16px">Forbes · '+a.t+'</p><h5>'+a[L]+'</h5><p>'+b[0]+'</p><p>'+(showHl?'<mark>'+b[1]+'</mark><span class="hl">'+tt('hl')+'</span>':b[1])+'</p><p>'+b[2]+'</p><p class="sm mute" style="margin-top:24px">'+tt('rdone')+'</p>';
+ $('rbody').innerHTML='<p class="sm mute" style="margin-top:16px">Forbes, '+a.t+'</p><h5>'+a[L]+'</h5><p>'+b[0]+'</p><p>'+(showHl?'<mark>'+b[1]+'</mark><span class="hl">'+tt('hl')+'</span>':b[1])+'</p><p>'+b[2]+'</p><p class="sm mute" style="margin-top:24px">'+tt('rdone')+'</p>';
  $('reader').classList.add('open');window.scrollTo(0,0);
  if(!S.readIds[id]){S.readIds[id]=1;S.chap++;}
  if(S.call)S.readAfter=true;}

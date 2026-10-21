@@ -120,34 +120,34 @@ V.intro=()=>hdr()+'<div class="kick">'+T('簡報 · 21 Oct','Present · 21 Oct')
  '<div class="dock"><div class="in">'+P(T('開始示範','Start the demo'),"E.go('story')")+'</div></div>';
 V.story=()=>{const s=st();return hdr()+rail()+
  '<div class="story-sw">'+['mid','gta'].map(k=>'<button class="'+(S.sid===k?'on':'')+'" onclick="E.story(\''+k+'\')"><span class="n">'+tx(ST[k].n)+'</span><span class="u">'+tx(ST[k].u)+'</span></button>').join('')+'</div>'+
- why('story')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+tx(s.hl)+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct</div>'+
- '<div class="big">'+s.y+'%<small>'+T('會','Will')+'</small></div><div class="meta" style="margin-top:6px">'+s.n2+T(' 位讀者跟緊呢個 Story',' readers following this Story')+'</div>'+pfoot()+
- dock('story',T('6 日 · 今日開咗','Day 6 · today is open'),P(T('睇時間線','See the timeline'),"E.go('timeline')"),'story')};
+ why('story')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+tx(s.hl)+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct</div>'+
+ '<div class="big">'+s.y+'%<small>'+T(' 讀者話會',' of readers say Will')+'</small></div><div class="meta" style="margin-top:6px">'+s.n2+T(' 位讀者跟緊呢個 Story',' readers following this Story')+'</div>'+pfoot()+
+ dock('story',T('第 6 日，今日嘅問題開咗。','Day 6. Today’s question is open.'),P(T('睇返過去五日','See the last five days'),"E.go('timeline')"),'story')};
 V.timeline=()=>{const s=st();return hdr()+rail()+why('timeline')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+T('五日過去，今日到你','Five days in. Today is yours.')+'</div>'+
- '<div class="days">'+s.past.map(p=>'<div class="day'+(p[3]?'':' miss')+'"><span class="d">'+p[0]+'</span><span class="p">'+(p[3]?PK(p[3]):'–')+'</span></div>').join('')+
- '<div class="day tod"><span class="d">21 Oct</span><span class="p">'+(S.pick?PK(S.pick):T('今日','Today'))+'</span></div><div class="day fut"><span class="d">22 Oct</span><span class="p">'+T('聽日','Next')+'</span></div></div>'+
+ '<div class="days">'+s.past.map(p=>'<div class="day'+(p[3]?'':' miss')+'"><span class="d">'+p[0]+'</span><span class="p">'+(p[3]?PK(p[3]):T('冇 call','None'))+'</span></div>').join('')+
+ '<div class="day tod"><span class="d">21 Oct</span><span class="p">'+(S.pick?PK(S.pick):T('今日','Today'))+'</span></div><div class="day fut"><span class="d">22 Oct</span><span class="p">'+T('聽日','Tomorrow')+'</span></div></div>'+
  '<div class="past">'+s.past.slice().reverse().map(p=>'<div class="r"><span class="d">'+p[0]+'</span><span class="q">'+tx(p[1])+'</span><span class="s">'+(p[3]?(p[3]===p[2]?T('啱','Right'):T('錯','Wrong')):T('冇 call','No call'))+'</span></div>').join('')+'</div>'+pfoot()+
- dock('timeline',T('今日一題','Today’s question'),P(S.pick?T('睇大家點揀','See the crowd'):T('出今日嘅 call','Make today’s call'),S.pick?"E.go('crowd')":"E.go('call')"),'timeline')};
-V.call=()=>{const s=st();return hdr()+rail()+why('call')+'<div class="kick">'+T('今日 · 21 Oct','Today · 21 Oct')+'</div><div class="qq">'+tx(s.q)+'</div>'+
+ dock('timeline',T('今日一題','Today’s question'),P(S.pick?T('睇大家點揀','See the crowd'):T('出 call','Make your call'),S.pick?"E.go('crowd')":"E.go('call')"),'timeline')};
+V.call=()=>{const s=st();return hdr()+rail()+why('call')+'<div class="kick">'+T('今日一問','Today’s question')+'</div><div class="qq">'+tx(s.q)+'</div>'+
  '<div class="meta" style="margin-top:10px">'+T('出咗 call 先見到大家點揀。','The crowd shows after you call.')+'</div>'+
  '<div style="margin-top:22px">'+spoon('call')+'</div><div class="yn" style="margin-top:0"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Will')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','Won\'t')+'</button></div>'+
  '<div style="margin-top:18px">'+FL('call')+'</div>'+pfoot()};
 V.crowd=()=>{const s=st(),mine=S.pick==='y'?s.y:100-s.y;return hdr()+rail()+why('crowd')+'<div class="kick">'+tx(s.q)+'</div>'+
  '<div class="big">'+mine+'%<small>'+T('同你一樣','agree with you')+'</small></div>'+
  '<div class="split"><i style="width:'+s.y+'%"></i></div><div class="srow"><span>'+T('會','Will')+' '+s.y+'%</span><span>'+T('唔會','Won\'t')+' '+(100-s.y)+'%</span></div>'+
- '<div class="you">'+T('你揀咗 ','You said ')+'<b>'+PK(S.pick)+'</b> · '+S.at+' HKT · '+s.n2+T(' 人出咗 call',' calls')+'</div>'+pfoot()+
- dock('crowd',T('揭曉日之前都改唔到','Locked until the result'),P(T('睇 Forbes 點講','See what Forbes reports'),"E.go('hints')"),'crowd')};
+ '<div class="you">'+T('你嘅 call：','Your call: ')+'<b>'+PK(S.pick)+'</b>'+T('，'+S.at+' HKT。'+s.n2+' 位讀者出咗 call。',', '+S.at+' HKT. '+s.n2+' readers have called.')+'</div>'+pfoot()+
+ dock('crowd',T('你個 call 會保留到揭曉','Your call holds until the reveal'),P(T('睇 Forbes 點講','See what Forbes reports'),"E.go('hints')"),'crowd')};
 V.hints=()=>{const s=st();return hdr()+rail()+why('hints')+'<div class="kick">'+T('Forbes 報道','From Forbes')+'</div><div class="h1">'+T('出 call 之前，記者睇到啲咩','What the reporters are seeing')+'</div>'+
  '<div class="hints">'+s.hints.map(h=>'<a class="hint" href="'+fURL(h[0])+'" target="_blank" rel="noopener"><div class="k">'+tx(h[1])+'</div><div class="q">'+tx(h[2])+'</div><span class="go">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</span></a>').join('')+'</div>'+pfoot()+
- dock('hints',T('聽日 22 Oct 有新一題','New question 22 Oct'),P(T('保存我個 call','Save my call'),'E.save()'),'hints')};
+ dock('hints',T('22 Oct 有新一題','New question on 22 Oct'),P(T('保存你個 call','Save your call'),'E.save()'),'hints')};
 V.saved=()=>{const s=st();return hdr()+rail()+why('saved')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+T('已保存。聽日見。','Saved. See you tomorrow.')+'</div>'+
- '<div class="saved"><b>'+T('你揀咗 ','You said ')+PK(S.pick)+' · 21 Oct '+S.at+' HKT</b><span>'+T('22 Oct 新一題開咗會通知你','We’ll tell you when 22 Oct opens')+'</span></div>'+
- '<div class="days"><div class="day tod"><span class="d">21 Oct</span><span class="p">'+PK(S.pick)+'</span></div><div class="day fut"><span class="d">22 Oct</span><span class="p">'+T('聽日','Next')+'</span></div></div>'+pfoot()+
+ '<div class="saved"><b>'+T('你嘅 call：','Your call: ')+PK(S.pick)+T('，21 Oct '+S.at+' HKT',', 21 Oct '+S.at+' HKT')+'</b><span>'+T('22 Oct 新一題開咗就通知你','We’ll tell you when the 22 Oct question opens')+'</span></div>'+
+ '<div class="days"><div class="day tod"><span class="d">21 Oct</span><span class="p">'+PK(S.pick)+'</span></div><div class="day fut"><span class="d">22 Oct</span><span class="p">'+T('聽日','Tomorrow')+'</span></div></div>'+pfoot()+
  dock('saved',T('呢個 Story 嘅排名','This Story’s ranking'),P(T('睇 Top callers','See top callers'),"E.go('board')"),'saved')};
-V.board=()=>{const s=st();return hdr()+rail()+why('board')+'<div class="kick">Top callers · '+tx(s.n)+'</div><div class="h1">'+T('你排第 '+(s.board.findIndex(r=>r[0]==='@me')+1),'You’re #'+(s.board.findIndex(r=>r[0]==='@me')+1))+'</div>'+
+V.board=()=>{const s=st();return hdr()+rail()+why('board')+'<div class="kick">'+T(tx(s.n)+' Top callers','Top callers, '+tx(s.n))+'</div><div class="h1">'+T('你排第 '+(s.board.findIndex(r=>r[0]==='@me')+1),'You’re #'+(s.board.findIndex(r=>r[0]==='@me')+1))+'</div>'+
  '<div class="board">'+s.board.map((r,i)=>'<div class="row'+(r[0]==='@me'?' me':'')+'"><span class="n">'+(i+1)+'</span><span>'+(r[0]==='@me'?T('你','You'):r[0])+'</span><span class="sc">'+r[1]+'</span></div>').join('')+'</div>'+
  '<details class="more"><summary><span>'+T('更多 markets','More markets')+'</span><span>+</span></summary>'+(showNotes()?'<div class="why" style="margin:0 0 8px">Chris · no component soup</div>':'')+s.more.map(m=>'<div class="m"><b>'+tx(m[0])+'</b><span>'+T('會 ','Will ')+m[1]+'</span></div>').join('')+'</details>'+pfoot()+
- dock('board',T('22 Oct 再見','Back on 22 Oct'),P(T('返去 Story','Back to the Story'),"E.go('story')"),'board')};
+ dock('board',T('22 Oct 有新一題','Next question on 22 Oct'),P(T('返去 Story','Back to the Story'),"E.go('story')"),'board')};
 function R(){
  document.documentElement.setAttribute('data-theme',TH);document.documentElement.lang=L==='zh'?'zh-HK':'en';
  if(['crowd','hints','saved','board'].includes(S.step)&&!S.pick)S.step='call';

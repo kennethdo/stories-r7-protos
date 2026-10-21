@@ -1,432 +1,171 @@
 <!doctype html>
 <html lang="en" data-theme="light"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Stories R7 · Synth · one loop</title>
-<script>(function(){try{var p=new URLSearchParams(location.search);var t=(p.get('theme')||'light').toLowerCase();document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');var l=(p.get('lang')||'en').toLowerCase();document.documentElement.lang=l==='zh'?'zh-HK':'en'}catch(e){}})()</script>
+<title>Forbes Predict · Stories</title>
+<script>(function(){try{var p=new URLSearchParams(location.search);document.documentElement.setAttribute('data-theme',(p.get('theme')||'')==='dark'?'dark':'light');document.documentElement.lang=p.get('lang')==='zh'?'zh-HK':'en'}catch(e){}})()</script>
 <style>
-:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#888;--dim:#5c5c5c;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--surface-2:#1a1a1a;--btn:#ededed;--btn-ink:#000;--overlay:rgba(0,0,0,.72);--split-track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif;--accent-note:#ededed}
-[data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6f6f6f;--dim:#9a9a9a;--hair:#e6e6e6;--hs:#d4d4d4;--surface:#fafafa;--surface-2:#f0f0f0;--btn:#111;--btn-ink:#fff;--overlay:rgba(0,0,0,.35);--split-track:#e6e6e6;--accent-note:#111}
+:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#888;--dim:#5c5c5c;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--btn:#ededed;--btn-ink:#000;--track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
+[data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6f6f6f;--dim:#9a9a9a;--hair:#e6e6e6;--hs:#d4d4d4;--surface:#fafafa;--btn:#111;--btn-ink:#fff;--track:#e6e6e6}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font:15px/1.45 var(--detail);-webkit-font-smoothing:antialiased}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{color:inherit}
-.app{max-width:390px;margin:0 auto;min-height:100vh;position:relative;padding:0 20px 140px;overflow-x:hidden}
-.top{display:flex;align-items:center;gap:8px;height:52px;flex-wrap:wrap}
-.top .t{flex:1;font-size:12px;color:var(--mute);min-width:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{color:inherit;text-decoration:none}
+.app{max-width:390px;margin:0 auto;min-height:100vh;padding:0 20px 150px;overflow-x:hidden}
+.top{display:flex;align-items:center;gap:10px;height:52px}
+.top .t{flex:1;font-size:13px;font-weight:600;color:var(--ink);display:flex;gap:8px;align-items:center}
+.tag{font-size:11px;font-weight:500;color:var(--mute);border:1px solid var(--hs);border-radius:6px;padding:1px 6px}
 .sw{font-size:12px;color:var(--mute);display:flex;gap:4px;align-items:center}.sw b{color:var(--ink);font-weight:600}
-.sw button{position:relative;min-width:22px;min-height:32px;padding:0 4px}
+.sw button{position:relative;min-width:22px;min-height:32px;padding:0 3px}
 .sw button::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
-.ex{font-size:11px;color:var(--dim);letter-spacing:.02em}
-.kick{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:14px}
+.rail{display:flex;gap:4px;margin:4px 0 2px}.rail i{flex:1;height:3px;background:var(--hair);border-radius:2px}.rail i.on{background:var(--ink)}.rail i.done{background:var(--dim)}
+.kick{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-top:18px}
 .h1{font-family:var(--title);font-weight:600;letter-spacing:-.035em;font-size:28px;line-height:1.12;margin-top:8px}
-.meta{font-size:13px;color:var(--mute)}.body{color:var(--body);font-size:15px;line-height:1.5}
-.btn-p{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-weight:600;font-size:16px;text-decoration:none}
-.btn-s{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:9px;border:1px solid var(--hs);font-size:16px;font-weight:600;color:var(--ink);width:100%}
-.btn-s.sm,.btn-p.sm{height:40px;font-size:14px;min-height:40px}
-.lnk{color:var(--body);font-size:14px;text-decoration:underline;text-underline-offset:3px;display:inline-flex;gap:6px;align-items:center}
-.yn{display:flex;gap:10px}.yn>*{flex:1}
+.meta{font-size:13px;color:var(--mute)}
+.fl{color:var(--ink);font-size:14px;font-weight:600;white-space:nowrap}
+.fl:hover{text-decoration:underline;text-decoration-color:var(--hs);text-underline-offset:3px}
+.btn-p{display:flex;align-items:center;justify-content:center;width:100%;height:52px;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-weight:600;font-size:16px}
+.btn-s{display:flex;align-items:center;justify-content:center;width:100%;height:52px;border-radius:9px;border:1px solid var(--hs);font-size:16px;font-weight:600}
+.yn{display:flex;gap:10px;margin-top:22px}.yn>*{flex:1}
 .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--hair);z-index:6}
 .dock .in{max-width:390px;margin:0 auto;padding:12px 20px 20px}
-.dock .cap{font-size:12px;color:var(--mute);margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}
-.toast{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--hs);border-radius:9px;padding:8px 14px;font-size:13px;z-index:12;white-space:nowrap}
-.foot{margin-top:28px;font-size:12px;color:var(--dim);line-height:1.45;padding-bottom:8px}
-.story-sw{display:flex;gap:8px;margin-top:12px}
-.story-sw button{flex:1;border:1px solid var(--hs);border-radius:9px;padding:10px 8px;text-align:left;min-height:56px}
-.story-sw button.on{border:2px solid var(--ink);background:var(--surface)}
-.story-sw .n{display:block;font-size:13px;font-weight:600;color:var(--ink)}.story-sw .u{display:block;font-size:11px;color:var(--mute);margin-top:2px}
-.rail{display:flex;gap:4px;margin:16px 0 8px}
-.rail i{flex:1;height:3px;background:var(--hs);border-radius:2px}.rail i.on{background:var(--ink)}.rail i.done{background:var(--body)}
-.beat-lab{font-size:12px;color:var(--mute);display:flex;justify-content:space-between;margin-bottom:4px}
-.why{margin:14px 0;border-left:2px solid var(--ink);padding:8px 0 8px 12px;background:var(--surface);border-radius:0 9px 9px 0}
-.why .who{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
-.why .tx{font-size:13px;color:var(--body);line-height:1.4}
-.why .x{float:right;font-size:12px;color:var(--dim);min-width:32px;min-height:32px}
-.present{margin:12px 0 0;border:1px solid var(--hs);border-radius:12px;padding:14px;background:var(--surface)}
-.present .tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-.present .ttl{font-family:var(--title);font-size:18px;font-weight:600;letter-spacing:-.02em;margin:6px 0 8px}
-.present ol{margin:8px 0 0 18px;color:var(--body);font-size:13px;line-height:1.55}
-.present li{margin:4px 0}.present .mat{display:inline-block;border:1px solid var(--hs);border-radius:6px;padding:1px 8px;font-size:11px;margin-top:8px;color:var(--mute)}
-.crowd{margin-top:14px}.split{height:10px;border-radius:5px;background:var(--split-track);overflow:hidden}.split i{display:block;height:100%;background:var(--body);transition:width .7s ease}
-.crowd .row{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--mute);gap:6px;flex-wrap:wrap}
-.crowd .row b{color:var(--ink)}
-.you{margin-top:12px;font-size:15px}.you b{font-family:var(--title);font-size:26px;letter-spacing:-.03em;display:block;margin-top:4px}
-.nar{margin-top:12px;font-size:15px;color:var(--body);line-height:1.5;border-left:2px solid var(--hs);padding-left:12px}
-.qq{font-family:var(--title);font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25;margin:10px 0}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;border:1px solid var(--hs);border-radius:6px;padding:4px 9px;color:var(--ink)}
-.chip.lead{border-color:var(--ink);font-weight:600}
-.days{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.days::-webkit-scrollbar{display:none}
-.day{flex:none;width:64px;min-height:72px;border:1px solid var(--hs);border-radius:12px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
-.day .d{font-size:11px;color:var(--dim)}.day .p{font-size:13px;font-weight:600;color:var(--mute)}
-.day.done{border-color:var(--body)}.day.done .p{color:var(--ink)}
-.day.tod{border:2px solid var(--ink);width:72px;min-height:80px;box-shadow:0 4px 0 var(--hs)}
-.day.tod .p{color:var(--ink);font-size:14px}.day.fut{border-style:dashed;opacity:.75}
-.day.miss .p{color:var(--dim);font-weight:400}
-.hints{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.hint{border:1px solid var(--hs);border-radius:12px;padding:14px;text-align:left;background:var(--bg);width:100%;position:relative}
-.hint .k{font-size:11px;color:var(--mute);letter-spacing:.04em;text-transform:uppercase}.hint .q{font-size:15px;color:var(--ink);font-weight:600;margin-top:6px;line-height:1.35}
-.hint .te{font-size:13px;color:var(--body);margin-top:6px;line-height:1.4}.hint .go{font-size:13px;color:var(--ink);margin-top:10px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.board{margin-top:8px}
-.board .row{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--hair);font-size:14px}
-.board .row b{color:var(--ink)}.board .row .sc{font-family:var(--title);font-weight:600;letter-spacing:-.02em}
-.board .row.you{border-left:2px solid var(--ink);padding-left:10px;margin-left:-12px;background:var(--surface)}
-.more{margin-top:18px;border-top:1px solid var(--hair);padding-top:12px}
-.more summary{list-style:none;cursor:pointer;font-size:14px;color:var(--mute);display:flex;align-items:center;gap:6px;min-height:44px}
-.more summary::-webkit-details-marker{display:none}
-.more[open] summary{color:var(--ink)}.more .mkt{padding:10px 0;border-bottom:1px solid var(--hair);font-size:14px;color:var(--body)}
-.more .mkt b{display:block;color:var(--ink);font-size:14px;margin-bottom:2px}
-.spoon-wrap{position:relative}
-.spoon{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);z-index:8;max-width:280px;padding:8px 12px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;font-weight:500;text-align:center;cursor:pointer}
+.dock .cap{font-size:13px;color:var(--mute);margin-bottom:10px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.spoon{position:relative;display:block;margin:0 auto 12px;max-width:300px;padding:7px 12px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:12px;font-weight:500;text-align:center}
 .spoon:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink)}
-@media(min-width:520px){.spoon{display:none}}
-.sec{margin-top:20px}.lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-.stat{display:flex;gap:24px;margin-top:14px}.stat b{display:block;font-family:var(--title);font-size:24px;letter-spacing:-.03em}.stat span{font-size:12px;color:var(--mute)}
-.save-box{margin-top:16px;border-left:2px solid var(--ink);padding:4px 0 4px 14px}
-.save-box .t{font-size:15px;font-weight:600}.tog-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:12px;color:var(--mute)}
-.arc{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.arc span{font-size:11px;color:var(--dim);border:1px solid var(--hair);border-radius:999px;padding:3px 8px}
-.arc span.on{color:var(--ink);border-color:var(--ink)}
+.why{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);border:1px dashed var(--hs);border-radius:6px;padding:3px 8px}
+.toast{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--hs);border-radius:9px;padding:8px 14px;font-size:13px;z-index:12;white-space:nowrap}
+.story-sw{display:flex;gap:8px;margin-top:12px}
+.story-sw button{flex:1;border:1px solid var(--hs);border-radius:9px;padding:9px 10px;text-align:left;min-height:52px}
+.story-sw button.on{border:2px solid var(--ink)}
+.story-sw .n{display:block;font-size:14px;font-weight:600}.story-sw .u{display:block;font-size:12px;color:var(--mute);margin-top:1px}
+.big{font-family:var(--title);font-weight:600;letter-spacing:-.05em;font-size:64px;line-height:1;margin-top:26px}
+.big small{font-size:18px;letter-spacing:-.01em;color:var(--mute);font-weight:500;margin-left:6px}
+.split{height:10px;border-radius:5px;background:var(--track);overflow:hidden;margin-top:14px}.split i{display:block;height:100%;background:var(--ink);transition:width .7s}
+.srow{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--mute)}
+.days{display:flex;gap:8px;overflow-x:auto;padding:16px 0 6px;scrollbar-width:none}.days::-webkit-scrollbar{display:none}
+.day{flex:none;width:58px;height:72px;border:1px solid var(--hs);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.day .d{font-size:11px;color:var(--dim)}.day .p{font-size:13px;font-weight:600;color:var(--ink)}
+.day.miss .p{color:var(--dim);font-weight:400}.day.tod{border:2px solid var(--ink);width:66px;height:80px}.day.fut{border-style:dashed}.day.fut .p{color:var(--dim);font-weight:400}
+.past{margin-top:14px}.past .r{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--hair);font-size:14px}
+.past .r .d{width:46px;flex:none;font-size:12px;color:var(--dim);padding-top:2px}.past .r .q{flex:1;color:var(--body)}.past .r .s{font-size:12px;color:var(--mute);flex:none;padding-top:2px}
+.qq{font-family:var(--title);font-size:26px;font-weight:600;letter-spacing:-.03em;line-height:1.18;margin-top:10px}
+.you{margin-top:16px;font-size:14px;color:var(--mute)}.you b{color:var(--ink)}
+.hints{margin-top:16px}
+.hint{display:block;padding:16px 0;border-top:1px solid var(--hair)}
+.hint .k{font-size:12px;color:var(--mute)}.hint .q{font-family:var(--title);font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-top:4px;color:var(--ink)}
+.hint .go{display:inline-block;margin-top:8px;font-size:14px;font-weight:600;color:var(--ink)}
+.board{margin-top:16px}
+.board .row{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--hair);font-size:15px}
+.board .row .n{color:var(--dim);font-size:13px}.board .row .sc{font-family:var(--title);font-weight:600}
+.board .row.me{font-weight:600;border-left:2px solid var(--ink);padding-left:10px;margin-left:-12px}
+.more{margin-top:20px;border-top:1px solid var(--hair)}
+.more summary{list-style:none;cursor:pointer;font-size:14px;color:var(--mute);min-height:48px;display:flex;align-items:center;justify-content:space-between}
+.more summary::-webkit-details-marker{display:none}.more[open] summary{color:var(--ink)}
+.more .m{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--hair);font-size:14px;color:var(--body)}.more .m b{color:var(--ink);font-weight:500}
+.saved{margin-top:26px;border-left:2px solid var(--ink);padding-left:14px}.saved b{display:block;font-size:16px}.saved span{font-size:14px;color:var(--mute)}
+.pr{margin-top:14px;border:1px solid var(--hs);border-radius:12px;padding:16px}
+.pr .row{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--hair);font-size:14px}.pr .row:first-child{border-top:0}
+.pr .row span{color:var(--mute);font-size:12px;padding-top:2px}
+.pfoot{margin-top:26px;font-size:12px;color:var(--dim);display:flex;gap:14px;flex-wrap:wrap}
+.pfoot button{color:var(--mute);font-size:12px;min-height:32px}
 </style></head><body>
 <div class="app" id="app"></div>
 <script>
-/* Mobbin refs (structure only; Alpha greys): WHOOP calibration timeline, Ahead poll/crowd, Insight Timer poll, Pool recap progress.
-   https://mobbin.com/screens/5d45809f-7f4f-4645-8333-b1917f5bda29
-   https://mobbin.com/screens/6cd71dff-4c85-4950-9631-a5bebbdef32a
-   https://mobbin.com/screens/cc333448-8ef0-4eeb-ad0d-35d6df7ba1bf
-   https://mobbin.com/screens/46a5b782-c461-40af-a5e3-d0f1c63c7929 */
+/* Mobbin refs: WHOOP timeline 5d45809f…, Phantom call 6cd71dff…, Ahead poll cc333448…, Insight Timer poll 46a5b782… */
 (function(){
-const Q=location.search;
-let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
-let TH=(Q.match(/theme=(light|dark)/)||[])[1]||'light';
-const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'dark');
-const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='dark'?u.searchParams.set('theme','dark'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
-applyTheme();
-const T=(z,e)=>L==='zh'?z:e;
-const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
-const SK='r7-synth-v1';
-const STEPS=['intro','story','timeline','call','crowd','hints','save','board'];
-const STEP_LAB={
- intro:[T('簡報','Present'),T('目的 → 一個決定','Purpose → one decision')],
- story:[T('開場','Setup'),T('Story + crowd 先','Story + crowd first')],
- timeline:[T('時間線','Timeline'),T('一日一格','One cell / day')],
- call:[T('出 call','Call'),T('今日領頭題','Today\'s leading market')],
- crowd:[T('群眾','Crowd'),T('張力','Tension')],
- hints:[T('提示','Hints'),T('入 Forbes','Into Forbes')],
- save:[T('保存','Save'),T('聽日返','Come back')],
- board:[T('榜','Board'),'Top callers']
+const Q=new URLSearchParams(location.search);
+let L=Q.get('lang')==='zh'?'zh':'en', TH=Q.get('theme')==='dark'?'dark':'light', PM=Q.get('present')==='1';
+const T=(z,e)=>L==='zh'?z:e, tx=a=>L==='zh'?a[0]:a[1];
+const SK='r7-synth-v2';
+const STEPS=['story','timeline','call','crowd','hints','saved','board'];
+const ST={
+ mid:{n:['中期選舉 2026','Midterms 2026'],u:['賓州','Pennsylvania'],
+  hl:['賓州幾個搖擺縣，可能決定眾議院誰屬','A few Pennsylvania counties could decide the House'],
+  q:['民主黨會唔會攞返眾議院？','Will Democrats win the House?'],y:58,n2:'4,820',
+  past:[['16 Oct',['辯論會唔會照開？','Will the debate go ahead?'],'y','y'],['17 Oct',['廣告開支會唔會破紀錄？','Will ad spend set a record?'],'n',null],['18 Oct',['提前投票會唔會多過 2022？','Will early voting beat 2022?'],'y','n'],['19 Oct',['第三黨會唔會過 5%？','Will a third party top 5%?'],'n','n'],['20 Oct',['賓州民調會唔會收窄？','Will Pennsylvania polls tighten?'],'y','y']],
+  hints:[['pa-early',['提前投票','Early vote'],['邊三個縣嘅提前投票已經超越 2022','The three counties already ahead of their 2022 early vote']],['pa-ads',['廣告','Ads'],['搖擺縣廣告地圖，逐個縣睇','The swing-county ad map, county by county']],['pa-ground',['地面工作','Ground game'],['Bucks County 義工點樣拉票','Inside the volunteer push in Bucks County']]],
+  more:[[['參議院三個州會唔會易手？','Will the three Senate states flip?'],'47%'],[['州長辯論收視會唔會高過上次？','Will the governor debate draw more viewers?'],'61%']],
+  board:[['Maya K.','4.2'],['Alex R.','4.0'],['@me','3.8'],['Priya S.','3.6'],['Jordan L.','3.4']]},
+ gta:{n:['GTA VI · TGA','GTA VI · TGA'],u:['The Game Awards','The Game Awards'],
+  hl:['GTA VI 入圍年度遊戲，TGA 前夕講法分歧','GTA VI heads into The Game Awards as the name to beat'],
+  q:['GTA VI 會唔會攞 TGA 年度遊戲？','Will GTA VI win Game of the Year at TGA?'],y:64,n2:'3,140',
+  past:[['16 Oct',['會唔會再出新預告？','Will a new trailer drop?'],'y','y'],['17 Oct',['發售日會唔會再延？','Will the release date slip again?'],'n','n'],['18 Oct',['Rockstar 會唔會上 TGA 台？','Will Rockstar appear on the TGA stage?'],'y','y'],['19 Oct',['預購會唔會破自己紀錄？','Will pre-orders beat Rockstar’s record?'],'n',null],['20 Oct',['評分會唔會企喺 95 以上？','Will review scores hold above 95?'],'y','y']],
+  hints:[['tga-stage',['頒獎禮','Show night'],['Rockstar TGA 當晚有咩安排','What Rockstar has planned for TGA night']],['tga-rival',['對手','Rivals'],['擋住 GTA VI 嘅兩隻遊戲','The two games standing between GTA VI and the award']],['tga-score',['評分','Reviews'],['第一批評分講咗啲咩','What the first reviews actually say']]],
+  more:[[['首週銷量會唔會破紀錄？','Will launch week set a sales record?'],'72%'],[['線上模式會唔會同步推出？','Will online mode launch the same week?'],'38%']],
+  board:[['Nova G.','4.4'],['@me','4.1'],['Kenji T.','3.9'],['Samira H.','3.7'],['Chris P.','3.5']]}
 };
-const STORIES={
- mid:{
-  id:'mid',
-  kick:['中期選舉 2026','Midterms 2026'],
-  title:['賓州搖擺縣：控制權會唔會喺呢度定？','Pennsylvania swing counties: will control be decided here?'],
-  dek:['一個 Story，一日一題。先見 crowd，唔逼讀文。','One Story, one question a day. Crowd first — no forced article.'],
-  q:['民主黨會唔會攞返眾議院？','Will Democrats win the House?'],
-  leadTag:['領頭 market · niche 裏面嘅主流問題','Leading market · mainstream Q inside the niche'],
-  crowdY:58,crowdN:42,n:'4,820',
-  past:[
-   ['16 Oct','y','y',['辯論會唔會照開？','Will the debate go ahead?']],
-   ['17 Oct','n',null,['廣告開支會唔會破頂？','Will ad spend hit a record?']],
-   ['18 Oct','y','n',['提前投票會唔會多過 2022？','Will early vote beat 2022?']],
-   ['19 Oct','n','n',['第三黨會唔會過 5%？','Will a third party clear 5%?']],
-   ['20 Oct','y','y',['賓州民調誤差會唔會收窄？','Will PA polls tighten?']]
-  ],
-  hints:[
-   {id:'pa-early',k:['Forbes · 提前投票','Forbes · early vote'],q:['「……提前投票喺三個縣已經……」','“…early vote in three counties already…”'],te:['短引一句 · 完整數字同上下文喺文','One short line · full numbers live in the article']},
-   {id:'pa-ads',k:['Forbes · 廣告','Forbes · ads'],q:['「……搖擺縣廣告密度係……」','“…ad density in swing counties is…”'],te:['提示唔寫結論 · 答案喺原文','Hint states no conclusion · answer is in the piece']},
-   {id:'pa-ground',k:['Forbes · 地面','Forbes · ground game'],q:['「……義工時數同 2022 比……」','“…volunteer hours vs 2022…”'],te:['想知邊邊執生 · 入文','Want the field read · open the article']}
-  ],
-  more:[
-   ['參議院三州會唔會翻盤？','Will the three Senate states flip?'],
-   ['州長辯論收視會唔會過上次？','Will the governor debate beat last ratings?']
-  ],
-  board:[
-   ['1','Maya K.', '4.2'],['2','Alex R.','4.0'],['3','You','3.8'],['4','Priya S.','3.6'],['5','Jordan L.','3.4']
-  ],
-  forbesPath:'https://www.forbes.com/'
- },
- gta:{
-  id:'gta',
-  kick:['GTA VI · The Game Awards','GTA VI · The Game Awards'],
-  title:['TGA 前夕：GTA VI 會唔會攞 Game of the Year？','Ahead of TGA: will GTA VI take Game of the Year?'],
-  dek:['遊戲 feed 嘅 mainstream 問題 · 唔係 niche-of-niche。','A mainstream Q inside gaming — not niche-of-niche.'],
-  q:['GTA VI 會唔會攞 TGA Game of the Year？','Will GTA VI win TGA Game of the Year?'],
-  leadTag:['領頭 market · 遊戲社群裏面嘅主流題','Leading market · mainstream Q inside gaming'],
-  crowdY:64,crowdN:36,n:'3,140',
-  past:[
-   ['16 Oct','y','y',['預告會唔會再出 60 秒？','Will another 60s trailer drop?']],
-   ['17 Oct','n','n',['發售日會唔會再延？','Will the ship date slip again?']],
-   ['18 Oct','y','y',['Rockstar 會唔會確認 TGA 出席？','Will Rockstar confirm TGA stage?']],
-   ['19 Oct','n',null,['預購會唔會破自家紀錄？','Will pre-orders beat their record?']],
-   ['20 Oct','y','y',['評分會唔會企穩 95+？','Will scores hold at 95+?']]
-  ],
-  hints:[
-   {id:'tga-stage',k:['Forbes · 舞台','Forbes · stage'],q:['「……Rockstar 喺 TGA 日程……」','“…Rockstar on the TGA schedule…”'],te:['日程細節喺文 · 卡面淨係 tease','Schedule detail is in the piece · card only teases']},
-   {id:'tga-rival',k:['Forbes · 對手','Forbes · rivals'],q:['「……另外兩款 GOTY 熱門……」','“…two other GOTY frontrunners…”'],te:['邊啲對手真係喺跑 · 入文','Who is actually in the race · open the article']},
-   {id:'tga-score',k:['Forbes · 評分','Forbes · scores'],q:['「……首批評分區間……」','“…first-wave score band…”'],te:['數字同來源喺 Forbes 原文','Numbers and sources live on Forbes']}
-  ],
-  more:[
-   ['發售週會唔會破開賣紀錄？','Will launch week break opening records?'],
-   ['線上模式會唔會同期上？','Will online mode ship the same week?']
-  ],
-  board:[
-   ['1','Nova G.','4.4'],['2','You','4.1'],['3','Kenji T.','3.9'],['4','Samira H.','3.7'],['5','Chris P.','3.5']
-  ],
-  forbesPath:'https://www.forbes.com/'
- }
-};
-function forbesURL(hintId){
- const u=new URL(STORIES[S.sid].forbesPath);
- u.searchParams.set('utm_source','forbespredict');
- u.searchParams.set('utm_medium','stories');
- u.searchParams.set('utm_campaign','r7-synth');
- u.searchParams.set('utm_content',hintId||'forbes-always');
- return u.href;
-}
-function load(){
- try{const raw=localStorage.getItem(SK);if(raw){const o=JSON.parse(raw);return Object.assign(defaults(),o)}}catch(e){}
- return defaults();
-}
-function defaults(){
- return{sid:'mid',step:'intro',pick:null,at:null,saved:false,guest:true,whyOn:true,whyDismiss:{},spoonOn:true,spoonDismiss:{},presentDismiss:false,toast:'',moreOpen:false};
-}
-let S=load();
-function persist(){try{const {toast,...rest}=S;localStorage.setItem(SK,JSON.stringify(rest))}catch(e){}}
-function PK(p){return p==='y'?T('會','Yes'):T('唔會','No')}
-function hhmm(){return new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date())}
-function sw(){
- return '<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div>'+
- '<div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
-}
-function hdr(){
- return '<div class="top"><div class="t">Forbes Predict · Synth · '+EX()+'</div>'+sw()+'</div>';
-}
-function why(id,who,tx){
- if(!S.whyOn||S.whyDismiss[id])return '';
- return '<div class="why"><button class="x" onclick="E.dWhy(\''+id+'\')" aria-label="dismiss">×</button><div class="who">'+who+'</div><div class="tx">'+tx+'</div></div>';
-}
-function spoon(id,txt){
- if(!S.spoonOn||S.spoonDismiss[id])return '';
- return '<div class="spoon" onclick="E.dSpoon(\''+id+'\')">'+txt+'</div>';
-}
-function rail(){
- const i=STEPS.indexOf(S.step);
- let h='<div class="beat-lab"><span>'+(STEP_LAB[S.step]?STEP_LAB[S.step][0]:'')+'</span><span>'+(i+1)+' / '+STEPS.length+'</span></div><div class="rail">';
- STEPS.forEach((_,j)=>h+='<i class="'+(j<i?'done':(j===i?'on':''))+'"></i>');
- return h+'</div>';
-}
-function arcChips(){
- const order=['setup','call','crowd','hint','forbes','board'];
- const map={intro:'setup',story:'setup',timeline:'setup',call:'call',crowd:'crowd',hints:'hint',save:'forbes',board:'board'};
- const cur=map[S.step]||'setup';
- const labs={setup:T('開場','Setup'),call:T('出 call','Call'),crowd:T('張力','Tension'),hint:T('提示','Tease'),forbes:T('Forbes','Forbes'),board:T('榜','Board')};
- return '<div class="arc">'+order.map(k=>'<span class="'+(k===cur?'on':'')+'">'+labs[k]+'</span>').join('')+'</div>';
-}
-function storySwitcher(){
- const mid=S.sid==='mid',gta=S.sid==='gta';
- return '<div class="story-sw">'+
-  '<button class="'+(mid?'on':'')+'" onclick="E.story(\'mid\')"><span class="n">'+T('中期選舉','Midterms')+'</span><span class="u">'+T('政治 · 賓州','Politics · PA')+' · '+EX()+'</span></button>'+
-  '<button class="'+(gta?'on':'')+'" onclick="E.story(\'gta\')"><span class="n">GTA VI / TGA</span><span class="u">'+T('非政治 · 遊戲 feed','Non-politics · gaming')+' · '+EX()+'</span></button>'+
-  '</div>';
-}
-function forbesLnk(label,hintId){
- return '<a class="lnk forbes-ext" href="'+forbesURL(hintId)+'" target="_blank" rel="noopener" onclick="E.forbesHit(\''+(hintId||'always')+'\')">'+label+' ↗</a>';
-}
-function togBar(){
- return '<div class="tog-row">'+
-  '<button onclick="E.toggleWhy()">'+(S.whyOn?T('隱藏「點解呢屏」','Hide Why this screen'):T('顯示「點解呢屏」','Show Why this screen'))+'</button>'+
-  '<button onclick="E.toggleSpoon()">'+(S.spoonOn?T('隱藏提示箭嘴','Hide spoon tips'):T('顯示提示箭嘴','Show spoon tips'))+'</button>'+
-  '<button onclick="E.reset()">'+T('重設示範','Reset demo')+'</button>'+
-  '</div>';
-}
-function FOOT(){
- return '<div class="foot">'+T('Exploratory prototype · 數字係示例 · 用嚟傾 · 唔代表公司決定 · 用語係 call，唔係 bet','Exploratory prototype · numbers are examples · for discussion · not a company decision · house word is call, not bet')+'</div>';
-}
-function V_intro(){
- let h=hdr()+rail()+arcChips();
- h+='<div class="kick">'+T('簡報模式','Present mode')+' · 21 Oct 2026 HKT</div>';
- h+='<div class="h1">'+T('一條 loop · 今日會議','One loop · today’s meeting')+'</div>';
- h+=why('intro-frame',T('Kenneth · Chris 次序 × Kris pack','Kenneth · Chris order × Kris pack'),
-  T('先講目的同共同把尺，再 demo。唔一次開晒 component。','Frame purpose + shared ruler first, then demo. No component soup.'));
- h+='<div class="present"><div class="tag">'+T('共同把尺','Shared ruler')+'</div><div class="ttl">'+T('North Star＝註冊＋返 Forbes 文','North Star = registration + return to Forbes')+'</div>';
- h+='<ol><li><b>'+T('建議','Recommendation')+'</b> — '+T('v1＝timeline＋一個領頭 market＋top callers；Harvey TP 做成文內提示開 Forbes','v1 = timeline + one leading market + top callers; Harvey TPs = in-article hints that open Forbes')+'</li>';
- h+='<li><b>'+T('一個決定','One decision')+'</b> — '+T('Jeff＋Chris：星期五前 yes／no 呢條 spine？','Jeff + Chris: yes/no on this spine by Friday?')+'</li>';
- h+='<li><b>'+T('成果＋限制','Outcome + limit')+'</b> — '+T('可玩；數字示例；未解 live／CVR 循環','Playable; numbers are examples; live / CVR circularity still open')+'</li></ol>';
- h+='<span class="mat">'+T('成熟度：可玩 · exploratory','Maturity: playable · exploratory')+'</span></div>';
- h+='<p class="nar" style="margin-top:16px">'+T('跟住會帶你行完：開場 → 出 call → crowd 張力 → 提示 tease → Forbes → 榜。','Next: walk setup → call → crowd tension → hint tease → Forbes → board.')+'</p>';
- h+=togBar()+FOOT();
- h+='<div class="dock"><div class="in spoon-wrap">'+spoon('intro-go',T('撳呢度開始 demo','Tap to start the demo'))+'<div class="cap"><span>'+T('演示核心 loop','Demo the core loop')+'</span>'+EX()+'</div><button class="btn-p" onclick="E.go(\'story\')">'+T('開始 · Story 開場','Start · Story setup')+'</button></div></div>';
- return h;
-}
-function V_story(){
- const st=STORIES[S.sid];
- let h=hdr()+rail()+arcChips()+storySwitcher();
- h+='<div class="kick">Story · '+T(st.kick[0],st.kick[1])+'</div>';
- h+='<div class="h1">'+T(st.title[0],st.title[1])+'</div>';
- h+='<div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Example headline')+' · '+forbesLnk(T('Forbes','Forbes'),'story-header')+'</div>';
- h+=why('story-entry',T('Chris：story＋crowd 先','Chris: story + crowd first'),
-  T('唔逼讀文先。Story 同 crowd 喺前；文章常在但收起。','No forced article. Story and crowd up front; Forbes always available, not forced.'));
- h+='<p class="nar">'+T(st.dek[0],st.dek[1])+'</p>';
- h+='<div class="stat"><div><b>'+st.crowdY+'%</b><span>'+T('會（示例 crowd）','Yes (example crowd)')+'</span></div><div><b>'+st.n+'</b><span>'+T('讀者（示例）','readers (example)')+'</span></div></div>';
- h+='<p class="meta" style="margin-top:10px">'+T('呢個 % 係 tease · 你出 call 之後先見真正 split。','This % is a tease — full split after you call.')+'</p>';
- h+=togBar()+FOOT();
- h+='<div class="dock"><div class="in spoon-wrap">'+spoon('story-next',T('跟住睇時間線 · Jeff #1','Next: timeline · Jeff #1'))+'<div class="cap"><span>'+T('下一步','Next')+'</span>'+forbesLnk(T('Forbes','Forbes'),'story-dock')+'</div><button class="btn-p" onclick="E.go(\'timeline\')">'+T('睇故事時間線','See the story timeline')+'</button></div></div>';
- return h;
-}
-function V_timeline(){
- const st=STORIES[S.sid];
- let h=hdr()+rail()+arcChips();
- h+='<div class="kick">'+T('故事路線','Story route')+'</div>';
- h+='<div class="h1">'+T('一日一格','One cell a day')+'</div>';
- h+=why('timeline',T('Jeff：timeline #1','Jeff: timeline #1'),
-  T('時間線係 Stories 嘅獨特件。漏咗嗰日＝0，唔罰 streak。','Timeline is the unique piece. Missed day = 0; no streak punishment.'));
- h+='<div class="lab" style="margin-top:8px"><span>'+T('之前日子（示例）','Past days (example)')+'</span>'+EX()+'</div>';
- h+='<div class="days">';
- st.past.forEach(p=>{
-  const called=p[2]!=null;
-  const cls=called?'done':'miss';
-  h+='<div class="day '+cls+'"><span class="d">'+p[0]+'</span><span class="p">'+(called?PK(p[2]):'—')+'</span></div>';
- });
- h+='<div class="day tod"><span class="d">21 Oct</span><span class="p">'+T('今日','Today')+'</span></div>';
- h+='<div class="day fut"><span class="d">22 Oct</span><span class="p">'+T('聽日','Tmr')+'</span></div>';
- h+='</div>';
- h+='<p class="nar">'+T('每格＝一篇 Forbes＋一題。今日格係唯一要你出 call 嘅位。','Each cell = one Forbes piece + one question. Today’s cell is the only call you need now.')+'</p>';
- h+=togBar()+FOOT();
- h+='<div class="dock"><div class="in spoon-wrap">'+spoon('tl-call',T('撳去今日領頭題','Tap for today’s leading market'))+'<div class="cap"><span>'+T('今日一題','Today\'s one question')+'</span>'+forbesLnk(T('Forbes','Forbes'),'timeline-dock')+'</div><button class="btn-p" onclick="E.go(\'call\')">'+T('答今日領頭題','Answer today’s leading market')+'</button></div></div>';
- return h;
-}
-function V_call(){
- const st=STORIES[S.sid];
- let h=hdr()+rail()+arcChips();
- h+='<div class="kick"><span class="chip lead">'+T(st.leadTag[0],st.leadTag[1])+'</span></div>';
- h+='<div class="qq">'+T(st.q[0],st.q[1])+'</div>';
- h+='<div class="meta">21 Oct · '+T('領頭 market · 示例','Leading market · example')+'</div>';
- h+=why('leading',T('Chris：aggregate／leading market','Chris: aggregate / leading market'),
-  T('唔要 30–40 component。一個領頭題＝niche 裏面嘅主流問題。','No 30–40 components. One leading market = mainstream Q inside the niche.'));
- h+='<p class="nar">'+T('撳一下即出 call。出咗先見 crowd split。','One tap makes the call. Crowd split unlocks after.')+'</p>';
- if(!S.pick){
-  h+='<div class="yn" style="margin-top:18px"><div class="spoon-wrap" style="flex:1">'+spoon('call-yes',T('撳「會」或「唔會」出 call','Tap Yes or No to call'))+'<button class="btn-p" onclick="E.call(\'y\')">'+T('會','Yes')+'</button></div><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div>';
- }else{
-  h+='<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT · '+T('已出 call','Called')+'</span></div>';
- }
- h+='<div style="margin-top:14px">'+forbesLnk(T('喺 Forbes.com 打開（未 call 都得）','Open on Forbes.com (even before a call)'),'call-always')+'</div>';
- h+=togBar()+FOOT();
- if(S.pick){
-  h+='<div class="dock"><div class="in spoon-wrap">'+spoon('to-crowd',T('跟住見 crowd 張力','Next: crowd tension'))+'<div class="cap"><span>'+T('已出 call','Called')+'</span>'+EX()+'</div><button class="btn-p" onclick="E.go(\'crowd\')">'+T('睇大家點揀','See the crowd split')+'</button></div></div>';
- }else{
-  h+='<div class="dock"><div class="in"><div class="cap"><span>'+T('出 call 先解鎖下一步','Call to unlock the next beat')+'</span>'+forbesLnk(T('Forbes','Forbes'),'call-dock')+'</div></div></div>';
- }
- return h;
-}
-function V_crowd(){
- const st=STORIES[S.sid];
- const y=st.crowdY, n=100-y;
- const mine=S.pick==='y'?y:n;
- let h=hdr()+rail()+arcChips();
- h+='<div class="kick">'+T('Crowd 張力','Crowd tension')+'</div>';
- h+='<div class="h1">'+T('你唔係淨係一個人','You’re not alone in this')+'</div>';
- h+=why('crowd',T('Chris：story＋crowd','Chris: story + crowd'),
-  T('出 call 後先見 split · 製造張力，再推去提示／文。','Split after the call creates tension, then pull into hints / article.'));
- h+='<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b></div>';
- h+='<div class="crowd"><div class="split"><i style="width:'+y+'%"></i></div><div class="row"><span><b>'+T('會','Yes')+' '+y+'%</b></span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+st.n+T(' 人',' readers')+' · '+EX()+'</span><span><b>'+T('唔會','No')+' '+n+'%</b></span></div></div>';
- h+='<p class="nar">'+T('張力喺度。想知點解 crowd 咁企？提示卡會 tease —— 答案喺 Forbes。','Tension sits here. Why is the crowd here? Hints tease — the answer lives on Forbes.')+'</p>';
- h+=togBar()+FOOT();
- h+='<div class="dock"><div class="in spoon-wrap">'+spoon('to-hints',T('Harvey：talking points → Forbes','Harvey: talking points → Forbes'))+'<div class="cap"><span>'+T('下一步：提示','Next: hints')+'</span>'+forbesLnk(T('Forbes','Forbes'),'crowd-dock')+'</div><button class="btn-p" onclick="E.go(\'hints\')">'+T('睇 talking-point 提示','See talking-point hints')+'</button></div></div>';
- return h;
-}
-function V_hints(){
- const st=STORIES[S.sid];
- let h=hdr()+rail()+arcChips();
- h+='<div class="kick">'+T('Talking points → Forbes','Talking points → Forbes')+'</div>';
- h+='<div class="h1">'+T('提示係 tease · 答案喺文','Hints tease · answer in the article')+'</div>';
- h+=why('hints',T('Harvey：talking points','Harvey: talking points'),
-  T('唔另開 panel。提示卡開 Forbes 原文（UTM）。','No separate panel. Hint cards open the Forbes article (UTM).'));
- h+='<div class="hints">';
- st.hints.forEach(x=>{
-  h+='<a class="hint" href="'+forbesURL(x.id)+'" target="_blank" rel="noopener" onclick="E.forbesHit(\''+x.id+'\')">'+
-   '<div class="k">'+T(x.k[0],x.k[1])+' · '+EX()+'</div>'+
-   '<div class="q">'+T(x.q[0],x.q[1])+'</div>'+
-   '<div class="te">'+T(x.te[0],x.te[1])+'</div>'+
-   '<div class="go">'+T('喺 Forbes 睇全文','Read the full piece on Forbes')+' ↗</div></a>';
- });
- h+='</div>';
- h+='<p class="meta" style="margin-top:12px">'+T('UTM：utm_source=forbespredict · utm_campaign=r7-synth · utm_content=&lt;hint-id&gt;','UTM: utm_source=forbespredict · utm_campaign=r7-synth · utm_content=&lt;hint-id&gt;')+'</p>';
- h+=togBar()+FOOT();
- h+='<div class="dock"><div class="in spoon-wrap">'+spoon('after-hint',T('保存 call · 聽日返呢格','Save the call · return tomorrow'))+'<div class="cap"><span>'+T('提示已開路','Hints opened the path')+'</span>'+forbesLnk(T('Forbes','Forbes'),'hints-dock')+'</div><button class="btn-p" onclick="E.go(\'save\')">'+T('保存／聽日返','Save / come back tomorrow')+'</button></div></div>';
- return h;
-}
-function V_save(){
- let h=hdr()+rail()+arcChips();
- h+='<div class="kick">'+T('保存 · 返嚟','Save · return')+'</div>';
- h+='<div class="h1">'+T('今日格已鎖 · 聽日再開','Today’s cell locked · opens tomorrow')+'</div>';
- h+=why('save',T('Tony：day-1 · 一 branch 一 session','Tony: day-1 · one branch one session'),
-  T('保存係為咗返嚟，唔係為咗開空 comment。','Save is for return — not to open empty comments.'));
- if(!S.saved){
-  h+='<div class="save-box"><div class="t">'+T('保存你嘅 call（開 Predict 紀錄）','Save your call (opens a Predict record)')+'</div><div class="meta" style="margin-top:4px">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · 冇真錢','Opens a Forbes Predict record, not a Forbes.com account · no real money')+'</div>';
-  h+='<div style="margin-top:12px" class="spoon-wrap">'+spoon('save-btn',T('撳保存 · 再睇 top callers','Tap save · then top callers'))+'<button class="btn-p" onclick="E.save()">'+T('保存 call','Save call')+'</button></div>';
-  h+='<div style="margin-top:10px;text-align:center"><button class="lnk" onclick="E.go(\'board\')">'+T('遲啲先 · 先睇榜','Later · see the board first')+'</button></div></div>';
- }else{
-  h+='<div class="save-box"><div class="t">'+T('已保存','Saved')+'</div><div class="meta" style="margin-top:4px">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div></div>';
-  h+='<p class="nar">'+T('聽日 22 Oct 格會開。漏咗唔使補 · 嗰日計 0。','Tomorrow’s 22 Oct cell opens then. Missed days stay 0 — no catch-up.')+'</p>';
- }
- h+=togBar()+FOOT();
- h+='<div class="dock"><div class="in spoon-wrap">'+spoon('to-board',T('Jeff：top callers #2','Jeff: top callers #2'))+'<div class="cap"><span>'+T('同一 Story 一條榜','One board per Story')+'</span>'+forbesLnk(T('Forbes','Forbes'),'save-dock')+'</div><button class="btn-p" onclick="E.go(\'board\')">'+T('睇 Top callers','See top callers')+'</button></div></div>';
- return h;
-}
-function V_board(){
- const st=STORIES[S.sid];
- let h=hdr()+rail()+arcChips();
- h+='<div class="kick">'+T('Top callers · 呢個 Story','Top callers · this Story')+'</div>';
- h+='<div class="h1">'+T('同一個分 · 一條榜','One score · one board')+'</div>';
- h+=why('board',T('Jeff：top callers #2','Jeff: top callers #2'),
-  T('一 Story 一榜；「我站邊」同「點解佢哋第一」分開睇。','One board per Story; separate “my standing” from “why they’re top.”'));
- h+='<div class="board">';
- st.board.forEach(r=>{
-  const you=r[1]==='You';
-  h+='<div class="row'+(you?' you':'')+'"><span>'+r[0]+'</span><span>'+(you?T('你','You'):r[1])+(you?' · '+T('示例','Example'):'')+'</span><span class="sc">'+r[2]+'</span></div>';
- });
- h+='</div>';
- h+='<p class="meta" style="margin-top:8px">'+T('分數同名次係示例 · 徽章／提示唔入分','Scores and ranks are examples · badges / hints never enter the score')+'</p>';
- /* progressive disclosure */
- h+='<details class="more"'+(S.moreOpen?' open':'')+' onclick="E.more()"><summary>'+T('更多 markets（收起）','More markets (collapsed)')+' · '+T('唔喺主路','not on the main path')+'</summary>';
- st.more.forEach(m=>{h+='<div class="mkt"><b>'+T(m[0],m[1])+'</b><span class="meta">'+T('Pulse／chat／大表 → progressive disclosure','Pulse / chat / full grid → progressive disclosure')+'</span></div>'});
- h+='<p class="meta" style="margin-top:8px">'+T('Chris：唔要 component soup · 呢度先收起。','Chris: no component soup — parked here.')+'</p></details>';
- h+=why('done',T('收束','Close'),
-  T('限制：非體育點算 live；CVR 循環；真 retention 要剔內部帳。','Limits: live for non-sports; CVR circularity; real retention after filtering internals.'));
- h+=togBar()+FOOT();
- h+='<div class="dock"><div class="in"><div class="cap"><span>'+T('Loop 完','Loop done')+'</span>'+forbesLnk(T('Forbes','Forbes'),'board-dock')+'</div><div style="display:flex;gap:10px"><button class="btn-s" onclick="E.swapStory()">'+T('換另一個 Story','Switch Story')+'</button><button class="btn-p" onclick="E.go(\'intro\')">'+T('返簡報','Back to present')+'</button></div></div></div>';
- return h;
-}
-const VIEWS={intro:V_intro,story:V_story,timeline:V_timeline,call:V_call,crowd:V_crowd,hints:V_hints,save:V_save,board:V_board};
+/* present-mode notes, <=6 words each */
+const WHY={story:['Chris · Story + crowd 先','Chris · story and crowd first'],timeline:['Jeff · timeline #1','Jeff · timeline #1'],call:['Chris · 一個領頭 market','Chris · one leading market'],crowd:['Chris · 先見 crowd','Chris · crowd before article'],hints:['Harvey · TP → Forbes','Harvey · talking points to Forbes'],saved:['Tony · 聽日返嚟','Tony · come back tomorrow'],board:['Jeff · top callers #2','Jeff · top callers #2']};
+const SPOON={story:['下一步：時間線','Next: the timeline'],timeline:['撳呢度出今日 call','Tap to make today’s call'],call:['揀會或唔會','Pick Yes or No'],crowd:['跟住睇 Forbes 報道','Next: the Forbes reporting'],hints:['保存，聽日返嚟','Save and return tomorrow'],saved:['睇呢個 Story 嘅榜','See this Story’s board']};
+const def=()=>({sid:'mid',step:PM?'intro':'story',pick:null,at:null,saved:false,notes:true});
+let S;try{S=Object.assign(def(),JSON.parse(localStorage.getItem(SK)||'{}'))}catch(e){S=def()}
+if(!PM&&S.step==='intro')S.step='story';
+if(PM&&Q.get('step')==null&&!S.pick)S.step='intro';
+const st=()=>ST[S.sid];
+const PK=p=>p==='y'?T('會','Yes'):T('唔會','No');
+const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+const fURL=id=>{const u=new URL('https://www.forbes.com/');[['utm_source','forbespredict'],['utm_medium','stories'],['utm_campaign','r7-synth'],['utm_content',id]].forEach(([k,v])=>u.searchParams.set(k,v));return u.href};
+const FL=(id,label)=>'<a class="fl" href="'+fURL(id)+'" target="_blank" rel="noopener">'+(label||T('喺 Forbes 讀','Read on Forbes'))+' ↗</a>';
+const showNotes=()=>PM&&S.notes;
+const why=k=>showNotes()&&WHY[k]?'<div class="why">'+tx(WHY[k])+'</div>':'';
+const spoon=k=>showNotes()&&SPOON[k]?'<div class="spoon">'+tx(SPOON[k])+'</div>':'';
+const hdr=()=>'<div class="top"><div class="t">Forbes Predict <span class="tag">'+T('示例','Example')+'</span></div>'+
+ '<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div>'+
+ '<div class="sw"><button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button>|<button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button></div></div>';
+const rail=()=>{const i=STEPS.indexOf(S.step);return '<div class="rail">'+STEPS.map((_,j)=>'<i class="'+(j<i?'done':j===i?'on':'')+'"></i>').join('')+'</div>'};
+const dock=(k,cap,btn,fid)=>'<div class="dock"><div class="in">'+spoon(k)+'<div class="cap"><span>'+cap+'</span>'+FL(fid)+'</div>'+btn+'</div></div>';
+const P=(label,fn)=>'<button class="btn-p" onclick="'+fn+'">'+label+'</button>';
+const pfoot=()=>PM?'<div class="pfoot"><span>'+T('探索原型 · 數字係示例 · 用嚟傾','Exploratory prototype · numbers are examples · for discussion')+'</span><button onclick="E.notes()">'+(S.notes?T('收起備註','Hide notes'):T('顯示備註','Show notes'))+'</button><button onclick="E.reset()">'+T('重新開始','Restart')+'</button></div>':'';
+const V={};
+V.intro=()=>hdr()+'<div class="kick">'+T('簡報 · 21 Oct','Present · 21 Oct')+'</div><div class="h1">'+T('Stories v1：一條 loop','Stories v1 in one loop')+'</div>'+
+ '<div class="pr">'+[[T('共同把尺','Shared ruler'),T('註冊＋返 Forbes 讀文','Sign-ups and return reads on Forbes')],[T('建議','Recommend'),T('時間線＋領頭 market＋top callers','Timeline, one leading market, top callers')],[T('決定','Decision'),T('Jeff＋Chris 星期五前 yes／no','Jeff and Chris: yes or no by Friday')],[T('限制','Limits'),T('非體育 live、CVR 循環未解','Non-sports live and CVR loop still open')],[T('成熟度','Maturity'),T('可玩 · 未經用戶測試','Playable · not user-tested')]].map(r=>'<div class="row"><span>'+r[0]+'</span><div>'+r[1]+'</div></div>').join('')+'</div>'+pfoot()+
+ '<div class="dock"><div class="in">'+P(T('開始示範','Start the demo'),"E.go('story')")+'</div></div>';
+V.story=()=>{const s=st();return hdr()+rail()+
+ '<div class="story-sw">'+['mid','gta'].map(k=>'<button class="'+(S.sid===k?'on':'')+'" onclick="E.story(\''+k+'\')"><span class="n">'+tx(ST[k].n)+'</span><span class="u">'+tx(ST[k].u)+'</span></button>').join('')+'</div>'+
+ why('story')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+tx(s.hl)+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct</div>'+
+ '<div class="big">'+s.y+'%<small>'+T('話會','say yes')+'</small></div><div class="meta" style="margin-top:6px">'+s.n2+T(' 位讀者跟緊呢個 Story',' readers following this Story')+'</div>'+pfoot()+
+ dock('story',T('6 日 · 今日開咗','Day 6 · today is open'),P(T('睇時間線','See the timeline'),"E.go('timeline')"),'story')};
+V.timeline=()=>{const s=st();return hdr()+rail()+why('timeline')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+T('五日過去，今日到你','Five days in. Today is yours.')+'</div>'+
+ '<div class="days">'+s.past.map(p=>'<div class="day'+(p[3]?'':' miss')+'"><span class="d">'+p[0]+'</span><span class="p">'+(p[3]?PK(p[3]):'–')+'</span></div>').join('')+
+ '<div class="day tod"><span class="d">21 Oct</span><span class="p">'+(S.pick?PK(S.pick):T('今日','Today'))+'</span></div><div class="day fut"><span class="d">22 Oct</span><span class="p">'+T('聽日','Next')+'</span></div></div>'+
+ '<div class="past">'+s.past.slice().reverse().map(p=>'<div class="r"><span class="d">'+p[0]+'</span><span class="q">'+tx(p[1])+'</span><span class="s">'+(p[3]?(p[3]===p[2]?T('啱','Right'):T('錯','Wrong')):T('冇 call','No call'))+'</span></div>').join('')+'</div>'+pfoot()+
+ dock('timeline',T('今日一題','Today’s question'),P(S.pick?T('睇大家點揀','See the crowd'):T('出今日嘅 call','Make today’s call'),S.pick?"E.go('crowd')":"E.go('call')"),'timeline')};
+V.call=()=>{const s=st();return hdr()+rail()+why('call')+'<div class="kick">'+T('今日 · 21 Oct','Today · 21 Oct')+'</div><div class="qq">'+tx(s.q)+'</div>'+
+ '<div class="meta" style="margin-top:10px">'+T('出咗 call 先見到大家點揀。','The crowd shows after you call.')+'</div>'+
+ '<div style="margin-top:22px">'+spoon('call')+'</div><div class="yn" style="margin-top:0"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div>'+
+ '<div style="margin-top:18px">'+FL('call')+'</div>'+pfoot()};
+V.crowd=()=>{const s=st(),mine=S.pick==='y'?s.y:100-s.y;return hdr()+rail()+why('crowd')+'<div class="kick">'+tx(s.q)+'</div>'+
+ '<div class="big">'+mine+'%<small>'+T('同你一樣','agree with you')+'</small></div>'+
+ '<div class="split"><i style="width:'+s.y+'%"></i></div><div class="srow"><span>'+T('會','Yes')+' '+s.y+'%</span><span>'+T('唔會','No')+' '+(100-s.y)+'%</span></div>'+
+ '<div class="you">'+T('你揀咗 ','You said ')+'<b>'+PK(S.pick)+'</b> · '+S.at+' HKT · '+s.n2+T(' 人出咗 call',' calls')+'</div>'+pfoot()+
+ dock('crowd',T('揭曉日之前都改唔到','Locked until the result'),P(T('睇 Forbes 點講','See what Forbes reports'),"E.go('hints')"),'crowd')};
+V.hints=()=>{const s=st();return hdr()+rail()+why('hints')+'<div class="kick">'+T('Forbes 報道','From Forbes')+'</div><div class="h1">'+T('出 call 之前，記者睇到啲咩','What the reporters are seeing')+'</div>'+
+ '<div class="hints">'+s.hints.map(h=>'<a class="hint" href="'+fURL(h[0])+'" target="_blank" rel="noopener"><div class="k">'+tx(h[1])+'</div><div class="q">'+tx(h[2])+'</div><span class="go">'+T('喺 Forbes 讀','Read on Forbes')+' ↗</span></a>').join('')+'</div>'+pfoot()+
+ dock('hints',T('聽日 22 Oct 有新一題','New question 22 Oct'),P(T('保存我個 call','Save my call'),'E.save()'),'hints')};
+V.saved=()=>{const s=st();return hdr()+rail()+why('saved')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+T('已保存。聽日見。','Saved. See you tomorrow.')+'</div>'+
+ '<div class="saved"><b>'+T('你揀咗 ','You said ')+PK(S.pick)+' · 21 Oct '+S.at+' HKT</b><span>'+T('22 Oct 新一題開咗會通知你','We’ll tell you when 22 Oct opens')+'</span></div>'+
+ '<div class="days"><div class="day tod"><span class="d">21 Oct</span><span class="p">'+PK(S.pick)+'</span></div><div class="day fut"><span class="d">22 Oct</span><span class="p">'+T('聽日','Next')+'</span></div></div>'+pfoot()+
+ dock('saved',T('呢個 Story 嘅排名','This Story’s ranking'),P(T('睇 Top callers','See top callers'),"E.go('board')"),'saved')};
+V.board=()=>{const s=st();return hdr()+rail()+why('board')+'<div class="kick">Top callers · '+tx(s.n)+'</div><div class="h1">'+T('你排第 '+(s.board.findIndex(r=>r[0]==='@me')+1),'You’re #'+(s.board.findIndex(r=>r[0]==='@me')+1))+'</div>'+
+ '<div class="board">'+s.board.map((r,i)=>'<div class="row'+(r[0]==='@me'?' me':'')+'"><span class="n">'+(i+1)+'</span><span>'+(r[0]==='@me'?T('你','You'):r[0])+'</span><span class="sc">'+r[1]+'</span></div>').join('')+'</div>'+
+ '<details class="more"><summary><span>'+T('更多 markets','More markets')+'</span><span>+</span></summary>'+(showNotes()?'<div class="why" style="margin:0 0 8px">Chris · no component soup</div>':'')+s.more.map(m=>'<div class="m"><b>'+tx(m[0])+'</b><span>'+T('會 ','Yes ')+m[1]+'</span></div>').join('')+'</details>'+pfoot()+
+ dock('board',T('22 Oct 再見','Back on 22 Oct'),P(T('返去 Story','Back to the Story'),"E.go('story')"),'board')};
 function R(){
- applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';
- if(S.step==='crowd'||S.step==='hints'||S.step==='save'||S.step==='board'){if(!S.pick)S.step='call'}
- const fn=VIEWS[S.step]||V_intro;
- document.getElementById('app').innerHTML=fn()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');
- if(S.toast){const t=S.toast;S.toast='';clearTimeout(window._tt);window._tt=setTimeout(()=>{const el=document.querySelector('.toast');el&&el.remove()},1800)}
- persist();syncURL();
- window.scrollTo(0,0);
-}
+ document.documentElement.setAttribute('data-theme',TH);document.documentElement.lang=L==='zh'?'zh-HK':'en';
+ if(['crowd','hints','saved','board'].includes(S.step)&&!S.pick)S.step='call';
+ if(S.step==='intro'&&!PM)S.step='story';
+ document.getElementById('app').innerHTML=(V[S.step]||V.story)()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');
+ if(S.toast){S.toast='';setTimeout(()=>{const t=document.querySelector('.toast');t&&t.remove()},1600)}
+ try{localStorage.setItem(SK,JSON.stringify(S))}catch(e){}
+ const u=new URL(location.href);u.searchParams.set('lang',L);u.searchParams.set('theme',TH);u.searchParams.delete('step');history.replaceState(null,'',u.pathname+u.search);
+ scrollTo(0,0)}
 window.E={
- lang(l){L=l;syncURL();R()},
- theme(t){TH=t;applyTheme();syncURL();R()},
- go(st){S.step=st;R()},
- story(id){if(S.sid!==id){S.sid=id;S.pick=null;S.at=null;S.saved=false;S.step=S.step==='intro'?'intro':'story'}else{S.sid=id}R()},
- call(p){if(S.pick)return;S.pick=p;S.at=hhmm();S.toast=T('已出 call · '+S.at,'Call made · '+S.at);S.step='crowd';R()},
- save(){S.saved=true;S.guest=false;S.toast=T('已保存','Saved');R()},
- dWhy(id){S.whyDismiss[id]=true;R()},
- dSpoon(id){S.spoonDismiss[id]=true;R()},
- toggleWhy(){S.whyOn=!S.whyOn;R()},
- toggleSpoon(){S.spoonOn=!S.spoonOn;R()},
- more(){setTimeout(()=>{const d=document.querySelector('details.more');S.moreOpen=!!(d&&d.open);persist()},0)},
- forbesHit(id){S.toast=T('去咗 Forbes · '+id,'Opened Forbes · '+id)},
- reset(){S=defaults();persist();R()}
-};
-/* deep-link helpers for screenshots */
-const stepQ=(Q.match(/step=([a-z]+)/)||[])[1];
-if(stepQ&&STEPS.includes(stepQ))S.step=stepQ;
-if(/story=(mid|gta)/.test(Q))S.sid=Q.match(/story=(mid|gta)/)[1];
-if(/pick=(y|n)/.test(Q)){S.pick=Q.match(/pick=(y|n)/)[1];S.at=S.at||'14:22'}
-if(/why=0/.test(Q))S.whyOn=false;
+ lang(l){L=l;R()},theme(t){TH=t;R()},go(s){S.step=s;R()},
+ story(k){if(S.sid!==k){S.sid=k;S.pick=null;S.at=null;S.saved=false}S.step='story';R()},
+ call(p){S.pick=p;S.at=hhmm();S.toast=T('已出 call','Call made');S.step='crowd';R()},
+ save(){S.saved=true;S.step='saved';R()},
+ notes(){S.notes=!S.notes;R()},reset(){S=def();R()}};
+const sq=Q.get('step');if(sq&&(STEPS.includes(sq)||sq==='intro'))S.step=sq;
+if(Q.get('story')==='gta'||Q.get('story')==='mid')S.sid=Q.get('story');
+if(Q.get('pick')==='y'||Q.get('pick')==='n'){S.pick=Q.get('pick');S.at=S.at||'14:22'}
 R();
 })();
 </script></body></html>

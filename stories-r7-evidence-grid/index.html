@@ -99,7 +99,7 @@ function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false
 const CROWD=63,N='4,110';
 const CARDS=[
  {id:'a',kz:'Forbes：議息聲明',ke:'Forbes on the statement',tz:'「……聲明刪走咗強硬字眼……」',te:'“…hawkish wording trimmed…”'},
- {id:'b',kz:'Forbes：期貨市場',ke:'Forbes on futures',tz:'「……期貨押注升溫……」',te:'“…futures bets edged higher…”'},
+ {id:'b',kz:'Forbes：期貨市場',ke:'Forbes on futures',tz:'「……期貨市場預期升溫……」',te:'“…futures pricing edged higher…”'},
  {id:'c',kz:'Forbes：今日報道',ke:'Forbes today',tz:'「……要睇數據先決定……」',te:'“…data-dependent for now…”'}
 ];
 function strip(){
@@ -113,7 +113,7 @@ function strip(){
  return h+'</div><p class="meta" style="margin-top:8px">'+T('每句都會打開 Forbes 全文','Each line opens the full story on Forbes')+'</p></div>';
 }
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">'+T('聯儲局：減息','The Fed: rate cuts')+'</div><div class="h1">'+T('議息前夕：市場押注會唔會再減？','Ahead of the meeting: will markets get another cut?')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>';
+ h+='<div class="kick">'+T('聯儲局：減息','The Fed: rate cuts')+'</div><div class="h1">'+T('議息前夕：市場預期會唔會再減？','Ahead of the meeting: will markets get another cut?')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>';
  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today’s question')+'</span>'+'</div><div class="qq">'+T('Fed 10 月 29 日會唔會減息？','Will the Fed cut on Oct 29?')+'</div>';
  h+=strip();
  if(!S.pick)h+=YN();

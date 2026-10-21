@@ -111,7 +111,7 @@ function flist(){let h='<div class="sec" id="flist"><div class="lab"><span><b st
  return h+'<div class="fi new"><span class="s">★</span><div class="m"><div class="n">'+STORY()+'</div><div class="st">'+st+'</div><div class="st">'+T('29 Oct 議息後揭曉。'+S.ftime+' 開始追','Reveals 29 Oct after the Fed meeting. Following since '+S.ftime)+'</div></div></div>'+old+'</div></div>'}
 function notif(){if(!S.notif)return '';return '<a class="notif" href="'+FORBES+'" target="_blank" rel="noopener" onclick="E.nx()"><span class="ic">F</span><div><div class="t1">'+T('你追緊嘅「'+STORY()+'」結果：'+PK(S.res)+'','"'+STORY()+'" result: '+PK(S.res)+'')+'</div><div class="t2">'+T('跟進報道：Fed 減 25 點子，鮑威爾點講。喺 Forbes 讀 ↗','Follow-up: Fed cuts 25bp — what Powell said. Read on Forbes ↗')+'</div></div><button class="x" onclick="event.preventDefault();event.stopPropagation();E.nx()" aria-label="close">×</button></a>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">'+STORY()+'</div><div class="h1">'+T('通脹回落，市場押注 Fed 10 月尾再減息','Inflation cools; markets bet on another Fed cut in late October')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>'+star();
+ h+='<div class="kick">'+STORY()+'</div><div class="h1">'+T('通脹回落，市場預期 Fed 10 月尾再減息','Inflation cools; traders price in another Fed cut in late October')+'</div><div class="meta" style="margin-top:8px">Forbes, 21 Oct'+'<span class="sp"></span>'+FL()+'</div>'+star();
  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s question')+'</span>'+'</div><div class="qq">'+T('Fed 10 月 29 日會唔會減息？','Will the Fed cut on Oct 29?')+'</div>';
  if(!S.pick)h+=YN();
  else{h+=YOU();

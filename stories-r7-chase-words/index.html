@@ -84,7 +84,7 @@ function nav(s,cls,html){return '<a class="'+cls+'" href="'+q(s==='home'?'':s)+'
 function ext(url,cls,html){return '<a class="'+cls+'" href="'+url+'" target="_blank" rel="noopener">'+html+'</a>';}
 function R(){sync();document.getElementById('app').innerHTML=V[S.s]();const d=document.getElementById('dock');d.innerHTML=(D[S.s]||(()=>''))();d.style.display=d.innerHTML?'':'none';const sh=document.getElementById('sheet');sh.innerHTML=S.sheet?SHEET():'';}
 const EX=()=>'<span class="ex">'+T('示例','Example')+'</span>';
-const HL={zh:'聯儲局按兵不動，市場開始押注年底減息',en:'Fed holds rates as markets start pricing a year-end cut'};
+const HL={zh:'聯儲局按兵不動，市場開始預期年底減息',en:'Fed holds rates as markets start pricing a year-end cut'};
 const DEK={zh:'議息聲明措辭轉軟，債息回落。',en:'Softer statement wording, yields slip.'};
 const QN={zh:'聯儲局 12 月會唔會減息？',en:'Will the Fed cut rates in December?'};
 const ART=fb('money/');
@@ -105,7 +105,7 @@ home:()=>topbar('<div class="t">'+ic('newspaper','sm')+'Forbes Predict '+EX()+'<
 article:()=>topbar(nav('home','back',ic('arrow-left'))+'<div class="t">'+T('報道','Story')+' '+EX()+'</div>')+
  '<h1 class="ttl h1" style="font-size:26px">'+HL[L]+'</h1><div class="meta" style="margin-top:8px">'+T('3 分鐘','3 min read')+'</div>'+
  '<p class="para">'+T('聯儲局今次維持利率不變，但聲明刪走咗部分強硬字眼，市場解讀為減息門口打開咗少少。','The Fed held rates, but trimmed some hawkish wording; markets read it as the door to a cut opening slightly.')+'</p>'+
- '<p class="para">'+T('十年期債息應聲回落，期貨市場對 12 月減息嘅押注升溫。','10-year yields slipped and futures bets on a December cut rose.')+'</p>'+
+ '<p class="para">'+T('十年期債息應聲回落，期貨市場對 12 月減息嘅預期升溫。','10-year yields slipped and futures pricing for a December cut rose.')+'</p>'+
  '<p class="para">'+T('不過通脹數據仍然偏高，有官員強調要「睇數據」先決定。','Inflation is still sticky; officials stress decisions are data-dependent.')+'</p>'+
  '<div class="card"><div class="meta">'+T('你嘅 call','Your call')+'</div><div class="qq">'+QN[L]+'</div>'+
  (S.pick? '<div class="picked">'+(S.pick==='y'?T('你嘅 call：會','Your call: Will'):T('你嘅 call：唔會','Your call: Won\'t'))+'</div><p class="note">'+ic('clock','sm')+T('12 月議息之後揭曉，到時先計分','Reveals after the December meeting, then it scores')+'</p>'+

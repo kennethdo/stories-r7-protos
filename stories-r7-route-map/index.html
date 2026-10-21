@@ -3,7 +3,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font:15px/1.45 var(--detail);-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{color:inherit}
-.app{max-width:390px;margin:0 auto;min-height:100vh;position:relative;padding:0 20px 180px;overflow-x:hidden}
+.app{max-width:390px;margin:0 auto;min-height:100vh;position:relative;padding:0 20px 220px;overflow-x:hidden}
 .top{display:flex;align-items:center;gap:10px;height:56px}
 .top .t{flex:1;font-size:13px;color:var(--mute)}
 .sw{font-size:13px;color:var(--mute);display:flex;gap:6px;align-items:center}.sw b{color:var(--ink);font-weight:600}.sw button{position:relative;min-width:22px}.sw button::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
@@ -17,37 +17,48 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{colo
 .btn-s.sm{min-height:44px;height:44px;padding:0 14px;font-size:14px;font-weight:500}
 .lnk{color:var(--body);font-size:14px;text-decoration:underline;text-underline-offset:3px;display:inline-flex;gap:6px;align-items:center;position:relative}
 .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--hair);z-index:5}
-.dock .in{max-width:390px;margin:0 auto;padding:10px 20px 22px}.dock .cap{font-size:13px;color:var(--mute);margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}
-.q{margin-top:26px;border-top:1px solid var(--hair);padding-top:16px}
-.q .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between}
-.q .qq{font-family:var(--title);font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-top:6px}
-.yn{display:flex;gap:10px;margin-top:14px}.yn>*{flex:1}
-.you{display:flex;gap:8px;align-items:baseline;margin-top:12px;font-size:15px}.you b{font-family:var(--title);font-size:26px;letter-spacing:-.03em}
-.crowd{margin-top:14px}.split{height:8px;border-radius:4px;background:var(--split-track);overflow:hidden}.split i{display:block;height:100%;background:var(--body);transition:width .6s}
-.crowd .row{display:flex;justify-content:space-between;margin-top:6px;font-size:13px;color:var(--mute)}
-.demo{display:flex;align-items:center;gap:10px;margin-top:16px;padding:10px 0;border-top:1px dashed var(--hs);border-bottom:1px dashed var(--hs)}.demo .meta{flex:1}
-.reg{margin-top:22px;margin-bottom:12px;border-left:2px solid var(--ink);padding:2px 0 2px 14px;position:relative;z-index:2}.reg .t{font-size:16px;font-weight:600}.reg .meta{margin-top:4px}
-.reg .row{display:flex;gap:16px;align-items:center;margin-top:12px}
+.dock .in{max-width:390px;margin:0 auto;padding:10px 20px 18px}.dock .cap{font-size:13px;color:var(--mute);margin-bottom:6px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.dock .qq{font-family:var(--title);font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin:2px 0 10px}
+.dock .sub{display:flex;justify-content:center;gap:16px;margin-top:8px;flex-wrap:wrap}
+.yn{display:flex;gap:10px}.yn>*{flex:1}
+.you{display:flex;gap:8px;align-items:baseline;font-size:15px;flex-wrap:wrap}.you b{font-family:var(--title);font-size:22px;letter-spacing:-.03em}
+.crowd{margin-top:10px}.split{height:8px;border-radius:4px;background:var(--split-track);overflow:hidden}.split i{display:block;height:100%;background:var(--body);transition:width .6s}
+.crowd .row{display:flex;justify-content:space-between;margin-top:6px;font-size:12px;color:var(--mute);gap:6px;flex-wrap:wrap}
+.demo{display:flex;align-items:center;gap:10px;margin-top:12px;padding:8px 0;border-top:1px dashed var(--hs)}.demo .meta{flex:1}
+.reg{margin-top:14px;margin-bottom:4px;border-left:2px solid var(--ink);padding:2px 0 2px 14px;position:relative;z-index:2}.reg .t{font-size:15px;font-weight:600}.reg .meta{margin-top:4px}
+.reg .row{display:flex;gap:16px;align-items:center;margin-top:10px}
 .field{min-height:44px;height:44px;border:1px solid var(--hs);border-radius:9px;display:flex;align-items:center;padding:0 12px;color:var(--dim);flex:1;font-size:14px}
-.score{display:flex;gap:28px;margin-top:18px;padding-top:14px;border-top:1px solid var(--hair)}.score b{display:block;font-family:var(--title);font-size:28px;letter-spacing:-.03em}.score span{font-size:13px;color:var(--mute)}
-.res{font-family:var(--title);font-size:24px;font-weight:600;margin-top:16px;border-left:2px solid var(--ink);padding-left:12px;letter-spacing:-.02em}
+.score{display:flex;gap:20px;margin-top:12px;padding-top:10px;border-top:1px solid var(--hair)}.score b{display:block;font-family:var(--title);font-size:22px;letter-spacing:-.03em}.score span{font-size:12px;color:var(--mute)}
+.res{font-family:var(--title);font-size:18px;font-weight:600;margin-top:10px;border-left:2px solid var(--ink);padding-left:12px;letter-spacing:-.02em}
 .toast{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--hs);border-radius:9px;padding:8px 14px;font-size:13px;z-index:10;white-space:nowrap}
 .foot{margin-top:28px;font-size:13px;color:var(--dim)}
-.back{font-size:14px;color:var(--mute);display:inline-flex;align-items:center;gap:6px;height:44px}
-.sec{margin-top:24px;border-top:1px solid var(--hair);padding-top:14px}.sec .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
-.notif{position:fixed;top:10px;left:50%;transform:translateX(-50%);width:min(370px,calc(100% - 20px));background:var(--surface-2);border:1px solid var(--hs);border-radius:14px;padding:12px 14px;z-index:20;display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:var(--ink);animation:drop .5s cubic-bezier(.2,1.4,.4,1) both;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.notif .ic{width:34px;height:34px;border-radius:8px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;font-size:14px}
-.notif .t1{font-size:14px;font-weight:600;line-height:1.3}.notif .t2{font-size:13px;color:var(--mute);margin-top:2px}
-.notif .x{position:absolute;right:6px;top:4px;width:32px;height:32px;font-size:16px;color:var(--mute)}
-@keyframes drop{0%{transform:translate(-50%,-120px)}100%{transform:translate(-50%,0)}}
-small{font-size:13px!important}
+.sec{margin-top:22px;border-top:1px solid var(--hair);padding-top:14px}.sec .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
+.heat{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px 14px;border:1px solid var(--hs);border-radius:12px;background:var(--surface)}
+.heat .info{flex:1;min-width:0}.heat .t1{font-size:14px;font-weight:600;line-height:1.3}.heat .t2{font-size:12px;color:var(--mute);margin-top:2px}
+.clap{position:relative;width:52px;height:52px;min-width:52px;border-radius:50%;border:1.5px solid var(--hs);display:flex;align-items:center;justify-content:center;background:var(--bg);transition:transform .12s,border-color .2s,background .2s}
+.clap.on{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.clap:active{transform:scale(.92)}
+.clap svg{width:22px;height:22px}
+.clap .burst{position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--ink);opacity:0;pointer-events:none}
+.clap.pop .burst{animation:burst .55s ease-out}
+@keyframes burst{0%{transform:scale(.7);opacity:.55}100%{transform:scale(1.35);opacity:0}}
+.clap-n{font-family:var(--title);font-size:15px;font-weight:600;letter-spacing:-.02em;min-width:2.2em}
+.art-strip{margin-top:14px;border:1px dashed var(--hs);border-radius:12px;overflow:hidden}
+.art-strip .hd{display:flex;align-items:center;gap:10px;width:100%;padding:12px 14px;text-align:left;min-height:44px}
+.art-strip .hd .t{flex:1;font-size:14px;font-weight:600}.art-strip .hd .meta{font-size:12px}
+.art-strip .bd{padding:0 14px 14px;display:none}.art-strip.open .bd{display:block}
+.art-strip .chev{transition:transform .2s;color:var(--mute)}.art-strip.open .chev{transform:rotate(180deg)}
+.past-posts{margin-top:18px}.past-posts .lab{font-size:13px;color:var(--mute);margin-bottom:8px}
+.pp{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--hair)}
+.pp .d{font-size:12px;color:var(--dim);min-width:52px;padding-top:2px}
+.pp .b{flex:1;min-width:0}.pp .b b{display:block;font-size:14px;font-weight:600;line-height:1.35;color:var(--ink)}.pp .b .meta{margin-top:3px}
 .route{position:relative;margin-top:18px}
 .route svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .nd{position:absolute;width:48px;height:48px;min-width:44px;min-height:44px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:13px;text-decoration:none;line-height:1.1;z-index:1;background:var(--bg);border:2px solid var(--hs);color:var(--mute)}
 .nd small{font-size:13px;font-weight:500;color:var(--dim)}
 .nd small.sc,.nd .sc{font-size:10px;font-weight:400;color:var(--dim);opacity:.7;line-height:1;margin-top:2px;display:block}
-.nd.done{background:var(--bg);border:1.5px solid var(--hs);color:var(--dim);box-shadow:none;font-size:12px;width:40px;height:40px;min-width:40px;min-height:40px}
-.nd.miss{background:var(--bg);border:1.5px dashed var(--hs);color:var(--dim);font-size:12px;width:40px;height:40px;min-width:40px;min-height:40px}
+.nd.done{background:var(--bg);border:1.5px solid var(--hs);color:var(--dim);box-shadow:none;font-size:12px;width:44px;height:44px;min-width:44px;min-height:44px}
+.nd.miss{background:var(--bg);border:1.5px dashed var(--hs);color:var(--dim);font-size:12px;width:44px;height:44px;min-width:44px;min-height:44px}
 .nd.tod{width:80px;height:80px;min-width:80px;min-height:80px;background:var(--bg);border:3px solid var(--ink);color:var(--ink);box-shadow:0 6px 0 var(--hs);font-size:15px}
 .nd.tod small{font-size:13px;color:var(--mute);font-weight:600}
 .nd.tod.pulse:after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--ink);opacity:.5;animation:pl 1.6s ease-out infinite}
@@ -55,96 +66,117 @@ small{font-size:13px!important}
 .nd.tod.rv{background:var(--bg);border-color:var(--ink);color:var(--ink);animation:pop .6s cubic-bezier(.2,1.8,.4,1) both}
 @keyframes pop{0%{transform:scale(.4)}100%{transform:scale(1)}}
 .nd.lock{background:var(--surface-2);color:var(--dim);font-weight:600;border:2px solid var(--hs)}
-.nl{position:absolute;font-size:13px;color:var(--mute);line-height:1.4}
-.nl b{display:block;color:var(--ink);font-size:15px;font-weight:600;line-height:1.3;margin-top:4px}
-.nl .past-meta{display:block;font-size:13px;color:var(--dim);margin-top:2px}
-.nl .lnk.main{font-size:14px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
-.panel{margin-top:6px;border-top:2px solid var(--ink);padding-top:14px}
-</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+.nl{position:absolute;font-size:13px;color:var(--mute);line-height:1.35}
+.nl b{display:block;color:var(--ink);font-size:14px;font-weight:600;line-height:1.3;margin-top:2px}
+.nl .past-meta{display:block;font-size:12px;color:var(--dim);margin-top:2px}
+.pred{position:absolute;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:4px;max-width:118px;text-align:right}
+.pred .chip{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;line-height:1.2;border:1.5px solid var(--hs);background:var(--bg);color:var(--mute);white-space:nowrap}
+.pred .chip.called{border-color:var(--ink);color:var(--ink)}
+.pred .chip.vacant{border-style:dashed;color:var(--dim);background:var(--surface)}
+.pred .chip.go{border-color:var(--ink);color:var(--btn-ink);background:var(--btn);border-style:solid;min-height:36px;padding:6px 12px;font-size:13px}
+.pred .hint{font-size:11px;color:var(--dim);line-height:1.25}
+.nr{position:absolute;font-size:13px;color:var(--mute);line-height:1.35}
+.nr b{display:block;color:var(--ink);font-size:14px;font-weight:600;line-height:1.3}
+.nr .past-meta{display:block;font-size:12px;color:var(--dim);margin-top:2px}
+small{font-size:13px!important}
+</style></head><body><div class="app" id="app"></div><script>
+const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
 let TH=/theme=dark/.test(Q)?'dark':'light';
 const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
 const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='dark'?u.searchParams.set('theme','dark'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
 const T=(z,e)=>L==='zh'?z:e;
 const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
-const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';
+const EX=()=>'<span class="ex">'+T('示例','Demo')+'</span>';
 const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
 const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
 const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
 const PK=p=>p==='y'?T('會','Yes'):T('唔會','No');
-const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
 const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a>';
-function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div></div>';
- if(S.later)return '';
- return '<div class="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
- (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
-const CE={lang(l){L=l;syncURL();R()},theme(t){TH=t;applyTheme();syncURL();R()},regOpen(){S.regOpen=true;R()},later(){S.later=true;R()},regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at,'Saved · call time kept '+S.at);R()}};
-function R(){applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';document.getElementById('app').innerHTML=V()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');if(S.toast){S.toast='';clearTimeout(window._tt);window._tt=setTimeout(()=>{const el=document.querySelector('.toast');el&&el.remove()},1800)}}
+const HEAT_BASE=247;
+function fmtN(n){return n.toLocaleString('en-US')}
+function clapIcon(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 14.5l-2.2-2.2a1.6 1.6 0 0 1 0-2.3l.4-.4"/><path d="M14.2 11.3l2.1-2.1a1.6 1.6 0 0 0 0-2.3l-.5-.5a1.6 1.6 0 0 0-2.3 0L8.3 11.6"/><path d="M8.8 16.1l-1.8-1.8a1.6 1.6 0 0 1 0-2.3l.3-.3"/><path d="M9.5 18.5l6.2-6.2a1.6 1.6 0 0 1 2.3 0l.4.4a1.6 1.6 0 0 1 0 2.3L13.4 19"/><path d="M7.2 12.2L5.5 10.5a1.5 1.5 0 0 1 0-2.1l.4-.4"/><path d="M12.5 7.5l1.2-1.2a1.4 1.4 0 0 1 2 0l.3.3"/></svg><i class="burst"></i>'}
+function heat(){const n=HEAT_BASE+S.claps;const on=S.claps>0?' on':'';const pop=S.clapPop?' pop':'';return '<div class="heat"><button class="clap'+on+pop+'" onclick="E.clap()" aria-label="'+T('拍手（唔計分）','Clap (does not score)')+'">'+clapIcon()+'</button><div class="clap-n">'+fmtN(n)+'</div><div class="info"><div class="t1">'+T('文章好熱鬧','Article feels lively')+'</div><div class="t2">'+T('主持同大家喺度講緊 · 拍手淨好玩，唔入分','Mods + crowd are live · claps are play, not scored')+' · '+EX()+'</div></div></div>'}
+function artStrip(){const open=S.artOpen?' open':'';return '<div class="art-strip'+open+'"><button class="hd" onclick="E.toggleArt()" aria-expanded="'+(S.artOpen?'true':'false')+'"><span class="t">'+T('今日報道（收起）','Today\'s story (collapsed)')+'</span><span class="meta">BTC · 21 Oct</span><span class="chev" aria-hidden="true">▾</span></button><div class="bd"><div class="meta" style="margin-bottom:10px">'+T('想浸入先打開 · 唔會逼你入去','Open when you want to dive in · nothing forces you')+'</div>'+FL()+'</div></div>'}
 function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('↑ 返去 Story 繼續睇','↑ Back to the Story')+'</button></div></div>';
  if(S.later)return '<div class="reg"><div class="meta">'+T('未保存 · 你個 call 只喺呢部機','Not saved · call lives on this device only')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
  return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
  (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
-const CE2={top(){window.scrollTo({top:0,behavior:'smooth'})},unlater(){S.later=false;S.regOpen=true;R()},
- regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at+' · 返去 Story','Saved · call time kept '+S.at+' · back to Story');R();window.scrollTo({top:0,behavior:'smooth'})}};
-const SCORE=(v,note)=>{
- if(!S.rev)return '<div class="score"><div><b style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</b><span>'+T('分數揭曉後先出','Score shows after reveal')+'</span></div>'+(note?'<div><span style="font-size:14px">'+note+'</span></div>':'')+'</div>';
- let num=v;
- if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
- return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
-};
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
-const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','Demo')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
+const YN=()=>'<div class="yn"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
 const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
-const DOCK=(cap,right,label)=>'<div class="dock"><div class="in"><div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
-const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (Demo) · you said '+PK(S.pick))+'</div>';
+const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數、拍手都係示例 · play money，冇獎品 · 拍手唔入分','All headlines, %, counts and claps are Demo · play money, no prizes · claps don’t score')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
-function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:''}}reset();
+function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',claps:0,clapPop:false,artOpen:false}}reset();
 const CROWD=61,N='1,972';
 /* past days (sample): [date, q zh, q en, result, your pick or null] */
 const PAST=()=>[['16 Oct','BTC 收市會唔會企穩 $65k？','Will BTC close above $65k?','y','y'],['17 Oct','ETF 單日淨流入會唔會過 $5 億？','Will ETF net inflows top $500M in a day?','n',null],['18 Oct','MicroStrategy 會唔會再增持？','Will MicroStrategy buy more?','y','n'],['19 Oct','週末會唔會跌穿 $63k？','Will BTC dip below $63k this weekend?','n','n'],['20 Oct','SEC 會唔會批新 ETF？','Will the SEC approve a new ETF?','y','y']];
-const OFF=[0,-80,-100,-50,40,90,30];const RH=118;
+const OFF=[0,-80,-100,-50,40,90,30];const RH=128;
+function predLeft(i,cx,html){const x=cx(i);const sz=i===PAST().length?80:44;const w=Math.max(72,x-sz/2-8);return '<div class="pred" style="top:'+(i*RH+40-18)+'px;left:0;width:'+w+'px">'+html+'</div>'}
+function rightLab(i,cx,html){const x=cx(i);const sz=i===PAST().length?80:44;return '<div class="nr" style="top:'+(i*RH+18)+'px;left:'+(x+sz/2+12)+'px;right:0">'+html+'</div>'}
 function route(){const P=PAST(),n=P.length+2,W=350,cx=i=>W/2+OFF[i];let pts=[],h='';
  for(let i=0;i<n;i++)pts.push([cx(i),i*RH+40]);
  let d='M'+pts[0][0]+' '+pts[0][1];for(let i=1;i<n;i++){const a=pts[i-1],b=pts[i],my=(a[1]+b[1])/2;d+=' C'+a[0]+' '+my+' '+b[0]+' '+my+' '+b[0]+' '+b[1]}
  h+='<div class="route" style="height:'+(n*RH)+'px"><svg viewBox="0 0 '+W+' '+(n*RH)+'" preserveAspectRatio="none"><path d="'+d+'" fill="none" stroke="var(--hs)" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 18"/></svg>';
- const lab=(i,html)=>{const x=cx(i),left=x<W/2+10;const gap=i<PAST().length?36:46;return '<div class="nl" style="top:'+(i*RH+12)+'px;'+(left?'left:'+(x+gap)+'px;right:0;':'left:0;right:'+(W-x+gap)+'px;')+(left?'':'text-align:right')+'">'+html+'</div>'};
- P.forEach((p,i)=>{const sz=40,x=cx(i)-sz/2,y=i*RH+40-sz/2;
+ P.forEach((p,i)=>{const sz=44,x=cx(i)-sz/2,y=i*RH+40-sz/2;
   const sc=p[4]?(p[4]===p[3]?'+1':'0'):'0';
   const cls=p[4]?'done':'miss';
-  h+='<a class="nd '+cls+'" style="left:'+x+'px;top:'+y+'px" href="'+FORBES+'" target="_blank" rel="noopener" aria-label="'+p[0]+' '+T('喺 Forbes.com 打開','Open on Forbes.com')+'"><span>'+PK(p[3])+'</span><span class="sc">'+sc+'</span></a>';
-  h+=lab(i,'<a class="lnk main" href="'+FORBES+'" target="_blank" rel="noopener">'+T('嗰日 Forbes 文章','That day\'s Forbes article')+' ↗</a><b>'+T(p[1],p[2])+'</b><span class="past-meta">'+p[0]+' · '+T('結果：'+PK(p[3])+(p[4]?' · 你揀咗 '+PK(p[4]):' · 冇出 call = 0'),'Result: '+PK(p[3])+(p[4]?' · you said '+PK(p[4]):' · no call = 0'))+'</span>')});
+  h+='<div class="nd '+cls+'" style="left:'+x+'px;top:'+y+'px" aria-label="'+p[0]+'"><span>'+PK(p[3])+'</span><span class="sc">'+sc+'</span></div>';
+  /* LEFT of circle = prediction state */
+  if(p[4])h+=predLeft(i,cx,'<span class="chip called">'+T('你揀咗 ','You said ')+PK(p[4])+'</span><span class="hint">'+p[0]+'</span>');
+  else h+=predLeft(i,cx,'<span class="chip vacant">'+T('未出 call','No call yet')+'</span><span class="hint">'+T('嗰日冇出 = 0','Missed day = 0')+'</span>');
+  h+=rightLab(i,cx,'<b>'+T(p[1],p[2])+'</b><span class="past-meta">'+T('結果：'+PK(p[3]),'Result: '+PK(p[3]))+'</span>')});
  const t=P.length,tx=cx(t)-40,ty=t*RH+40-40;
  const todLabel=S.rev?PK(S.res):(S.pick?PK(S.pick):T('今日','Today'));
  const todSmall=S.rev?(S.pick===S.res?'+1':'0'):(S.pick?T('等揭曉','pending'):'21 Oct');
  h+='<button class="nd tod'+(S.rev?' rv':'')+(S.pick?'':' pulse')+'" id="today" style="left:'+tx+'px;top:'+ty+'px" onclick="E.goq()"><span>'+todLabel+'</span><small>'+todSmall+'</small></button>';
- h+=lab(t,S.rev?'<b>'+T('今日結果：'+PK(S.res)+'（示例）','Today\'s result: '+PK(S.res)+' (sample)')+'</b>'+T('你揀咗 '+PK(S.pick),'You said '+PK(S.pick))+'<br><a class="lnk main" href="'+FORBES+'" target="_blank" rel="noopener">'+T('跟進文章（示例）','Follow-up article (sample)')+' ↗</a>':'<b>'+T('今日一題','Today\'s one question')+'</b>'+(S.pick?T('已出 call · 等揭曉','Called · awaiting reveal'):T('撳圓圈去答','Tap the circle to answer')));
+ /* LEFT of today circle = prediction affordance / state */
+ if(S.pick)h+=predLeft(t,cx,'<span class="chip called">'+T('你揀咗 ','You said ')+PK(S.pick)+'</span><span class="hint">'+(S.rev?T('已揭曉','Revealed'):T('已出 call','Called'))+'</span>');
+ else h+=predLeft(t,cx,'<button class="chip go" onclick="E.goq()">'+T('出 call','Make a call')+'</button><span class="hint">'+T('未預測 · 撳去答','No prediction yet')+'</span>');
+ h+=rightLab(t,cx,S.rev?'<b>'+T('今日結果：'+PK(S.res)+'（示例）','Today\'s result: '+PK(S.res)+' (Demo)')+'</b><span class="past-meta">'+T('你揀咗 '+PK(S.pick),'You said '+PK(S.pick))+'</span>':'<b>'+T('今日一題','Today\'s one question')+'</b><span class="past-meta">'+(S.pick?T('已出 call · 見下面','Called · see below'):T('見下面答','Answer below'))+'</span>');
  const u=t+1,ux=cx(u)-32,uy=u*RH+40-32;
- h+='<div class="nd lock" style="left:'+ux+'px;top:'+uy+'px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><small>22 Oct</small></div>'+lab(u,'<b>'+T('聽日一題','Tomorrow\'s question')+'</b>'+T('聽日先開 · 漏咗唔使補','Opens tomorrow · missing a day just counts 0'));
+ h+='<div class="nd lock" style="left:'+ux+'px;top:'+uy+'px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><small>22 Oct</small></div>'+rightLab(u,cx,'<b>'+T('聽日一題','Tomorrow\'s question')+'</b><span class="past-meta">'+T('聽日先開 · 漏咗唔使補','Opens tomorrow · missing a day just counts 0')+'</span>');
+ return h+'</div>'}
+function pastPosts(){const P=PAST();let h='<div class="past-posts"><div class="lab">'+T('之前日子嘅報道（示例）· 放下面，唔逼開','Past-day posts (Demo) · below, not forced')+' · '+EX()+'</div>';
+ P.forEach(p=>{h+='<div class="pp"><div class="d">'+p[0]+'</div><div class="b"><b>'+T(p[1],p[2])+'</b><div class="meta">'+T('結果：'+PK(p[3])+(p[4]?' · 你揀咗 '+PK(p[4]):' · 未出 call'),'Result: '+PK(p[3])+(p[4]?' · you said '+PK(p[4]):' · no call'))+' · <a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('嗰日文章','That day’s article')+' ↗</a></div></div></div>'});
  return h+'</div>'}
 const pastPts=()=>PAST().reduce((a,p)=>a+(p[4]&&p[4]===p[3]?1:0),0);
 const total=()=>pastPts()+pts();
-function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · '+T('比特幣十月路線','Bitcoin in October')+'</div><div class="h1">'+T('比特幣 ETF 資金回流，$70k 係咪下一站？','ETF money flows back into Bitcoin — is $70k next?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>';
- /* Today's call ABOVE the map */
- h+='<div class="q panel" id="qp"><div class="lab"><span>21 Oct · '+T('今日一問','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('比特幣今個禮拜會唔會升穿 $70k？','Will Bitcoin break $70k this week?')+'</div>';
+function dockToday(){let h='<div class="dock" id="qp"><div class="in"><div class="cap"><span><b style="color:var(--ink)">'+T('今日一題','Today\'s one question')+'</b> · 21 Oct</span>'+EX()+'</div>';
+ h+='<div class="qq">'+T('比特幣今個禮拜會唔會升穿 $70k？','Will Bitcoin break $70k this week?')+'</div>';
  if(!S.pick)h+=YN();
  else{h+=YOU()+CROWDV(CROWD,N,S.pick);
-  if(!S.rev)h+=DEMO();else h+=RES()+'<div class="meta" style="margin-top:8px">'+T('跟進文章（示例）：比特幣破 $70k，ETF 單週流入新高 · ','Follow-up article (sample): Bitcoin breaks $70k on record ETF week · ')+FL()+'</div>';
-  if(!S.rev)h+=SCORE('0');
-  else{const t=total();h+='<div class="score"><div><b>'+(t===0?T('0 分','0 pts'):t+' '+T('分','pts'))+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div><div><span style="font-size:14px">'+T('冇答嘅日子 = 0','Missed days = 0')+'</span></div></div>'}
-  h+=reg(T('保存你嘅路線同今日個 call','Save your route and today\'s call'))}
- h+='</div>';
- h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('故事路線圖','Story route')+'</b> · '+T('之前 '+PAST().length+' 日（示例）','Previous '+PAST().length+' days (sample)')+'</span>'+EX()+'</div>'+route()+'</div>';
+  if(!S.rev)h+=DEMO();
+  else{h+=RES();const t=total();h+='<div class="score"><div><b>'+(t===0?T('0 分','0 pts'):t+' '+T('分','pts'))+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div><div><span>'+T('拍手唔入呢度','Claps stay out of this')+'</span></div></div>'}
+  if(!S.rev)h+='<div class="meta" style="margin-top:8px">'+T('已出 call · 等揭曉 · 分數揭曉後先出','Called · awaiting reveal · score after reveal')+'</div>';
+  h+=reg(T('保存你嘅路線同今日個 call','Save your route and today\'s call'));
+  h+='<div class="sub">'+FL()+'</div>'}
+ return h+'</div></div>'}
+function V(){let h=hdr('Forbes Predict');
+ h+='<div class="kick">Story · '+T('比特幣十月路線','Bitcoin in October')+'</div><div class="h1">'+T('比特幣 ETF 資金回流，$70k 係咪下一站？','ETF money flows back into Bitcoin — is $70k next?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Demo headline')+'</div>';
+ h+=heat();
+ h+=artStrip();
+ h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('故事路線圖','Story route')+'</b> · '+T('之前 '+PAST().length+' 日（示例）','Previous '+PAST().length+' days (Demo)')+'</span>'+EX()+'</div>'+route()+'</div>';
+ h+=pastPosts();
  h+=FOOT();
- h+=S.rev?DOCK(T('跟進文章（示例）','Follow-up article (sample)'),'BTC · 25 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道（示例）','Today\'s story (sample)'),'BTC · 21 Oct');
+ h+=dockToday();
  return h}
-const E=Object.assign({},CE,CE2,{
- goq(){const q=document.getElementById('qp');q&&q.scrollIntoView({behavior:'smooth',block:'start'})},
+function R(){applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';document.getElementById('app').innerHTML=V()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');if(S.toast){S.toast='';clearTimeout(window._tt);window._tt=setTimeout(()=>{const el=document.querySelector('.toast');el&&el.remove()},1800)}if(S.clapPop){clearTimeout(window._cp);window._cp=setTimeout(()=>{S.clapPop=false;const el=document.querySelector('.clap');el&&el.classList.remove('pop')},560)}}
+const E={
+ lang(l){L=l;syncURL();R()},theme(t){TH=t;applyTheme();syncURL();R()},
+ regOpen(){S.regOpen=true;R()},later(){S.later=true;R()},unlater(){S.later=false;S.regOpen=true;R()},
+ regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at+' · 返去 Story','Saved · call time kept '+S.at+' · back to Story');R();window.scrollTo({top:0,behavior:'smooth'})},
+ top(){window.scrollTo({top:0,behavior:'smooth'})},
+ toggleArt(){S.artOpen=!S.artOpen;R()},
+ clap(){if(S.claps>=50){S.toast=T('拍手夠晒 · 仍然唔入分','Clap cap · still doesn’t score');R();return}S.claps+=1;S.clapPop=true;R()},
+ goq(){const q=document.getElementById('qp');q&&q.scrollIntoView({behavior:'smooth',block:'end'});if(!S.pick){/* nudge */}},
  call(p){if(S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.toast=T('已出 call · '+S.at,'Call made · '+S.at);R()},
- reveal(){if(!S.pick||S.rev)return;S.rev=true;R();const t=document.getElementById('today');t&&t.scrollIntoView({behavior:'smooth',block:'center'})}});
+ reveal(){if(!S.pick||S.rev)return;S.rev=true;R();const t=document.getElementById('today');t&&t.scrollIntoView({behavior:'smooth',block:'center'})}
+};
 window.E=E;
 if(/demo=reveal/.test(Q)){S.pick=(Q.match(/pick=(y|n)/)||[])[1]||'y';S.at='09:41';S.rev=true}
+if(/art=open/.test(Q))S.artOpen=true;
 R();
 </script></body></html>

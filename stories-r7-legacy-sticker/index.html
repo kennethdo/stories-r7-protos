@@ -75,30 +75,30 @@ function R(){applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';do
 let S;
 function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:''}}reset();
 const CROWD=63,N='1,284';
-/* past stickers already on this Story board (sample) */
+/* past stickers already on this Story board */
 const OLD=()=>[['14 Oct',T('預告','Trailer'),'-3deg'],['16 Oct',T('定價','Price'),'4deg'],['18 Oct',T('冇延','On time'),'-6deg']];
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 function board(){const old=OLD().map(o=>'<div class="slot"><span class="d">'+o[0]+'</span><a class="stk old" style="--r:'+o[2]+'" href="'+FORBES+'" target="_blank" rel="noopener" aria-label="'+T('喺 Forbes.com 打開','Open on Forbes.com')+'"><small>'+o[1]+'</small></a></div>').join('');
  const today='<div class="slot tod"><span class="d">21 Oct</span>'+(S.rev?'<a class="stk new" style="--r:-5deg" href="'+FORBES+'" target="_blank" rel="noopener" aria-label="'+T('跟進報道：喺 Forbes.com 打開','Follow-up: open on Forbes.com')+'"><span class="g">·</span><small>'+PK(S.res)+'</small></a>':'<span style="font-size:22px;margin:auto">'+(S.pick?'…':'?')+'</span>')+'</div>';
  const fut='<div class="slot"><span class="d">22 Oct</span><span style="margin:auto">'+T('聽日','Tmrw')+'</span></div>';
- return '<div class="board" id="board"><div class="bh"><b>'+T('Story 板','Story board')+'</b><span class="meta">'+T('揭曉一題，貼一張，撕唔走','One sticker per reveal, permanent')+' · '+EX()+'</span></div><div class="slots">'+old+today+fut+'</div>'+
+ return '<div class="board" id="board"><div class="bh"><b>'+T('Story 板','Story board')+'</b><span class="meta">'+T('揭曉一題，貼一張，撕唔走','One sticker per reveal, permanent')+'</span></div><div class="slots">'+old+today+fut+'</div>'+
  '<div class="legend"><span>'+T('撳貼紙 → 跟進 Forbes 文章','Tap a sticker → follow-up Forbes article')+'</span></div></div>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · GTA VI · '+T('出街倒數','Countdown')+'</div><div class="h1">'+T('Rockstar 再確認 GTA VI 11 月 19 日出，分析師仲有保留','Rockstar reaffirms GTA VI for Nov 19; analysts hedge')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>';
+ h+='<div class="kick">Story · GTA VI · '+T('出街倒數','Countdown')+'</div><div class="h1">'+T('Rockstar 再確認 GTA VI 11 月 19 日出，分析師仲有保留','Rockstar reaffirms GTA VI for Nov 19; analysts hedge')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
  h+=board();
- h+='<div class="q"><div class="lab"><span>'+T('今日一問 · 一日一題','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('GTA VI 會唔會照 11 月 19 日出？','Will GTA VI ship on Nov 19?')+'</div>';
+ h+='<div class="q"><div class="lab"><span>'+T('今日一問 · 一日一題','Today\'s one question')+'</span>'+'</div><div class="qq">'+T('GTA VI 會唔會照 11 月 19 日出？','Will GTA VI ship on Nov 19?')+'</div>';
  if(!S.pick){h+='<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>'}
  else{const mine=S.pick==='y'?CROWD:100-CROWD;
   h+='<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>'+
-  '<div class="crowd"><div class="split"><i style="width:'+CROWD+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+CROWD+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+N+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-CROWD)+'%</span></div></div>';
-  if(!S.rev)h+='<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" id="btn-reveal" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>';
-  else h+='<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>'+
-   '<a class="flash" href="'+FORBES+'" target="_blank" rel="noopener"><div class="bigstk"><span class="g">·</span><small>'+PK(S.res)+'</small></div><div><div class="t1">'+T('貼咗落 Story 板：跟進文章 · GTA VI 準時開賣，首日數字點睇','Stuck on the board: Follow-up article · GTA VI launches on time — day-one numbers')+'</div><div class="t2">'+T('示例標題 · 撳貼紙讀跟進','Sample headline · tap the sticker to read')+'</div></div></a>';
+  '<div class="crowd"><div class="split"><i style="width:'+CROWD+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+CROWD+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+N+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-CROWD)+'%</span></div></div>';
+  if(!S.rev)h+='<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" id="btn-reveal" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>';
+  else h+='<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>'+
+   '<a class="flash" href="'+FORBES+'" target="_blank" rel="noopener"><div class="bigstk"><span class="g">·</span><small>'+PK(S.res)+'</small></div><div><div class="t1">'+T('貼咗落 Story 板：跟進文章 · GTA VI 準時開賣，首日數字點睇','Stuck on the board: Follow-up article · GTA VI launches on time — day-one numbers')+'</div><div class="t2">'+T('撳貼紙讀跟進','Tap the sticker to read')+'</div></div></a>';
   if(!S.rev)h+='<div class="score"><div><b style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</b><span>'+T('分數揭曉後先出','Score shows after reveal')+'</span></div><div><span style="font-size:14px">'+T('得一個分數','One score only')+'</span></div></div>';
   else h+='<div class="score"><div><b>'+(pts()===0?T('0 分','0 pts'):pts()+' '+T('分','pts'))+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div><div><span style="font-size:14px">'+T('貼紙唔加分','Stickers add no points')+'</span></div></div>';
   h+=reg(T('保存你個 call 同貼紙','Save your call and sticker'))}
- h+='</div><div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
- const cap=S.rev?T('跟進報道（示例）','Follow-up story (sample)'):T('今日報道（示例）','Today\'s story (sample)');
+ h+='</div><div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
+ const cap=S.rev?T('跟進報道','Follow-up story'):T('今日報道','Today\'s story');
  h+='<div class="dock"><div class="in"><div class="cap"><span>'+cap+'</span><span>'+(S.rev?'GTA VI · 20 Nov':'GTA VI · 21 Oct')+'</span></div>'+PA(S.rev?T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'):T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
  return h}
 const E=Object.assign({},CE,{

@@ -80,10 +80,10 @@ function ext(url,cls,html){return '<a class="'+cls+'" href="'+url+'" target="_bl
 function R(){sync();document.getElementById('app').innerHTML=V[S.s]();const d=document.getElementById('dock');d.innerHTML=(D[S.s]||(()=>''))();d.style.display=d.innerHTML?'':'none';const sh=document.getElementById('sheet');sh.innerHTML=S.sheet?SHEET():'';}
 const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';
 const HL={zh:'示例：聯儲局按兵不動，市場開始押注年底減息',en:'Sample: Fed holds rates as markets start pricing a year-end cut'};
-const DEK={zh:'示例摘要：議息聲明措辭轉軟，債息回落。以下內容為原型示例，並非 Forbes 原文。',en:'Sample summary: softer statement wording, yields slip. Prototype copy only, not Forbes text.'};
+const DEK={zh:'議息聲明措辭轉軟，債息回落。',en:'Softer statement wording, yields slip.'};
 const QN={zh:'聯儲局 12 月會唔會減息？',en:'Will the Fed cut rates in December?'};
 const ART=fb('money/');
-function SHEET(){return '<div class="sheet" onclick="if(event.target===this){S.sheet=0;R()}"><div class="in"><div class="ttl h2">'+T('建立 Forbes Predict 紀錄','Create a Forbes Predict record')+'</div><p class="para">'+T('呢個會開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶。玩嘅係模擬幣，冇獎品。','This opens a Forbes Predict record, not a Forbes.com account. Play money · no prizes.')+'</p><p class="note">'+ic('info','sm')+T('原型示例：唔會真係建立任何紀錄。','Prototype sample: no record is actually created.')+'</p><div style="margin-top:16px"><button class="btn-s" style="width:100%" onclick="S.sheet=0;S.reg=1;R()">'+T('知道，關閉','Got it, close')+'</button></div></div></div>';}
+function SHEET(){return '<div class="sheet" onclick="if(event.target===this){S.sheet=0;R()}"><div class="in"><div class="ttl h2">'+T('建立 Forbes Predict 紀錄','Create a Forbes Predict record')+'</div><p class="para">'+T('呢個會開一個 Forbes Predict 紀錄，唔係 Forbes.com 帳戶。玩嘅係模擬幣，冇獎品。','This opens a Forbes Predict record, not a Forbes.com account. Play money · no prizes.')+'</p><div style="margin-top:16px"><button class="btn-s" style="width:100%" onclick="S.sheet=0;S.reg=1;R()">'+T('知道，關閉','Got it, close')+'</button></div></div></div>';}
 
 const S={s:['home','article','board'].includes(P.get('s'))?P.get('s'):'board',f:P.get('f')==='friends'?'friends':'all',pick:null,rev:0,sheet:0,reg:0};
 const PPL=[
@@ -103,8 +103,8 @@ board:()=>{const rs=rows(),me=rs.find(r=>r.me);return topbar('<div class="t">'+i
  '<div class="lb">'+rs.map(r=>'<div class="r'+(r.me?' me':'')+'"><span class="n">'+r.rk+'</span><span class="nm">'+(L==='en'?r.e:r.n)+(r.fr&&!r.me?'<span class="tag">'+T('朋友','Friend')+'</span>':'')+'</span><span class="sc">'+r.s+'</span></div>').join('')+'</div>'+
  '<div class="card"><div class="meta">'+T('你最近 7 日（分數 = 啱嘅 call）','Your last 7 days (score = correct calls)')+'</div><div class="days">'+MYDAYS.concat([S.pick&&S.rev?(S.pick==='y'?1:0):null]).map((d,i)=>'<div class="d'+(d===null?' un':'')+'">'+T('第','D')+(i+1)+(L==='en'?'':'日')+'<b>'+(d===null?0:d)+'</b></div>').join('')+'</div>'+
  '<p class="note">'+ic('circle-dashed','sm')+T('虛線 = 未出 call 或未揭曉，一律計 0。','Dashed = not called or unrevealed, counts as 0.')+'</p>'+
- (S.pick&&!S.rev?'<p class="note">'+ic('clock','sm')+T('今日已出 call，揭曉後先計分。','Today\'s call is in; it scores once revealed.')+'</p><button class="lnk" onclick="S.rev=1;R()">'+T('示例：揭曉','Sample: reveal')+'</button>':'')+
- '</div><p class="note" style="margin-top:18px">'+ic('info','sm')+T('所有名同分數都係示例數據。模擬幣 · 冇獎品。','All names and scores are sample data. Play money · no prizes.')+'</p>';},
+ (S.pick&&!S.rev?'<p class="note">'+ic('clock','sm')+T('今日已出 call，揭曉後先計分。','Today\'s call is in; it scores once revealed.')+'</p><button class="lnk" onclick="S.rev=1;R()">'+T('跳到揭曉','Skip to reveal')+'</button>':'')+
+ '</div><p class="note" style="margin-top:18px">'+ic('info','sm')+T('Play money，冇獎品','Play money · no prizes')+'</p>';},
 article:()=>topbar(nav('board','back',ic('arrow-left'))+'<div class="t">'+T('今日報道','Today\'s story')+' '+EX()+'</div>')+
  '<h1 class="ttl h1" style="font-size:26px">'+HL[L]+'</h1><p class="dek">'+DEK[L]+'</p>'+
  '<div class="card"><div class="meta">'+T('今日一條問題','Today\'s question')+'</div><div class="qq">'+QN[L]+'</div>'+

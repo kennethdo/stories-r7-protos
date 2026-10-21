@@ -207,22 +207,22 @@ applyTheme();
 const T={
 zh:{kick:'專題包 · 未完',sample:'示例數據',title:'法國示威',dek:'燃油稅引發嘅示威仲未完。每日一問，跟住 Forbes 報道一路追。',
 qh:'今日一問',readToday:'讀今日報道',yes:'會',no:'唔會',gh:'大家都估',hh:'實時熱詞 · 只連去 Forbes',ah:'Forbes 報道 · 按時間',vh:'片段',
-vt:'專訪片段位',vs:'彈出播放 · 示例，未有片',vph:'影片位 · 示例',close:'關閉',back:'← 返去專題包',forbesArt:'Forbes 文章',
+vt:'專訪片段位',vs:'彈出播放 · 示例，未有片',vph:'影片位',close:'關閉',back:'← 返去專題包',forbesArt:'Forbes 文章',
 veil:'出咗今日 call 先見大家點估',regPh:'你嘅電郵',regBtn:'保存我個 call',now:'今日',
-sRel:'相關 Forbes 文章（示例）',sMore:'再追',
+sRel:'相關 Forbes 文章',sMore:'再追',
 foot:'所有標題、數字、片段都係示例。只有一個榜：估中率。未揭曉嘅 call = 0 分。冇連續紀錄，漏咗一日唔會斷。',
 basis:a=>'呢個 call 綁住：<u>'+a+'</u>',
 chap:n=>'已讀 <b>'+n+' 章</b> · 漏咗唔會斷',
 st0:'訪客都出得 call，唔使先註冊。',st1:c=>'你估：'+c+'。讀咗新報道先改得。',st2:c=>'你估：'+c+'。讀咗新報道，可以改。',
 change:'改判',reg:'保存你個 call，聽日揭曉前話你知。',regDone:'已保存。揭曉時通知你，帶你去跟進報道。',regN:'開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品',
 gy:p=>'會 '+p+'%',gn:p=>'唔會 '+p+'%',gc:n=>n+' 人估咗 · 冇排名',
-hl:'最多讀者劃線 · 示例',rdone:'讀完。返去可以改判。',
-resT:'揭曉 · 昨日一問',resR:'結果：會（示例）· 你估：會 ✓ 估中',resL:'讀跟進報道 →'},
+hl:'最多讀者劃線',rdone:'讀完。返去可以改判。',
+resT:'揭曉 · 昨日一問',resR:'結果：會· 你估：會 ✓ 估中',resL:'讀跟進報道 →'},
 en:{kick:'Topic pack · Unfinished',sample:'Example data',title:'France protests',dek:'The fuel-tax protests are not over. One question a day, followed through Forbes reporting.',
 qh:'Today\'s question',readToday:'Read today\'s story',yes:'Will',no:'Won\'t',gh:'What everyone thinks',hh:'Trending now · Forbes only',ah:'Forbes stories · by time',vh:'Clip',
 vt:'Interview clip slot',vs:'Pop-up player · example, no video yet',vph:'Video slot · example',close:'Close',back:'← Back to topic pack',forbesArt:'Forbes article',
 veil:'Make today\'s call to see what everyone thinks',regPh:'Your email',regBtn:'Save my call',now:'Today',
-sRel:'Related Forbes stories (example)',sMore:'Keep following',
+sRel:'Related Forbes stories',sMore:'Keep following',
 foot:'All headlines, numbers and clips are examples. One leaderboard only: accuracy. Unresolved calls score 0. No streaks; missing a day breaks nothing.',
 basis:a=>'This call is tied to: <u>'+a+'</u>',
 chap:n=>'<b>'+n+' chapters</b> read · missing a day breaks nothing',
@@ -230,7 +230,7 @@ st0:'Guests can call. No sign-up first.',st1:c=>'Your call: '+c+'. Read new repo
 change:'Change call',reg:'Save your call. We\'ll tell you before tomorrow\'s reveal.',regDone:'Saved. We\'ll notify you at the reveal and take you to the follow-up.',regN:'Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes',
 gy:p=>'Will '+p+'%',gn:p=>'Won\'t '+p+'%',gc:n=>n+' readers called · no ranks',
 hl:'Most highlighted by readers · example',rdone:'Done reading. Go back to change your call.',
-resT:'Revealed · Yesterday\'s question',resR:'Result: Will (example) · Your call: Will ✓ correct',resL:'Read the follow-up →'}};
+resT:'Revealed · Yesterday\'s question',resR:'Result: Will · Your call: Will ✓ correct',resL:'Read the follow-up →'}};
 
 const A={
 a1:{t:'19 Oct 08:00',zh:'燃油稅加價觸發全國遊行，物流業最驚乜',en:'Fuel-tax protests spread: what logistics firms fear',k:['fuel','logistics','unions']},
@@ -294,7 +294,7 @@ function openSheet(k){$('sk').textContent='#'+kw(k);
 function closeSheet(){$('sheet').classList.remove('open');$('scrim').classList.remove('open');}
 function openReader(id){closeSheet();const a=A[id];const b=BODY[L];
  const showHl=!!S.call&&id===todayA;
- $('rbody').innerHTML='<p class="sm mute" style="margin-top:16px">Forbes · '+a.t+' <span class="tag">'+tt('sample')+'</span></p><h5>'+a[L]+'</h5><p>'+b[0]+'</p><p>'+(showHl?'<mark>'+b[1]+'</mark><span class="hl">'+tt('hl')+'</span>':b[1])+'</p><p>'+b[2]+'</p><p class="sm mute" style="margin-top:24px">'+tt('rdone')+'</p>';
+ $('rbody').innerHTML='<p class="sm mute" style="margin-top:16px">Forbes · '+a.t+'</p><h5>'+a[L]+'</h5><p>'+b[0]+'</p><p>'+(showHl?'<mark>'+b[1]+'</mark><span class="hl">'+tt('hl')+'</span>':b[1])+'</p><p>'+b[2]+'</p><p class="sm mute" style="margin-top:24px">'+tt('rdone')+'</p>';
  $('reader').classList.add('open');window.scrollTo(0,0);
  if(!S.readIds[id]){S.readIds[id]=1;S.chap++;}
  if(S.call)S.readAfter=true;}

@@ -95,23 +95,23 @@ const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+
 const HEAT_BASE=247;
 function fmtN(n){return n.toLocaleString('en-US')}
 function clapIcon(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 14.5l-2.2-2.2a1.6 1.6 0 0 1 0-2.3l.4-.4"/><path d="M14.2 11.3l2.1-2.1a1.6 1.6 0 0 0 0-2.3l-.5-.5a1.6 1.6 0 0 0-2.3 0L8.3 11.6"/><path d="M8.8 16.1l-1.8-1.8a1.6 1.6 0 0 1 0-2.3l.3-.3"/><path d="M9.5 18.5l6.2-6.2a1.6 1.6 0 0 1 2.3 0l.4.4a1.6 1.6 0 0 1 0 2.3L13.4 19"/><path d="M7.2 12.2L5.5 10.5a1.5 1.5 0 0 1 0-2.1l.4-.4"/><path d="M12.5 7.5l1.2-1.2a1.4 1.4 0 0 1 2 0l.3.3"/></svg><i class="burst"></i>'}
-function heat(){const n=HEAT_BASE+S.claps;const on=S.claps>0?' on':'';const pop=S.clapPop?' pop':'';return '<div class="heat"><button class="clap'+on+pop+'" onclick="E.clap()" aria-label="'+T('拍手（唔計分）','Clap (does not score)')+'">'+clapIcon()+'</button><div class="clap-n">'+fmtN(n)+'</div><div class="info"><div class="t1">'+T('文章好熱鬧','Article feels lively')+'</div><div class="t2">'+T('主持同大家喺度講緊 · 拍手淨好玩，唔入分','Mods + crowd are live · claps are play, not scored')+' · '+EX()+'</div></div></div>'}
-function artStrip(){const open=S.artOpen?' open':'';return '<div class="art-strip'+open+'"><button class="hd" onclick="E.toggleArt()" aria-expanded="'+(S.artOpen?'true':'false')+'"><span class="t">'+T('今日報道（收起）','Today\'s story (collapsed)')+'</span><span class="meta">BTC · 21 Oct</span><span class="chev" aria-hidden="true">▾</span></button><div class="bd"><div class="meta" style="margin-bottom:10px">'+T('想浸入先打開 · 唔會逼你入去','Open when you want to dive in · nothing forces you')+'</div>'+FL()+'</div></div>'}
+function heat(){const n=HEAT_BASE+S.claps;const on=S.claps>0?' on':'';const pop=S.clapPop?' pop':'';return '<div class="heat"><button class="clap'+on+pop+'" onclick="E.clap()" aria-label="'+T('拍手（唔計分）','Clap (does not score)')+'">'+clapIcon()+'</button><div class="clap-n">'+fmtN(n)+'</div><div class="info"><div class="t1">'+T('文章好熱鬧','Article feels lively')+'</div><div class="t2">'+T('主持同大家喺度講緊 · 拍手淨好玩，唔入分','Mods + crowd are live · claps are play, not scored')+'</div></div></div>'}
+function artStrip(){const open=S.artOpen?' open':'';return '<div class="art-strip'+open+'"><button class="hd" onclick="E.toggleArt()" aria-expanded="'+(S.artOpen?'true':'false')+'"><span class="t">'+T('今日報道','Today\'s story')+'</span><span class="meta">BTC · 21 Oct</span><span class="chev" aria-hidden="true">▾</span></button><div class="bd"><div class="meta" style="margin-bottom:10px">'+T('想睇先打開','Open when you’re ready')+'</div>'+FL()+'</div></div>'}
 function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('↑ 返去 Story 繼續睇','↑ Back to the Story')+'</button></div></div>';
  if(S.later)return '<div class="reg"><div class="meta">'+T('未保存 · 你個 call 只喺呢部機','Not saved · call lives on this device only')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
  return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
  (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','Demo')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
 const YN=()=>'<div class="yn"><button class="btn-p" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (Demo) · you said '+PK(S.pick))+'</div>';
-const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數、拍手都係示例 · play money，冇獎品 · 拍手唔入分','All headlines, %, counts and claps are Demo · play money, no prizes · claps don’t score')+'</div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
+const FOOT=()=>'<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',claps:0,clapPop:false,artOpen:false}}reset();
 const CROWD=61,N='1,972';
-/* past days (sample): [date, q zh, q en, result, your pick or null] */
+/* past days: [date, q zh, q en, result, your pick or null] */
 const PAST=()=>[['16 Oct','BTC 收市會唔會企穩 $65k？','Will BTC close above $65k?','y','y'],['17 Oct','ETF 單日淨流入會唔會過 $5 億？','Will ETF net inflows top $500M in a day?','n',null],['18 Oct','MicroStrategy 會唔會再增持？','Will MicroStrategy buy more?','y','n'],['19 Oct','週末會唔會跌穿 $63k？','Will BTC dip below $63k this weekend?','n','n'],['20 Oct','SEC 會唔會批新 ETF？','Will the SEC approve a new ETF?','y','y']];
 const OFF=[0,-80,-100,-50,40,90,30];const RH=128;
 function predLeft(i,cx,html){const x=cx(i);const sz=i===PAST().length?80:44;const w=Math.max(72,x-sz/2-8);return '<div class="pred" style="top:'+(i*RH+40-18)+'px;left:0;width:'+w+'px">'+html+'</div>'}
@@ -135,16 +135,16 @@ function route(){const P=PAST(),n=P.length+2,W=350,cx=i=>W/2+OFF[i];let pts=[],h
  /* LEFT of today circle = prediction affordance / state */
  if(S.pick)h+=predLeft(t,cx,'<span class="chip called">'+T('你揀咗 ','You said ')+PK(S.pick)+'</span><span class="hint">'+(S.rev?T('已揭曉','Revealed'):T('已出 call','Called'))+'</span>');
  else h+=predLeft(t,cx,'<button class="chip go" onclick="E.goq()">'+T('出 call','Make a call')+'</button><span class="hint">'+T('未預測 · 撳去答','No prediction yet')+'</span>');
- h+=rightLab(t,cx,S.rev?'<b>'+T('今日結果：'+PK(S.res)+'（示例）','Today\'s result: '+PK(S.res)+' (Demo)')+'</b><span class="past-meta">'+T('你揀咗 '+PK(S.pick),'You said '+PK(S.pick))+'</span>':'<b>'+T('今日一題','Today\'s one question')+'</b><span class="past-meta">'+(S.pick?T('已出 call · 見下面','Called · see below'):T('見下面答','Answer below'))+'</span>');
+ h+=rightLab(t,cx,S.rev?'<b>'+T('今日結果：'+PK(S.res)+'','Today\'s result: '+PK(S.res)+'')+'</b><span class="past-meta">'+T('你揀咗 '+PK(S.pick),'You said '+PK(S.pick))+'</span>':'<b>'+T('今日一題','Today\'s one question')+'</b><span class="past-meta">'+(S.pick?T('已出 call · 見下面','Called · see below'):T('見下面答','Answer below'))+'</span>');
  const u=t+1,ux=cx(u)-32,uy=u*RH+40-32;
  h+='<div class="nd lock" style="left:'+ux+'px;top:'+uy+'px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><small>22 Oct</small></div>'+rightLab(u,cx,'<b>'+T('聽日一題','Tomorrow\'s question')+'</b><span class="past-meta">'+T('聽日先開 · 漏咗唔使補','Opens tomorrow · missing a day just counts 0')+'</span>');
  return h+'</div>'}
-function pastPosts(){const P=PAST();let h='<div class="past-posts"><div class="lab">'+T('之前日子嘅報道（示例）· 放下面，唔逼開','Past-day posts (Demo) · below, not forced')+' · '+EX()+'</div>';
+function pastPosts(){const P=PAST();let h='<div class="past-posts"><div class="lab">'+T('之前日子嘅報道','Earlier days')+'</div>';
  P.forEach(p=>{h+='<div class="pp"><div class="d">'+p[0]+'</div><div class="b"><b>'+T(p[1],p[2])+'</b><div class="meta">'+T('結果：'+PK(p[3])+(p[4]?' · 你揀咗 '+PK(p[4]):' · 未出 call'),'Result: '+PK(p[3])+(p[4]?' · you said '+PK(p[4]):' · no call'))+' · <a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('嗰日文章','That day’s article')+' ↗</a></div></div></div>'});
  return h+'</div>'}
 const pastPts=()=>PAST().reduce((a,p)=>a+(p[4]&&p[4]===p[3]?1:0),0);
 const total=()=>pastPts()+pts();
-function dockToday(){let h='<div class="dock" id="qp"><div class="in"><div class="cap"><span><b style="color:var(--ink)">'+T('今日一題','Today\'s one question')+'</b> · 21 Oct</span>'+EX()+'</div>';
+function dockToday(){let h='<div class="dock" id="qp"><div class="in"><div class="cap"><span><b style="color:var(--ink)">'+T('今日一題','Today\'s one question')+'</b> · 21 Oct</span>'+'</div>';
  h+='<div class="qq">'+T('比特幣今個禮拜會唔會升穿 $70k？','Will Bitcoin break $70k this week?')+'</div>';
  if(!S.pick)h+=YN();
  else{h+=YOU()+CROWDV(CROWD,N,S.pick);
@@ -155,10 +155,10 @@ function dockToday(){let h='<div class="dock" id="qp"><div class="in"><div class
   h+='<div class="sub">'+FL()+'</div>'}
  return h+'</div></div>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · '+T('比特幣十月路線','Bitcoin in October')+'</div><div class="h1">'+T('比特幣 ETF 資金回流，$70k 係咪下一站？','ETF money flows back into Bitcoin — is $70k next?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Demo headline')+'</div>';
+ h+='<div class="kick">Story · '+T('比特幣十月路線','Bitcoin in October')+'</div><div class="h1">'+T('比特幣 ETF 資金回流，$70k 係咪下一站？','ETF money flows back into Bitcoin — is $70k next?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+'</div>';
  h+=heat();
  h+=artStrip();
- h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('故事路線圖','Story route')+'</b> · '+T('之前 '+PAST().length+' 日（示例）','Previous '+PAST().length+' days (Demo)')+'</span>'+EX()+'</div>'+route()+'</div>';
+ h+='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('故事路線圖','Story route')+'</b> · '+T('之前 '+PAST().length+' 日','Previous '+PAST().length+' days')+'</span>'+'</div>'+route()+'</div>';
  h+=pastPosts();
  h+=FOOT();
  h+=dockToday();

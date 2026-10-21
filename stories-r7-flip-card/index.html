@@ -97,13 +97,13 @@ const SCORE=(v,note)=>{
  if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
  return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
 };
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
 const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
 const DOCK=(cap,right,label,tip)=>'<div class="dock"><div class="in spoon-wrap">'+(tip?spoonTip(tip[0],tip[1]):'')+'<div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
-const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const FOOT=()=>'<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={spoonOff:{},pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',deal:false,flip:false}}reset();
@@ -114,23 +114,23 @@ function card(){if(!S.pick)return '<div class="table"><div class="ghost">'+T('�
  if(!S.rev){
   /* P0: face-down must NOT show follow-up headline / result — spoiler */
   return '<div class="table"><div class="fc clip'+(S.deal?' deal':'')+'" id="fc">'+
-  '<div class="sd bk"><span class="tag">'+T('蓋住 · 未揭曉','Face down · unrevealed')+'</span><div class="hl" style="margin-top:28px;font-style:normal;font-size:18px">'+T('跟進報道 · 揭曉先見','Follow-up · see it at reveal')+'</div><div class="meta" style="margin-top:12px">'+T('報紙紋理 · 示例 · 未揭曉','Newspaper texture · sample · sealed')+'</div><div class="bot"><span>'+T('你揀咗 ','You said ')+'<b>'+PK(S.pick)+'</b><br>21 Oct '+S.at+' HKT · '+T('已出 call · 等揭曉','Called · awaiting reveal')+'</span><span>'+T('19 Nov 翻','Flips 19 Nov')+'</span></div></div></div></div>';
+  '<div class="sd bk"><span class="tag">'+T('蓋住 · 未揭曉','Face down · unrevealed')+'</span><div class="hl" style="margin-top:28px;font-style:normal;font-size:18px">'+T('跟進報道 · 揭曉先見','Follow-up · see it at reveal')+'</div><div class="meta" style="margin-top:12px">'+T('未揭曉','Sealed')+'</div><div class="bot"><span>'+T('你揀咗 ','You said ')+'<b>'+PK(S.pick)+'</b><br>21 Oct '+S.at+' HKT · '+T('已出 call · 等揭曉','Called · awaiting reveal')+'</span><span>'+T('19 Nov 翻','Flips 19 Nov')+'</span></div></div></div></div>';
  }
  const ok=S.pick===S.res;
  return '<div class="table"><div class="fc clip flipped" id="fc">'+
- '<a class="sd fr" href="'+FORBES+'" target="_blank" rel="noopener"><span class="tag">'+T('翻咗 · 結果（示例）','Flipped · result (sample)')+'</span><div class="hl">'+FU()+'</div><div class="meta" style="color:inherit;opacity:.8;margin-top:6px">'+T('跟進文章 · 示例','Follow-up article · sample')+'</div><div class="big">'+PK(S.res)+'</div><div class="bot"><span>'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+(ok?' · +1':' · 0')+'</span><span class="u">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</span></div></a></div></div>'}
+ '<a class="sd fr" href="'+FORBES+'" target="_blank" rel="noopener"><span class="tag">'+T('翻咗 · 結果','Flipped · result')+'</span><div class="hl">'+FU()+'</div><div class="meta" style="color:inherit;opacity:.8;margin-top:6px">'+T('跟進文章','Follow-up article')+'</div><div class="big">'+PK(S.res)+'</div><div class="bot"><span>'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+(ok?' · +1':' · 0')+'</span><span class="u">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</span></div></a></div></div>'}
 function hand(){if(!S.rev)return '';const m=[[T('會','Yes'),'-6deg',''],[T('唔會','No'),'4deg',''],['?','-3deg',' d']];
- return '<div class="hand">'+m.map((x,i)=>x[2]?'<span class="mini d" style="--r:'+x[1]+'">?<small>24 Oct</small></span>':'<a class="mini" style="--r:'+x[1]+'" href="'+FORBES+'" target="_blank" rel="noopener" aria-label="'+T('喺 Forbes.com 打開','Open on Forbes.com')+'">'+x[0]+'<small>'+(i?'16':'12')+' Oct</small></a>').join('')+'</div><div class="meta" style="text-align:center;margin-top:8px">'+T('你喺呢個 Story 嘅其他剪報 · 示例','Your other clippings in this Story · sample')+'</div>'}
+ return '<div class="hand">'+m.map((x,i)=>x[2]?'<span class="mini d" style="--r:'+x[1]+'">?<small>24 Oct</small></span>':'<a class="mini" style="--r:'+x[1]+'" href="'+FORBES+'" target="_blank" rel="noopener" aria-label="'+T('喺 Forbes.com 打開','Open on Forbes.com')+'">'+x[0]+'<small>'+(i?'16':'12')+' Oct</small></a>').join('')+'</div><div class="meta" style="text-align:center;margin-top:8px">'+T('你喺呢個 Story 嘅其他剪報','Your other clippings in this Story')+'</div>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · GTA VI · '+T('出街倒數','Countdown')+'</div><div class="h1">'+T('Take-Two 季績前夕：GTA VI 會唔會再延？','Ahead of Take-Two earnings: will GTA VI slip again?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>';
- h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('GTA VI 會唔會照 11 月 19 日出？','Will GTA VI ship on Nov 19?')+'</div>';
+ h+='<div class="kick">Story · GTA VI · '+T('出街倒數','Countdown')+'</div><div class="h1">'+T('Take-Two 季績前夕：GTA VI 會唔會再延？','Ahead of Take-Two earnings: will GTA VI slip again?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
+ h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+'</div><div class="qq">'+T('GTA VI 會唔會照 11 月 19 日出？','Will GTA VI ship on Nov 19?')+'</div>';
  if(!S.pick)h+=YN()+card();
  else{h+=YOU()+CROWDV(CROWD,N,S.pick)+card();
   if(!S.rev)h+=DEMO()+SCORE('0');
   else h+=RES()+SCORE(pts(),T('翻卡唔另外加分','Flipping adds no extra points'));
   h+=hand()+reg(T('張剪報收埋喺你嘅紀錄，保存先收到翻卡通知','Keep the clipping in your record — save to get the flip alert'))}
  h+='</div>'+FOOT();
- h+=S.rev?DOCK(T('卡面＝跟進報道（示例）','Clipping face = follow-up (sample)'),'GTA VI · 19 Nov',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'),['flip-fu',T('揭曉主路：讀跟進 · 入 Forbes','Reveal path: follow-up on Forbes')]):DOCK(T('今日報道（示例）','Today\'s story (sample)'),'GTA VI · 21 Oct');
+ h+=S.rev?DOCK(T('跟進報道','Follow-up'),'GTA VI · 19 Nov',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'),['flip-fu',T('揭曉主路：讀跟進 · 入 Forbes','Reveal path: follow-up on Forbes')]):DOCK(T('今日報道','Today\'s story'),'GTA VI · 21 Oct');
  S.deal=false;return h}
 const E=Object.assign({},CE,CE2,{
  call(p){if(S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.deal=true;S.toast=T('已出 call · 卡蓋住咗 · '+S.at,'Call made · card face down · '+S.at);R()},

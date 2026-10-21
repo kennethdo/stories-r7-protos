@@ -89,30 +89,30 @@ const SCORE=(v,note)=>{
  if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
  return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
 };
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
 const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
 const DOCK=(cap,right,label,tip)=>'<div class="dock"><div class="in spoon-wrap">'+(tip?spoonTip(tip[0],tip[1]):'')+'<div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
-const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const FOOT=()=>'<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={spoonOff:{},pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',fol:false,notif:false,ftime:null}}reset();
 const CROWD=58,N='2,317';
 const STORY=()=>T('Fed 減息路線','Fed rate path');
 function star(){return '<button class="star'+(S.fol?' on':'')+'" onclick="E.fol()" aria-pressed="'+S.fol+'"><span class="s">'+(S.fol?'★':'☆')+'</span>'+(S.fol?T('追緊呢個專題','Following this Story'):T('追呢個專題','Follow this Story'))+'</button>'}
-function flist(){let h='<div class="sec" id="flist"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('我追緊嘅專題','Stories I follow')+'</b></span>'+EX()+'</div><div class="flist">';
+function flist(){let h='<div class="sec" id="flist"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('我追緊嘅專題','Stories I follow')+'</b></span>'+'</div><div class="flist">';
  const old='<div class="fi"><span class="s">★</span><div class="m"><div class="n">'+T('NFL 季中','NFL midseason')+'</div><div class="st">'+T('上次揭曉 18 Oct · ','Last reveal 18 Oct · ')+FL()+'</div></div></div>';
  if(!S.fol)return h+old+'<div class="empty">'+T('撳 ☆ 加 '+STORY()+' 入嚟 · 揭曉時話你知','Tap ☆ to add '+STORY()+' · we tell you at reveal')+'</div></div></div>';
  let st;
  if(S.rev)st=T('已揭曉：'+PK(S.res)+' · ','Revealed: '+PK(S.res)+' · ')+(S.pick?T('你揀咗 '+PK(S.pick),'you said '+PK(S.pick)):T('你冇出 call','no call'))+' · '+FL();
  else st=(S.pick?T('你揀咗 '+PK(S.pick)+' · ','You said '+PK(S.pick)+' · '):T('未出 call · ','No call yet · '))+'<span class="bell"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg> '+T('揭曉時話你知','We\'ll tell you at reveal')+'</span>'+(S.guest?' · '+T('保存先收到','save to receive'):'');
  return h+'<div class="fi new"><span class="s">★</span><div class="m"><div class="n">'+STORY()+'</div><div class="st">'+st+'</div><div class="st">'+T('揭曉日：29 Oct（Fed 議息） · 追咗 '+S.ftime,'Reveal: 29 Oct (FOMC) · followed '+S.ftime)+'</div></div></div>'+old+'</div></div>'}
-function notif(){if(!S.notif)return '';return '<a class="notif" href="'+FORBES+'" target="_blank" rel="noopener" onclick="E.nx()"><span class="ic">F</span><div><div class="t1">'+T('你追緊嘅「'+STORY()+'」結果：'+PK(S.res)+'（示例）','"'+STORY()+'" result: '+PK(S.res)+' (sample)')+'</div><div class="t2">'+T('跟進文章（示例）：Fed 減 25 點子，鮑威爾點講 · 喺 Forbes.com 打開 ↗','Follow-up article (sample): Fed cuts 25bp — what Powell said · Open on Forbes.com ↗')+'</div></div><button class="x" onclick="event.preventDefault();event.stopPropagation();E.nx()" aria-label="close">×</button></a>'}
+function notif(){if(!S.notif)return '';return '<a class="notif" href="'+FORBES+'" target="_blank" rel="noopener" onclick="E.nx()"><span class="ic">F</span><div><div class="t1">'+T('你追緊嘅「'+STORY()+'」結果：'+PK(S.res)+'','"'+STORY()+'" result: '+PK(S.res)+'')+'</div><div class="t2">'+T('跟進文章：Fed 減 25 點子，鮑威爾點講 · 喺 Forbes.com 打開 ↗','Follow-up article: Fed cuts 25bp — what Powell said · Open on Forbes.com ↗')+'</div></div><button class="x" onclick="event.preventDefault();event.stopPropagation();E.nx()" aria-label="close">×</button></a>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · '+STORY()+' · '+T('21 Oct 更新','21 Oct update')+'</div><div class="h1">'+T('通脹回落，市場押注 Fed 10 月尾再減息','Inflation cools; markets bet on another Fed cut in late October')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>'+star();
- h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('Fed 10 月 29 日會唔會減息？','Will the Fed cut on Oct 29?')+'</div>';
+ h+='<div class="kick">Story · '+STORY()+' · '+T('21 Oct 更新','21 Oct update')+'</div><div class="h1">'+T('通脹回落，市場押注 Fed 10 月尾再減息','Inflation cools; markets bet on another Fed cut in late October')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>'+star();
+ h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+'</div><div class="qq">'+T('Fed 10 月 29 日會唔會減息？','Will the Fed cut on Oct 29?')+'</div>';
  if(!S.pick)h+=YN();
  else{h+=YOU();
   /* P1 sequential: never dump crowd+follow+demo+email at once */
@@ -122,13 +122,13 @@ function V(){let h=hdr('Forbes Predict');
    h+=DEMO()+SCORE('0');
    /* email waits until after reveal */
   }else{
-   h+=RES()+'<div class="meta" style="margin-top:8px">'+T('跟進文章（示例）：Fed 減 25 點子，鮑威爾點講 · ','Follow-up article (sample): Fed cuts 25bp — what Powell said · ')+FL()+'</div>'+SCORE(pts(),T('追專題唔加分','Following adds no points'));
+   h+=RES()+'<div class="meta" style="margin-top:8px">'+T('跟進文章：Fed 減 25 點子，鮑威爾點講 · ','Follow-up article: Fed cuts 25bp — what Powell said · ')+FL()+'</div>'+SCORE(pts(),T('追專題唔加分','Following adds no points'));
    /* after reveal: email only once notif dismissed (or no notif) */
    if(!S.notif)h+=reg(T('保存你個 call 同追緊嘅專題','Save your call and followed Stories'));
   }}
  /* follow list: before reveal always; after reveal once notif gone so result lands first */
  h+='</div>'+((!S.rev||!S.notif)?flist():'')+FOOT();
- h+=S.rev?DOCK(T('跟進報道（示例）','Follow-up story (sample)'),'Fed · 29 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'),['sf-fu',T('揭曉主路：讀跟進 · 入 Forbes','Reveal path: follow-up on Forbes')]):DOCK(T('今日報道（示例）','Today\'s story (sample)'),'Fed · 21 Oct');
+ h+=S.rev?DOCK(T('跟進報道','Follow-up story'),'Fed · 29 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'),['sf-fu',T('揭曉主路：讀跟進 · 入 Forbes','Reveal path: follow-up on Forbes')]):DOCK(T('今日報道','Today\'s story'),'Fed · 21 Oct');
  return h+notif()}
 const E=Object.assign({},CE,CE2,{
  fol(){S.fol=!S.fol;if(S.fol)S.ftime=hhmm();S.toast=S.fol?T('已追 · 揭曉時話你知','Following · we\'ll tell you at reveal'):T('已取消追','Unfollowed');R()},

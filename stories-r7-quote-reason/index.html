@@ -89,47 +89,47 @@ const SCORE=(v,note)=>{
  if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
  return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
 };
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
 const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
 const DOCK=(cap,right,label,spoon)=>'<div class="dock"><div class="in spoon-wrap">'+(spoon!==false?'<div class="spoon">'+(typeof spoon==='string'?spoon:T('撳呢度 · 全文／tip 喺 Forbes','Tap here · full tip on Forbes'))+'</div>':'')+'<div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
-const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const FOOT=()=>'<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',view:'story',q:null,picking:false}}reset();
 const CROWD=54,N='4,112';
 const LINES=()=>[
- [T('「賓夕法尼亞嘅郊區票，今次會由經濟決定，唔係由文化議題決定。」','"Pennsylvania\'s suburbs will be decided by the economy this time, not culture-war issues."'),T('民調專家 · 示例','Pollster · sample'),38],
- [T('「兩黨喺呢個州嘅廣告開支已經打破紀錄。」','"Ad spending by both parties in the state has already broken records."'),T('Forbes 數據 · 示例','Forbes data · sample'),12],
- [T('「年輕選民嘅投票率先係真正嘅未知數。」','"Young-voter turnout is the real unknown."'),T('競選幕僚 · 示例','Campaign aide · sample'),29],
- [T('「早期投票數字暫時對民主黨有利，但差距收窄緊。」','"Early-vote numbers favour Democrats for now, but the gap is narrowing."'),T('州選舉官員 · 示例','State election official · sample'),21]];
+ [T('「賓夕法尼亞嘅郊區票，今次會由經濟決定，唔係由文化議題決定。」','"Pennsylvania\'s suburbs will be decided by the economy this time, not culture-war issues."'),T('民調專家','Pollster'),38],
+ [T('「兩黨喺呢個州嘅廣告開支已經打破紀錄。」','"Ad spending by both parties in the state has already broken records."'),T('Forbes 數據','Forbes data'),12],
+ [T('「年輕選民嘅投票率先係真正嘅未知數。」','"Young-voter turnout is the real unknown."'),T('競選幕僚','Campaign aide'),29],
+ [T('「早期投票數字暫時對民主黨有利，但差距收窄緊。」','"Early-vote numbers favour Democrats for now, but the gap is narrowing."'),T('州選舉官員','State election official'),21]];
 function article(){const L4=LINES(),hot=!!S.pick;let h=hdr('Forbes Predict');
  h+='<button class="back" onclick="E.go(\'story\')">← '+T('返 Story','Back to Story')+'</button>';
  if(S.picking)h+='<div class="banner"><span>'+T('撳一句做 tip／理由 · 全文喺 Forbes','Tap a tip line · full piece on Forbes')+'</span><span class="meta">'+T('你揀咗 ','You said ')+PK(S.pick)+'</span></div>';
- h+='<div class="kick">Forbes · '+T('文章 tease · 搵 tip','Article tease · tip-seeking')+' · '+EX()+'</div><div class="h1">'+T('賓州參議院：最後兩星期，邊個佔上風？','Pennsylvania Senate: who has the edge with two weeks left?')+'</div><div class="meta" style="margin-top:8px">'+T('短摘錄製造好奇 · tip 喺全文 · ','Short excerpt builds curiosity · tip in the full piece · ')+FL()+'</div>';
- if(hot)h+='<div class="meta" style="margin-top:12px">'+T('劃底線 = 熱門理由句（只喺文章入面顯示 · 示例）','Underline = popular reason lines (shown only inside the article · sample)')+'</div>';
+ h+='<div class="kick">Forbes · '+T('文章 tease · 搵 tip','Article tease · tip-seeking')+'</div><div class="h1">'+T('賓州參議院：最後兩星期，邊個佔上風？','Pennsylvania Senate: who has the edge with two weeks left?')+'</div><div class="meta" style="margin-top:8px">'+T('短摘錄製造好奇 · tip 喺全文 · ','Short excerpt builds curiosity · tip in the full piece · ')+FL()+'</div>';
+ if(hot)h+='<div class="meta" style="margin-top:12px">'+T('劃底線＝熱門理由句','Underlined = popular reasons')+'</div>';
  const para=[T('距離中期選舉仲有兩個星期，賓州參議院呢場仍然係全國最貼身嘅選戰之一。','Two weeks out from the midterms, Pennsylvania\'s Senate race remains one of the tightest in the country.'),T('兩邊陣營都將最後資源押落費城外圍。','Both camps are pouring their final resources into the Philadelphia collar counties.'),T('分析員指出，投票率會決定一切。','Analysts say turnout will decide everything.')];
  h+='<div class="art'+(S.picking?' pick':'')+'">';
  const ql=i=>{const l=L4[i],m=S.q===i,cls='ql'+(hot&&l[2]>=25?' hot':'')+(m?' mine':'');return '<span class="'+cls+'" data-i="'+i+'" '+(S.picking?'role="button" tabindex="0" onclick="E.q('+i+')"':'')+'>'+l[0]+'</span>'+(hot?' <span class="hotn">'+(m?T('你揀咗 · ','yours · '):'')+l[2]+'% '+T('揀咗','picked')+'</span>':'')};
  h+='<p>'+para[0]+' '+ql(0)+'</p><p>'+para[1]+' '+ql(1)+'</p><p>'+para[2]+' '+ql(2)+'</p><p>'+ql(3)+'</p></div>';
- h+='<div class="meta" style="margin-top:18px">'+T('% = 出咗 call 嘅讀者揀邊句做理由 · 示例','% = which line callers picked as their reason · sample')+'</div>'+FOOT();
- h+=DOCK(T('搵 tip 完 · 全文喺 Forbes（示例）','Done seeking · full tip on Forbes (sample)'),'Midterms · 21 Oct',T('喺 Forbes 睇齊 tip','See the full tip on Forbes'));
+ h+='<div class="meta" style="margin-top:18px">'+T('% ＝揀呢句做理由嘅讀者','% = callers who picked this line')+'</div>'+FOOT();
+ h+=DOCK(T('全文喺 Forbes','Full piece on Forbes'),'Midterms · 21 Oct',T('喺 Forbes 睇齊 tip','See the full tip on Forbes'));
  return h}
 function story(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · '+T('2026 中期選舉','2026 Midterms')+' · '+T('賓州','Pennsylvania')+'</div><div class="h1">'+T('賓州參議院：最後兩星期，邊個佔上風？','Pennsylvania Senate: who has the edge with two weeks left?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · <a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a></div>';
+ h+='<div class="kick">Story · '+T('2026 中期選舉','2026 Midterms')+' · '+T('賓州','Pennsylvania')+'</div><div class="h1">'+T('賓州參議院：最後兩星期，邊個佔上風？','Pennsylvania Senate: who has the edge with two weeks left?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · <a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a></div>';
  h+='<div class="body" style="margin-top:10px;font-size:14px;color:var(--body)">'+T('距離中期選舉仲有兩個星期，賓州參議院呢場仍然係全國最貼身嘅選戰之一。……（短摘錄）','Two weeks out from the midterms, Pennsylvania\'s Senate race remains one of the tightest in the country.… (short excerpt)')+'</div>';
- h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('民主黨會唔會守住賓州參議院議席？','Will Democrats hold the Pennsylvania Senate seat?')+'</div>';
+ h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+'</div><div class="qq">'+T('民主黨會唔會守住賓州參議院議席？','Will Democrats hold the Pennsylvania Senate seat?')+'</div>';
  if(!S.pick)h+=YN();
  else{h+=YOU()+CROWDV(CROWD,N,S.pick);
   if(S.q===null)h+='<div class="why"><div style="font-weight:600">'+T('你嘅理由？入文搵一句 tip','Your reason? Seek a tip line in the article')+'</div><div class="meta">'+T('搵 tip＝入文 · 理由唔入分 · 預覽只係 tease','Tip-seeking = into the piece · reasons add no points · preview is a tease')+'</div><div class="row" style="margin-top:10px"><button class="btn-s sm" onclick="E.pickq()">'+T('入文揀一句 tip','Seek a tip line in the article')+' →</button></div></div>';
   else h+='<div class="why"><div class="meta" style="margin:0 0 6px">'+T('你嘅理由（引用）','Your reason (quoted)')+'</div><q>'+LINES()[S.q][0].replace(/^[「"]|[」"]$/g,'')+'</q><div class="meta">— '+LINES()[S.q][1]+' · <button class="lnk" onclick="E.pickq()">'+T('改','Change')+'</button></div></div>';
   if(!S.rev)h+=DEMO()+SCORE('0',T('理由唔入分','Reasons add no points'));
-  else h+=RES()+'<div class="meta" style="margin-top:8px">'+T('跟進文章（示例）：民主黨以 1.8 個百分點守住賓州 · ','Follow-up article (sample): Democrats hold Pennsylvania by 1.8 points · ')+FL()+'</div>'+SCORE(pts(),T('理由唔入分','Reasons add no points'));
+  else h+=RES()+'<div class="meta" style="margin-top:8px">'+T('跟進文章：民主黨以 1.8 個百分點守住賓州 · ','Follow-up article: Democrats hold Pennsylvania by 1.8 points · ')+FL()+'</div>'+SCORE(pts(),T('理由唔入分','Reasons add no points'));
   h+=reg(T('保存你個 call 同理由','Save your call and reason'))}
  h+='</div>'+FOOT();
- h+=S.rev?DOCK(T('跟進報道（示例）','Follow-up story (sample)'),'Midterms · 4 Nov',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道（示例）','Today\'s story (sample)'),'Midterms · 21 Oct');
+ h+=S.rev?DOCK(T('跟進報道','Follow-up story'),'Midterms · 4 Nov',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道','Today\'s story'),'Midterms · 21 Oct');
  return h}
 const V=()=>S.view==='article'?article():story();
 const E=Object.assign({},CE,CE2,{

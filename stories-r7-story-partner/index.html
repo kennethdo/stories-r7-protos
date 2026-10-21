@@ -112,13 +112,13 @@ const SCORE=(v,note)=>{
  if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
  return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
 };
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div><div class="energy" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>'};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div><div class="energy" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>'};
 const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示例：跳到揭曉日（唔係產品）','Sample: jump to reveal day (not product)')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示例：揭曉','Sample: reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
 const DOCK=(cap,right,label)=>'<div class="dock"><div class="in"><div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
-const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const FOOT=()=>'<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={partner:null,pick:null,at:null,rev:false,res:'n',guest:true,regOpen:false,later:false,toast:'',read:false}}reset();
@@ -134,9 +134,9 @@ const DAYS=[
 ];
 function partnerPick(){
  if(S.partner)return '';
- let h='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('揀一位朋友做今季故事拍檔','Pick one friend as this season’s story partner')+'</b></span>'+EX()+'</div>';
+ let h='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('揀一位朋友做今季故事拍檔','Pick one friend as this season’s story partner')+'</b></span>'+'</div>';
  h+='<p class="meta" style="margin-top:6px">'+T('共用進度＝一齊揭曉過嘅 call · 唔計高低','Shared progress = calls revealed together · not a contest')+'</p><div class="plist">';
- h+=PALS.map(p=>'<button onclick="E.partner(\''+p.id+'\')"><span class="av">'+p.av+'</span><div class="who"><b>'+(L==='zh'?p.z:p.e)+'</b><span>'+T('已一齊揭曉 '+p.shared+' 次（示例）',p.shared+' reveals together (sample)')+'</span></div></button>').join('');
+ h+=PALS.map(p=>'<button onclick="E.partner(\''+p.id+'\')"><span class="av">'+p.av+'</span><div class="who"><b>'+(L==='zh'?p.z:p.e)+'</b><span>'+T('已一齊揭曉 '+p.shared+' 次',p.shared+' reveals together')+'</span></div></button>').join('');
  return h+'</div></div>';
 }
 function progress(){
@@ -151,7 +151,7 @@ function progress(){
  if(S.rev)h+='<div class="big">'+n+' <span style="font-size:14px;color:var(--mute);font-family:var(--detail);font-weight:400">'+T('次一齊揭曉','reveals together')+'</span></div>';
  else if(S.pick)h+='<div class="big" style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</div>';
  else h+='<div class="big" style="font-size:18px">'+T('準備一齊出 call','Ready to call together')+'</div>';
- h+='<div class="climb"><div class="cap"><span class="pair"><span class="av bob">'+T('你','Y')[0]+'</span><span class="av fr">'+p.av+'</span></span><span>'+T('你同 '+name+' · 一齊行呢條路（示例）','You + '+name+' · on this path together (sample)')+'</span></div>';
+ h+='<div class="climb"><div class="cap"><span class="pair"><span class="av bob">'+T('你','Y')[0]+'</span><span class="av fr">'+p.av+'</span></span><span>'+T('你同 '+name+' · 一齊行呢條路','You + '+name+' · on this path together')+'</span></div>';
  h+='<div class="rail"><div class="line"><div class="fill" style="width:'+pct+'%"></div></div><div class="stops">';
  h+=DAYS.map((x,i)=>{
   const on=x.ok===true||(i===4&&S.rev);
@@ -169,10 +169,10 @@ function artFirst(){
  return '<div class="art-first"><div class="meta">'+T('先讀文章','Article first')+'</div><div class="t">'+T('比特幣現貨 ETF：資金流會唔會連續第三週淨流入？','Bitcoin spot ETFs: a third straight week of net inflows?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+FL()+'</div><button class="btn-s sm" style="margin-top:12px;width:100%" onclick="E.read()">'+T('我睇完今日報道','I read today’s story')+'</button></div>';
 }
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · Bitcoin · '+T('資金流','Flows')+'</div><div class="h1">'+T('現貨 ETF 連續兩週淨流入之後','After two straight weeks of spot-ETF net inflows')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>';
+ h+='<div class="kick">Story · Bitcoin · '+T('資金流','Flows')+'</div><div class="h1">'+T('現貨 ETF 連續兩週淨流入之後','After two straight weeks of spot-ETF net inflows')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
  h+=partnerPick()+progress()+artFirst();
  if(S.partner&&S.read){
-  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today’s one question')+'</span>'+EX()+'</div><div class="qq">'+T('本週現貨 ETF 會唔會再錄得淨流入？','Will spot ETFs post another week of net inflows?')+'</div>';
+  h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today’s one question')+'</span>'+'</div><div class="qq">'+T('本週現貨 ETF 會唔會再錄得淨流入？','Will spot ETFs post another week of net inflows?')+'</div>';
   if(!S.pick)h+=YN();
   else{h+=YOU()+CROWDV(CROWD,N,S.pick);
    if(!S.rev)h+=DEMO()+SCORE('0');
@@ -182,13 +182,13 @@ function V(){let h=hdr('Forbes Predict');
   h+='</div>';
  }
  h+=FOOT();
- h+=S.rev?DOCK(T('跟進報道（示例）','Follow-up story (sample)'),'Bitcoin · 25 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道（示例）','Today’s story (sample)'),'Bitcoin · 21 Oct');
+ h+=S.rev?DOCK(T('跟進報道','Follow-up story'),'Bitcoin · 25 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道','Today’s story'),'Bitcoin · 21 Oct');
  return h}
 const E=Object.assign({},CE,CE2,{
  partner(id){if(S.partner)return;S.partner=id;S.toast=T('已揀拍檔 · 先讀今日文章','Partner picked · read today’s article first');R()},
  read(){S.read=true;S.toast=T('可以出 call','You can make the call');R();window.scrollTo({top:200,behavior:'smooth'})},
  call(p){if(!S.partner||!S.read||S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.toast=T('已出 call · '+S.at,'Call made · '+S.at);R()},
- reveal(){if(!S.pick||S.rev)return;S.rev=true;S.toast=T('一齊揭曉 +1（示例）','Shared reveal +1 (sample)');R();const el=document.getElementById('prog');el&&el.scrollIntoView({block:'center'})}
+ reveal(){if(!S.pick||S.rev)return;S.rev=true;S.toast=T('一齊揭曉 +1','Shared reveal +1');R();const el=document.getElementById('prog');el&&el.scrollIntoView({block:'center'})}
 });
 window.E=E;
 if(/demo=reveal/.test(Q)){S.partner='leo';S.read=true;S.pick=(Q.match(/pick=(y|n)/)||[])[1]||'n';S.at='09:41';S.rev=true}

@@ -81,28 +81,28 @@ const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 const BR=()=>({y:[T('如果會 → 聽日問：','If Yes → tomorrow asks: '),T('新城市會唔會喺亞洲？','Will the new city be in Asia?'),T('跟進：NFL 點揀下一個海外城市','Follow-up: how the NFL picks its next city')],
  n:[T('如果唔會 → 聽日問：','If No → tomorrow asks: '),T('球員工會會唔會公開反對加海外場？','Will the players\' union publicly oppose more overseas games?'),T('跟進：球員工會同聯盟嘅海外賽角力','Follow-up: union vs league on overseas games')]});
 function line(k){const b=BR()[k],on=S.res===k;
- return '<div class="br '+(on?'on':'off')+'"><div class="if">'+b[0]+(on?'<span class="tag">'+T('聽日 22 Oct 嘅題','Tomorrow, 22 Oct')+'</span>':' · '+T('冇開','Not taken'))+'</div><div class="tq">'+b[1]+'</div><div class="fa"><span>'+b[2]+' · '+T('示例','sample')+'</span>'+FL()+'</div></div>'}
+ return '<div class="br '+(on?'on':'off')+'"><div class="if">'+b[0]+(on?'<span class="tag">'+T('聽日 22 Oct 嘅題','Tomorrow, 22 Oct')+'</span>':' · '+T('冇開','Not taken'))+'</div><div class="tq">'+b[1]+'</div><div class="fa"><span>'+b[2]+'</span>'+FL()+'</div></div>'}
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · NFL '+T('海外賽','Overseas games')+'</div><div class="h1">'+T('NFL 老闆今日開會，傳 2027 年再加海外主場','NFL owners meet today; another overseas home city floated for 2027')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>';
+ h+='<div class="kick">Story · NFL '+T('海外賽','Overseas games')+'</div><div class="h1">'+T('NFL 老闆今日開會，傳 2027 年再加海外主場','NFL owners meet today; another overseas home city floated for 2027')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
  h+='<div class="fork"><span class="n">21</span><span>'+T('今日','Today')+'</span><span class="ln"></span><span>'+(S.rev?T('聽日開咗「'+(S.res==='y'?'亞洲':'工會')+'」線','Tomorrow: the '+(S.res==='y'?'Asia':'union')+' line'):T('聽日開邊條線？','Which line opens tomorrow?'))+'</span><span class="n f">22</span></div>';
- const front='<div class="face fr"><div class="cd"><span>'+T('今日一問 · 一日一題','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('NFL 會唔會宣布 2027 年加一個新海外城市？','Will the NFL announce a new overseas city for 2027?')+'</div>'+
+ const front='<div class="face fr"><div class="cd"><span>'+T('今日一問 · 一日一題','Today\'s one question')+'</span>'+'</div><div class="qq">'+T('NFL 會唔會宣布 2027 年加一個新海外城市？','Will the NFL announce a new overseas city for 2027?')+'</div>'+
   (S.pick?'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div><div class="hint">'+T('卡背印住兩條支線 · 揭曉先翻','Two branch lines on the back · flips at reveal')+'</div>':
   '<div class="hint" style="margin-top:14px">'+T('卡背印住兩條支線：揭曉結果決定聽日行邊條','Two lines on the back: the result picks tomorrow’s')+'</div><div class="yn" style="padding-top:14px"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div>')+'</div>';
  /* Back face: never leak result before reveal */
  const back=S.rev
-  ?('<div class="face bk"><div class="cd"><span>'+T('揭曉 · 22 Oct','Revealed · 22 Oct')+'</span>'+EX()+'</div><div class="qq" style="font-size:20px">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>'+line(S.res)+line(S.res==='y'?'n':'y')+'</div>')
-  :('<div class="face bk" aria-hidden="true"><div class="cd"><span>'+T('揭曉後先見','After reveal')+'</span>'+EX()+'</div><div class="qq" style="font-size:18px;color:var(--mute)">'+T('結果同支線揭曉後先見','Result and branches show after reveal')+'</div></div>');
+  ?('<div class="face bk"><div class="cd"><span>'+T('揭曉 · 22 Oct','Revealed · 22 Oct')+'</span>'+'</div><div class="qq" style="font-size:20px">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>'+line(S.res)+line(S.res==='y'?'n':'y')+'</div>')
+  :('<div class="face bk" aria-hidden="true"><div class="cd"><span>'+T('揭曉後先見','After reveal')+'</span>'+'</div><div class="qq" style="font-size:18px;color:var(--mute)">'+T('結果同支線揭曉後先見','Result and branches show after reveal')+'</div></div>');
  h+='<div class="card3'+(S.rev&&!S.noFl?' fl':'')+'" id="card"><div class="inner">'+front+back+'</div></div>';
  if(!S.pick)h+='<div class="meta" style="margin-top:10px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
  else{const mine=S.pick==='y'?CROWD:100-CROWD;
-  h+='<div class="crowd"><div class="split"><i style="width:'+CROWD+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+CROWD+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+N+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-CROWD)+'%</span></div></div>';
-  if(!S.rev)h+='<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉','Demo only: jump to reveal')+'</span><button class="btn-s sm" id="btn-reveal" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>';
-  else h+='<div class="demo"><span class="meta">'+T('示範用：睇另一條線點亮','Demo: see the other line light up')+'</span><button class="btn-s sm" onclick="E.swap()">'+T('示範：換結果','Demo: other result')+'</button></div>';
+  h+='<div class="crowd"><div class="split"><i style="width:'+CROWD+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+CROWD+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+N+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-CROWD)+'%</span></div></div>';
+  if(!S.rev)h+='<div class="demo"><span class="meta">'+T('跳到揭曉','Skip to reveal')+'</span><button class="btn-s sm" id="btn-reveal" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>';
+  else h+='<div class="demo"><span class="meta">'+T('睇另一條線','See the other line')+'</span><button class="btn-s sm" onclick="E.swap()">'+T('換結果','Other result')+'</button></div>';
   if(!S.rev)h+='<div class="score"><div><b style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</b><span>'+T('分數揭曉後先出','Score shows after reveal')+'</span></div><div><span style="font-size:14px">'+T('一日一題 · 支線唔加分','One a day · branches add no points')+'</span></div></div>';
   else h+='<div class="score"><div><b>'+(pts()===0?T('0 分','0 pts'):pts()+' '+T('分','pts'))+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div><div><span style="font-size:14px">'+T('一日一題 · 支線唔加分','One a day · branches add no points')+'</span></div></div>';
   h+=reg(S.rev?T('留電郵，聽日提你答新一題','Leave your email; we\'ll remind you tomorrow'):T('留電郵，聽日話你開邊條線','Leave your email; we\'ll tell you which line opens'))}
- h+='<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
- const cap=S.rev?T('跟進文章（示例）','Follow-up article (sample)'):T('今日報道（示例）','Today\'s story (sample)');
+ h+='<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
+ const cap=S.rev?T('跟進文章','Follow-up article'):T('今日報道','Today\'s story');
  h+='<div class="dock"><div class="in"><div class="cap"><span>'+cap+'</span><span>'+(S.rev?'22 Oct':'21 Oct')+'</span></div>'+PA(S.rev?T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'):T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
  return h}
 const E=Object.assign({},CE,{

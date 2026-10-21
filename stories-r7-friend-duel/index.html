@@ -109,13 +109,13 @@ const SCORE=(v,note)=>{
  if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
  return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
 };
-const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div><div class="energy" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>'};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div><div class="energy" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>'};
 const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
 const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
-const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示例：跳到揭曉日（唔係產品）','Sample: jump to reveal day (not product)')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示例：揭曉','Sample: reveal')+'</button></div>':'';
-const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('跳到揭曉日','Skip to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('跳到揭曉','Skip to reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' · you said '+PK(S.pick))+'</div>';
 const DOCK=(cap,right,label)=>'<div class="dock"><div class="in"><div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
-const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const FOOT=()=>'<div class="foot">'+T('Play money，冇獎品','Play money · no prizes')+'</div>';
 const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
 let S;
 function reset(){S={friend:null,pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:''}}reset();
@@ -134,7 +134,7 @@ function climbPath(){
  const done=S.rev?5:(S.pick?4:3); // playful progress along 5 stops; today unlocks on reveal
  const pct=Math.round((done/(CLIMB_STOPS.length-1))*100);
  let h='<div class="climb"><div class="cap"><span class="pair"><span class="av bob">'+T('你','Y')[0]+'</span><span class="av fr">'+f.av+'</span></span>';
- h+='<span>'+T('你同 '+fn+' · 一齊行呢條路（示例）','You + '+fn+' · on this path together (sample)')+'</span></div>';
+ h+='<span>'+T('你同 '+fn+' · 一齊行呢條路','You + '+fn+' · on this path together')+'</span></div>';
  h+='<div class="rail"><div class="line"><div class="fill" style="width:'+pct+'%"></div></div><div class="stops">';
  h+=CLIMB_STOPS.map((x,i)=>{
   const on=i<done, now=i===done&&!S.rev&&S.pick, wait=i===done&&!S.pick;
@@ -146,7 +146,7 @@ function climbPath(){
 }
 function pickFriend(){
  if(S.friend)return '';
- let h='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('揀一個朋友單挑今日一問','Pick one friend for today’s call')+'</b></span>'+EX()+'</div>';
+ let h='<div class="sec"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('揀一個朋友單挑今日一問','Pick one friend for today’s call')+'</b></span>'+'</div>';
  h+='<p class="note-soft">'+T('唔係排行榜 · 只係你同佢兩個人對今日呢一題','Not a leaderboard · just you and one friend on today’s question')+'</p><div class="pick-f">';
  h+=FRIENDS.map(f=>'<button onclick="E.friend(\''+f.id+'\')"><span class="av">'+f.av+'</span><span>'+(L==='zh'?f.z:f.e)+'</span></button>').join('');
  return h+'</div></div>';
@@ -165,16 +165,16 @@ function duelBox(){
   me=avMe+'<div class="nm">'+T('你','You')+'</div><div class="wait">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</div>';
   fr=avFr+'<div class="nm">'+fn+'</div><div class="wait">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</div>';
  }else{
-  me=avMe+'<div class="nm">'+T('你','You')+'</div><div class="pk">'+PK(S.pick)+'</div><div class="wait">'+T('結果：'+PK(S.res)+'（示例）','Result: '+PK(S.res)+' (sample)')+'</div>';
-  fr=avFr+'<div class="nm">'+fn+'</div><div class="pk">'+PK(f.call)+'</div><div class="wait">'+T('結果：'+PK(S.res)+'（示例）','Result: '+PK(S.res)+' (sample)')+'</div>';
+  me=avMe+'<div class="nm">'+T('你','You')+'</div><div class="pk">'+PK(S.pick)+'</div><div class="wait">'+T('結果：'+PK(S.res)+'','Result: '+PK(S.res)+'')+'</div>';
+  fr=avFr+'<div class="nm">'+fn+'</div><div class="pk">'+PK(f.call)+'</div><div class="wait">'+T('結果：'+PK(S.res)+'','Result: '+PK(S.res)+'')+'</div>';
  }
  return '<div class="duel"><div class="p me">'+me+'</div><div class="p">'+fr+'</div></div>'+climbPath()+'<p class="note-soft">'+T('分數只計你自己 · 朋友唔入你嘅分 · 未揭曉＝0','Score is yours alone · friends don’t add to it · unrevealed = 0')+'</p>';
 }
 function V(){let h=hdr('Forbes Predict');
- h+='<div class="kick">Story · NFL · '+T('週一晚','Monday night')+'</div><div class="h1">'+T('球員工會同海外場：週會前會唔會有新聲明？','Players’ union vs overseas games: a new statement before the week’s meeting?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>';
+ h+='<div class="kick">Story · NFL · '+T('週一晚','Monday night')+'</div><div class="h1">'+T('球員工會同海外場：週會前會唔會有新聲明？','Players’ union vs overseas games: a new statement before the week’s meeting?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct'+' · '+FL()+'</div>';
  h+=pickFriend();
  if(S.friend){
-  h+='<div class="q"><div class="lab"><span>'+T('今日一問 · 朋友單挑','Today’s one question · friend duel')+'</span>'+EX()+'</div><div class="qq">'+T('球員工會今日會唔會公開反對加海外場？','Will the players’ union publicly oppose more overseas games today?')+'</div>';
+  h+='<div class="q"><div class="lab"><span>'+T('今日一問 · 朋友單挑','Today’s one question · friend duel')+'</span>'+'</div><div class="qq">'+T('球員工會今日會唔會公開反對加海外場？','Will the players’ union publicly oppose more overseas games today?')+'</div>';
   if(!S.pick)h+=YN()+duelBox();
   else{h+=YOU()+CROWDV(CROWD,N,S.pick)+duelBox();
    if(!S.rev)h+=DEMO()+SCORE('0',T('單挑唔另外加分','Duel adds no extra points'));
@@ -184,7 +184,7 @@ function V(){let h=hdr('Forbes Predict');
   h+='</div>';
  }
  h+=FOOT();
- h+=S.rev?DOCK(T('跟進報道（示例）','Follow-up story (sample)'),'NFL · 22 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道（示例）','Today’s story (sample)'),'NFL · 21 Oct');
+ h+=S.rev?DOCK(T('跟進報道','Follow-up story'),'NFL · 22 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com')):DOCK(T('今日報道','Today’s story'),'NFL · 21 Oct');
  return h}
 const E=Object.assign({},CE,CE2,{
  friend(id){if(S.friend)return;S.friend=id;S.toast=T('已揀朋友 · 出今日 call','Friend picked · make today’s call');R()},

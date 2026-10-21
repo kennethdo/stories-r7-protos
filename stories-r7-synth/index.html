@@ -94,7 +94,7 @@ const ST={
 };
 /* present-mode notes, <=6 words each */
 const WHY={story:['Chris · Story + crowd 先','Chris · story and crowd first'],timeline:['Jeff · timeline #1','Jeff · timeline #1'],call:['Chris · 一個領頭 market','Chris · one leading market'],crowd:['Chris · 先見 crowd','Chris · crowd before article'],hints:['Harvey · TP → Forbes','Harvey · talking points to Forbes'],saved:['Tony · 聽日返嚟','Tony · come back tomorrow'],board:['Jeff · top callers #2','Jeff · top callers #2']};
-const SPOON={story:['下一步：時間線','Next: the timeline'],timeline:['撳呢度出今日 call','Tap to make today’s call'],call:['揀會或唔會','Pick Yes or No'],crowd:['跟住睇 Forbes 報道','Next: the Forbes reporting'],hints:['保存，聽日返嚟','Save and return tomorrow'],saved:['睇呢個 Story 嘅榜','See this Story’s board']};
+const SPOON={story:['下一步：時間線','Next: the timeline'],timeline:['撳呢度出今日 call','Tap to make today’s call'],call:['揀會或唔會','Pick Will or Won\'t'],crowd:['跟住睇 Forbes 報道','Next: the Forbes reporting'],hints:['保存，聽日返嚟','Save and return tomorrow'],saved:['睇呢個 Story 嘅榜','See this Story’s board']};
 const def=()=>({sid:'mid',step:PM?'intro':'story',pick:null,at:null,saved:false,notes:true});
 let S;try{S=Object.assign(def(),JSON.parse(localStorage.getItem(SK)||'{}'))}catch(e){S=def()}
 if(!PM&&S.step==='intro')S.step='story';
@@ -121,7 +121,7 @@ V.intro=()=>hdr()+'<div class="kick">'+T('簡報 · 21 Oct','Present · 21 Oct')
 V.story=()=>{const s=st();return hdr()+rail()+
  '<div class="story-sw">'+['mid','gta'].map(k=>'<button class="'+(S.sid===k?'on':'')+'" onclick="E.story(\''+k+'\')"><span class="n">'+tx(ST[k].n)+'</span><span class="u">'+tx(ST[k].u)+'</span></button>').join('')+'</div>'+
  why('story')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+tx(s.hl)+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct</div>'+
- '<div class="big">'+s.y+'%<small>'+T('話會','say yes')+'</small></div><div class="meta" style="margin-top:6px">'+s.n2+T(' 位讀者跟緊呢個 Story',' readers following this Story')+'</div>'+pfoot()+
+ '<div class="big">'+s.y+'%<small>'+T('會','Will')+'</small></div><div class="meta" style="margin-top:6px">'+s.n2+T(' 位讀者跟緊呢個 Story',' readers following this Story')+'</div>'+pfoot()+
  dock('story',T('6 日 · 今日開咗','Day 6 · today is open'),P(T('睇時間線','See the timeline'),"E.go('timeline')"),'story')};
 V.timeline=()=>{const s=st();return hdr()+rail()+why('timeline')+'<div class="kick">'+tx(s.n)+'</div><div class="h1">'+T('五日過去，今日到你','Five days in. Today is yours.')+'</div>'+
  '<div class="days">'+s.past.map(p=>'<div class="day'+(p[3]?'':' miss')+'"><span class="d">'+p[0]+'</span><span class="p">'+(p[3]?PK(p[3]):'–')+'</span></div>').join('')+
@@ -146,7 +146,7 @@ V.saved=()=>{const s=st();return hdr()+rail()+why('saved')+'<div class="kick">'+
  dock('saved',T('呢個 Story 嘅排名','This Story’s ranking'),P(T('睇 Top callers','See top callers'),"E.go('board')"),'saved')};
 V.board=()=>{const s=st();return hdr()+rail()+why('board')+'<div class="kick">Top callers · '+tx(s.n)+'</div><div class="h1">'+T('你排第 '+(s.board.findIndex(r=>r[0]==='@me')+1),'You’re #'+(s.board.findIndex(r=>r[0]==='@me')+1))+'</div>'+
  '<div class="board">'+s.board.map((r,i)=>'<div class="row'+(r[0]==='@me'?' me':'')+'"><span class="n">'+(i+1)+'</span><span>'+(r[0]==='@me'?T('你','You'):r[0])+'</span><span class="sc">'+r[1]+'</span></div>').join('')+'</div>'+
- '<details class="more"><summary><span>'+T('更多 markets','More markets')+'</span><span>+</span></summary>'+(showNotes()?'<div class="why" style="margin:0 0 8px">Chris · no component soup</div>':'')+s.more.map(m=>'<div class="m"><b>'+tx(m[0])+'</b><span>'+T('會 ','Yes ')+m[1]+'</span></div>').join('')+'</details>'+pfoot()+
+ '<details class="more"><summary><span>'+T('更多 markets','More markets')+'</span><span>+</span></summary>'+(showNotes()?'<div class="why" style="margin:0 0 8px">Chris · no component soup</div>':'')+s.more.map(m=>'<div class="m"><b>'+tx(m[0])+'</b><span>'+T('會 ','Will ')+m[1]+'</span></div>').join('')+'</details>'+pfoot()+
  dock('board',T('22 Oct 再見','Back on 22 Oct'),P(T('返去 Story','Back to the Story'),"E.go('story')"),'board')};
 function R(){
  document.documentElement.setAttribute('data-theme',TH);document.documentElement.lang=L==='zh'?'zh-HK':'en';

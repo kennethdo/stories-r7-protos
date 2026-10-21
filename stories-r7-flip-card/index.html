@@ -1,0 +1,141 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R7 · 反卡</title><style>:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#8f8f8f;--dim:#6a6a6a;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--surface-2:#1a1a1a;--btn:#ededed;--btn-ink:#000;--overlay:rgba(0,0,0,.7);--split-track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
+[data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6f6f6f;--dim:#8a8a8a;--hair:#e6e6e6;--hs:#d4d4d4;--surface:#fafafa;--surface-2:#f0f0f0;--btn:#111;--btn-ink:#fff;--overlay:rgba(0,0,0,.35);--split-track:#e6e6e6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font:15px/1.45 var(--detail);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{color:inherit}
+.app{max-width:390px;margin:0 auto;min-height:100vh;position:relative;padding:0 20px 180px;overflow-x:hidden}
+.top{display:flex;align-items:center;gap:10px;height:56px}
+.top .t{flex:1;font-size:13px;color:var(--mute)}
+.sw{font-size:13px;color:var(--mute);display:flex;gap:6px;align-items:center}.sw b{color:var(--ink);font-weight:600}.sw button{position:relative;min-width:22px}.sw button::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+.ex{font-size:13px;color:var(--dim)}
+.kick{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+.h1{font-family:var(--title);font-weight:600;letter-spacing:-.035em;font-size:31px;line-height:1.1;margin-top:10px}
+.meta{font-size:13px;color:var(--mute)}
+.body{color:var(--body)}
+.btn-p{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-weight:600;font-size:16px;text-decoration:none}
+.btn-s{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:9px;border:1px solid var(--hs);font-size:16px;font-weight:600;color:var(--ink)}
+.btn-s.sm{min-height:44px;height:44px;padding:0 14px;font-size:14px;font-weight:500}
+.lnk{color:var(--body);font-size:14px;text-decoration:underline;text-underline-offset:3px;display:inline-flex;gap:6px;align-items:center;position:relative}
+.dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--hair);z-index:5}
+.dock .in{max-width:390px;margin:0 auto;padding:10px 20px 22px}.dock .cap{font-size:13px;color:var(--mute);margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}
+.q{margin-top:26px;border-top:1px solid var(--hair);padding-top:16px}
+.q .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between}
+.q .qq{font-family:var(--title);font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-top:6px}
+.yn{display:flex;gap:10px;margin-top:14px}.yn>*{flex:1}
+.you{display:flex;gap:8px;align-items:baseline;margin-top:12px;font-size:15px}.you b{font-family:var(--title);font-size:26px;letter-spacing:-.03em}
+.crowd{margin-top:14px}.split{height:8px;border-radius:4px;background:var(--split-track);overflow:hidden}.split i{display:block;height:100%;background:var(--body);transition:width .6s}
+.crowd .row{display:flex;justify-content:space-between;margin-top:6px;font-size:13px;color:var(--mute)}
+.demo{display:flex;align-items:center;gap:10px;margin-top:16px;padding:10px 0;border-top:1px dashed var(--hs);border-bottom:1px dashed var(--hs)}.demo .meta{flex:1}
+.reg{margin-top:22px;margin-bottom:12px;border-left:2px solid var(--ink);padding:2px 0 2px 14px;position:relative;z-index:2}.reg .t{font-size:16px;font-weight:600}.reg .meta{margin-top:4px}
+.reg .row{display:flex;gap:16px;align-items:center;margin-top:12px}
+.field{min-height:44px;height:44px;border:1px solid var(--hs);border-radius:9px;display:flex;align-items:center;padding:0 12px;color:var(--dim);flex:1;font-size:14px}
+.score{display:flex;gap:28px;margin-top:18px;padding-top:14px;border-top:1px solid var(--hair)}.score b{display:block;font-family:var(--title);font-size:28px;letter-spacing:-.03em}.score span{font-size:13px;color:var(--mute)}
+.res{font-family:var(--title);font-size:24px;font-weight:600;margin-top:16px;border-left:2px solid var(--ink);padding-left:12px;letter-spacing:-.02em}
+.toast{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--hs);border-radius:9px;padding:8px 14px;font-size:13px;z-index:10;white-space:nowrap}
+.foot{margin-top:28px;font-size:13px;color:var(--dim)}
+.back{font-size:14px;color:var(--mute);display:inline-flex;align-items:center;gap:6px;height:44px}
+.sec{margin-top:24px;border-top:1px solid var(--hair);padding-top:14px}.sec .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
+.notif{position:fixed;top:10px;left:50%;transform:translateX(-50%);width:min(370px,calc(100% - 20px));background:var(--surface-2);border:1px solid var(--hs);border-radius:14px;padding:12px 14px;z-index:20;display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:var(--ink);animation:drop .5s cubic-bezier(.2,1.4,.4,1) both;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.notif .ic{width:34px;height:34px;border-radius:8px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;font-size:14px}
+.notif .t1{font-size:14px;font-weight:600;line-height:1.3}.notif .t2{font-size:13px;color:var(--mute);margin-top:2px}
+.notif .x{position:absolute;right:6px;top:4px;width:32px;height:32px;font-size:16px;color:var(--mute)}
+@keyframes drop{0%{transform:translate(-50%,-120px)}100%{transform:translate(-50%,0)}}
+small{font-size:13px!important}
+.table{margin-top:20px;display:flex;justify-content:center;padding:6px 0 4px}
+.fc{width:270px;height:340px;position:relative}
+.fc.deal{animation:deal .6s cubic-bezier(.2,1.4,.4,1) both}@keyframes deal{0%{transform:translateY(160px) rotate(-6deg) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+.fc .sd{position:absolute;inset:0;padding:18px 16px;display:flex;flex-direction:column;text-decoration:none}
+/* Editorial / newspaper clipping — not a playing card */
+.fc.clip .sd{background:var(--surface);border:1px solid var(--hs);border-radius:2px;box-shadow:3px 4px 0 var(--hair);color:var(--ink)}
+.fc.clip .sd:before{content:"";position:absolute;top:-1px;right:18px;width:28px;height:10px;background:var(--bg);border:1px solid var(--hs);border-top:0;border-radius:0 0 3px 3px;opacity:.7}
+.fc.clip .bk{background:repeating-linear-gradient(0deg,transparent,transparent 27px,var(--hair) 28px),var(--surface)}
+.fc.clip .fr{background:var(--surface);color:var(--ink)}
+.fc .tag{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.fc .hl{font-family:var(--title);font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-top:12px;font-style:italic}
+.fc .bk .hl{background:var(--bg);padding:10px 12px;border-left:3px solid var(--ink);font-size:18px;font-style:normal}
+.fc .bot{margin-top:auto;font-size:13px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px;border-top:1px dashed var(--hs);padding-top:10px;color:var(--mute)}
+.fc .big{font-family:var(--title);font-size:48px;font-weight:700;line-height:1;margin-top:auto;letter-spacing:-.03em}
+.fc .fr .u{text-decoration:underline;text-underline-offset:3px;font-size:14px;font-weight:600;color:var(--ink)}
+.ghost{width:270px;height:200px;border:1px dashed var(--hs);border-radius:2px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--mute);font-size:14px;padding:24px;background:var(--surface)}
+.hand{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.mini{width:44px;height:58px;min-width:44px;min-height:44px;border-radius:2px;background:var(--surface);border:1px solid var(--hs);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;font-weight:700;text-decoration:none;transform:rotate(var(--r));box-shadow:2px 2px 0 var(--hair)}.mini small{font-size:13px;color:var(--mute);font-weight:500}
+.mini.d{background:var(--surface-2);border:1px dashed var(--hs);color:var(--mute);box-shadow:none}
+.spoon-wrap{position:relative}
+.spoon{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);z-index:8;max-width:280px;padding:8px 12px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:normal;text-align:center;cursor:pointer}
+.spoon:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink)}
+@media(min-width:520px){.spoon{display:none}}
+</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+let TH=/theme=dark/.test(Q)?'dark':'light';
+const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
+const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='dark'?u.searchParams.set('theme','dark'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
+const T=(z,e)=>L==='zh'?z:e;
+const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
+const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';
+const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const PK=p=>p==='y'?T('會','Yes'):T('唔會','No');
+const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
+const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a>';
+function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div></div>';
+ if(S.later)return '';
+ return '<div class="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
+ (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
+const CE={lang(l){L=l;syncURL();R()},theme(t){TH=t;applyTheme();syncURL();R()},regOpen(){S.regOpen=true;R()},later(){S.later=true;R()},regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at,'Saved · call time kept '+S.at);R()}};
+function wireSpoon(){const tips=[...document.querySelectorAll('[data-spoon]')];if(!tips.length)return;const kill=e=>{tips.forEach(el=>{const id=el.getAttribute('data-spoon');(S.spoonOff=S.spoonOff||{})[id]=1;el.remove()});document.removeEventListener('pointerdown',kill,true)};setTimeout(()=>document.addEventListener('pointerdown',kill,true),0)}
+const spoonTip=(id,txt)=>((S.spoonOff=S.spoonOff||{})[id]?'':'<div class="spoon" data-spoon="'+id+'">'+txt+'</div>');
+function R(){applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';document.getElementById('app').innerHTML=V()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');wireSpoon();if(S.toast){S.toast='';clearTimeout(window._tt);window._tt=setTimeout(()=>{const el=document.querySelector('.toast');el&&el.remove()},1800)}}
+function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('↑ 返去 Story 繼續睇','↑ Back to the Story')+'</button></div></div>';
+ if(S.later)return '<div class="reg"><div class="meta">'+T('未保存 · 你個 call 只喺呢部機','Not saved · call lives on this device only')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
+ return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
+ (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
+const CE2={top(){window.scrollTo({top:0,behavior:'smooth'})},unlater(){S.later=false;S.regOpen=true;R()},
+ regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at+' · 返去 Story','Saved · call time kept '+S.at+' · back to Story');R();window.scrollTo({top:0,behavior:'smooth'})}};
+const SCORE=(v,note)=>{
+ if(!S.rev)return '<div class="score"><div><b style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</b><span>'+T('分數揭曉後先出','Score shows after reveal')+'</span></div>'+(note?'<div><span style="font-size:14px">'+note+'</span></div>':'')+'</div>';
+ let num=v;
+ if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
+ return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
+};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
+const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
+const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
+const DOCK=(cap,right,label,tip)=>'<div class="dock"><div class="in spoon-wrap">'+(tip?spoonTip(tip[0],tip[1]):'')+'<div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
+const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
+let S;
+function reset(){S={spoonOff:{},pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',deal:false,flip:false}}reset();
+const CROWD=66,N='5,208';
+const FU=()=>T('GTA VI 準時開賣：首 24 小時銷量創紀錄','GTA VI launches on time: record first-24-hour sales');
+function card(){if(!S.pick)return '<div class="table"><div class="ghost">'+T('出 call 後，你個 call 會變成一張蓋住嘅剪報 · 揭曉先翻','Your call becomes a face-down clipping · it flips at reveal')+'</div></div>';
+ /* After call: ONLY face-down until reveal. Flipped face lives in Demo control path. */
+ if(!S.rev){
+  /* P0: face-down must NOT show follow-up headline / result — spoiler */
+  return '<div class="table"><div class="fc clip'+(S.deal?' deal':'')+'" id="fc">'+
+  '<div class="sd bk"><span class="tag">'+T('蓋住 · 未揭曉','Face down · unrevealed')+'</span><div class="hl" style="margin-top:28px;font-style:normal;font-size:18px">'+T('跟進報道 · 揭曉先見','Follow-up · see it at reveal')+'</div><div class="meta" style="margin-top:12px">'+T('報紙紋理 · 示例 · 未揭曉','Newspaper texture · sample · sealed')+'</div><div class="bot"><span>'+T('你揀咗 ','You said ')+'<b>'+PK(S.pick)+'</b><br>21 Oct '+S.at+' HKT · '+T('已出 call · 等揭曉','Called · awaiting reveal')+'</span><span>'+T('19 Nov 翻','Flips 19 Nov')+'</span></div></div></div></div>';
+ }
+ const ok=S.pick===S.res;
+ return '<div class="table"><div class="fc clip flipped" id="fc">'+
+ '<a class="sd fr" href="'+FORBES+'" target="_blank" rel="noopener"><span class="tag">'+T('翻咗 · 結果（示例）','Flipped · result (sample)')+'</span><div class="hl">'+FU()+'</div><div class="meta" style="color:inherit;opacity:.8;margin-top:6px">'+T('跟進文章 · 示例','Follow-up article · sample')+'</div><div class="big">'+PK(S.res)+'</div><div class="bot"><span>'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+(ok?' · +1':' · 0')+'</span><span class="u">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</span></div></a></div></div>'}
+function hand(){if(!S.rev)return '';const m=[[T('會','Yes'),'-6deg',''],[T('唔會','No'),'4deg',''],['?','-3deg',' d']];
+ return '<div class="hand">'+m.map((x,i)=>x[2]?'<span class="mini d" style="--r:'+x[1]+'">?<small>24 Oct</small></span>':'<a class="mini" style="--r:'+x[1]+'" href="'+FORBES+'" target="_blank" rel="noopener" aria-label="'+T('喺 Forbes.com 打開','Open on Forbes.com')+'">'+x[0]+'<small>'+(i?'16':'12')+' Oct</small></a>').join('')+'</div><div class="meta" style="text-align:center;margin-top:8px">'+T('你喺呢個 Story 嘅其他剪報 · 示例','Your other clippings in this Story · sample')+'</div>'}
+function V(){let h=hdr('Forbes Predict');
+ h+='<div class="kick">Story · GTA VI · '+T('出街倒數','Countdown')+'</div><div class="h1">'+T('Take-Two 季績前夕：GTA VI 會唔會再延？','Ahead of Take-Two earnings: will GTA VI slip again?')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>';
+ h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('GTA VI 會唔會照 11 月 19 日出？','Will GTA VI ship on Nov 19?')+'</div>';
+ if(!S.pick)h+=YN()+card();
+ else{h+=YOU()+CROWDV(CROWD,N,S.pick)+card();
+  if(!S.rev)h+=DEMO()+SCORE('0');
+  else h+=RES()+SCORE(pts(),T('翻卡唔另外加分','Flipping adds no extra points'));
+  h+=hand()+reg(T('張剪報收埋喺你嘅紀錄，保存先收到翻卡通知','Keep the clipping in your record — save to get the flip alert'))}
+ h+='</div>'+FOOT();
+ h+=S.rev?DOCK(T('卡面＝跟進報道（示例）','Clipping face = follow-up (sample)'),'GTA VI · 19 Nov',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'),['flip-fu',T('揭曉主路：讀跟進 · 入 Forbes','Reveal path: follow-up on Forbes')]):DOCK(T('今日報道（示例）','Today\'s story (sample)'),'GTA VI · 21 Oct');
+ S.deal=false;return h}
+const E=Object.assign({},CE,CE2,{
+ call(p){if(S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.deal=true;S.toast=T('已出 call · 卡蓋住咗 · '+S.at,'Call made · card face down · '+S.at);R()},
+ reveal(){if(!S.pick||S.rev)return;S.rev=true;S.flip=true;R();const c=document.getElementById('fc');c&&c.scrollIntoView({block:'center'})}});
+window.E=E;
+if(/demo=reveal/.test(Q)){S.pick=(Q.match(/pick=(y|n)/)||[])[1]||'y';S.at='09:41';S.rev=true;S.flip=true}
+R();
+</script></body></html>

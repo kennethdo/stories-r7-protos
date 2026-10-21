@@ -1,0 +1,141 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stories R7 · 收藏＝我追緊嘅專題</title><style>:root{--bg:#000;--ink:#ededed;--body:#a1a1a1;--mute:#8f8f8f;--dim:#6a6a6a;--hair:#262626;--hs:#3d3d3d;--surface:#0a0a0a;--surface-2:#1a1a1a;--btn:#ededed;--btn-ink:#000;--overlay:rgba(0,0,0,.7);--split-track:#262626;--title:Graphik,'Helvetica Neue',Arial,sans-serif;--detail:Inter,system-ui,-apple-system,'PingFang HK','Noto Sans CJK TC',sans-serif}
+[data-theme=light]{--bg:#fff;--ink:#111;--body:#4d4d4d;--mute:#6f6f6f;--dim:#8a8a8a;--hair:#e6e6e6;--hs:#d4d4d4;--surface:#fafafa;--surface-2:#f0f0f0;--btn:#111;--btn-ink:#fff;--overlay:rgba(0,0,0,.35);--split-track:#e6e6e6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font:15px/1.45 var(--detail);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{color:inherit}
+.app{max-width:390px;margin:0 auto;min-height:100vh;position:relative;padding:0 20px 180px;overflow-x:hidden}
+.top{display:flex;align-items:center;gap:10px;height:56px}
+.top .t{flex:1;font-size:13px;color:var(--mute)}
+.sw{font-size:13px;color:var(--mute);display:flex;gap:6px;align-items:center}.sw b{color:var(--ink);font-weight:600}.sw button{position:relative;min-width:22px}.sw button::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+.ex{font-size:13px;color:var(--dim)}
+.kick{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+.h1{font-family:var(--title);font-weight:600;letter-spacing:-.035em;font-size:31px;line-height:1.1;margin-top:10px}
+.meta{font-size:13px;color:var(--mute)}
+.body{color:var(--body)}
+.btn-p{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border-radius:9px;background:var(--btn);color:var(--btn-ink);font-weight:600;font-size:16px;text-decoration:none}
+.btn-s{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:9px;border:1px solid var(--hs);font-size:16px;font-weight:600;color:var(--ink)}
+.btn-s.sm{min-height:44px;height:44px;padding:0 14px;font-size:14px;font-weight:500}
+.lnk{color:var(--body);font-size:14px;text-decoration:underline;text-underline-offset:3px;display:inline-flex;gap:6px;align-items:center;position:relative}
+.dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--hair);z-index:5}
+.dock .in{max-width:390px;margin:0 auto;padding:10px 20px 22px}.dock .cap{font-size:13px;color:var(--mute);margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}
+.q{margin-top:26px;border-top:1px solid var(--hair);padding-top:16px}
+.q .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between}
+.q .qq{font-family:var(--title);font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-top:6px}
+.yn{display:flex;gap:10px;margin-top:14px}.yn>*{flex:1}
+.you{display:flex;gap:8px;align-items:baseline;margin-top:12px;font-size:15px}.you b{font-family:var(--title);font-size:26px;letter-spacing:-.03em}
+.crowd{margin-top:14px}.split{height:8px;border-radius:4px;background:var(--split-track);overflow:hidden}.split i{display:block;height:100%;background:var(--body);transition:width .6s}
+.crowd .row{display:flex;justify-content:space-between;margin-top:6px;font-size:13px;color:var(--mute)}
+.demo{display:flex;align-items:center;gap:10px;margin-top:16px;padding:10px 0;border-top:1px dashed var(--hs);border-bottom:1px dashed var(--hs)}.demo .meta{flex:1}
+.reg{margin-top:22px;margin-bottom:12px;border-left:2px solid var(--ink);padding:2px 0 2px 14px;position:relative;z-index:2}.reg .t{font-size:16px;font-weight:600}.reg .meta{margin-top:4px}
+.reg .row{display:flex;gap:16px;align-items:center;margin-top:12px}
+.field{min-height:44px;height:44px;border:1px solid var(--hs);border-radius:9px;display:flex;align-items:center;padding:0 12px;color:var(--dim);flex:1;font-size:14px}
+.score{display:flex;gap:28px;margin-top:18px;padding-top:14px;border-top:1px solid var(--hair)}.score b{display:block;font-family:var(--title);font-size:28px;letter-spacing:-.03em}.score span{font-size:13px;color:var(--mute)}
+.res{font-family:var(--title);font-size:24px;font-weight:600;margin-top:16px;border-left:2px solid var(--ink);padding-left:12px;letter-spacing:-.02em}
+.toast{position:fixed;top:64px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--hs);border-radius:9px;padding:8px 14px;font-size:13px;z-index:10;white-space:nowrap}
+.foot{margin-top:28px;font-size:13px;color:var(--dim)}
+.back{font-size:14px;color:var(--mute);display:inline-flex;align-items:center;gap:6px;height:44px}
+.sec{margin-top:24px;border-top:1px solid var(--hair);padding-top:14px}.sec .lab{font-size:13px;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
+.notif{position:fixed;top:10px;left:50%;transform:translateX(-50%);width:min(370px,calc(100% - 20px));background:var(--surface-2);border:1px solid var(--hs);border-radius:14px;padding:12px 14px;z-index:20;display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:var(--ink);animation:drop .5s cubic-bezier(.2,1.4,.4,1) both;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.notif .ic{width:34px;height:34px;border-radius:8px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;font-size:14px}
+.notif .t1{font-size:14px;font-weight:600;line-height:1.3}.notif .t2{font-size:13px;color:var(--mute);margin-top:2px}
+.notif .x{position:absolute;right:6px;top:4px;width:32px;height:32px;font-size:16px;color:var(--mute)}
+@keyframes drop{0%{transform:translate(-50%,-120px)}100%{transform:translate(-50%,0)}}
+small{font-size:13px!important}
+.star{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:22px;border:1px solid var(--hs);font-size:15px;font-weight:600;margin-top:14px}
+.star .s{font-size:20px;line-height:1;transition:transform .35s cubic-bezier(.2,1.8,.4,1)}
+.star.on{border-color:var(--ink)}.star.on .s{transform:scale(1.25) rotate(-12deg)}
+.flist{margin-top:8px}
+.fi{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--hair)}
+.fi .s{font-size:20px;width:24px;text-align:center}.fi .m{flex:1;min-width:0}.fi .n{font-weight:600;font-size:15px}
+.fi .st{font-size:13px;color:var(--mute);margin-top:2px}
+.bell{display:inline-flex;gap:4px;align-items:center;font-size:13px;color:var(--ink);border-bottom:1px dashed var(--ink)}
+.fi.new{animation:slide .5s ease both}@keyframes slide{0%{opacity:0;transform:translateX(30px)}100%{opacity:1}}
+.empty{font-size:14px;color:var(--mute);padding:12px 0}
+.nudge{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:14px;color:var(--body)}
+.spoon-wrap{position:relative}
+.spoon{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);z-index:8;max-width:280px;padding:8px 12px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.35;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:normal;text-align:center;cursor:pointer}
+.spoon:after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink)}
+@media(min-width:520px){.spoon{display:none}}
+</style></head><body><div class="app" id="app"></div><script>const Q=location.search;let L=(Q.match(/lang=(en|zh)/)||[])[1]||'en';
+let TH=/theme=dark/.test(Q)?'dark':'light';
+const applyTheme=()=>document.documentElement.setAttribute('data-theme',TH==='light'?'light':'');applyTheme();
+const syncURL=()=>{const u=new URL(location.href);L==='zh'?u.searchParams.set('lang','zh'):u.searchParams.delete('lang');TH==='dark'?u.searchParams.set('theme','dark'):u.searchParams.delete('theme');history.replaceState(null,'',u.pathname+u.search+u.hash)};
+const T=(z,e)=>L==='zh'?z:e;
+const FORBES='https://www.forbes.com/?utm_source=axiom&utm_medium=midterm-tracker&utm_campaign=forbes-article';
+const EX=()=>'<span class="ex">'+T('示例','Sample')+'</span>';
+const hhmm=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Hong_Kong',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+const sw=()=>'<div class="sw"><button onclick="E.lang(\'en\')">'+(L==='en'?'<b>EN</b>':'EN')+'</button>|<button onclick="E.lang(\'zh\')">'+(L==='zh'?'<b>粵</b>':'粵')+'</button></div><div class="sw"><button onclick="E.theme(\'dark\')">'+(TH==='dark'?'<b>'+T('深','Dark')+'</b>':T('深','Dark'))+'</button>|<button onclick="E.theme(\'light\')">'+(TH==='light'?'<b>'+T('淺','Light')+'</b>':T('淺','Light'))+'</button></div>';
+const hdr=t=>'<div class="top"><div class="t">'+t+' · '+EX()+'</div>'+sw()+'</div>';
+const PK=p=>p==='y'?T('會','Yes'):T('唔會','No');
+const PA=(label)=>'<a class="btn-p" href="'+FORBES+'" target="_blank" rel="noopener">'+label+' ↗</a>';
+const FL=()=>'<a class="lnk" href="'+FORBES+'" target="_blank" rel="noopener">'+T('喺 Forbes.com 打開','Open on Forbes.com')+' ↗</a>';
+function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div></div>';
+ if(S.later)return '';
+ return '<div class="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
+ (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
+const CE={lang(l){L=l;syncURL();R()},theme(t){TH=t;applyTheme();syncURL();R()},regOpen(){S.regOpen=true;R()},later(){S.later=true;R()},regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at,'Saved · call time kept '+S.at);R()}};
+function wireSpoon(){const tips=[...document.querySelectorAll('[data-spoon]')];if(!tips.length)return;const kill=e=>{tips.forEach(el=>{const id=el.getAttribute('data-spoon');(S.spoonOff=S.spoonOff||{})[id]=1;el.remove()});document.removeEventListener('pointerdown',kill,true)};setTimeout(()=>document.addEventListener('pointerdown',kill,true),0)}
+const spoonTip=(id,txt)=>((S.spoonOff=S.spoonOff||{})[id]?'':'<div class="spoon" data-spoon="'+id+'">'+txt+'</div>');
+function R(){applyTheme();document.documentElement.lang=L==='zh'?'zh-HK':'en';document.getElementById('app').innerHTML=V()+(S.toast?'<div class="toast">'+S.toast+'</div>':'');wireSpoon();if(S.toast){S.toast='';clearTimeout(window._tt);window._tt=setTimeout(()=>{const el=document.querySelector('.toast');el&&el.remove()},1800)}}
+function reg(title){if(!S.guest)return '<div class="reg"><div class="t">'+T('已保存 Predict 紀錄','Predict record saved')+'</div><div class="meta">'+T('出 call 時間照舊：21 Oct '+S.at+' HKT','Call time kept: 21 Oct '+S.at+' HKT')+'</div><div class="row"><button class="lnk" onclick="E.top()">'+T('↑ 返去 Story 繼續睇','↑ Back to the Story')+'</button></div></div>';
+ if(S.later)return '<div class="reg"><div class="meta">'+T('未保存 · 你個 call 只喺呢部機','Not saved · call lives on this device only')+'</div><div class="row"><button class="lnk" onclick="E.unlater()">'+T('保存','Save')+'</button></div></div>';
+ return '<div class="reg" id="reg"><div class="t">'+title+'</div><div class="meta">'+T('開 Forbes Predict 紀錄，唔係 Forbes.com 帳戶 · play money，冇獎品','Opens a Forbes Predict record, not a Forbes.com account · play money, no prizes')+'</div>'+
+ (S.regOpen?'<div class="row"><div class="field">you@email.com</div><button class="btn-s sm" onclick="E.regDo()">'+T('保存','Save')+'</button></div>':'<div class="row"><button class="btn-s sm" onclick="E.regOpen()">'+T('留電郵保存','Save with email')+'</button><button class="lnk" onclick="E.later()">'+T('遲啲先','Later')+'</button></div>')+'</div>'}
+const CE2={top(){window.scrollTo({top:0,behavior:'smooth'})},unlater(){S.later=false;S.regOpen=true;R()},
+ regDo(){S.guest=false;S.toast=T('已保存 · call 時間照舊 '+S.at+' · 返去 Story','Saved · call time kept '+S.at+' · back to Story');R();window.scrollTo({top:0,behavior:'smooth'})}};
+const SCORE=(v,note)=>{
+ if(!S.rev)return '<div class="score"><div><b style="font-size:18px">'+T('已出 call · 等揭曉','Called · awaiting reveal')+'</b><span>'+T('分數揭曉後先出','Score shows after reveal')+'</span></div>'+(note?'<div><span style="font-size:14px">'+note+'</span></div>':'')+'</div>';
+ let num=v;
+ if(/^\d+(\.\d+)?$/.test(String(v))){const n=+v;num=(n===0?T('0 分','0 pts'):((Number.isInteger(n)?String(n):String(Math.round(n*100)/100))+' '+T('分','pts')))}
+ return '<div class="score"><div><b>'+num+'</b><span>'+T('你嘅分數（得一個）','Your score (only one)')+'</span></div>'+(note?'<div><span style="font-size:14px;color:var(--mute)">'+note+'</span></div>':'')+'</div>';
+};
+const CROWDV=(c,n,pick)=>{const mine=pick==='y'?c:100-c;return '<div class="crowd"><div class="split"><i style="width:'+c+'%"></i></div><div class="row"><span>'+T('會','Yes')+' '+c+'%</span><span>'+T('同你一樣 ','Same as you ')+mine+'% · '+n+T(' 人',' readers')+' · '+T('示例','sample')+'</span><span>'+T('唔會','No')+' '+(100-c)+'%</span></div></div>'};
+const YN=()=>'<div class="yn"><button class="btn-s" onclick="E.call(\'y\')">'+T('會','Yes')+'</button><button class="btn-s" onclick="E.call(\'n\')">'+T('唔會','No')+'</button></div><div class="meta" style="margin-top:8px">'+T('撳一下即出 call · 出咗 call 先見大家點揀','One tap makes the call · crowd shows after')+'</div>';
+const YOU=()=>'<div class="you"><span class="meta">'+T('你揀咗','You said')+'</span><b>'+PK(S.pick)+'</b><span class="meta">21 Oct '+S.at+' HKT'+(S.rev?'':' · '+T('已出 call · 等揭曉','Called · awaiting reveal'))+'</span></div>';
+const DEMO=()=>S.pick&&!S.rev?'<div class="demo"><span class="meta">'+T('示範用，唔係產品：跳到揭曉日','Demo only: jump to reveal day')+'</span><button class="btn-s sm" onclick="E.reveal()">'+T('示範：揭曉','Demo: reveal')+'</button></div>':'';
+const RES=()=>'<div class="res">'+T('結果：'+PK(S.res)+'（示例）· 你揀咗 '+PK(S.pick),'Result: '+PK(S.res)+' (sample) · you said '+PK(S.pick))+'</div>';
+const DOCK=(cap,right,label,tip)=>'<div class="dock"><div class="in spoon-wrap">'+(tip?spoonTip(tip[0],tip[1]):'')+'<div class="cap"><span>'+cap+'</span><span>'+right+'</span></div>'+PA(label||T('喺 Forbes.com 打開','Open on Forbes.com'))+'</div></div>';
+const FOOT=()=>'<div class="foot">'+T('所有標題、%、人數都係示例 · play money，冇獎品','All headlines, % and counts are samples · play money, no prizes')+'</div>';
+const pts=()=>S.pick&&S.rev?(S.pick===S.res?1:0):0;
+let S;
+function reset(){S={spoonOff:{},pick:null,at:null,rev:false,res:'y',guest:true,regOpen:false,later:false,toast:'',fol:false,notif:false,ftime:null}}reset();
+const CROWD=58,N='2,317';
+const STORY=()=>T('Fed 減息路線','Fed rate path');
+function star(){return '<button class="star'+(S.fol?' on':'')+'" onclick="E.fol()" aria-pressed="'+S.fol+'"><span class="s">'+(S.fol?'★':'☆')+'</span>'+(S.fol?T('追緊呢個專題','Following this Story'):T('追呢個專題','Follow this Story'))+'</button>'}
+function flist(){let h='<div class="sec" id="flist"><div class="lab"><span><b style="color:var(--ink);font-size:15px">'+T('我追緊嘅專題','Stories I follow')+'</b></span>'+EX()+'</div><div class="flist">';
+ const old='<div class="fi"><span class="s">★</span><div class="m"><div class="n">'+T('NFL 季中','NFL midseason')+'</div><div class="st">'+T('上次揭曉 18 Oct · ','Last reveal 18 Oct · ')+FL()+'</div></div></div>';
+ if(!S.fol)return h+old+'<div class="empty">'+T('撳 ☆ 加 '+STORY()+' 入嚟 · 揭曉時話你知','Tap ☆ to add '+STORY()+' · we tell you at reveal')+'</div></div></div>';
+ let st;
+ if(S.rev)st=T('已揭曉：'+PK(S.res)+' · ','Revealed: '+PK(S.res)+' · ')+(S.pick?T('你揀咗 '+PK(S.pick),'you said '+PK(S.pick)):T('你冇出 call','no call'))+' · '+FL();
+ else st=(S.pick?T('你揀咗 '+PK(S.pick)+' · ','You said '+PK(S.pick)+' · '):T('未出 call · ','No call yet · '))+'<span class="bell"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg> '+T('揭曉時話你知','We\'ll tell you at reveal')+'</span>'+(S.guest?' · '+T('保存先收到','save to receive'):'');
+ return h+'<div class="fi new"><span class="s">★</span><div class="m"><div class="n">'+STORY()+'</div><div class="st">'+st+'</div><div class="st">'+T('揭曉日：29 Oct（Fed 議息） · 追咗 '+S.ftime,'Reveal: 29 Oct (FOMC) · followed '+S.ftime)+'</div></div></div>'+old+'</div></div>'}
+function notif(){if(!S.notif)return '';return '<a class="notif" href="'+FORBES+'" target="_blank" rel="noopener" onclick="E.nx()"><span class="ic">F</span><div><div class="t1">'+T('你追緊嘅「'+STORY()+'」結果：'+PK(S.res)+'（示例）','"'+STORY()+'" result: '+PK(S.res)+' (sample)')+'</div><div class="t2">'+T('跟進文章（示例）：Fed 減 25 點子，鮑威爾點講 · 喺 Forbes.com 打開 ↗','Follow-up article (sample): Fed cuts 25bp — what Powell said · Open on Forbes.com ↗')+'</div></div><button class="x" onclick="event.preventDefault();event.stopPropagation();E.nx()" aria-label="close">×</button></a>'}
+function V(){let h=hdr('Forbes Predict');
+ h+='<div class="kick">Story · '+STORY()+' · '+T('21 Oct 更新','21 Oct update')+'</div><div class="h1">'+T('通脹回落，市場押注 Fed 10 月尾再減息','Inflation cools; markets bet on another Fed cut in late October')+'</div><div class="meta" style="margin-top:8px">Forbes · 21 Oct · '+T('示例標題','Sample headline')+' · '+FL()+'</div>'+star();
+ h+='<div class="q"><div class="lab"><span>'+T('今日一問','Today\'s one question')+'</span>'+EX()+'</div><div class="qq">'+T('Fed 10 月 29 日會唔會減息？','Will the Fed cut on Oct 29?')+'</div>';
+ if(!S.pick)h+=YN();
+ else{h+=YOU();
+  /* P1 sequential: never dump crowd+follow+demo+email at once */
+  if(!S.rev){
+   h+=CROWDV(CROWD,N,S.pick);
+   if(!S.fol)h+='<div class="nudge spoon-wrap">'+spoonTip('sf-fol',T('追專題先 · 揭曉先收到通知','Follow first · get told at reveal'))+'<span>'+T('29 號先揭曉 · 追咗專題到時話你知','Reveals on the 29th · follow to get told')+'</span><button class="btn-s sm" onclick="E.fol()">☆ '+T('追','Follow')+'</button></div>';
+   h+=DEMO()+SCORE('0');
+   /* email waits until after reveal */
+  }else{
+   h+=RES()+'<div class="meta" style="margin-top:8px">'+T('跟進文章（示例）：Fed 減 25 點子，鮑威爾點講 · ','Follow-up article (sample): Fed cuts 25bp — what Powell said · ')+FL()+'</div>'+SCORE(pts(),T('追專題唔加分','Following adds no points'));
+   /* after reveal: email only once notif dismissed (or no notif) */
+   if(!S.notif)h+=reg(T('保存你個 call 同追緊嘅專題','Save your call and followed Stories'));
+  }}
+ /* follow list: before reveal always; after reveal once notif gone so result lands first */
+ h+='</div>'+((!S.rev||!S.notif)?flist():'')+FOOT();
+ h+=S.rev?DOCK(T('跟進報道（示例）','Follow-up story (sample)'),'Fed · 29 Oct',T('讀跟進：喺 Forbes.com 打開','Read follow-up on Forbes.com'),['sf-fu',T('揭曉主路：讀跟進 · 入 Forbes','Reveal path: follow-up on Forbes')]):DOCK(T('今日報道（示例）','Today\'s story (sample)'),'Fed · 21 Oct');
+ return h+notif()}
+const E=Object.assign({},CE,CE2,{
+ fol(){S.fol=!S.fol;if(S.fol)S.ftime=hhmm();S.toast=S.fol?T('已追 · 揭曉時話你知','Following · we\'ll tell you at reveal'):T('已取消追','Unfollowed');R()},
+ call(p){if(S.rev||S.pick)return;S.pick=p;S.at=S.at||hhmm();S.toast=T('已出 call · '+S.at,'Call made · '+S.at);R()},
+ nx(){S.notif=false;setTimeout(R,0)},
+ reveal(){if(!S.pick||S.rev)return;S.rev=true;S.notif=!!S.fol;if(!S.fol)S.toast=T('揭曉咗 · 冇追專題，所以冇通知','Revealed · not following, so no alert');R();const b=document.getElementById('flist');b&&b.scrollIntoView({behavior:'smooth',block:'center'})}});
+window.E=E;
+if(/demo=reveal/.test(Q)){S.pick=(Q.match(/pick=(y|n)/)||[])[1]||'y';S.at='09:41';S.fol=true;S.ftime='09:40';S.rev=true;S.notif=true}
+R();
+</script></body></html>
